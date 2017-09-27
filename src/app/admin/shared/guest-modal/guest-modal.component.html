@@ -1,0 +1,77 @@
+<div id="rsvp-guest-modal" class="modal modal-rsvp" tabindex="-1" role="dialog" aria-labelledby="rsvpModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="rsvp-form" class="rsvp-form form" method="post" >
+          <div id="form-messages" class="text-center"></div>
+          <div class="row text-left">
+            <div class="name-group form-group col-xs-12 col-sm-6">
+              <div class="form-group-inner">
+                <label for="cname">Nombre</label>
+                <input type="text" class="form-control" id="cname" name="name" [(ngModel)]="modalGuest.name" placeholder="Nombre" minlength="2"
+                  aria-required="true" required>
+              </div>
+            </div>
+            <div class="name-group form-group col-xs-12 col-sm-6">
+              <div class="form-group-inner">
+                <label for="cfullName">Nombre completo</label>
+                <input type="text" class="form-control" id="cfullName" name="fullName" [(ngModel)]="modalGuest.fullName" placeholder="Nombre y apellido"
+                  minlength="2" aria-required="true" required>
+              </div>
+            </div>
+            <div class="email-group form-group col-xs-12 col-sm-6">
+              <div class="form-group-inner">
+                <label for="cemail">Email</label>
+                <input type="email" class="form-control" id="cemail" name="email" [(ngModel)]="modalGuest.email" placeholder="Your email address"
+                  aria-required="true" required>
+              </div>
+            </div>
+
+            <div class="email-group form-group col-xs-12 col-sm-6">
+              <div class="form-group-inner">
+                <label for="invitation">Invitacion</label>
+                <select class="form-control" id="cinvitation" name="invitation" [(ngModel)]="modalGuest.invitationGuid" aria-required="true" required>
+                    <option *ngFor="let inv of invitations" [ngValue]="inv.guid">{{inv.alias}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="email-group form-group col-xs-12 col-sm-6">
+              <div class="form-group-inner">
+                <label for="callergic">Es alergico?</label>
+                <select class="form-control" id="callergic" name="allergic" [(ngModel)]="modalGuest.isAllergic" aria-required="true" required>                       
+                  <option [ngValue]="false">No</option>
+                  <option [ngValue]="true">Yes</option>
+              </select>
+              </div>
+            </div>
+
+            <div class="events-group form-group col-xs-12 col-sm-6">
+              <div class="form-group-inner">
+                <label for="cevents">Horario de autobus de vuelta?</label>
+                <select class="form-control" id="cevents" name="events" [(ngModel)]="modalGuest.busTime" aria-required="true" required>                       
+                                    <option value="None" selected>Ninguno</option> 
+                                    <option value="02:00">02:00</option>
+                                    <option value="04:30">04:30</option>
+                                    <option value="07:00">07:00</option>
+                                </select>
+              </div>
+            </div>
+
+            <div class="message-group form-group col-xs-12">
+              <div class="form-group-inner">
+                <label for="cmessage">Alergias</label>
+                <textarea class="form-control" id="callergies" name="allergies" [(ngModel)]="modalGuest.allergies" placeholder="eg. Vegetarian &amp; dietary requests"></textarea>
+              </div>
+            </div>
+
+            <div class="form-group col-xs-12">
+              <button *ngIf="!guest" type="submit" class="btn btn-block btn-primary" (click)="addGuest()">Añadir invitado</button>
+              <button *ngIf="guest" type="submit" class="btn btn-block btn-primary" (click)="updateGuest()">Editar invitado</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

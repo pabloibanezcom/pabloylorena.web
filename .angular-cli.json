@@ -19,9 +19,23 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/animate.css/animate.min.css",
+        "../node_modules/font-awesome/css/font-awesome.min.css",
+        "../src/assets/plugins/love-icons/style.css",
         "styles.less"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../src/assets/plugins/bootstrap/js/bootstrap.min.js",
+        "../src/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js",
+        "../src/assets/plugins/back-to-top.js",
+        "../src/assets/plugins/jquery-placeholder/jquery.placeholder.js",
+        "../src/assets/plugins/jquery-inview/jquery.inview.min.js",
+        "../src/assets/plugins/jquery-validation/dist/jquery.validate.min.js",
+        "../src/assets/plugins/isMobile/isMobile.min.js",
+        "../src/assets/js/form-mobile-fix.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

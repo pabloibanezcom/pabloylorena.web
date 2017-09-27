@@ -1,0 +1,50 @@
+<div id="rsvp-invitation-modal" class="modal modal-rsvp" tabindex="-1" role="dialog" aria-labelledby="rsvpModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="rsvp-form" class="rsvp-form form" method="post" >
+          <div id="form-messages" class="text-center"></div>
+          <div class="row text-left">
+            <div class="name-group form-group col-xs-12 col-sm-6">
+              <div class="form-group-inner">
+                <label for="cname">Alias</label>
+                <input type="text" class="form-control" id="calias" name="alias" [(ngModel)]="modalInvitation.alias" placeholder="Alias" minlength="2"
+                  aria-required="true" required>
+              </div>
+            </div>
+
+            <div class="email-group form-group col-xs-12 col-sm-6">
+              <div class="form-group-inner">
+                <label for="cisSent">Enviada?</label>
+                <select class="form-control" id="cisSent" name="isSent" [(ngModel)]="modalInvitation.isSent" aria-required="true" required>                       
+                  <option [ngValue]="false">No</option>
+                  <option [ngValue]="true">Yes</option>
+              </select>
+              </div>
+            </div>
+
+            <div class="name-group form-group col-xs-12 col-sm-6">
+              <div class="form-group-inner">
+                <label for="creceiver">Destinatario</label>
+                <input type="text" class="form-control" id="creceiver" name="receiver" [(ngModel)]="modalInvitation.receiver" placeholder="Remitente" minlength="2"
+                  aria-required="true" required>
+              </div>
+            </div>
+
+            <div class="name-group form-group col-xs-12 col-sm-6">
+              <div class="form-group-inner">
+                <label for="caddress">Direccion</label>
+                <div><span>{{modalInvitation.address | address}}</span></div>
+              </div>
+            </div>
+
+            <div class="form-group col-xs-12">
+              <button *ngIf="!invitation" type="submit" class="btn btn-block btn-primary" >Añadir invitacion</button>
+              <button *ngIf="invitation" type="submit" class="btn btn-block btn-primary" (click)="updateInvitation()">Editar invitacion</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

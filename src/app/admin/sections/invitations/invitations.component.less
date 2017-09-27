@@ -1,0 +1,76 @@
+.invitations {
+    .list-group {
+        .list-group-item {
+            border-bottom: 2px solid #f4af9c;
+        }
+    }
+    .invitation-box:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+    .invitation-box {
+        &.active {
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            margin: 10px 0 15px 0;
+            .basic-info {
+                color: #fff;
+                .list-group-item-heading {
+                    color: #fff;
+                }
+                .invitation-group {
+                    color: #f4af9c;
+                }
+                .invitation-summary {
+                    i {
+                        color: #f4af9c;
+                    }
+                }
+            }
+        }
+        .basic-info {
+            background-color: transparent;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            >div {
+                display: inline-block;
+            }
+            .invitation-summary {
+                padding-top: 8px;
+                >div {
+                    display: inline-block;
+                    margin-left: 20px;
+                }
+                .invitation-number-guests {
+                    .fa {
+                        font-size: 20px;
+                    }
+                    span {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+        .extended-info {
+            color: #555;
+            border-left: 10px solid #f4af9c;
+            >div {
+                display: inline-block;
+            }
+            .invitation-guests {
+                .invitation-guest {
+                    >div {
+                        display: inline-block;
+                    }
+                    .full-name {
+                        width: 170px;
+                    }
+                }         
+            }
+            .invitation-code {
+                .code {
+                    font-style: italic;
+                }
+            }
+        }
+    }
+}
