@@ -1,0 +1,17 @@
+<div class="invitation">
+  <div class="container text-center">
+    <h3 class="title script">
+      <span class="title-deco-left"></span>
+      <span class="title-text">Pablo y Lorena</span>
+      <span class="title-deco-right"></span>
+    </h3>
+    <div class="body">
+      
+    </div>
+    <div class="link" *ngIf="invitation">
+      <qr-code [value]="url" [size]="100" [foreground]="'#f4af9c'"></qr-code>
+      <div class="link-url">wwww.pabloylorena.com/{{invitation.guid}}</div>
+    </div>
+  </div>
+
+</div>

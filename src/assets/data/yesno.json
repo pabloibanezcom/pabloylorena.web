@@ -1,0 +1,10 @@
+[
+    {
+        "value": false,
+        "label": "No"
+    },
+    {
+        "value": true,
+        "label": "Si"
+    }
+]

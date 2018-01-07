@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AdminBaseComponent } from './admin-base/admin-base.component';
 
 import { SimpleNotificationsModule, NotificationsService } from 'angular2-notifications';
-import { FacebookService } from 'ngx-facebook';
+import { QRCodeModule } from 'angular2-qrcode';
 
 import { SharedModule } from '../shared/shared.module';
-import { HttpService } from '../shared/services/http.service';
 
 import { AdminRouting } from './admin.routing';
-import { AuthenticationService } from './services/authentication.service';
+import { UtilService } from './services/util.service';
 import { AdminService } from './services/admin.service';
 import { NotificationService } from './services/notification.service';
 import { GuestsListComponent } from './sections/guests-list/guests-list.component';
@@ -21,14 +20,18 @@ import { TablePlannerComponent } from './sections/table-planner/table-planner.co
 import { BooleanDotComponent } from './shared/boolean-dot/boolean-dot.component';
 import { InvitationModalComponent } from './shared/invitation-modal/invitation-modal.component';
 import { AddressPipe } from './pipes/address.pipe';
+import { PersonIconComponent } from './shared/person-icon/person-icon.component';
+import { InvitationComponent } from './invitation/invitation.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     AdminRouting,
     SharedModule,
-    SimpleNotificationsModule
+    SimpleNotificationsModule,
+    QRCodeModule
   ],
   declarations: [
     AdminBaseComponent,
@@ -38,15 +41,15 @@ import { AddressPipe } from './pipes/address.pipe';
     TablePlannerComponent,
     BooleanDotComponent,
     InvitationModalComponent,
-    AddressPipe
+    AddressPipe,
+    PersonIconComponent,
+    InvitationComponent
   ],
   providers: [
-    FacebookService,
     NotificationsService,
-    AuthenticationService,
+    UtilService,
     AdminService,
-    NotificationService,
-    HttpService
+    NotificationService
   ]
 })
 export class AdminModule { }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
+import { Options } from 'angular2-notifications';
 import { AdminService } from '../services/admin.service';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-admin-base',
@@ -10,11 +12,14 @@ import { AdminService } from '../services/admin.service';
 export class AdminBaseComponent {
 
   public sectionId: Number;
+  public notificationOptions: Options;
 
   constructor(
-    private adminService: AdminService
+    private adminService: AdminService,
+    private notificationService: NotificationService
   ) {
     this.sectionId = this.adminService.getCurrentSection();
+    this.notificationOptions = this.notificationService.getOptions();
   }
 
   changeSection(sectionId: Number) {

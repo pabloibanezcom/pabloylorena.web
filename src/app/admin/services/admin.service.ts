@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs/Rx';
 
 import { HttpService } from '../../shared/services/http.service';
+import { Group } from '../../shared/models/group';
 import { Invitation } from '../../shared/models/invitation';
 import { Guest } from '../../shared/models/guest';
 import { CollectionsResult } from '../models/collectionsResult';
@@ -11,6 +12,7 @@ import { GuestListResult } from '../models/guestListResult';
 @Injectable()
 export class AdminService {
 
+  private groups: Group[];
   private invitations: Invitation[];
 
   constructor(private http: HttpService) { }
@@ -48,8 +50,12 @@ export class AdminService {
     return this.invitations;
   }
 
+  private getGroupsFromAPI(): Observable<Group[]> {
+    return this.http.get('groups');
+  }
+
   private getInvitationsFromAPI(): Observable<Invitation[]> {
-    return this.http.get('invitations');
+    return this.http.get('admin/invitations');
   }
 
   private getGuestsFromAPI(): Observable<Guest[]> {

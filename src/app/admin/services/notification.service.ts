@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 
-import { NotificationsService } from 'angular2-notifications';
+import { NotificationsService, Options } from 'angular2-notifications';
 
 @Injectable()
 export class NotificationService {
 
   private customOptions = {
-    timeOut: 1000,
+    timeOut: 2000,
     showProgressBar: false,
     maxStack: 1
   };
@@ -15,6 +15,10 @@ export class NotificationService {
   constructor(
     private notificationsService: NotificationsService
   ) { }
+
+  getOptions(): Options {
+    return this.customOptions;
+  }
 
   processHttpResult(response: Response,
     successTitle: string,

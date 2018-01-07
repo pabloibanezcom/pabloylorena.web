@@ -45,6 +45,11 @@ export class InvitationsComponent implements OnInit {
     this.selectedInvitation = selectedInvitation;
   }
 
+  clearInvitation() {
+    this.selectedInvitation = null;
+    this.activeInvitationIndex = null;
+  }
+
   editGuest(selectedGuest: Guest) {
     this.selectedGuest = selectedGuest;
   }

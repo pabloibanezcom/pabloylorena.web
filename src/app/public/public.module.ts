@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -24,6 +25,7 @@ import { RsvpModalComponent } from './sections/rsvp-modal/rsvp-modal.component';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     PublicRouting,
     SharedModule
   ],

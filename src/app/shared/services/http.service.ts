@@ -5,6 +5,7 @@ import 'rxjs/Rx';
 import { environment } from '../../../environments/environment';
 import { AuthenticationService } from '../../admin/services/authentication.service';
 import { NotificationService } from '../../admin/services/notification.service';
+import { Observable } from 'rxjs/Rx';
 
 
 @Injectable()
@@ -20,14 +21,14 @@ export class HttpService {
     this.api_url = environment.api_url;
   }
 
-  get(url: string) {
+  get(url: string): Observable<any> {
     const headers = new Headers();
     const options = new RequestOptions({ headers: this.appendToken(headers) });
     return this.http.get(this.api_url + url, options)
       .map((response: Response) => response.json());
   }
 
-  post(url: string, bodyObj: any) {
+  post(url: string, bodyObj: any): Observable<any> {
     const body = JSON.stringify(bodyObj);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: this.appendToken(headers) });
@@ -35,11 +36,12 @@ export class HttpService {
     .map((response: Response) => response.json());
   }
 
-  put(url: string, bodyObj: any) {
+  put(url: string, bodyObj: any): Observable<any> {
     const body = JSON.stringify(bodyObj);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: this.appendToken(headers) });
-    return this.http.put(this.api_url + url, body, options);
+    return this.http.put(this.api_url + url, body, options)
+    .map((response: Response) => response.json());
   }
 
   private appendToken(headers: Headers): Headers {

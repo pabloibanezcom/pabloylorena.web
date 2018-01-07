@@ -1,46 +1,47 @@
-<div id="rsvp-invitation-modal" class="modal modal-rsvp" tabindex="-1" role="dialog" aria-labelledby="rsvpModalLabel" aria-hidden="true">
+<div id="rsvp-invitation-modal" class="modal invitation-modal modal-rsvp" tabindex="-1" role="dialog" aria-labelledby="rsvpModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <form id="rsvp-form" class="rsvp-form form" method="post" >
+        <form id="rsvp-form" class="rsvp-form form" (ngSubmit)="onSubmit()">
           <div id="form-messages" class="text-center"></div>
           <div class="row text-left">
-            <div class="name-group form-group col-xs-12 col-sm-6">
+            <app-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Alias'" [(model)]="modalInvitation.alias"></app-form-text>
+            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Enviada'" [optionsData]="'yesno'" [(model)]="modalInvitation.isSent" ></app-form-select>
+            <app-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Remitente'" [(model)]="modalInvitation.receiver"></app-form-text>
+            <app-form-span [class]="'col-xs-12 col-sm-6'" [label]="'Direccion'" [model]="modalInvitation.address | address"></app-form-span>
+          </div>
+          <div class="row">
+            <div class="form-group col-xs-12 col-sm-12">
               <div class="form-group-inner">
-                <label for="cname">Alias</label>
-                <input type="text" class="form-control" id="calias" name="alias" [(ngModel)]="modalInvitation.alias" placeholder="Alias" minlength="2"
-                  aria-required="true" required>
+                <label for="caddress">Invitados</label>
+                <div class="list-group ">
+                  <div class="guest-box" *ngFor="let guest of modalInvitation.guests; index as i">
+                    <a [ngClass]="{'active': activeGuestIndex === i}" class="list-group-item basic-info" href="javascript:void(0)" (click)="changeActiveGuest(i)">
+                      <div>
+                        <h5 class="list-group-item-heading">
+                          <app-person-icon [type]="guest.type"></app-person-icon>{{guest.fullName}}</h5>
+                      </div>
+                      <div class="guest-summary summary pull-right">
+                        <app-boolean-dot [size]="12" [value]="guest.isAttending"></app-boolean-dot>
+                      </div>
+                    </a>
+                    <div class="guest-form clearfix" *ngIf="activeGuestIndex === i">
+                      <!-- <app-form-guest [(model)]="guest"></app-form-guest> -->
+                      <app-form-text [class]="'col-xs-12 col-sm-6 no-padding-left'" [label]="'Nombre'" [(model)]="guest.name"></app-form-text>
+                      <app-form-text [class]="'col-xs-12 col-sm-6 no-padding-right'" [label]="'FullName'" [(model)]="guest.fullName"></app-form-text>
+                      <app-form-select [class]="'col-xs-12 col-sm-6 no-padding-left'" [label]="'Tipo'" [optionsData]="'types'" [(model)]="guest.type" ></app-form-select>
+                      <app-form-select [class]="'col-xs-12 col-sm-6 no-padding-right'" [label]="'Asistencia'" [optionsData]="'yesno'" [(model)]="guest.isAttending" ></app-form-select>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <div class="email-group form-group col-xs-12 col-sm-6">
-              <div class="form-group-inner">
-                <label for="cisSent">Enviada?</label>
-                <select class="form-control" id="cisSent" name="isSent" [(ngModel)]="modalInvitation.isSent" aria-required="true" required>                       
-                  <option [ngValue]="false">No</option>
-                  <option [ngValue]="true">Yes</option>
-              </select>
-              </div>
-            </div>
-
-            <div class="name-group form-group col-xs-12 col-sm-6">
-              <div class="form-group-inner">
-                <label for="creceiver">Destinatario</label>
-                <input type="text" class="form-control" id="creceiver" name="receiver" [(ngModel)]="modalInvitation.receiver" placeholder="Remitente" minlength="2"
-                  aria-required="true" required>
-              </div>
-            </div>
-
-            <div class="name-group form-group col-xs-12 col-sm-6">
-              <div class="form-group-inner">
-                <label for="caddress">Direccion</label>
-                <div><span>{{modalInvitation.address | address}}</span></div>
-              </div>
-            </div>
-
+          </div>
+          <div class="row">
             <div class="form-group col-xs-12">
-              <button *ngIf="!invitation" type="submit" class="btn btn-block btn-primary" >Añadir invitacion</button>
-              <button *ngIf="invitation" type="submit" class="btn btn-block btn-primary" (click)="updateInvitation()">Editar invitacion</button>
+              <button class="btn btn-block btn-secondary" (click)="addGuest()">Añadir invitado</button>
+              <button type="submit" class="btn btn-block btn-primary"> {{ invitation ? 'Editar invitacion' : 'Añadir invitacion'}}</button>
             </div>
           </div>
         </form>

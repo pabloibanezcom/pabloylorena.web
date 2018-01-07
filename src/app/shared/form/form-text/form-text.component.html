@@ -1,0 +1,8 @@
+<div class="form-group {{class}}">
+  <div class="form-group-inner">
+    <label for="{{label}}">{{label}}</label>
+    <input required *ngIf="!multiLine" maxlength="20" type="text" class="form-control" id="{{label}}" placeholder="{{label}}" [ngModel]=model (ngModelChange)="updateData($event)">
+    <textarea *ngIf="multiLine" class="form-control" id="{{label}}" placeholder="{{label}}" [ngModel]=model (ngModelChange)="updateData($event)"></textarea>
+    <div class="error-message-container"><div *ngIf="error" class="error-message">Por favor, indica una opcion</div></div>
+  </div>
+</div>

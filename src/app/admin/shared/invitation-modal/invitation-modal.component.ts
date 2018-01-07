@@ -1,9 +1,11 @@
-import { Component, OnInit, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Response } from '@angular/http';
 
+import { UtilService } from '../../services/util.service';
 import { AdminService } from '../../services/admin.service';
 import { NotificationService } from '../../services/notification.service';
 import { Invitation } from '../../../shared/models/invitation';
+import { Guest } from '../../../shared/models/guest';
 
 declare var jQuery: any;
 
@@ -12,29 +14,53 @@ declare var jQuery: any;
   templateUrl: './invitation-modal.component.html',
   styleUrls: ['./invitation-modal.component.less']
 })
-export class InvitationModalComponent implements OnInit, OnChanges {
+export class InvitationModalComponent implements OnChanges {
 
   @Input() invitation: Invitation;
   @Output() ending: any = new EventEmitter();
 
+  private isNew: boolean;
   private modalInvitation: Invitation;
+  public activeGuestIndex: Number;
+  public typeOptions: any[] = [{ value: 0, label: 'Hombre' }, { value: 1, label: 'Mujer' }, { value: 2, label: 'Niño' } ];
 
   constructor(
+    private utilService: UtilService,
     private adminService: AdminService,
     private notificationService: NotificationService
   ) {
   }
 
-  ngOnInit() {
-    if (!this.invitation) {
-      this.invitation = new Invitation();
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.invitation.currentValue) {
+      this.activeGuestIndex = null;
+      this.modalInvitation = this.utilService.cloneInvitation(changes.invitation.currentValue);
+      this.isNew = false;
+    } else {
+      this.modalInvitation = new Invitation();
+      this.isNew = true;
     }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.invitation) {
-      this.modalInvitation = Object.assign({}, changes.invitation.currentValue);
+  onSubmit() {
+    if (this.isNew) {
+      this.addInvitation();
+    } else {
+      this.updateInvitation();
     }
+  }
+
+  changeActiveGuest(index: Number) {
+    this.activeGuestIndex = this.activeGuestIndex === index ? null : index;
+  }
+
+  addGuest() {
+    this.modalInvitation.guests.push(new Guest());
+    this.activeGuestIndex = this.modalInvitation.guests.length - 1;
+  }
+
+  addInvitation() {
+
   }
 
   updateInvitation() {

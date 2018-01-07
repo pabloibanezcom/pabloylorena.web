@@ -13,16 +13,22 @@
       <div class="row">
         <div class="col-lg-10 col-lg-offset-1 text-left">
           <div class="list-group">
+            <div class="margin-bottom-10">
+              <div class="text-right form-inline">
+                <a class="btn btn-sm btn-secondary" href="#"><i class="fa fa-filter" ></i>Filtrar</a>
+                <a class="btn btn-sm btn-primary" href="#" data-toggle="modal" data-target="#rsvp-invitation-modal" (click)="clearInvitation()"><i class="fa fa-plus" ></i>Añadir invitacion</a>
+              </div>
+            </div>
             <div class="invitation-box" [ngClass]="{'active': activeInvitationIndex === i}" *ngFor="let invitation of result.invitations; index as i">
               <a class="list-group-item basic-info" href="javascript:void(0)" (click)="changeActiveInvitation(i)">
                 <div>
                   <h4 class="list-group-item-heading">{{invitation.alias}}</h4>
-                  <span class="invitation-group">{{invitation.group}}</span>
+                  <span class="invitation-group list-group-item-subheading">{{invitation.group.host}} - {{invitation.group.name}}</span>
                 </div>
-                <div class="invitation-summary pull-right">
+                <div class="invitation-summary summary pull-right">
                   <div class="invitation-sent">
                     <div class="invitation-dot">
-                      <app-boolean-dot [size]="14" [value]="invitation.isSent" [modal]="'#rsvp-invitation-modal'" (customClick)="editInvitation(invitation)"></app-boolean-dot>                      
+                      <app-boolean-dot [size]="14" [value]="invitation.isSent" [title]="'Editar invitacion'" [modal]="'#rsvp-invitation-modal'" (customClick)="editInvitation(invitation)"></app-boolean-dot>
                     </div>
                   </div>
                   <div class="invitation-number-guests">
@@ -35,17 +41,16 @@
                 <div class="invitation-guests">
                   <div class="invitation-guest" *ngFor="let guest of invitation.guests">
                     <div class="full-name">
-                      <i class="fa" [ngClass]="{'fa-male': guest.type === 0, 'fa-female': guest.type === 1, 'fa-child': guest.type === 2}"></i>
+                      <app-person-icon [type]="guest.type"></app-person-icon>
                       <span>{{guest.fullName}}</span>
                     </div>
                     <div class="attending-dot">
-                      <app-boolean-dot [size]="12" [value]="guest.isAttending" [modal]="'#rsvp-guest-modal'" (customClick)="editGuest(guest)" ></app-boolean-dot>
+                      <app-boolean-dot [size]="12" [value]="guest.isAttending" [modal]="'#rsvp-guest-modal'" (customClick)="editGuest(guest)"></app-boolean-dot>
                     </div>
                   </div>
                 </div>
-                <div class="invitation-code pull-right">
-                  <div>codigo</div>
-                  <div class="code">{{invitation.guid}}</div>
+                <div class="pull-right">
+                  <a class="btn btn-sm btn-secondary" target="_blank" href="/admin/invitation/{{invitation.guid}}" title="Ver invitacion"><i class="fa fa-envelope-open" ></i></a>
                 </div>
               </div>
             </div>
@@ -54,6 +59,6 @@
       </div>
     </div>
   </div>
-  <app-invitation-modal *ngIf="result" [invitation]="selectedInvitation" (ending)="refreshResults()"></app-invitation-modal>  
+  <app-invitation-modal *ngIf="result" [invitation]="selectedInvitation" (ending)="refreshResults()"></app-invitation-modal>
   <app-guest-modal *ngIf="result" [invitations]="result.invitations" [guest]="selectedGuest" (ending)="refreshResults()"></app-guest-modal>
 </div>

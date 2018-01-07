@@ -81,6 +81,43 @@ a.btn-primary, .btn-primary {
     }
 }
 
+a.btn-secondary, .btn-secondary { 
+    background: @color-secondary;
+    border: none;
+    color: #fff;
+    padding: 15px 45px;
+    text-transform: uppercase;
+    &.active {
+        &:hover, &:active, &:focus {
+            background: darken(@color-secondary, 5%);
+            border: none;
+            color: #fff;
+            outline: none;
+            .opacity(0.8);
+        }
+    }
+    &:hover {
+        background: darken(@color-secondary, 5%);
+        border: none;
+        color: #fff;
+        outline: none;
+    }
+    
+    &:active {
+        background: darken(@color-secondary, 5%);
+        border: none;
+        color: #fff;
+        outline: none;
+    }
+    
+    &:focus {
+        background: darken(@color-secondary, 5%);
+        border: none;
+        color: #fff;
+        outline: none;
+    }
+}
+
 .form-control {
    .box-shadow(none);
     height: 45px;

@@ -26,5 +26,5 @@
   <app-guests-list *ngIf="sectionId === 1"></app-guests-list>
   <app-invitations *ngIf="sectionId === 2"></app-invitations>
   <app-table-planner *ngIf="sectionId === 3"></app-table-planner>
-  <simple-notifications></simple-notifications>
+  <simple-notifications [options]="notificationOptions"></simple-notifications>
 </div>

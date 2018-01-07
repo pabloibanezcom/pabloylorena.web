@@ -5,6 +5,10 @@ const publicRoutes: Routes = [
     {
         path: '',
         component: PublicBaseComponent
+    },
+    {
+        path: ':invitationGuid',
+        component: PublicBaseComponent
     }
 ];
 

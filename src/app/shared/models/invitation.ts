@@ -2,10 +2,15 @@ import { Guest } from './guest';
 import { Address } from './address';
 
 export class Invitation {
-    guid: String;
-    alias: String;
-    receiver: String;
+
+    guid: string;
+    alias: string;
+    receiver: string;
     address: Address;
-    isSent: Boolean;
+    isSent: boolean;
     guests: Guest[];
+
+    constructor() {
+        this.guests = new Array<Guest>();
+    }
 }
