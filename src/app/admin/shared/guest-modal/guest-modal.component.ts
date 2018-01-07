@@ -20,7 +20,7 @@ export class GuestModalComponent implements OnInit, OnChanges {
   @Input() guest: Guest;
   @Output() ending: any = new EventEmitter();
 
-  private modalGuest: Guest;
+  modalGuest: Guest;
 
   constructor(
     private adminService: AdminService,

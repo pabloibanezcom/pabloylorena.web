@@ -20,7 +20,7 @@ export class InvitationModalComponent implements OnChanges {
   @Output() ending: any = new EventEmitter();
 
   private isNew: boolean;
-  private modalInvitation: Invitation;
+  modalInvitation: Invitation;
   public activeGuestIndex: Number;
   public typeOptions: any[] = [{ value: 0, label: 'Hombre' }, { value: 1, label: 'Mujer' }, { value: 2, label: 'Niño' } ];
 

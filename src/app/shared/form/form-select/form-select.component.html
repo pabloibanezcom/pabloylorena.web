@@ -4,6 +4,6 @@
     <select class="form-control" id="{{label}}" [ngModel]=model (ngModelChange)="updateData($event)">
       <option *ngFor="let option of options" [ngValue]="option.value">{{option.label}}</option>
     </select>
-    <div class="error-message-container"><div *ngIf="error" class="error-message">Por favor, indica una opcion</div></div>
+    <!-- <div class="error-message-container"><div *ngIf="error" class="error-message">Por favor, indica una opcion</div></div> -->
   </div>
 </div>
