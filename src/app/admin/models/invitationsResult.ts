@@ -1,7 +1,7 @@
-import { Invitation } from '../../shared/models/invitation';
+import { Group } from '../../shared/models/group';
 
-export class InvitationResult {
-    invitations: Invitation[];
-    sent: Number;
-    awaiting: Number;
+export class InvitationsResult {
+    groups: Group[];
+    invitationsSent: Number;
+    invitationsAwaiting: Number;
 }

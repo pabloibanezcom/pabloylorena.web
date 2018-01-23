@@ -1,0 +1,5 @@
+<div class="form-button {{class}}">
+  <button *ngIf="submit" type="submit" class=" btn btn-primary btn-block" >{{label}}</button>
+  <button *ngIf="!submit" class=" btn btn-primary btn-block" (click)="fireClick($event)">{{label}}</button>
+</div>
+

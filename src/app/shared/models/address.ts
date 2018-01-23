@@ -1,4 +1,4 @@
-export class Address {
+export interface Address {
     line1: String;
     line2: String;
     line3: String;

@@ -10,10 +10,10 @@ import { QRCodeModule } from 'angular2-qrcode';
 import { SharedModule } from '../shared/shared.module';
 
 import { AdminRouting } from './admin.routing';
-import { UtilService } from './services/util.service';
+import { UtilService } from '../shared/services/util.service';
 import { AdminService } from './services/admin.service';
 import { NotificationService } from './services/notification.service';
-import { GuestsListComponent } from './sections/guests-list/guests-list.component';
+import { GuestsComponent } from './sections/guests/guests.component';
 import { GuestModalComponent } from './shared/guest-modal/guest-modal.component';
 import { InvitationsComponent } from './sections/invitations/invitations.component';
 import { TablePlannerComponent } from './sections/table-planner/table-planner.component';
@@ -22,6 +22,8 @@ import { InvitationModalComponent } from './shared/invitation-modal/invitation-m
 import { AddressPipe } from './pipes/address.pipe';
 import { PersonIconComponent } from './shared/person-icon/person-icon.component';
 import { InvitationComponent } from './invitation/invitation.component';
+import { NotificationsComponent } from './sections/notifications/notifications.component';
+import { LoginComponent } from './sections/login/login.component';
 
 @NgModule({
   imports: [
@@ -36,14 +38,16 @@ import { InvitationComponent } from './invitation/invitation.component';
   declarations: [
     AdminBaseComponent,
     GuestModalComponent,
-    GuestsListComponent,
+    GuestsComponent,
     InvitationsComponent,
     TablePlannerComponent,
     BooleanDotComponent,
     InvitationModalComponent,
     AddressPipe,
     PersonIconComponent,
-    InvitationComponent
+    InvitationComponent,
+    NotificationsComponent,
+    LoginComponent
   ],
   providers: [
     NotificationsService,

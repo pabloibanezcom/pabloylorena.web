@@ -1,10 +1,10 @@
 export class AuthData {
     token: string;
-    userId: string;
+    email: string;
     expirationDate: Date;
-    constructor(token: string, userId: string, expirationDate: Date) {
+    constructor(token: string, email: string, expirationDate?: Date) {
         this.token = token;
-        this.userId = userId;
+        this.email = email;
         this.expirationDate = expirationDate;
     }
 }

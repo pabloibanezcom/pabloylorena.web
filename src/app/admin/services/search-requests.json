@@ -1,0 +1,74 @@
+{
+    "groupNames": {
+        "url": "group",
+        "body": {
+            "select": "name",
+            "sort": {
+                "order": 1
+            },
+            "populate": ""
+        }
+    },
+    "groupWithInvitations": {
+        "url": "group",
+        "body": {
+            "sort": {
+                "order": 1
+            },
+            "populate": [
+                {
+                    "path": "invitations",
+                    "select": "alias"
+                }
+            ]
+        }
+    },
+    "tableNames": {
+        "url": "table",
+        "body": {
+            "select": "number name",
+            "sort": {
+                "number": 1
+            },
+            "populate": ""
+        }
+    },
+    "invitationsResult": {
+        "url": "group",
+        "body": {
+            "sort": {
+                "order": 1
+            },
+            "populate": [
+                {
+                    "path": "invitations",
+                    "select": "-__v -group",
+                    "populate": {
+                        "path": "guests",
+                        "select": "fullName type isAttending"
+                    }
+                }
+            ]
+        }
+    },
+    "guestsResult": {
+        "url": "guest",
+        "body": {
+            "sort": {},
+            "populate": [
+                {
+                    "path": "invitation",
+                    "select": "alias",
+                    "populate": {
+                        "path": "group",
+                        "select": "name"
+                    }
+                },
+                {
+                    "path": "table",
+                    "select": "number"
+                }
+            ]
+        }
+    }
+}

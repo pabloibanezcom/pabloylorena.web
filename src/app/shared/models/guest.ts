@@ -1,13 +1,18 @@
+import { Invitation } from './invitation';
+import { Table } from './table';
+
 export class Guest {
     _id: String;
-    invitationGuid: String;
+    invitation: Invitation;
+    table: Table;
     name: String;
     fullName: String;
     type: number;
     email: String;
+    phone: String;
+    sendSms: Boolean;
     isAllergic: Boolean;
     allergies: String;
     busTime: String;
-    tableNumber: Number;
     isAttending: Boolean;
 }

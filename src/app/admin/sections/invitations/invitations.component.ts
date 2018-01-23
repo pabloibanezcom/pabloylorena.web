@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 
 import { AdminService } from '../../services/admin.service';
-import { InvitationResult } from '../../models/invitationsResult';
+import { InvitationsResult } from '../../models/invitationsResult';
 import { Invitation } from '../../../shared/models/invitation';
 import { Guest } from '../../../shared/models/guest';
 
@@ -13,7 +13,7 @@ import { Guest } from '../../../shared/models/guest';
 })
 export class InvitationsComponent implements OnInit {
 
-  public result: InvitationResult;
+  public result: InvitationsResult;
   public activeInvitationIndex: Number;
   public selectedInvitation: Invitation;
   public selectedGuest: Guest;

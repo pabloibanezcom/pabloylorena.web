@@ -1,0 +1,24 @@
+<div class="login">
+  <div class="container text-center">
+    <h3 class="title script">
+      <span class="title-deco-left"></span>
+      <span class="title-text">Login</span>
+      <span class="title-deco-right"></span>
+    </h3>
+    <div class="row">
+      <form (ngSubmit)="login()">
+        <div class="login-box col-xs-12 col-sm-4 col-sm-offset-4">
+          <div class="row">
+            <app-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Email'" [(model)]="loginObj.email"></app-form-text>
+          </div>
+          <div class="row">
+            <app-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Password'" [error]="error" [type]="'password'" [(model)]="loginObj.password"></app-form-text>
+          </div>
+          <div class="row">
+            <app-form-button [class]="'col-xs-12 col-sm-12'" [submit]="true" [label]="'Login'" (click)="login()"></app-form-button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

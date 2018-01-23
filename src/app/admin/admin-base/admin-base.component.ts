@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Options } from 'angular2-notifications';
 import { AdminService } from '../services/admin.service';
@@ -9,22 +10,24 @@ import { NotificationService } from '../services/notification.service';
   templateUrl: './admin-base.component.html',
   styleUrls: ['./admin-base.component.less']
 })
-export class AdminBaseComponent {
+export class AdminBaseComponent implements OnInit {
 
-  public sectionId: Number;
+  public section: String;
   public notificationOptions: Options;
 
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private adminService: AdminService,
     private notificationService: NotificationService
   ) {
-    this.sectionId = this.adminService.getCurrentSection();
     this.notificationOptions = this.notificationService.getOptions();
   }
 
-  changeSection(sectionId: Number) {
-    this.adminService.setCurrentSection(sectionId);
-    this.sectionId = sectionId;
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.section = params.section;
+    });
   }
 
 }

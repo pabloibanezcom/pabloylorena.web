@@ -1,0 +1,15 @@
+<ul class="responsive-table-pagination pagination">
+  <li>
+    <a [ngClass]="{'disabled': pagination.current === 1}" href="javascript:void(0)" aria-label="Previous" (click)="goToPage(pagination.current - 1)">
+      <span aria-hidden="true">&laquo;</span>
+    </a>
+  </li>
+  <li [ngClass]="{'active': pageNumber === pagination.current}" *ngFor="let pageNumber of pages">
+    <a href="javascript:void(0)" (click)="goToPage(pageNumber)">{{pageNumber}}</a>
+  </li>
+  <li>
+    <a [ngClass]="{'disabled': pagination.current === pagination.total}" href="javascript:void(0)" aria-label="Next" (click)="goToPage(pagination.current + 1)">
+      <span aria-hidden="true">&raquo;</span>
+    </a>
+  </li>
+</ul>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { HttpService } from '../../shared/services/http.service';
 import { Guest } from '../models/guest';
@@ -9,7 +10,7 @@ export class GuestService {
 
   constructor(private http: HttpService) { }
 
-  getGuests():  Observable<Guest[]> {
+  getGuests(): Observable<Guest[]> {
     return this.http.get('guests');
   }
 

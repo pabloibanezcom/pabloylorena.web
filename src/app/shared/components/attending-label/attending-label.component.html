@@ -1,0 +1,5 @@
+<ng-container>
+    <span *ngIf="isAttending === undefined" class="label label-info"><i class="fa fa-envelope-open" ></i>Esperando</span>
+    <span *ngIf="isAttending === true" class="label label-success"><i class="fa fa-check" ></i>Confirmada</span>
+    <span *ngIf="isAttending === false" class="label label-danger"><i class="fa fa-ban" ></i>Desechada</span>
+</ng-container>

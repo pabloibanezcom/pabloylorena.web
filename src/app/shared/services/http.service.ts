@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/Rx';
 
 import { environment } from '../../../environments/environment';
-import { AuthenticationService } from '../../admin/services/authentication.service';
 import { NotificationService } from '../../admin/services/notification.service';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 
 @Injectable()
@@ -14,42 +14,74 @@ export class HttpService {
   private api_url: string;
 
   constructor(
-    private http: Http,
-    private authService: AuthenticationService,
+    private http: HttpClient,
     private notificationService: NotificationService
   ) {
     this.api_url = environment.api_url;
   }
 
   get(url: string): Observable<any> {
-    const headers = new Headers();
-    const options = new RequestOptions({ headers: this.appendToken(headers) });
-    return this.http.get(this.api_url + url, options)
-      .map((response: Response) => response.json());
+    return this.http.get<any>(
+      this.api_url + url);
+  }
+
+  getWithResponse(url: string): Observable<any> {
+    return this.http.get<any>(
+      this.api_url + url,
+      {
+        observe: 'response'
+      });
   }
 
   post(url: string, bodyObj: any): Observable<any> {
-    const body = JSON.stringify(bodyObj);
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: this.appendToken(headers) });
-    return this.http.post(this.api_url + url, body, options)
-    .map((response: Response) => response.json());
+    return this.http.post<any>(
+      this.api_url + url,
+      JSON.stringify(bodyObj),
+      {
+        headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      });
+  }
+
+  postWithResponse(url: string, bodyObj: any): Observable<any> {
+    return this.http.post<any>(
+      this.api_url + url,
+      JSON.stringify(bodyObj),
+      {
+        observe: 'response',
+        headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      });
   }
 
   put(url: string, bodyObj: any): Observable<any> {
-    const body = JSON.stringify(bodyObj);
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: this.appendToken(headers) });
-    return this.http.put(this.api_url + url, body, options)
-    .map((response: Response) => response.json());
+    return this.http.put<any>(
+      this.api_url + url,
+      JSON.stringify(bodyObj),
+      {
+        headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      });
   }
 
-  private appendToken(headers: Headers): Headers {
-    const token = this.authService.getToken();
-    if (token) {
-      headers.append('Authorization', 'Bearer ' + token);
-    }
-    return headers;
+  putWithResponse(url: string, bodyObj: any): Observable<any> {
+    return this.http.put<any>(
+      this.api_url + url,
+      JSON.stringify(bodyObj),
+      {
+        observe: 'response',
+        headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      });
+  }
+
+  delete(url: string): Observable<any> {
+    return this.http.delete<any>(
+      this.api_url + url);
+  }
+
+  deleteWithResponse(url: string): Observable<any> {
+    return this.http.delete<any>(
+      this.api_url + url,
+      {
+        observe: 'response'
+      });
   }
 
 }

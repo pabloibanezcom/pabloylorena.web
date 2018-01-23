@@ -4,7 +4,7 @@ import { InvitationComponent } from './invitation/invitation.component';
 
 const adminRoutes: Routes = [
     {
-        path: '',
+        path: ':section',
         component: AdminBaseComponent
     },
     {

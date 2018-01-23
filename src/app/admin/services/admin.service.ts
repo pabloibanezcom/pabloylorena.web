@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 
 import { HttpService } from '../../shared/services/http.service';
 import { Group } from '../../shared/models/group';
+import { Table } from '../../shared/models/table';
 import { Invitation } from '../../shared/models/invitation';
 import { Guest } from '../../shared/models/guest';
 import { CollectionsResult } from '../models/collectionsResult';
-import { InvitationResult } from '../models/invitationsResult';
-import { GuestListResult } from '../models/guestListResult';
+import { InvitationsResult } from '../models/invitationsResult';
+import { GuestsResult } from '../models/guestsResult';
+import * as searchRequests from './search-requests.json';
 
 @Injectable()
 export class AdminService {
@@ -17,88 +19,79 @@ export class AdminService {
 
   constructor(private http: HttpService) { }
 
-  getCurrentSection(): Number {
-    const sectionId = localStorage.getItem('sectionId');
-    return sectionId ? Number(sectionId) : 1;
+  getGroupNames(): Observable<Group[]> {
+    return this.search('groupNames');
   }
 
-  setCurrentSection(sectionId: Number): void {
-    localStorage.setItem('sectionId', sectionId.toString());
+  getGroupWithInvitations(): Observable<Group[]> {
+    return this.search('groupWithInvitations');
   }
 
-  getInvitationsResult(): Observable<InvitationResult> {
-    return this.getAllData().map(collections => this.processInvitations(collections));
+  getTableNames(): Observable<Table[]> {
+    return this.search('tableNames');
   }
 
-  getGuestListResult(): Observable<GuestListResult> {
-    return this.getAllData().map(collections => this.processGuests(collections));
+  getInvitationsResult(): Observable<InvitationsResult> {
+    return this.search('invitationsResult');
   }
 
-  addGuest(guest: Guest) {
-    return this.http.post('guests', guest);
+  getGuestsResult(): Observable<GuestsResult> {
+    return this.search('guestsResult');
   }
 
-  updateInvitation(invitation: Invitation) {
-    return this.http.put('invitations', invitation);
+  // -------- GUEST ----------
+
+  createGuest(newGuest: Guest) {
+    return this.http.postWithResponse('guest/add', newGuest);
   }
 
   updateGuest(guest: Guest) {
-    return this.http.put('guests', guest);
+    return this.http.putWithResponse('guest/' + guest._id, guest);
   }
 
-  getInvitations(): Invitation[] {
-    return this.invitations;
+  removeGuest(guest: Guest) {
+    return this.http.deleteWithResponse('guest/' + guest._id);
   }
 
-  private getGroupsFromAPI(): Observable<Group[]> {
-    return this.http.get('groups');
+  // -------------------------
+
+  private search(searchName: string): Observable<any> {
+    const searchReqOptions = searchRequests[searchName];
+    return this.http.post(searchReqOptions.url, searchReqOptions.body)
+      .map(collection => this[searchName + 'Map'] ? this[searchName + 'Map'](collection) : collection);
   }
 
-  private getInvitationsFromAPI(): Observable<Invitation[]> {
-    return this.http.get('admin/invitations');
+  private invitationsResultMap(groups: Group[]): InvitationsResult {
+    return this.checkSentInvitationsInGroups(groups);
   }
 
-  private getGuestsFromAPI(): Observable<Guest[]> {
-    return this.http.get('guests');
+  private guestsResultMap(guests: Guest[]): GuestsResult {
+    return this.checkAttendingGuests(guests);
   }
 
-  private getAllData(): Observable<CollectionsResult> {
-    return Observable.create(observer => {
-      const result = new CollectionsResult();
-      this.getInvitationsFromAPI().subscribe(invitations => {
-        result.invitations = invitations;
-        this.invitations = invitations;
-        this.getGuestsFromAPI().subscribe(guests => {
-          result.guests = guests;
-          observer.next(result);
-          observer.complete();
-        });
-      }
-      );
+  private checkSentInvitationsInGroups(groups: Group[]): InvitationsResult {
+    let awaiting = 0;
+    let sent = 0;
+    groups.map(g => g.invitations.map(inv => {
+      if (inv.isSent) { sent++; } else { awaiting++; }
+    }));
+    groups.map(g => {
+      g.guestsAmount = 0;
+      g.invitations.map(inv => g.guestsAmount += inv.guests.length);
     });
-  }
-
-  private processInvitations(collections: CollectionsResult): InvitationResult {
     return {
-      invitations: collections.invitations.map(inv => {
-        inv.guests = this.guestGuestsFromInvitation(inv.guid, collections.guests);
-        return inv;
-      }),
-      sent: collections.invitations.filter(inv => inv.isSent).length,
-      awaiting: collections.invitations.filter(inv => !inv.isSent).length
+      groups: groups,
+      invitationsAwaiting: awaiting,
+      invitationsSent: sent
     };
   }
 
-  private processGuests(collections: CollectionsResult) {
+  private checkAttendingGuests(guests: Guest[]): GuestsResult {
     return {
-      guests: collections.guests,
-      attending: collections.guests.filter(g => g.isAttending).length,
-      awaiting: collections.guests.filter(g => !g.isAttending).length
+      guests: guests,
+      attending: guests.filter(g => g.isAttending).length,
+      awaiting: guests.filter(g => !g.isAttending).length
     };
-  }
-
-  private guestGuestsFromInvitation(invitationGuid: String, guests: Guest[]): Guest[] {
-    return guests.filter(guest => guest.invitationGuid === invitationGuid).sort((a, b) => a.type - b.type);
   }
 
 }

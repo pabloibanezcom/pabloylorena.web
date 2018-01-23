@@ -2,75 +2,68 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <form id="rsvp-form" class="rsvp-form form" method="post" >
+        <form id="rsvp-form" class="rsvp-form form" *ngIf="modalGuest && !deleteMode" (ngSubmit)="!guest ? addGuest() : updateGuest()">
           <div id="form-messages" class="text-center"></div>
           <div class="row text-left">
-            <div class="name-group form-group col-xs-12 col-sm-6">
-              <div class="form-group-inner">
-                <label for="cname">Nombre</label>
-                <input type="text" class="form-control" id="cname" name="name" [(ngModel)]="modalGuest.name" placeholder="Nombre" minlength="2"
-                  aria-required="true" required>
-              </div>
-            </div>
-            <div class="name-group form-group col-xs-12 col-sm-6">
-              <div class="form-group-inner">
-                <label for="cfullName">Nombre completo</label>
-                <input type="text" class="form-control" id="cfullName" name="fullName" [(ngModel)]="modalGuest.fullName" placeholder="Nombre y apellido"
-                  minlength="2" aria-required="true" required>
-              </div>
-            </div>
-            <div class="email-group form-group col-xs-12 col-sm-6">
-              <div class="form-group-inner">
-                <label for="cemail">Email</label>
-                <input type="email" class="form-control" id="cemail" name="email" [(ngModel)]="modalGuest.email" placeholder="Your email address"
-                  aria-required="true" required>
-              </div>
-            </div>
 
-            <div class="email-group form-group col-xs-12 col-sm-6">
-              <div class="form-group-inner">
-                <label for="invitation">Invitacion</label>
-                <select class="form-control" id="cinvitation" name="invitation" [(ngModel)]="modalGuest.invitationGuid" aria-required="true" required>
-                    <option *ngFor="let inv of invitations" [ngValue]="inv.guid">{{inv.alias}}</option>
-                </select>
-              </div>
-            </div>
+            <!-- NAME -->
+            <app-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Nombre'" [(model)]="modalGuest.name"></app-form-text>
 
-            <div class="email-group form-group col-xs-12 col-sm-6">
-              <div class="form-group-inner">
-                <label for="callergic">Es alergico?</label>
-                <select class="form-control" id="callergic" name="allergic" [(ngModel)]="modalGuest.isAllergic" aria-required="true" required>                       
-                  <option [ngValue]="false">No</option>
-                  <option [ngValue]="true">Yes</option>
-              </select>
-              </div>
-            </div>
+            <!-- FULL NAME -->
+            <app-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Nombre completo'" [(model)]="modalGuest.fullName"></app-form-text>
 
-            <div class="events-group form-group col-xs-12 col-sm-6">
-              <div class="form-group-inner">
-                <label for="cevents">Horario de autobus de vuelta?</label>
-                <select class="form-control" id="cevents" name="events" [(ngModel)]="modalGuest.busTime" aria-required="true" required>                       
-                                    <option value="None" selected>Ninguno</option> 
-                                    <option value="02:00">02:00</option>
-                                    <option value="04:30">04:30</option>
-                                    <option value="07:00">07:00</option>
-                                </select>
-              </div>
-            </div>
+            <!-- GROUP -->
+            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Grupo'" [options]="groups" [optionValue]="'_id'" [optionLabel]="'name'"
+              [emptyOption]="true" [model]="group" (modelChange)="setGroup($event)"></app-form-select>
 
-            <div class="message-group form-group col-xs-12">
-              <div class="form-group-inner">
-                <label for="cmessage">Alergias</label>
-                <textarea class="form-control" id="callergies" name="allergies" [(ngModel)]="modalGuest.allergies" placeholder="eg. Vegetarian &amp; dietary requests"></textarea>
-              </div>
-            </div>
+            <!-- INVITATION -->
+            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Invitacion'" [options]="invitations" [optionValue]="'_id'" [optionLabel]="'alias'"
+              [emptyOption]="true" [(model)]="modalGuest.invitation"></app-form-select>
+
+            <!-- IS ATTENDING -->
+            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Asistencia'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalGuest.isAttending"></app-form-select>
+
+            <!-- TABLE -->
+            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Mesa'" [emptyOption]="true" [options]="tables" [optionLabel]="'fullName'"
+              [optionValue]="'_id'" [(model)]="modalGuest.table"></app-form-select>
+
+            <!-- EMAIL -->
+            <app-form-text [type]="email" [class]="'col-xs-12 col-sm-6'" [label]="'Email'" [(model)]="modalGuest.email"></app-form-text>
+
+            <!-- PHONE -->
+            <app-form-text [type]="tel" [class]="'col-xs-12 col-sm-6'" [label]="'Movil'" [(model)]="modalGuest.phone"></app-form-text>
+
+            <!-- BUS TIME -->
+            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Horario de autobus de vuelta?'" [emptyOption]="true" [options]="busTimes"
+              [(model)]="modalGuest.busTime"></app-form-select>
+
+            <!-- TYPE -->
+            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Genero'" [emptyOption]="true" [options]="types" [(model)]="modalGuest.type"></app-form-select>
+
+            <!-- ALLERGIES -->
+            <app-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Alergias'" [(model)]="modalGuest.allergies"></app-form-text>
 
             <div class="form-group col-xs-12">
-              <button *ngIf="!guest" type="submit" class="btn btn-block btn-primary" (click)="addGuest()">Añadir invitado</button>
-              <button *ngIf="guest" type="submit" class="btn btn-block btn-primary" (click)="updateGuest()">Editar invitado</button>
+              <button type="submit" class="btn btn-block btn-primary">{{!guest ? 'Añadir invitado' : 'Editar invitado'}}</button>
             </div>
           </div>
         </form>
+        <div class="delete-section row" *ngIf="deleteMode">
+          <div class="col-xs-12 col-sm-12">
+            <h3>Estas seguro de que quieres eliminar este invitado?</h3>
+          </div>
+          <div class="col-xs-12 col-sm-12 guest-info">
+              <div><span class="delete-section-property">Full Name: </span><span class="delete-section-value"> {{modalGuest.fullName}}</span></div>
+              <div><span class="delete-section-property">Invitation: </span><span class="delete-section-value"> {{modalGuest.invitation.alias}}</span></div>
+              <div><span class="delete-section-property">Table: </span><span class="delete-section-value"> {{modalGuest.table.number}}</span></div>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <button class="btn btn-block btn-danger" (click)="confirmDelete()"><i class="fa fa-thumbs-up"></i> SI</button>
+          </div>    
+          <div class="col-xs-12 col-sm-8">
+            <button class="btn btn-block btn-primary" (click)="cancelDelete()"> <i class="fa fa-thumbs-down"></i>NO</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,90 @@
+{
+    "search": {
+        "placeholder": "Buscar por nombre",
+        "property": "fullName",
+        "min_chars": 3
+    },
+    "selects": [
+        {
+            "label": "Grupo",
+            "name_property": "name",
+            "value_property": "_id",
+            "property_match": "invitation.group._id"
+        },
+        {
+            "label": "Mesa",
+            "name_property": "number",
+            "value_property": "_id",
+            "property_match": "table._id"
+        }
+    ],
+    "new_element": {
+        "label": "Añadir invitado",
+        "icon": "fa-user-plus"
+    },
+    "other_actions": [
+        {
+            "label": "Editar",
+            "icon": "fa-pencil"
+        },
+        {
+            "label": "Eliminar",
+            "icon": "fa-trash"
+        }
+    ],
+    "page_size": 6,
+    "columns": [
+        {
+            "header": "Full Name",
+            "sortBy": "fullName",
+            "property": "fullName",
+            "responsive": "xs"
+        },
+        {
+            "header": "Invitation",
+            "sortBy": "invitation.alias",
+            "property": "invitation.alias",
+            "icon": "fa-envelope",
+            "responsive": "md"
+        },
+        {
+            "header": "Group",
+            "sortBy": "invitation.group.name",
+            "property": "invitation.group.name",
+            "icon": "fa-users",
+            "responsive": "lg"
+        },
+        {
+            "header": "Table",
+            "sortBy": "table.number",
+            "property": "table.number",
+            "icon": "fa-cutlery",
+            "responsive": "md"
+        },
+        {
+            "header": "Asistencia",
+            "sortBy": "isAttending",
+            "property": "isAttending",
+            "icon": "fa-check",
+            "responsive": "xs"
+        },
+        {
+            "header": "Name",
+            "sortBy": "name",
+            "icon": "fa-user",
+            "property": "name"
+        },
+        {
+            "header": "Phone",
+            "sortBy": "phone",
+            "icon": "fa-phone",
+            "property": "phone"
+        },
+        {
+            "header": "Email",
+            "sortBy": "email",
+            "icon": "fa-at",
+            "property": "email"
+        }
+    ]
+}

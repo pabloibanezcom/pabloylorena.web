@@ -7,7 +7,7 @@ import { NotificationsService, Options } from 'angular2-notifications';
 export class NotificationService {
 
   private customOptions = {
-    timeOut: 2000,
+    timeOut: 3000,
     showProgressBar: false,
     maxStack: 1
   };

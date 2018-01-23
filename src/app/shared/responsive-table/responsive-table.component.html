@@ -1,0 +1,99 @@
+<div class="responsive-table-container">
+  <div class="controls">
+    <nav class="navbar navbar-default">
+      <div class="">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="#">Filtrar</a> -->
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="dropdown" *ngFor="let select of config.selects">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <div>{{select.label}}
+                  <span class="caret"></span>
+                </div>
+                <div>{{select.selectedName}}</div>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="javascript:void(0)" (click)="setSelect(select.property_match, null, select)">Ninguno/a</a>
+                </li>
+                <li *ngFor="let option of select.options">
+                  <a href="javascript:void(0)" (click)="setSelect(select.property_match, option, select)">{{option[select.name_property]}}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-left">
+            <div class="form-group" *ngIf="config.search">
+              <input type="text" class="form-control search-input" placeholder="{{config.search.placeholder}}" [ngModel]="filterParams.searchStr"
+                (ngModelChange)="search($event)" name="search">
+            </div>
+          </form>
+          <form class="navbar-form navbar-right">
+            <div *ngIf="config.new_element" class="form-group">
+              <a class="btn btn-sm btn-primary" (click)="config.new_element.click()">
+                <i class="fa {{config.new_element.icon}}"></i>{{config.new_element.label}}</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <table class="responsive-table">
+    <thead>
+      <tr>
+        <th *ngFor="let column of config.columns | filterResponsive: [sizeCode, false]" (click)="sortBy(column.sortBy)">{{column.header}}
+          <i class="fa fa-sort"></i>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let element of activeElements; index as i">
+        <tr [ngClass]="{'footable-even': i % 2 === 0, 'footable-odd': i % 2 ===1, 'selected': selectedElement === element }" (click)="selectedElement = selectedElement === element ? null : element ">
+          <td *ngFor="let column of config.columns | filterResponsive: [sizeCode, false]; index as j">
+            <ng-container *ngIf="j === 0">
+              <i class="fa" [ngClass]="{'fa-chevron-right': selectedElement !== element, 'fa-chevron-down': selectedElement === element}"></i>
+            </ng-container>
+            <ng-container *ngIf="column.property">{{element | complexProperty: column.property }}</ng-container>
+          </td>
+        </tr>
+        <tr class="footable-row-detail" [ngClass]="{'footable-even': i % 2 === 0, 'footable-odd': i % 2 ===1}" *ngIf="selectedElement === element">
+          <td [colSpan]="sizeCode === 'xs' ? (config.columns | filterResponsive: [sizeCode, false]).length : (config.columns | filterResponsive: [sizeCode, false]).length -1">
+            <div class="footable-row-detail-inner">
+              <div class="footable-row-detail-row" *ngFor="let column of config.columns | filterResponsive: [sizeCode, true]">
+                <div class="footable-row-detail-name">
+                  <i class="fa {{column.icon}}"></i>{{column.header}}:</div>
+                <div class="footable-row-detail-value">{{element | complexProperty: column.property}}</div>
+              </div>
+            </div>
+          </td>
+          <td *ngIf="sizeCode !== 'xs' && config.other_actions" [colSpan]="1" class="action-buttons-row">
+            <div *ngFor="let action of config.other_actions">
+              <a class="btn btn-block btn-sm btn-primary" (click)="action.click(element)">
+                <i class="fa {{action.icon}}"></i>{{action.label}}</a>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="6" class="footable-visible">
+          <div class="text-right">
+            <app-responsive-table-pagination></app-responsive-table-pagination>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

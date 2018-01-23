@@ -1,7 +1,7 @@
 import { Component, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Response } from '@angular/http';
 
-import { UtilService } from '../../services/util.service';
+import { UtilService } from '../../../shared/services/util.service';
 import { AdminService } from '../../services/admin.service';
 import { NotificationService } from '../../services/notification.service';
 import { Invitation } from '../../../shared/models/invitation';
@@ -64,13 +64,13 @@ export class InvitationModalComponent implements OnChanges {
   }
 
   updateInvitation() {
-    this.adminService.updateInvitation(this.modalInvitation).subscribe(
-      res => {
-        this.afterSubscribe(res);
-      },
-      error => {
-        this.afterSubscribe(error);
-      });
+    // this.adminService.updateInvitation(this.modalInvitation).subscribe(
+    //   res => {
+    //     this.afterSubscribe(res);
+    //   },
+    //   error => {
+    //     this.afterSubscribe(error);
+    //   });
   }
 
   afterSubscribe(res: Response) {
