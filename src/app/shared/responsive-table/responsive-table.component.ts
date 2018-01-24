@@ -4,6 +4,9 @@ import { UtilService } from '../services/util.service';
 import { ResponsiveService } from '../services/responsive.service';
 import { ResponsiveTableService } from './responsive-table.service';
 import { ResponsiveTableFilter } from './models/responsive-table-filter';
+import { DynamicComponentsService } from '../services/dynamic-components.service';
+import { AttendingLabelComponent } from '../components/attending-label/attending-label.component';
+import { InjectComponentDirective } from '../directives/inject-component.directive';
 
 @Component({
   selector: 'app-responsive-table',
@@ -21,8 +24,10 @@ export class ResponsiveTableComponent implements OnInit, OnChanges {
 
   @Input() config: ResponsiveTableConfig;
   @Input() elements: any[];
+  @Input() components: any;
 
   constructor(
+    private dynamicComponentsService: DynamicComponentsService,
     private util: UtilService,
     private responsiveService: ResponsiveService,
     private responsiveTableService: ResponsiveTableService

@@ -21,6 +21,10 @@ export class InvitationService {
     return this.http.get(path + guid);
   }
 
+  getInvitationByGuid(guid: string): Observable<Invitation[]> {
+    return this.http.post('invitation/', {filter: { guid: guid, populate: ''}});
+  }
+
   updateInvitation(guid: string, isAdmin: boolean, invitation: Invitation): Observable<Invitation> {
     const path = isAdmin ? 'admin/invitation/' : 'invitation/';
     return this.http.put(path, invitation);

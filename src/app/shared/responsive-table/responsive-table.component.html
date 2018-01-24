@@ -64,7 +64,10 @@
             <ng-container *ngIf="j === 0">
               <i class="fa" [ngClass]="{'fa-chevron-right': selectedElement !== element, 'fa-chevron-down': selectedElement === element}"></i>
             </ng-container>
-            <ng-container *ngIf="column.property">{{element | complexProperty: column.property }}</ng-container>
+            <ng-container *ngIf="column.property && !column.component">{{element | complexProperty: column.property }}</ng-container>
+            <ng-container *ngIf="column.property && column.component">
+                <ng-template [appInjectComponent]="column.component.name" [inputs]="column.component.inputs | componentInputs: element"></ng-template>
+            </ng-container>
           </td>
         </tr>
         <tr class="footable-row-detail" [ngClass]="{'footable-even': i % 2 === 0, 'footable-odd': i % 2 ===1}" *ngIf="selectedElement === element">
@@ -73,7 +76,14 @@
               <div class="footable-row-detail-row" *ngFor="let column of config.columns | filterResponsive: [sizeCode, true]">
                 <div class="footable-row-detail-name">
                   <i class="fa {{column.icon}}"></i>{{column.header}}:</div>
-                <div class="footable-row-detail-value">{{element | complexProperty: column.property}}</div>
+                <div class="footable-row-detail-value">
+                    <ng-container *ngIf="column.property && column.component; else plainProperty">
+                        <ng-template [appInjectComponent]="column.component.name" [inputs]="column.component.inputs | componentInputs: element"></ng-template>
+                    </ng-container>
+                    <ng-template #plainProperty>
+                        {{element | complexProperty: column.property}}
+                    </ng-template>
+                </div>
               </div>
             </div>
           </td>

@@ -55,34 +55,42 @@ export class AdminService {
 
   // -------------------------
 
+
+  // -------- INVITATION ----------
+
+  createInvitation(newInvitation: Invitation) {
+    return this.http.postWithResponse('invitation/add', newInvitation);
+  }
+
+  updateInvitation(invitation: Invitation) {
+    return this.http.putWithResponse('invitation/' + invitation._id, invitation);
+  }
+
+  removeInvitation(invitation: Invitation) {
+    return this.http.deleteWithResponse('invitation/' + invitation._id);
+  }
+
+  // -------------------------
+
   private search(searchName: string): Observable<any> {
     const searchReqOptions = searchRequests[searchName];
     return this.http.post(searchReqOptions.url, searchReqOptions.body)
       .map(collection => this[searchName + 'Map'] ? this[searchName + 'Map'](collection) : collection);
   }
 
-  private invitationsResultMap(groups: Group[]): InvitationsResult {
-    return this.checkSentInvitationsInGroups(groups);
+  private invitationsResultMap(invitations: Invitation[]): InvitationsResult {
+    return this.checkSentInvitations(invitations);
   }
 
   private guestsResultMap(guests: Guest[]): GuestsResult {
     return this.checkAttendingGuests(guests);
   }
 
-  private checkSentInvitationsInGroups(groups: Group[]): InvitationsResult {
-    let awaiting = 0;
-    let sent = 0;
-    groups.map(g => g.invitations.map(inv => {
-      if (inv.isSent) { sent++; } else { awaiting++; }
-    }));
-    groups.map(g => {
-      g.guestsAmount = 0;
-      g.invitations.map(inv => g.guestsAmount += inv.guests.length);
-    });
+  private checkSentInvitations(invitations: Invitation[]): InvitationsResult {
     return {
-      groups: groups,
-      invitationsAwaiting: awaiting,
-      invitationsSent: sent
+      invitations: invitations,
+      invitationsSent: invitations.filter(i => i.isSent).length,
+      invitationsAwaiting: invitations.filter(i => !i.isSent).length
     };
   }
 

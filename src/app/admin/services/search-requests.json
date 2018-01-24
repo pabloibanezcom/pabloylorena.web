@@ -34,19 +34,19 @@
         }
     },
     "invitationsResult": {
-        "url": "group",
+        "url": "invitation",
         "body": {
             "sort": {
-                "order": 1
+                "group.order": 1
             },
             "populate": [
                 {
-                    "path": "invitations",
-                    "select": "-__v -group",
-                    "populate": {
-                        "path": "guests",
-                        "select": "fullName type isAttending"
-                    }
+                    "path": "group",
+                    "select": "name"
+                },
+                {
+                    "path": "guests",
+                    "select": "fullName"
                 }
             ]
         }

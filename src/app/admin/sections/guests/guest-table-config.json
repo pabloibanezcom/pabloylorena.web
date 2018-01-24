@@ -41,6 +41,22 @@
             "responsive": "xs"
         },
         {
+            "header": "Genero",
+            "sortBy": "type",
+            "property": "type",
+            "icon": "fa-venus-mars",
+            "component": {
+                "name": "TypeLabel",
+                "inputs": [
+                    {
+                        "name": "type",
+                        "property": "type"
+                    }
+                ]
+            },
+            "responsive": "md"
+        },
+        {
             "header": "Invitation",
             "sortBy": "invitation.alias",
             "property": "invitation.alias",
@@ -59,12 +75,31 @@
             "sortBy": "table.number",
             "property": "table.number",
             "icon": "fa-cutlery",
+            "component": {
+                "name": "TableLabel",
+                "inputs": [
+                    {
+                        "name": "table",
+                        "property": "table"
+                    }
+                ]
+            },
             "responsive": "md"
         },
+        
         {
             "header": "Asistencia",
             "sortBy": "isAttending",
             "property": "isAttending",
+            "component": {
+                "name": "AttendingLabel",
+                "inputs": [
+                    {
+                        "name": "isAttending",
+                        "property": "isAttending"
+                    }
+                ]
+            },
             "icon": "fa-check",
             "responsive": "xs"
         },

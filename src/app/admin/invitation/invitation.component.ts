@@ -23,8 +23,8 @@ export class InvitationComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (params.invitationGuid) {
-        this.invitationService.getInvitation(params.invitationGuid, true).subscribe(res => {
-          this.invitation = res;
+        this.invitationService.getInvitationByGuid(params.invitationGuid).subscribe(res => {
+          this.invitation = res[0];
           this.url = 'wwww.pabloylorena.com/' + this.invitation.guid;
           console.log(this.invitation);
         });

@@ -1,0 +1,89 @@
+{
+    "search": {
+        "placeholder": "Buscar por alias",
+        "property": "alias",
+        "min_chars": 3
+    },
+    "selects": [
+        {
+            "label": "Grupo",
+            "name_property": "name",
+            "value_property": "_id",
+            "property_match": "group._id"
+        }
+    ],
+    "new_element": {
+        "label": "Añadir invitacion",
+        "icon": "fa-plus"
+    },
+    "other_actions": [
+        {
+            "label": "Ver invitacion",
+            "icon": "fa-address-card-o"
+        },
+        {
+            "label": "Editar",
+            "icon": "fa-pencil"
+        },
+        {
+            "label": "Eliminar",
+            "icon": "fa-trash"
+        }
+    ],
+    "page_size": 6,
+    "columns": [
+        {
+            "header": "Alias",
+            "sortBy": "alias",
+            "property": "alias",
+            "responsive": "xs"
+        },
+        {
+            "header": "Destinatario",
+            "sortBy": "receiver",
+            "property": "receiver",
+            "icon": "fa-user",
+            "responsive": "md"
+        },
+        {
+            "header": "Group",
+            "sortBy": "group.name",
+            "property": "group.name",
+            "icon": "fa-users",
+            "responsive": "lg"
+        },
+        {
+            "header": "Table",
+            "sortBy": "table.number",
+            "property": "table.number",
+            "icon": "fa-cutlery",
+            "responsive": "md"
+        },
+        {
+            "header": "Contestada",
+            "sortBy": "isReplied",
+            "property": "isReplied",
+            "icon": "fa-check",
+            "responsive": "xs"
+        },
+        {
+            "header": "Enviada",
+            "sortBy": "isSent",
+            "property": "isSent",
+            "icon": "fa-check",
+            "responsive": "xs"
+        },
+        {
+            "header": "GUID",
+            "sortBy": "guid",
+            "icon": "fa-terminal",
+            "property": "guid"
+        },
+        {
+            "header": "Address",
+            "sortBy": "address",
+            "icon": "fa-home",
+            "property": "address"
+        }
+    ]
+}

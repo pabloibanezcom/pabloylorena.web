@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { DynamicComponentsService } from './services/dynamic-components.service';
 import { UtilService } from './services/util.service';
 import { ResponsiveService } from './services/responsive.service';
 import { DataService } from './services/data.service';
@@ -16,11 +17,15 @@ import { FormGuestComponent } from './form/form-guest/form-guest.component';
 import { FormButtonComponent } from './form/form-button/form-button.component';
 import { ResponsiveTableComponent } from './responsive-table/responsive-table.component';
 import { ComplexPropertyPipe } from './pipes/complex-property.pipe';
-import { AttendingLabelComponent } from './components/attending-label/attending-label.component';
 import { FilterResponsivePipe } from './pipes/filter-responsive.pipe';
 import { FilterCollectionPipe } from './pipes/filter-collection.pipe';
 import { ResponsiveTablePaginationComponent } from './responsive-table/responsive-table-pagination/responsive-table-pagination.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { AttendingLabelComponent } from './components/attending-label/attending-label.component';
+import { TableLabelComponent } from './components/table-label/table-label.component';
+import { InjectComponentDirective } from './directives/inject-component.directive';
+import { ComponentInputsPipe } from './pipes/component-inputs.pipe';
+import { TypeLabelComponent } from './components/type-label/type-label.component';
 
 @NgModule({
   imports: [
@@ -38,12 +43,17 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     FormButtonComponent,
     ResponsiveTableComponent,
     ComplexPropertyPipe,
-    AttendingLabelComponent,
     FilterResponsivePipe,
     FilterCollectionPipe,
-    ResponsiveTablePaginationComponent
+    ResponsiveTablePaginationComponent,
+    AttendingLabelComponent,
+    InjectComponentDirective,
+    ComponentInputsPipe,
+    TableLabelComponent,
+    TypeLabelComponent
   ],
   providers: [
+    DynamicComponentsService,
     UtilService,
     ResponsiveService,
     DataService,
@@ -62,6 +72,11 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     FilterResponsivePipe,
     FilterCollectionPipe,
     AttendingLabelComponent
-  ]
+  ],
+  entryComponents: [
+    AttendingLabelComponent,
+    TableLabelComponent,
+    TypeLabelComponent
+  ],
 })
 export class SharedModule { }

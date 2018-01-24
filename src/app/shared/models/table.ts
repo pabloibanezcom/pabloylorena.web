@@ -1,6 +1,7 @@
 import { Guest } from './guest';
 
 export class Table {
+    _id: String;
     number: number;
     name: string;
     shape: string;
