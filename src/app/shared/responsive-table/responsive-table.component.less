@@ -1,5 +1,19 @@
 .responsive-table-container {
     .controls {
+        .navbar-header {
+            .left {
+                float: left;
+            }
+            .right {
+                float: right;
+            }
+            form {
+                border: none;
+            }
+            .search-input {
+                min-width: 320px;
+            }
+        }
         .navbar-collapse {
             padding-left: 0;
             padding-right: 0;
@@ -66,13 +80,35 @@
                         }
                     }
                 }
-
                 .action-buttons-row {
                     >div {
                         padding-bottom: 10px;
                     }
                 }
             }
+            .footable-row-actions {
+                padding: 10px 0;
+                >div {
+                    padding: 8px 0;
+                }
+            }
         }
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-header {
+        form {
+            margin: 0;
+        }
+        .search-input {
+            min-width: 244px !important;
+        }
+        .navbar-toggle {
+            margin-right: 10px;
+        }
+    }
+    .navbar-form {
+        margin-left: 0;
     }
 }
