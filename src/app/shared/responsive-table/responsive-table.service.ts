@@ -33,7 +33,7 @@ export class ResponsiveTableService {
 
   setElements(elements: any[], filterParams: ResponsiveTableFilter): void {
     this.elements = elements;
-    this.filter(filterParams);
+    this.filterAndSort(filterParams, true);
   }
 
   activeElements(): Observable<any[]> {
@@ -50,9 +50,10 @@ export class ResponsiveTableService {
     return this.paginationObservable$.share();
   }
 
-  filter(filterParams: ResponsiveTableFilter): void {
+  filterAndSort(filterParams: ResponsiveTableFilter, filter?: boolean): void {
     this.filterParams = filterParams;
-    this.filteredElements = this.applyFilter();
+    this.filteredElements = filter ? this.applyFilter() : this.filteredElements;
+    // this.filteredElements = this.applySort();
     const pagination = this.generatePagination(this.filteredElements);
     this.pagination$.next(pagination);
     this.activeElements$.next(this.getActiveElementsForPage(pagination.page_size, pagination.current));
@@ -76,6 +77,17 @@ export class ResponsiveTableService {
       }
     }
     return result;
+  }
+
+  private applySort(): any[] {
+    if (this.filterParams.sort.property) {
+      return this.filteredElements.sort((a, b) => {
+        if (a.fullName < b.fullName) { return this.filterParams.sort.direction === true ? -1 : 1; }
+        if (a.fullName > b.fullName) { return this.filterParams.sort.direction === false ? 1 : -1; }
+        return 0;
+      });
+    }
+    return this.elements;
   }
 
   private getActiveElementsForPage(page_size, current): any[] {

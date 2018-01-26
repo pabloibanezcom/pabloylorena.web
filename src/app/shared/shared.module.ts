@@ -26,6 +26,8 @@ import { TableLabelComponent } from './components/table-label/table-label.compon
 import { InjectComponentDirective } from './directives/inject-component.directive';
 import { ComponentInputsPipe } from './pipes/component-inputs.pipe';
 import { TypeLabelComponent } from './components/type-label/type-label.component';
+import { SentLabelComponent } from './components/sent-label/sent-label.component';
+import { RepliedLabelComponent } from './components/replied-label/replied-label.component';
 
 @NgModule({
   imports: [
@@ -50,7 +52,9 @@ import { TypeLabelComponent } from './components/type-label/type-label.component
     InjectComponentDirective,
     ComponentInputsPipe,
     TableLabelComponent,
-    TypeLabelComponent
+    TypeLabelComponent,
+    SentLabelComponent,
+    RepliedLabelComponent
   ],
   providers: [
     DynamicComponentsService,
@@ -75,6 +79,8 @@ import { TypeLabelComponent } from './components/type-label/type-label.component
   ],
   entryComponents: [
     AttendingLabelComponent,
+    SentLabelComponent,
+    RepliedLabelComponent,
     TableLabelComponent,
     TypeLabelComponent
   ],

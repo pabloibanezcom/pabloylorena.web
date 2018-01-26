@@ -8,6 +8,7 @@ import { Invitation } from '../../shared/models/invitation';
 import { Guest } from '../../shared/models/guest';
 import { CollectionsResult } from '../models/collectionsResult';
 import { InvitationsResult } from '../models/invitationsResult';
+import { GroupsResult } from '../models/groupsResult';
 import { GuestsResult } from '../models/guestsResult';
 import * as searchRequests from './search-requests.json';
 
@@ -37,6 +38,10 @@ export class AdminService {
 
   getGuestsResult(): Observable<GuestsResult> {
     return this.search('guestsResult');
+  }
+
+  getGroupsResult(): Observable<GroupsResult> {
+    return this.search('groupsResult');
   }
 
   // -------- GUEST ----------
@@ -84,6 +89,12 @@ export class AdminService {
 
   private guestsResultMap(guests: Guest[]): GuestsResult {
     return this.checkAttendingGuests(guests);
+  }
+
+  private groupsResultMap(groups: Group[]): GroupsResult {
+    return {
+      groups: groups
+    };
   }
 
   private checkSentInvitations(invitations: Invitation[]): InvitationsResult {

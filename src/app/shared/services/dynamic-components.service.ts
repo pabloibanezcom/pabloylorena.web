@@ -3,6 +3,8 @@ import { Component } from '@angular/compiler/src/core';
 import { ViewContainerRef } from '@angular/core/src/linker/view_container_ref';
 
 import { AttendingLabelComponent } from '../components/attending-label/attending-label.component';
+import { SentLabelComponent } from '../components/sent-label/sent-label.component';
+import { RepliedLabelComponent } from '../components/replied-label/replied-label.component';
 import { TableLabelComponent } from '../components/table-label/table-label.component';
 import { TypeLabelComponent } from '../components/type-label/type-label.component';
 
@@ -14,6 +16,8 @@ export class DynamicComponentsService {
   constructor(private factoryResolver: ComponentFactoryResolver) {
     this.components = {
       AttendingLabel: AttendingLabelComponent,
+      SentLabel: SentLabelComponent,
+      RepliedLabel: RepliedLabelComponent,
       TableLabel: TableLabelComponent,
       TypeLabel: TypeLabelComponent
     };

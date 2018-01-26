@@ -24,6 +24,7 @@ import { PersonIconComponent } from './shared/person-icon/person-icon.component'
 import { InvitationComponent } from './invitation/invitation.component';
 import { NotificationsComponent } from './sections/notifications/notifications.component';
 import { LoginComponent } from './sections/login/login.component';
+import { GroupsComponent } from './sections/groups/groups.component';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { LoginComponent } from './sections/login/login.component';
     PersonIconComponent,
     InvitationComponent,
     NotificationsComponent,
-    LoginComponent
+    LoginComponent,
+    GroupsComponent
   ],
   providers: [
     NotificationsService,

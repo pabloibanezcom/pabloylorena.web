@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Options } from 'angular2-notifications';
@@ -11,6 +11,8 @@ import { NotificationService } from '../services/notification.service';
   styleUrls: ['./admin-base.component.less']
 })
 export class AdminBaseComponent implements OnInit {
+
+  @ViewChild('navbarButton') navbarButton: any;
 
   public section: String;
   public notificationOptions: Options;
@@ -28,6 +30,10 @@ export class AdminBaseComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.section = params.section;
     });
+  }
+
+  closeMenu() {
+    this.navbarButton.nativeElement.click();
   }
 
 }

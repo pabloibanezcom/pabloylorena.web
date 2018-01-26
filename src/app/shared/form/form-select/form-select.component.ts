@@ -1,7 +1,5 @@
 import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
 
-import { DataService } from '../../services/data.service';
-
 @Component({
   selector: 'app-form-select',
   templateUrl: './form-select.component.html',
@@ -22,7 +20,7 @@ export class FormSelectComponent implements OnInit, OnChanges {
   // DEPRECATES - TO REMOVE
   @Input() optionsData: string;
 
-  constructor(private dataService: DataService) { }
+  constructor() { }
 
   ngOnInit() {
     this.optionLabel = this.optionLabel ? this.optionLabel : 'label';

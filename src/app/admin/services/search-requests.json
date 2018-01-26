@@ -18,7 +18,13 @@
             "populate": [
                 {
                     "path": "invitations",
-                    "select": "alias"
+                    "select": "alias",
+                    "populate": [
+                        {
+                            "path": "guests",
+                            "select": "fullName"
+                        }
+                    ]
                 }
             ]
         }
@@ -31,6 +37,24 @@
                 "number": 1
             },
             "populate": ""
+        }
+    },
+    "groupsResult": {
+        "url": "group",
+        "body": {
+            "sort": {
+                "group.order": 1
+            },
+            "populate": [
+                {
+                    "path": "group",
+                    "select": "name"
+                },
+                {
+                    "path": "guests",
+                    "select": "fullName"
+                }
+            ]
         }
     },
     "invitationsResult": {

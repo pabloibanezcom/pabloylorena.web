@@ -15,7 +15,6 @@ import { InjectComponentDirective } from '../directives/inject-component.directi
 })
 export class ResponsiveTableComponent implements OnInit, OnChanges {
 
-  sortPropertiesDirections: any;
   sizeCode: string;
   filterParams: ResponsiveTableFilter;
   searchStr: string;
@@ -33,7 +32,6 @@ export class ResponsiveTableComponent implements OnInit, OnChanges {
     private responsiveTableService: ResponsiveTableService
   ) {
     this.filterParams = new ResponsiveTableFilter();
-    this.sortPropertiesDirections = {};
     this.updateSizeCode(window.screen.width);
   }
 
@@ -63,7 +61,7 @@ export class ResponsiveTableComponent implements OnInit, OnChanges {
   search(searchStr: string) {
     this.filterParams.searchStr = searchStr;
     if (this.filterParams.searchStr === '' || this.filterParams.searchStr.length >= this.config.search.min_chars) {
-      this.responsiveTableService.filter(this.filterParams);
+      this.responsiveTableService.filterAndSort(this.filterParams, true);
     }
   }
 
@@ -82,22 +80,12 @@ export class ResponsiveTableComponent implements OnInit, OnChanges {
     } else {
       this.filterParams.selects.push({ property: property, value: value });
     }
-    this.responsiveTableService.filter(this.filterParams);
+    this.responsiveTableService.filterAndSort(this.filterParams, true);
   }
 
   sortBy(property: string): void {
-    let direction;
-    this.elements.sort((a, b): number => {
-      direction = 0;
-      if (this.util.resolveComplexProperty(a, property) > this.util.resolveComplexProperty(b, property)) {
-        direction = !this.sortPropertiesDirections[property] ? 1 : -1;
-      }
-      if (this.util.resolveComplexProperty(a, property) < this.util.resolveComplexProperty(b, property)) {
-        direction = this.sortPropertiesDirections[property] ? 1 : -1;
-      }
-      return direction;
-    });
-    this.sortPropertiesDirections = {};
-    this.sortPropertiesDirections[property] = direction;
+    // this.filterParams.sort.direction = this.filterParams.sort.property === property ? false : true;
+    // this.filterParams.sort.property = property;
+    // this.responsiveTableService.filterAndSort(this.filterParams);
   }
 }

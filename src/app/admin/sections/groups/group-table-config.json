@@ -1,0 +1,45 @@
+{
+    "search": {
+        "placeholder": "Buscar por nombre",
+        "property": "name",
+        "min_chars": 3
+    },
+    "selects": [
+        {
+            "label": "Anfitrion",
+            "name_property": "host",
+            "value_property": "host",
+            "property_match": "host"
+        }
+    ],
+    "new_element": {
+        "label": "Añadir grupo",
+        "icon": "fa-plus"
+    },
+    "other_actions": [
+        {
+            "label": "Editar",
+            "icon": "fa-pencil"
+        },
+        {
+            "label": "Eliminar",
+            "icon": "fa-trash"
+        }
+    ],
+    "page_size": 6,
+    "columns": [
+        {
+            "header": "Name",
+            "sortBy": "name",
+            "property": "name",
+            "responsive": "xs"
+        },
+        {
+            "header": "Anfitrion",
+            "sortBy": "host",
+            "property": "host",
+            "icon": "fa-user",
+            "responsive": "xs"
+        }
+    ]
+}

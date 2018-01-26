@@ -68,7 +68,7 @@
             "sortBy": "invitation.group.name",
             "property": "invitation.group.name",
             "icon": "fa-users",
-            "responsive": "lg"
+            "responsive": "sm"
         },
         {
             "header": "Table",

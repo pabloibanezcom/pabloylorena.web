@@ -43,34 +43,45 @@
             "sortBy": "receiver",
             "property": "receiver",
             "icon": "fa-user",
-            "responsive": "md"
+            "responsive": "lg"
         },
         {
             "header": "Group",
             "sortBy": "group.name",
             "property": "group.name",
             "icon": "fa-users",
-            "responsive": "lg"
-        },
-        {
-            "header": "Table",
-            "sortBy": "table.number",
-            "property": "table.number",
-            "icon": "fa-cutlery",
-            "responsive": "md"
+            "responsive": "sm"
         },
         {
             "header": "Contestada",
             "sortBy": "isReplied",
             "property": "isReplied",
             "icon": "fa-check",
-            "responsive": "xs"
+            "component": {
+                "name": "RepliedLabel",
+                "inputs": [
+                    {
+                        "name": "isReplied",
+                        "property": "isReplied"
+                    }
+                ]
+            },
+            "responsive": "md"
         },
         {
             "header": "Enviada",
             "sortBy": "isSent",
             "property": "isSent",
             "icon": "fa-check",
+            "component": {
+                "name": "SentLabel",
+                "inputs": [
+                    {
+                        "name": "isSent",
+                        "property": "isSent"
+                    }
+                ]
+            },
             "responsive": "xs"
         },
         {
