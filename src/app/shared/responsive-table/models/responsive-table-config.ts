@@ -2,6 +2,7 @@ interface ConfigColumn {
     header: string;
     sortBy: string;
     property?: string;
+    multiProperty?: string;
     responsive?: string;
 }
 

@@ -61,7 +61,7 @@
         "url": "invitation",
         "body": {
             "sort": {
-                "group.order": 1
+                "group": 1
             },
             "populate": [
                 {
@@ -70,7 +70,12 @@
                 },
                 {
                     "path": "guests",
-                    "select": "fullName"
+                    "select": "fullName",
+                    "options": {
+                        "sort": {
+                            "fullName": 1
+                        }
+                    }
                 }
             ]
         }
@@ -78,7 +83,7 @@
     "guestsResult": {
         "url": "guest",
         "body": {
-            "sort": {},
+            "sort": { "group": 1 },
             "populate": [
                 {
                     "path": "invitation",

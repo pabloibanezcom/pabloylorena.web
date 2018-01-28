@@ -25,7 +25,7 @@ export class UtilService {
   }
 
   showModal(name: string): void {
-    jQuery('#' + name).modal('show');
+    jQuery('#' + name).modal({backdrop: 'static', keyboard: false});
   }
 
   hideModal(name: string): void {

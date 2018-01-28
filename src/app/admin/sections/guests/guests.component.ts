@@ -70,9 +70,11 @@ export class GuestsComponent implements OnInit, OnDestroy {
     this.util.showModal('rsvp-guest-modal');
   }
 
-  afterGuestModal() {
+  afterGuestModal(event: any) {
     this.deleteMode = false;
-    this.refreshGuestResult();
+    if (event.refreshData) {
+      this.refreshGuestResult();
+    }
     this.util.hideModal('rsvp-guest-modal');
   }
 

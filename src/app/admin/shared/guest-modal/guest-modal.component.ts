@@ -78,8 +78,9 @@ export class GuestModalComponent implements OnInit, OnChanges, OnDestroy {
       .subscribe(res => this.afterSubscribe(res));
   }
 
-  cancelDelete() {
-    this.ending.emit();
+  cancel() {
+    this.setModalGuest(this.guest);
+    this.ending.emit({ refreshData: false });
   }
 
   private afterSubscribe(res: Response) {

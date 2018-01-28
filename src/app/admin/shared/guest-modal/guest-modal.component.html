@@ -43,8 +43,11 @@
             <!-- ALLERGIES -->
             <app-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Alergias'" [(model)]="modalGuest.allergies"></app-form-text>
 
-            <div class="form-group col-xs-12">
+            <div class="col-xs-12 col-sm-6">
               <button type="submit" class="btn btn-block btn-primary">{{!guest ? 'Añadir invitado' : 'Editar invitado'}}</button>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <a (click)="cancel()" class="btn btn-block btn-primary">Cancelar</a>
             </div>
           </div>
         </form>
@@ -61,7 +64,7 @@
             <button class="btn btn-block btn-danger" (click)="confirmDelete()"><i class="fa fa-thumbs-up"></i> SI</button>
           </div>    
           <div class="col-xs-12 col-sm-8">
-            <button class="btn btn-block btn-primary" (click)="cancelDelete()"> <i class="fa fa-thumbs-down"></i>NO</button>
+            <button class="btn btn-block btn-primary" (click)="cancel()"> <i class="fa fa-thumbs-down"></i>NO</button>
           </div>
         </div>
       </div>

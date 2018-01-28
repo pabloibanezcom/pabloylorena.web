@@ -73,9 +73,11 @@ export class InvitationsComponent implements OnInit, OnDestroy {
     this.util.showModal('rsvp-invitation-modal');
   }
 
-  afterGuestModal() {
+  afterGuestModal(event: any) {
     this.deleteMode = false;
-    this.refreshInvitationResult();
+    if (event.refreshData) {
+      this.refreshInvitationResult();
+    }
     this.util.hideModal('rsvp-invitation-modal');
   }
 

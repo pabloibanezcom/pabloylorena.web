@@ -95,6 +95,12 @@
             "sortBy": "address",
             "icon": "fa-home",
             "property": "address"
+        },
+        {
+            "header": "Guests",
+            "icon": "fa-users",
+            "property": "guests",
+            "multiProperty": "fullName"
         }
     ]
 }

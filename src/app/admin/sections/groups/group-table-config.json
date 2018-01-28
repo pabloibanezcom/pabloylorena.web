@@ -35,6 +35,13 @@
             "responsive": "xs"
         },
         {
+            "header": "Invitaciones",
+            "sortBy": "invitations.length",
+            "property": "invitations.length",
+            "icon": "fa-envelope",
+            "responsive": "xs"
+        },
+        {
             "header": "Anfitrion",
             "sortBy": "host",
             "property": "host",
