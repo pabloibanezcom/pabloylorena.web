@@ -9,9 +9,6 @@ import { Invitation } from '../../../shared/models/invitation';
 import { Table } from '../../../shared/models/table';
 import { Guest } from '../../../shared/models/guest';
 
-import * as busTimes from './bus-times.json';
-import * as types from './types.json';
-
 @Component({
   selector: 'app-guest-modal',
   templateUrl: './guest-modal.component.html',
@@ -28,17 +25,13 @@ export class GuestModalComponent implements OnInit, OnChanges, OnDestroy {
   modalGuest: Guest;
   group: Group;
   subscriptions: Subscription[];
-  busTimes: any;
-  types: any;
   invitations: Invitation[];
 
   constructor(
     private adminService: AdminService,
-    private notificationService: NotificationService,
+    private notificationService: NotificationService
   ) {
     this.subscriptions = [];
-    this.busTimes = busTimes;
-    this.types = types;
   }
 
   ngOnInit() {
@@ -57,6 +50,14 @@ export class GuestModalComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.map(s => s.unsubscribe());
+  }
+
+  onSubmit() {
+    if (this.guest.fullName) {
+      this.updateGuest();
+    } else {
+      this.addGuest();
+    }
   }
 
   addGuest() {
@@ -84,7 +85,7 @@ export class GuestModalComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   private afterSubscribe(res: Response) {
-    this.ending.emit();
+    this.ending.emit({ refreshData: true });
     if (!this.guest && !this.deleteMode) {
       this.notificationService.processHttpResult(res, 'Invitado creado con exito',
         this.modalGuest.fullName + ' ha sido creado.');

@@ -23,5 +23,5 @@
         </div>
       </div>
     </div>
-    <!-- <app-invitation-modal [deleteMode]="deleteMode" [guest]="selectedInvitation" (ending)="afterInvitationModal()"></app-invitation-modal> -->
+    <app-invitation-modal [deleteMode]="deleteMode" [invitation]="selectedInvitation" (ending)="afterInvitationModal($event)"></app-invitation-modal>
   </div>

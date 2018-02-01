@@ -8,7 +8,9 @@ export class Invitation {
     receiver: string;
     address: Address;
     isSent: boolean;
+    isReplied: boolean;
     guests: Guest[];
+    lastModified: Date;
 
     constructor() {
         this.guests = new Array<Guest>();

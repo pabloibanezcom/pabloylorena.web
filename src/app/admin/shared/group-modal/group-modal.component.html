@@ -1,0 +1,46 @@
+<div id="rsvp-group-modal" class="modal modal-rsvp" tabindex="-1" role="dialog" aria-labelledby="rsvpModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="rsvp-form" class="rsvp-form form" *ngIf="modalGroup && !deleteMode" (ngSubmit)="onSubmit()">
+          <div id="form-messages" class="text-center"></div>
+          <div class="row text-left">
+
+            <!-- NAME -->
+            <app-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Nombre'" [(model)]="modalGroup.name"></app-form-text>
+
+            <!-- HOST -->
+            <app-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Anfitrion'" [emptyOption]="true" [dataOption]="'hosts'" [(model)]="modalGroup.host"></app-form-select>
+
+            <!-- ORDER -->
+            <app-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Order'" [(model)]="modalGroup.order"></app-form-text>
+
+          </div>
+          <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                  <button type="submit" class="btn btn-block btn-primary">{{(group | json) != '{}' ? 'Editar grupo' : 'Añadir grupo' }}</button>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <a (click)="cancel()" class="btn btn-block btn-primary">Cancelar</a>
+                </div>
+          </div>
+        </form>
+        <div class="delete-section row" *ngIf="deleteMode">
+          <div class="col-xs-12 col-sm-12">
+            <h3>Estas seguro de que quieres eliminar este grupo?</h3>
+          </div>
+          <div class="col-xs-12 col-sm-12 group-info">
+              <div><span class="delete-section-property">Name: </span><span class="delete-section-value"> {{modalGroup.name}}</span></div>
+              <div><span class="delete-section-property">Anfitrion: </span><span class="delete-section-value"> {{modalGroup.host}}</span></div>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <button class="btn btn-block btn-danger" (click)="confirmDelete()"><i class="fa fa-thumbs-up"></i> SI</button>
+          </div>    
+          <div class="col-xs-12 col-sm-8">
+            <button class="btn btn-block btn-primary" (click)="cancel()"> <i class="fa fa-thumbs-down"></i>NO</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,12 @@
     },
     "selects": [
         {
+            "label": "Genero",
+            "name_property": "label",
+            "value_property": "value",
+            "property_match": "type"
+        },
+        {
             "label": "Grupo",
             "name_property": "name",
             "value_property": "_id",
@@ -16,6 +22,12 @@
             "name_property": "number",
             "value_property": "_id",
             "property_match": "table._id"
+        },
+        {
+            "label": "Asistencia",
+            "name_property": "label",
+            "value_property": "value",
+            "property_match": "isAttending"
         }
     ],
     "new_element": {
@@ -32,7 +44,7 @@
             "icon": "fa-trash"
         }
     ],
-    "page_size": 6,
+    "page_size": 10,
     "columns": [
         {
             "header": "Full Name",

@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class FormTextComponent implements OnInit {
 
   @Input() type: string;
+  @Input() disabled: boolean;
   @Input() multiLine: boolean;
   @Input() class: string;
   @Input() label: string;

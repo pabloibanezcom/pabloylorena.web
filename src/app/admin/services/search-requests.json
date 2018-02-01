@@ -43,7 +43,7 @@
         "url": "group",
         "body": {
             "sort": {
-                "group.order": 1
+                "order": 1
             },
             "populate": [
                 {

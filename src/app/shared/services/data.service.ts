@@ -1,26 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+
+import { HttpService } from './http.service';
 
 @Injectable()
 export class DataService {
 
-  constructor(private http: Http) { }
+  data: any;
 
-  get(collection: string): Observable<any> {
-    const data = JSON.parse(localStorage.getItem(collection));
-    if (data) {
-      return this.createObservable(data);
-    } else {
-      return this.getHttp(collection);
-    }
+  constructor(
+    private httpService: HttpService
+  ) {
+    this.data = {};
   }
 
-  private getHttp(collection: string): Observable<any> {
-    return this.http.get('assets/data/' + collection + '.json')
-      .map(res => res.json())
-      .do(data => localStorage.setItem(collection, JSON.stringify(data)))
-      .catch(this.handleError);
+  get(name: string) {
+    if (!this.data[name]) {
+      this.data[name] = this.httpService.post('data', { filter: { name: name }, populate: '' })
+        .map(res => res[0])
+        .publishReplay(1)
+        .refCount();
+    }
+    return this.data[name];
   }
 
   private createObservable(data: any): Observable<any> {
@@ -30,8 +31,5 @@ export class DataService {
     });
   }
 
-  private handleError(error: Response) {
-    return Observable.throw(error.json().error || '500 internal server error');
-  }
 }
 

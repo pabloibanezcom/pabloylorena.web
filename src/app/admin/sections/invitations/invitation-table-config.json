@@ -30,7 +30,7 @@
             "icon": "fa-trash"
         }
     ],
-    "page_size": 6,
+    "page_size": 10,
     "columns": [
         {
             "header": "Alias",
@@ -53,20 +53,11 @@
             "responsive": "sm"
         },
         {
-            "header": "Contestada",
-            "sortBy": "isReplied",
-            "property": "isReplied",
-            "icon": "fa-check",
-            "component": {
-                "name": "RepliedLabel",
-                "inputs": [
-                    {
-                        "name": "isReplied",
-                        "property": "isReplied"
-                    }
-                ]
-            },
-            "responsive": "md"
+            "header": "Invitados",
+            "sortBy": "guests.length",
+            "property": "guests.length",
+            "icon": "fa-users",
+            "responsive": "sm"
         },
         {
             "header": "Enviada",
@@ -89,6 +80,21 @@
             "sortBy": "guid",
             "icon": "fa-terminal",
             "property": "guid"
+        },
+        {
+            "header": "Contestada",
+            "sortBy": "isReplied",
+            "property": "isReplied",
+            "icon": "fa-check",
+            "component": {
+                "name": "RepliedLabel",
+                "inputs": [
+                    {
+                        "name": "isReplied",
+                        "property": "isReplied"
+                    }
+                ]
+            }
         },
         {
             "header": "Address",

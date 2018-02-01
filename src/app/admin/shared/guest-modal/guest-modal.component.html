@@ -2,7 +2,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <form id="rsvp-form" class="rsvp-form form" *ngIf="modalGuest && !deleteMode" (ngSubmit)="!guest ? addGuest() : updateGuest()">
+        <form id="rsvp-form" class="rsvp-form form" *ngIf="modalGuest && !deleteMode" (ngSubmit)="onSubmit()">
           <div id="form-messages" class="text-center"></div>
           <div class="row text-left">
 
@@ -34,17 +34,17 @@
             <app-form-text [type]="tel" [class]="'col-xs-12 col-sm-6'" [label]="'Movil'" [(model)]="modalGuest.phone"></app-form-text>
 
             <!-- BUS TIME -->
-            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Horario de autobus de vuelta?'" [emptyOption]="true" [options]="busTimes"
+            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Horario de autobus de vuelta?'" [emptyOption]="true" [dataOption]="'bus-times'"
               [(model)]="modalGuest.busTime"></app-form-select>
 
             <!-- TYPE -->
-            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Genero'" [emptyOption]="true" [options]="types" [(model)]="modalGuest.type"></app-form-select>
+            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Genero'" [emptyOption]="true" [dataOption]="'types'" [(model)]="modalGuest.type"></app-form-select>
 
             <!-- ALLERGIES -->
             <app-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Alergias'" [(model)]="modalGuest.allergies"></app-form-text>
 
             <div class="col-xs-12 col-sm-6">
-              <button type="submit" class="btn btn-block btn-primary">{{!guest ? 'Añadir invitado' : 'Editar invitado'}}</button>
+              <button type="submit" class="btn btn-block btn-primary">{{(guest | json) != '{}' ? 'Editar invitado' : 'Añadir invitado' }}</button>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <a (click)="cancel()" class="btn btn-block btn-primary">Cancelar</a>

@@ -26,7 +26,7 @@
             "icon": "fa-trash"
         }
     ],
-    "page_size": 6,
+    "page_size": 10,
     "columns": [
         {
             "header": "Name",
@@ -46,6 +46,13 @@
             "sortBy": "host",
             "property": "host",
             "icon": "fa-user",
+            "responsive": "xs"
+        },
+        {
+            "header": "Order",
+            "sortBy": "order",
+            "property": "order",
+            "icon": "fa-sort",
             "responsive": "xs"
         }
     ]

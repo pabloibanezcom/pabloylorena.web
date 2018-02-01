@@ -31,6 +31,9 @@ export class GroupsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.tableConfig = tableConfig;
+    this.tableConfig.new_element.click = this.addGroup.bind(this);
+    this.tableConfig.other_actions[0].click = this.editGroup.bind(this);
+    this.tableConfig.other_actions[1].click = this.removeGroup.bind(this);
     this.tableConfig.selects.find(s => s.label === 'Anfitrion').options = [
       {
         'host': 'Pablo'
@@ -53,6 +56,32 @@ export class GroupsComponent implements OnInit, OnDestroy {
     this.subscriptions['getGroupsResult'] = this.adminService.getGroupsResult().subscribe(res => {
       this.result = res;
     });
+  }
+
+  addGroup() {
+    this.deleteMode = false;
+    this.selectedGroup = new Group();
+    this.util.showModal('rsvp-group-modal');
+  }
+
+  editGroup(group: Group) {
+    this.deleteMode = false;
+    this.selectedGroup = group;
+    this.util.showModal('rsvp-group-modal');
+  }
+
+  removeGroup(group: Group) {
+    this.deleteMode = true;
+    this.selectedGroup = group;
+    this.util.showModal('rsvp-group-modal');
+  }
+
+  afterGroupModal(event: any) {
+    this.deleteMode = false;
+    if (event.refreshData) {
+      this.refreshGroupsResult();
+    }
+    this.util.hideModal('rsvp-group-modal');
   }
 
 }

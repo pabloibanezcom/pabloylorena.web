@@ -28,7 +28,7 @@ export class AdminBaseComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.section = params.section;
+      this.section = params.section || 'login';
     });
   }
 

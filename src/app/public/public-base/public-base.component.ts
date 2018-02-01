@@ -24,12 +24,10 @@ export class PublicBaseComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      console.log(params.invitationGuid);
       if (params.invitationGuid) {
         this.invitationService.getInvitation(params.invitationGuid, false).subscribe(res => {
           this.invitation = res;
           this.editMode = true;
-          console.log(this.invitation);
         });
       } else {
         this.invitation = new Invitation();

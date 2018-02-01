@@ -72,7 +72,7 @@ export class ResponsiveTableService {
     result = this.elements.filter(e => e[this.tableConfig.search.property].toLowerCase().match(this.filterParams.searchStr.toLowerCase()));
     // Apply selects filter
     for (const select of this.filterParams.selects) {
-      if (select.value) {
+      if (select.value !== null && select.value !== undefined) {
         result = result.filter(e => this.util.resolveComplexProperty(e, select.property) === select.value);
       }
     }

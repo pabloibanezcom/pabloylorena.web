@@ -15,14 +15,19 @@ export class AuthenticationService {
 
   login(loginObj: any) {
     return this.http
-    .get('login?email=' + loginObj.email + '&password=' + loginObj.password)
-    .toPromise()
-    .then(this.extractData.bind(this))
-    .catch(this.handleError);
+      .get('login?email=' + loginObj.email + '&password=' + loginObj.password)
+      .toPromise()
+      .then(this.extractData.bind(this))
+      .catch(this.handleError);
   }
 
   logout() {
     localStorage.removeItem('auth');
+  }
+
+  isAuthenticated(): boolean {
+    const token = this.authDataService.getAuthData();
+    return token ? true : false;
   }
 
   private extractData(res: any) {
@@ -35,7 +40,7 @@ export class AuthenticationService {
       console.error('Internal error', error);
     }
     return Promise.reject(error.message || error);
-}
+  }
 
 
 }

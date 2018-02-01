@@ -6,6 +6,7 @@ import { AdminService } from '../../services/admin.service';
 import { GuestsResult } from '../../models/guestsResult';
 
 import * as tableConfig from './guest-table-config.json';
+import * as types from './types.json';
 import { Guest } from '../../../shared/models/guest';
 
 @Component({
@@ -20,6 +21,7 @@ export class GuestsComponent implements OnInit, OnDestroy {
   public selectedGuest: Guest;
   public deleteMode: boolean;
   subscriptions: Subscription[];
+  types: any;
 
   constructor(
     private util: UtilService,
@@ -33,6 +35,9 @@ export class GuestsComponent implements OnInit, OnDestroy {
     this.tableConfig.new_element.click = this.addGuest.bind(this);
     this.tableConfig.other_actions[0].click = this.editGuest.bind(this);
     this.tableConfig.other_actions[1].click = this.removeGuest.bind(this);
+    this.tableConfig.selects.find(s => s.label === 'Genero').options = types;
+    this.tableConfig.selects.find(s => s.label === 'Asistencia').options =
+      [{ label: 'Asiste', value: true }, { label: 'No asiste', value: false }];
     this.subscriptions['getGroupNames'] = this.adminService.getGroupNames().subscribe(res => {
       this.tableConfig.selects.find(s => s.label === 'Grupo').options = res;
     });

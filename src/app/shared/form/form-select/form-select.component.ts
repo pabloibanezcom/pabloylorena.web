@@ -1,15 +1,19 @@
-import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, OnDestroy, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-form-select',
   templateUrl: './form-select.component.html',
   styleUrls: ['./form-select.component.less']
 })
-export class FormSelectComponent implements OnInit, OnChanges {
+export class FormSelectComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() type: string;
   @Input() class: string;
   @Input() label: string;
+  @Input() dataOption: string;
   @Input() options: any[];
   @Input() optionLabel: string;
   @Input() optionValue: string;
@@ -17,14 +21,18 @@ export class FormSelectComponent implements OnInit, OnChanges {
   @Input() model: any;
   @Output() modelChange: any = new EventEmitter();
 
-  // DEPRECATES - TO REMOVE
-  @Input() optionsData: string;
+  dataSubscription: Subscription;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.optionLabel = this.optionLabel ? this.optionLabel : 'label';
     this.optionValue = this.optionValue ? this.optionValue : 'value';
+    if (this.dataOption) {
+      this.dataSubscription = this.dataService.get(this.dataOption).subscribe(data => {
+        this.options = data.options;
+      });
+    }
     if (!this.options) {
       this.setOptions();
     }
@@ -34,6 +42,12 @@ export class FormSelectComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes && changes.model) {
       this.updateModel();
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.dataSubscription) {
+      this.dataSubscription.unsubscribe();
     }
   }
 

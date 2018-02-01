@@ -8,6 +8,7 @@ export class Table {
     maxSize: number;
     minSize: number;
     guests: Guest[];
+    lastModified: Date;
 
     constructor() {
         this.guests = new Array<Guest>();

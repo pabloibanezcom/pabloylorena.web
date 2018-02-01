@@ -1,83 +1,109 @@
-import { Component, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, OnDestroy, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Response } from '@angular/http';
+import { Subscription } from 'rxjs/Subscription';
 
-import { UtilService } from '../../../shared/services/util.service';
 import { AdminService } from '../../services/admin.service';
 import { NotificationService } from '../../services/notification.service';
+import { Group } from '../../../shared/models/group';
 import { Invitation } from '../../../shared/models/invitation';
 import { Guest } from '../../../shared/models/guest';
-
-declare var jQuery: any;
 
 @Component({
   selector: 'app-invitation-modal',
   templateUrl: './invitation-modal.component.html',
   styleUrls: ['./invitation-modal.component.less']
 })
-export class InvitationModalComponent implements OnChanges {
+export class InvitationModalComponent implements OnInit, OnChanges, OnDestroy {
 
+  @Input() deleteMode: boolean;
   @Input() invitation: Invitation;
   @Output() ending: any = new EventEmitter();
 
-  private isNew: boolean;
+  groups: Group[];
   modalInvitation: Invitation;
-  public activeGuestIndex: Number;
-  public typeOptions: any[] = [{ value: 0, label: 'Hombre' }, { value: 1, label: 'Mujer' }, { value: 2, label: 'Niño' } ];
+  subscriptions: Subscription[];
 
   constructor(
-    private utilService: UtilService,
     private adminService: AdminService,
     private notificationService: NotificationService
   ) {
+    this.subscriptions = [];
+  }
+
+  ngOnInit() {
+    this.setModalInvitation(this.invitation);
+    this.refreshGroups();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.invitation.currentValue) {
-      this.activeGuestIndex = null;
-      this.modalInvitation = this.utilService.cloneInvitation(changes.invitation.currentValue);
-      this.isNew = false;
-    } else {
-      this.modalInvitation = new Invitation();
-      this.isNew = true;
+    if (changes.invitation) {
+      this.setModalInvitation(this.invitation);
     }
+    this.refreshGroups();
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.map(s => s.unsubscribe());
   }
 
   onSubmit() {
-    if (this.isNew) {
-      this.addInvitation();
-    } else {
+    if (this.invitation.alias) {
       this.updateInvitation();
+    } else {
+      this.addInvitation();
     }
   }
 
-  changeActiveGuest(index: Number) {
-    this.activeGuestIndex = this.activeGuestIndex === index ? null : index;
-  }
-
-  addGuest() {
-    this.modalInvitation.guests.push(new Guest());
-    this.activeGuestIndex = this.modalInvitation.guests.length - 1;
-  }
-
   addInvitation() {
-
+    this.subscriptions['addInvitation'] = this.adminService.createInvitation(this.modalInvitation)
+      .subscribe(res => this.afterSubscribe(res));
   }
 
   updateInvitation() {
-    // this.adminService.updateInvitation(this.modalInvitation).subscribe(
-    //   res => {
-    //     this.afterSubscribe(res);
-    //   },
-    //   error => {
-    //     this.afterSubscribe(error);
-    //   });
+    this.subscriptions['editInvitation'] = this.adminService.updateInvitation(this.modalInvitation)
+      .subscribe(res => this.afterSubscribe(res));
   }
 
-  afterSubscribe(res: Response) {
-    jQuery('#rsvp-invitation-modal').modal('hide');
-    this.ending.emit();
-    this.notificationService.processHttpResult(res, 'Invitado actualizado con exito',
-      this.modalInvitation.alias + ' ha sido actualizado con exito');
+  confirmDelete() {
+    this.subscriptions['removeInvitation'] = this.adminService.removeInvitation(this.modalInvitation)
+      .subscribe(res => this.afterSubscribe(res));
+  }
+
+  cancel() {
+    this.setModalInvitation(this.invitation);
+    this.ending.emit({ refreshData: false });
+  }
+
+  private afterSubscribe(res: Response) {
+    this.ending.emit({ refreshData: true });
+    if (!this.invitation && !this.deleteMode) {
+      this.notificationService.processHttpResult(res, 'Invitacion creada con exito',
+        this.modalInvitation.alias + ' ha sido creada.');
+    }
+    if (this.invitation && !this.deleteMode) {
+      this.notificationService.processHttpResult(res, 'Invitacion actualizada con exito',
+        this.modalInvitation.alias + ' ha sido actualizada.');
+    }
+    if (this.deleteMode) {
+      this.notificationService.processHttpResult(res, 'Invitacion eliminada con exito',
+        this.modalInvitation.alias + ' ha sido eliminada.');
+    }
+    this.invitation = null;
+  }
+
+  private setModalInvitation(invitation: Invitation): void {
+    this.invitation = new Invitation();
+    if (invitation) {
+      this.modalInvitation = Object.assign({}, invitation);
+    } else {
+      this.modalInvitation = new Invitation();
+    }
+  }
+
+  private refreshGroups(): void {
+    this.subscriptions['groups'] = this.adminService.getGroupNames().subscribe(res => {
+      this.groups = res;
+    });
   }
 
 }

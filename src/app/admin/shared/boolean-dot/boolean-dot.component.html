@@ -1,4 +1,0 @@
-<div>
-    <a *ngIf="!modal" href="javascript:void(0)" (click)="fireClick()" class="boolean-dot"><i class="fa" [ngStyle]="{'font-size.px': size}" [ngClass]="{'fa-circle': value, 'fa-circle-o': !value}" ></i></a>
-    <a *ngIf="modal" href="#" data-toggle="modal" (click)="fireClick()" [attr.data-target]="modal" class="boolean-dot"><i class="fa" [ngStyle]="{'font-size.px': size}" [ngClass]="{'fa-circle': value, 'fa-circle-o': !value}" ></i></a>
-</div>

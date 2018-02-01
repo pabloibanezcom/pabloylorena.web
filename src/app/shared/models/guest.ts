@@ -11,8 +11,10 @@ export class Guest {
     email: String;
     phone: String;
     sendSms: Boolean;
-    isAllergic: Boolean;
     allergies: String;
+    additionalComments: string;
     busTime: String;
     isAttending: Boolean;
+    giftAmount: number;
+    lastModified: Date;
 }

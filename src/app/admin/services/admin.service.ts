@@ -77,6 +77,22 @@ export class AdminService {
 
   // -------------------------
 
+  // -------- GROUP ----------
+
+  createGroup(newGroup: Group) {
+    return this.http.postWithResponse('group/add', newGroup);
+  }
+
+  updateGroup(group: Group) {
+    return this.http.putWithResponse('group/' + group._id, group);
+  }
+
+  removeGroup(group: Group) {
+    return this.http.deleteWithResponse('group/' + group._id);
+  }
+
+  // -------------------------
+
   private search(searchName: string): Observable<any> {
     const searchReqOptions = searchRequests[searchName];
     return this.http.post(searchReqOptions.url, searchReqOptions.body)
