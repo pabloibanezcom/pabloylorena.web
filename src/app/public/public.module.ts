@@ -17,7 +17,6 @@ import { ReceptionComponent } from './sections/wedding/reception/reception.compo
 import { RsvpButtonComponent } from './shared/rsvp-button/rsvp-button.component';
 import { WeddingMapComponent } from './sections/wedding/wedding-map/wedding-map.component';
 import { DirectionModalComponent } from './sections/wedding/direction-modal/direction-modal.component';
-import { FooterComponent } from './sections/footer/footer.component';
 import { AccommodationComponent } from './sections/accommodation/accommodation.component';
 import { HotelBoxComponent } from './sections/accommodation/hotel-box/hotel-box.component';
 import { RsvpModalComponent } from './sections/rsvp-modal/rsvp-modal.component';
@@ -38,7 +37,6 @@ import { RsvpModalComponent } from './sections/rsvp-modal/rsvp-modal.component';
     RsvpButtonComponent,
     WeddingMapComponent,
     DirectionModalComponent,
-    FooterComponent,
     AccommodationComponent,
     HotelBoxComponent,
     RsvpModalComponent

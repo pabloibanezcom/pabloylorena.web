@@ -49,11 +49,13 @@
             <!-- ALLERGIES -->
             <app-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Alergias'" [(model)]="modalGuest.allergies"></app-form-text>
 
-            <div class="col-xs-12 col-sm-6">
-              <button type="submit" class="btn btn-block btn-primary">{{(guest | json) != '{}' ? 'Editar invitado' : 'Añadir invitado' }}</button>
-            </div>
-            <div class="col-xs-12 col-sm-6">
+            <div class="row form-buttons">
+              <div class="col-xs-12 col-sm-6">
+                <button type="submit" class="btn btn-block btn-primary">{{(guest | json) != '{}' ? 'Editar invitado' : 'Añadir invitado' }}</button>
+              </div>
+              <div class="col-xs-12 col-sm-6">
                 <a (click)="cancel()" class="btn btn-block btn-primary">Cancelar</a>
+              </div>
             </div>
           </div>
         </form>
@@ -62,15 +64,28 @@
             <h3>Estas seguro de que quieres eliminar este invitado?</h3>
           </div>
           <div class="col-xs-12 col-sm-12 guest-info">
-              <div><span class="delete-section-property">Full Name: </span><span class="delete-section-value"> {{modalGuest.fullName}}</span></div>
-              <div><span class="delete-section-property">Invitation: </span><span class="delete-section-value"> {{modalGuest.invitation.alias}}</span></div>
-              <div><span class="delete-section-property">Table: </span><span class="delete-section-value"> {{modalGuest.table.number}}</span></div>
+            <div>
+              <span class="delete-section-property">Full Name: </span>
+              <span class="delete-section-value"> {{modalGuest.fullName}}</span>
+            </div>
+            <div>
+              <span class="delete-section-property">Invitation: </span>
+              <span class="delete-section-value"> {{modalGuest.invitation.alias}}</span>
+            </div>
+            <div>
+              <span class="delete-section-property">Table: </span>
+              <span class="delete-section-value"> {{modalGuest.table.number}}</span>
+            </div>
           </div>
-          <div class="col-xs-12 col-sm-4">
-            <button class="btn btn-block btn-danger" (click)="confirmDelete()"><i class="fa fa-thumbs-up"></i> SI</button>
-          </div>    
-          <div class="col-xs-12 col-sm-8">
-            <button class="btn btn-block btn-primary" (click)="cancel()"> <i class="fa fa-thumbs-down"></i>NO</button>
+          <div class="form-buttons">
+            <div class="col-xs-12 col-sm-4">
+              <button class="btn btn-block btn-danger" (click)="confirmDelete()">
+                <i class="fa fa-thumbs-up"></i> SI</button>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <button class="btn btn-block btn-primary" (click)="cancel()">
+                <i class="fa fa-thumbs-down"></i>NO</button>
+            </div>
           </div>
         </div>
       </div>

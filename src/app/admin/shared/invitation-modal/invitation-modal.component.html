@@ -35,7 +35,7 @@
             <!-- ADDRESS -->
             <app-form-text [class]="'col-xs-12 col-sm-8'" [label]="'Direccion'" [(model)]="modalInvitation.address"></app-form-text>
           </div>
-          <div class="row ">
+          <div class="row form-buttons">
             <div class="col-xs-12 col-sm-6">
               <button type="submit" class="btn btn-block btn-primary">{{invitation && invitation.guid ? 'Editar invitacion' : 'Añadir invitacion' }}</button>
             </div>
@@ -62,13 +62,15 @@
               <span class="delete-section-value"> {{modalInvitation.group.name}}</span>
             </div>
           </div>
-          <div class="col-xs-12 col-sm-4">
-            <button class="btn btn-block btn-danger" (click)="confirmDelete()">
-              <i class="fa fa-thumbs-up"></i> SI</button>
-          </div>
-          <div class="col-xs-12 col-sm-8">
-            <button class="btn btn-block btn-primary" (click)="cancel()">
-              <i class="fa fa-thumbs-down"></i>NO</button>
+          <div class="form-buttons">
+            <div class="col-xs-12 col-sm-4">
+              <button class="btn btn-block btn-danger" (click)="confirmDelete()">
+                <i class="fa fa-thumbs-up"></i> SI</button>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <button class="btn btn-block btn-primary" (click)="cancel()">
+                <i class="fa fa-thumbs-down"></i>NO</button>
+            </div>
           </div>
         </div>
       </div>

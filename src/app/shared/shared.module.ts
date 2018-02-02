@@ -10,6 +10,7 @@ import { DataService } from './services/data.service';
 import { GuestService } from './services/guest.service';
 import { ResponsiveTableService } from './responsive-table/responsive-table.service';
 
+import { FooterComponent } from './components/footer/footer.component';
 import { FormTextComponent } from './form/form-text/form-text.component';
 import { FormSpanComponent } from './form/form-span/form-span.component';
 import { FormSelectComponent } from './form/form-select/form-select.component';
@@ -38,6 +39,7 @@ import { RepliedLabelComponent } from './components/replied-label/replied-label.
   ],
   declarations: [
     LoadingSpinnerComponent,
+    FooterComponent,
     FormTextComponent,
     FormSpanComponent,
     FormSelectComponent,
@@ -66,6 +68,7 @@ import { RepliedLabelComponent } from './components/replied-label/replied-label.
   ],
   exports: [
     LoadingSpinnerComponent,
+    FooterComponent,
     FormTextComponent,
     FormSpanComponent,
     FormSelectComponent,
