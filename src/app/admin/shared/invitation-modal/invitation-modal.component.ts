@@ -76,11 +76,11 @@ export class InvitationModalComponent implements OnInit, OnChanges, OnDestroy {
 
   private afterSubscribe(res: Response) {
     this.ending.emit({ refreshData: true });
-    if (!this.invitation && !this.deleteMode) {
+    if (this.invitation && !this.invitation.guid && !this.deleteMode) {
       this.notificationService.processHttpResult(res, 'Invitacion creada con exito',
         this.modalInvitation.alias + ' ha sido creada.');
     }
-    if (this.invitation && !this.deleteMode) {
+    if (this.invitation && this.invitation.guid && !this.deleteMode) {
       this.notificationService.processHttpResult(res, 'Invitacion actualizada con exito',
         this.modalInvitation.alias + ' ha sido actualizada.');
     }

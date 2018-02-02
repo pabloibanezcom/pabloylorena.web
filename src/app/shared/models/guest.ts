@@ -15,6 +15,7 @@ export class Guest {
     additionalComments: string;
     busTime: String;
     isAttending: Boolean;
+    isAttendingFriday: Boolean;
     giftAmount: number;
     lastModified: Date;
 }

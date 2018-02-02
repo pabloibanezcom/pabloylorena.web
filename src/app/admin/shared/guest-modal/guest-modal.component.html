@@ -12,6 +12,15 @@
             <!-- FULL NAME -->
             <app-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Nombre completo'" [(model)]="modalGuest.fullName"></app-form-text>
 
+            <!-- EMAIL -->
+            <app-form-text [type]="email" [class]="'col-xs-12 col-sm-6'" [label]="'Email'" [(model)]="modalGuest.email"></app-form-text>
+
+            <!-- PHONE -->
+            <app-form-text [type]="tel" [class]="'col-xs-12 col-sm-3'" [label]="'Movil'" [(model)]="modalGuest.phone"></app-form-text>
+
+            <!-- TYPE -->
+            <app-form-select [class]="'col-xs-12 col-sm-3'" [label]="'Genero'" [emptyOption]="true" [dataOption]="'types'" [(model)]="modalGuest.type"></app-form-select>
+
             <!-- GROUP -->
             <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Grupo'" [options]="groups" [optionValue]="'_id'" [optionLabel]="'name'"
               [emptyOption]="true" [model]="group" (modelChange)="setGroup($event)"></app-form-select>
@@ -23,22 +32,19 @@
             <!-- IS ATTENDING -->
             <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Asistencia'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalGuest.isAttending"></app-form-select>
 
+            <!-- IS ATTENDING FRIDAY -->
+            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Asistencia viernes'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalGuest.isAttendingFriday"></app-form-select>
+
             <!-- TABLE -->
             <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Mesa'" [emptyOption]="true" [options]="tables" [optionLabel]="'fullName'"
               [optionValue]="'_id'" [(model)]="modalGuest.table"></app-form-select>
-
-            <!-- EMAIL -->
-            <app-form-text [type]="email" [class]="'col-xs-12 col-sm-6'" [label]="'Email'" [(model)]="modalGuest.email"></app-form-text>
-
-            <!-- PHONE -->
-            <app-form-text [type]="tel" [class]="'col-xs-12 col-sm-6'" [label]="'Movil'" [(model)]="modalGuest.phone"></app-form-text>
 
             <!-- BUS TIME -->
             <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Horario de autobus de vuelta?'" [emptyOption]="true" [dataOption]="'bus-times'"
               [(model)]="modalGuest.busTime"></app-form-select>
 
-            <!-- TYPE -->
-            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Genero'" [emptyOption]="true" [dataOption]="'types'" [(model)]="modalGuest.type"></app-form-select>
+            <!-- GIFT -->
+            <app-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Manzana'" [(model)]="modalGuest.giftAmount"></app-form-text>
 
             <!-- ALLERGIES -->
             <app-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Alergias'" [(model)]="modalGuest.allergies"></app-form-text>

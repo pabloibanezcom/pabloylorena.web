@@ -13,6 +13,8 @@ export class Invitation {
     lastModified: Date;
 
     constructor() {
+        this.isReplied = false;
+        this.isSent = false;
         this.guests = new Array<Guest>();
     }
 }

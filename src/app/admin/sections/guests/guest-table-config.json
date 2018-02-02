@@ -83,24 +83,7 @@
             "responsive": "sm"
         },
         {
-            "header": "Table",
-            "sortBy": "table.number",
-            "property": "table.number",
-            "icon": "fa-cutlery",
-            "component": {
-                "name": "TableLabel",
-                "inputs": [
-                    {
-                        "name": "table",
-                        "property": "table"
-                    }
-                ]
-            },
-            "responsive": "md"
-        },
-        
-        {
-            "header": "Asistencia",
+            "header": "Boda",
             "sortBy": "isAttending",
             "property": "isAttending",
             "component": {
@@ -116,10 +99,41 @@
             "responsive": "xs"
         },
         {
+            "header": "Viernes",
+            "sortBy": "isAttendingFriday",
+            "property": "isAttendingFriday",
+            "component": {
+                "name": "AttendingLabel",
+                "inputs": [
+                    {
+                        "name": "isAttending",
+                        "property": "isAttendingFriday"
+                    }
+                ]
+            },
+            "icon": "fa-glass",
+            "responsive": "md"
+        },
+        {
             "header": "Name",
             "sortBy": "name",
             "icon": "fa-user",
             "property": "name"
+        },
+        {
+            "header": "Table",
+            "sortBy": "table.number",
+            "property": "table.number",
+            "icon": "fa-cutlery",
+            "component": {
+                "name": "TableLabel",
+                "inputs": [
+                    {
+                        "name": "table",
+                        "property": "table"
+                    }
+                ]
+            }
         },
         {
             "header": "Phone",
