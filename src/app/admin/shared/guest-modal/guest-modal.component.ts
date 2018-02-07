@@ -2,8 +2,11 @@ import { Component, OnInit, OnChanges, OnDestroy, Input, Output, EventEmitter, S
 import { Response } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
 
+import { FormTextComponent } from 'ng2-smart-forms';
+
 import { AdminService } from '../../services/admin.service';
 import { NotificationService } from '../../services/notification.service';
+import { DataService } from '../../../shared/services/data.service';
 import { Group } from '../../../shared/models/group';
 import { Invitation } from '../../../shared/models/invitation';
 import { Table } from '../../../shared/models/table';
@@ -26,10 +29,13 @@ export class GuestModalComponent implements OnInit, OnChanges, OnDestroy {
   group: Group;
   subscriptions: Subscription[];
   invitations: Invitation[];
+  types: any[];
+  busTimes: any[];
 
   constructor(
     private adminService: AdminService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private dataService: DataService
   ) {
     this.subscriptions = [];
   }
@@ -38,6 +44,16 @@ export class GuestModalComponent implements OnInit, OnChanges, OnDestroy {
     this.setModalGuest(this.guest);
     this.refreshGroupsInvitations();
     this.refreshTables();
+    this.subscriptions.push(
+      this.dataService.get('types').subscribe(data => {
+        this.types = data.options;
+      })
+    );
+    this.subscriptions.push(
+      this.dataService.get('bus-times').subscribe(data => {
+        this.busTimes = data.options;
+      })
+    );
   }
 
   ngOnChanges(changes: SimpleChanges) {

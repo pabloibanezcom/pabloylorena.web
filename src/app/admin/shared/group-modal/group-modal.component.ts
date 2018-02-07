@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { AdminService } from '../../services/admin.service';
 import { NotificationService } from '../../services/notification.service';
+import { DataService } from '../../../shared/services/data.service';
 import { Group } from '../../../shared/models/group';
 
 @Component({
@@ -19,16 +20,23 @@ export class GroupModalComponent implements OnInit, OnChanges, OnDestroy {
 
   modalGroup: Group;
   subscriptions: Subscription[];
+  hosts: any[];
 
   constructor(
     private adminService: AdminService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private dataService: DataService
   ) {
     this.subscriptions = [];
   }
 
   ngOnInit() {
     this.setModalGroup(this.group);
+    this.subscriptions.push(
+      this.dataService.get('hosts').subscribe(data => {
+        this.hosts = data.options;
+      })
+    );
   }
 
   ngOnChanges(changes: SimpleChanges) {

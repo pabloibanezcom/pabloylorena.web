@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../../../shared/auth/authentication.service';
+import { AuthenticationService } from 'ng2-smart-auth';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,6 @@ import { AuthenticationService } from '../../../shared/auth/authentication.servi
 export class LoginComponent {
 
   error: string;
-
   loginObj: any = {};
 
   constructor(
@@ -19,7 +19,7 @@ export class LoginComponent {
   ) { }
 
   login() {
-    this.authenticationService.login(this.loginObj)
+    this.authenticationService.login(environment.api_url + 'login', this.loginObj)
       .then(res => {
         this.router.navigate(['/admin/invitations']);
       })

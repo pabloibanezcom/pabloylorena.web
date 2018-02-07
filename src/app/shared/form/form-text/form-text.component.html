@@ -1,8 +1,0 @@
-<div class="form-text form-group {{class}}">
-  <div class="form-group-inner" [ngClass]="error ? 'error' : ''">
-    <label for="{{label | lowercase}}">{{label}}</label>
-    <input required [attr.disabled]="disabled" *ngIf="!multiLine" [attr.type]="type" class="form-control" [attr.name]="label | lowercase" [attr.placeholder]="label" [ngModel]=model (ngModelChange)="updateData($event)">
-    <textarea *ngIf="multiLine" class="form-control" [attr.name]="label | lowercase" [attr.placeholder]="label" [ngModel]=model (ngModelChange)="updateData($event)"></textarea>
-    <div class="error-message-container text-left"><div *ngIf="error" class="error-message">{{error}}</div></div>
-  </div>
-</div>

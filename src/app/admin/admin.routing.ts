@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { AdminBaseComponent } from './admin-base/admin-base.component';
 import { InvitationComponent } from './invitation/invitation.component';
-import { AuthGuard } from '../shared/auth/authGuard';
+import { AuthGuard } from 'ng2-smart-auth';
 
 const adminRoutes: Routes = [
     {
@@ -11,12 +11,18 @@ const adminRoutes: Routes = [
     {
         path: ':section',
         component: AdminBaseComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data: {
+            redirectUrl: '/admin/login'
+        }
     },
     {
         path: 'invitation/:invitationGuid',
         component: InvitationComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data: {
+            redirectUrl: '/admin/login'
+        }
     }
 ];
 

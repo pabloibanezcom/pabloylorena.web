@@ -8,32 +8,32 @@
           <div class="row text-left">
 
             <!-- ALIAS -->
-            <app-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Alias'" [(model)]="modalInvitation.alias"></app-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Alias'" [(model)]="modalInvitation.alias"></smart-form-text>
 
             <!-- GUID -->
-            <app-form-span [class]="'col-xs-12 col-sm-6'" [label]="'GUID'" [model]="modalInvitation.guid"></app-form-span>
+            <smart-form-span [class]="'col-xs-12 col-sm-6'" [label]="'GUID'" [model]="modalInvitation.guid"></smart-form-span>
 
           </div>
           <div class="row text-left">
 
             <!-- ISSENT -->
-            <app-form-select [class]="'col-xs-12 col-sm-3'" [label]="'Enviada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalInvitation.isSent"></app-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-3'" [label]="'Enviada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalInvitation.isSent"></smart-form-select>
 
             <!-- ISREPLIED -->
-            <app-form-select [class]="'col-xs-12 col-sm-3'" [label]="'Contestada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalInvitation.isReplied"></app-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-3'" [label]="'Contestada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalInvitation.isReplied"></smart-form-select>
 
             <!-- GROUPS -->
-            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Grupo'" [options]="groups" [optionValue]="'_id'" [optionLabel]="'name'"
-              [emptyOption]="true" [(model)]="modalInvitation.group"></app-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Grupo'" [options]="groups" [optionValue]="'_id'" [optionLabel]="'name'"
+              [emptyOption]="true" [(model)]="modalInvitation.group"></smart-form-select>
 
           </div>
           <div class="row">
 
             <!-- RECEIVER -->
-            <app-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Remitente'" [(model)]="modalInvitation.receiver"></app-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Remitente'" [(model)]="modalInvitation.receiver"></smart-form-text>
 
             <!-- ADDRESS -->
-            <app-form-text [class]="'col-xs-12 col-sm-8'" [label]="'Direccion'" [(model)]="modalInvitation.address"></app-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-8'" [label]="'Direccion'" [(model)]="modalInvitation.address"></smart-form-text>
           </div>
           <div class="row form-buttons">
             <div class="col-xs-12 col-sm-6">

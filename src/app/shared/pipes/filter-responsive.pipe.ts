@@ -10,20 +10,20 @@ export class FilterResponsivePipe implements PipeTransform {
     return result;
   }
 
-  private checkIfSizeIsHigherOrEquals(size1: string, string2: string): boolean {
-    if (!string2) {
+  private checkIfSizeIsHigherOrEquals(size1: string, size2: string): boolean {
+    if (!size2) {
       return false;
     }
     if (size1 === 'lg') {
       return true;
     }
-    if (size1 === 'md' && string2 !== 'lg') {
+    if (size1 === 'md' && size2 !== 'lg') {
       return true;
     }
-    if (size1 === 'sm' && (string2 === 'sm' || string2 === 'xs')) {
+    if (size1 === 'sm' && (size2 === 'sm' || size2 === 'xs')) {
       return true;
     }
-    if (size1 === 'xs' && string2 === 'xs') {
+    if (size1 === 'xs' && size2 === 'xs') {
       return true;
     }
     return false;

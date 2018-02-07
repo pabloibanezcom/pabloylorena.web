@@ -4,7 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { PublicRouting } from './public.routing'
+import { Ng2SmartFormsModule } from 'ng2-smart-forms';
+
+import { PublicRouting } from './public.routing';
 
 import { TemplateService } from './shared/services/template.service';
 import { MapService } from './shared/services/map.service';
@@ -26,7 +28,8 @@ import { RsvpModalComponent } from './sections/rsvp-modal/rsvp-modal.component';
     CommonModule,
     FormsModule,
     PublicRouting,
-    SharedModule
+    SharedModule,
+    Ng2SmartFormsModule
   ],
   declarations: [
     PublicBaseComponent,

@@ -22,13 +22,13 @@
             <div class="col-sm-12">
                 <div class="guest-header text-center"><h4>{{guest.name ? guest.name : 'Invitado'}}</h4></div>
             </div>
-            <app-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Nombre'" [(model)]="guest.name"></app-form-text>
-            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Tipo'" [(model)]="guest.type" ></app-form-select>
-            <app-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Email'" [(model)]="guest.email"></app-form-text>
-            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Autobus de vuelta'" [(model)]="guest.busTime" ></app-form-select>
-            <app-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Alergias?'" [(model)]="guest.isAllergic" ></app-form-select>
-            <app-form-text *ngIf="guest.isAllergic" [multiLine]="true" [class]="'col-xs-12'" [label]="'Alergias'" [(model)]="guest.allergies"></app-form-text>
-            <app-form-text [multiLine]="true" [class]="'col-xs-12'" [label]="'Additional Information'" [(model)]="guest.additionalComments"></app-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Nombre'" [(model)]="guest.name"></smart-form-text>
+            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Tipo'" [(model)]="guest.type" ></smart-form-select>
+            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Email'" [(model)]="guest.email"></smart-form-text>
+            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Autobus de vuelta'" [(model)]="guest.busTime" ></smart-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Alergias?'" [(model)]="guest.isAllergic" ></smart-form-select>
+            <smart-form-text *ngIf="guest.isAllergic" [multiLine]="true" [class]="'col-xs-12'" [label]="'Alergias'" [(model)]="guest.allergies"></smart-form-text>
+            <smart-form-text [multiLine]="true" [class]="'col-xs-12'" [label]="'Additional Information'" [(model)]="guest.additionalComments"></smart-form-text>
           </div>
           <div class="row">
             <div class="form-group col-xs-12">

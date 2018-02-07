@@ -7,13 +7,13 @@
           <div class="row text-left">
 
             <!-- NAME -->
-            <app-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Nombre'" [(model)]="modalGroup.name"></app-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Nombre'" [(model)]="modalGroup.name"></smart-form-text>
 
             <!-- HOST -->
-            <app-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Anfitrion'" [emptyOption]="true" [dataOption]="'hosts'" [(model)]="modalGroup.host"></app-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Anfitrion'" [emptyOption]="true" [options]="hosts" [(model)]="modalGroup.host"></smart-form-select>
 
             <!-- ORDER -->
-            <app-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Order'" [(model)]="modalGroup.order"></app-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Order'" [(model)]="modalGroup.order"></smart-form-text>
 
           </div>
           <div class="row form-buttons">

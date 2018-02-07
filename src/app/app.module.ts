@@ -6,18 +6,15 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { TokenInterceptor } from './shared/auth/token.interceptor';
-import { LoaderInterceptor } from './shared/loading-spinner/loader.interceptor';
-
-import { AppComponent } from './app.component';
-import { routing } from './app.routing';
-
 import { FacebookService } from 'ngx-facebook';
 import { NotificationsService } from 'angular2-notifications';
+import { AuthenticationService } from 'ng2-smart-auth';
+import { TokenInterceptor } from 'ng2-smart-auth';
 
+import { LoaderInterceptor } from './shared/loading-spinner/loader.interceptor';
+import { AppComponent } from './app.component';
+import { routing } from './app.routing';
 import { HttpService } from './shared/services/http.service';
-import { AuthenticationService } from './shared/auth/authentication.service';
-import { AuthDataService } from './shared/auth/authData.service';
 import { NotificationService } from './admin/services/notification.service';
 import { InvitationService } from './shared/services/invitation.service';
 import { LoadingSpinnerService } from './shared/loading-spinner/loading-spinner.service';
@@ -38,7 +35,6 @@ import { LoadingSpinnerService } from './shared/loading-spinner/loading-spinner.
   providers: [
     HttpService,
     AuthenticationService,
-    AuthDataService,
     FacebookService,
     NotificationService,
     NotificationsService,
