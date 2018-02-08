@@ -8,8 +8,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FacebookService } from 'ngx-facebook';
 import { NotificationsService } from 'angular2-notifications';
-import { AuthenticationService, AuthDataService } from 'ng2-smart-auth';
-import { TokenInterceptor } from 'ng2-smart-auth';
+import { AuthenticationService, TokenInterceptor } from 'ng2-smart-auth';
 
 import { LoaderInterceptor } from './shared/loading-spinner/loader.interceptor';
 import { AppComponent } from './app.component';
@@ -35,7 +34,6 @@ import { LoadingSpinnerService } from './shared/loading-spinner/loading-spinner.
   providers: [
     HttpService,
     AuthenticationService,
-    AuthDataService,
     FacebookService,
     NotificationService,
     NotificationsService,
