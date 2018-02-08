@@ -9,7 +9,6 @@ export class InjectComponentDirective implements OnInit {
   @Input() appInjectComponent: string;
   @Input() inputs: any[];
 
-
   constructor(
     private dynamicComponentsService: DynamicComponentsService,
     private viewContainerRef: ViewContainerRef

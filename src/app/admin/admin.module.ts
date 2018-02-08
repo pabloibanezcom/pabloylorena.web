@@ -6,12 +6,12 @@ import { AdminBaseComponent } from './admin-base/admin-base.component';
 
 import { SimpleNotificationsModule, NotificationsService } from 'angular2-notifications';
 import { QRCodeModule } from 'angular2-qrcode';
-import { Ng2SmarthAuthModule } from 'ng2-smart-auth';
+import { AuthenticationService, AuthGuard } from 'ng2-smart-auth';
 import { Ng2SmartFormsModule } from 'ng2-smart-forms';
+import { DynamicComponentsService } from 'ng2-smart-common';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { AuthGuard } from 'ng2-smart-auth';
 import { AdminRouting } from './admin.routing';
 import { UtilService } from '../shared/services/util.service';
 import { DataService } from '../shared/services/data.service';
@@ -29,7 +29,6 @@ import { LoginComponent } from './sections/login/login.component';
 import { GroupsComponent } from './sections/groups/groups.component';
 import { GroupModalComponent } from './shared/group-modal/group-modal.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -39,7 +38,6 @@ import { GroupModalComponent } from './shared/group-modal/group-modal.component'
     SharedModule,
     SimpleNotificationsModule,
     QRCodeModule,
-    Ng2SmarthAuthModule,
     Ng2SmartFormsModule
   ],
   declarations: [
@@ -58,11 +56,13 @@ import { GroupModalComponent } from './shared/group-modal/group-modal.component'
   ],
   providers: [
     NotificationsService,
+    AuthenticationService,
+    AuthGuard,
     UtilService,
     DataService,
     AdminService,
     NotificationService,
-    AuthGuard
+    DynamicComponentsService
   ]
 })
 export class AdminModule { }
