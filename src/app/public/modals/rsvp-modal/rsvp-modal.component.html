@@ -26,7 +26,7 @@
               <i class="fa fa-plus"></i> Añadir</button>
           </div>
         </div>
-        <form id="rsvp-form" class="rsvp-form form" *ngIf="selectedGuest && !deleteMode" (ngSubmit)="onSubmit()">
+        <form id="rsvp-form" class="rsvp-form form" *ngIf="selectedGuest" (ngSubmit)="onSubmit()">
           <div id="form-messages" class="text-center"></div>
 
           <div class="row text-left">
