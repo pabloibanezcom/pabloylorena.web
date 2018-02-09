@@ -15,7 +15,6 @@ import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { HttpService } from './shared/services/http.service';
 import { NotificationService } from './admin/services/notification.service';
-import { InvitationService } from './shared/services/invitation.service';
 import { LoadingSpinnerService } from './shared/loading-spinner/loading-spinner.service';
 
 @NgModule({
@@ -37,7 +36,6 @@ import { LoadingSpinnerService } from './shared/loading-spinner/loading-spinner.
     NotificationService,
     NotificationsService,
     LoadingSpinnerService,
-    InvitationService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,

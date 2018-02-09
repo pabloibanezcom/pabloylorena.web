@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
-import { TemplateService } from '../shared/services/template.service';
-import { InvitationService } from '../../shared/services/invitation.service';
+import { TemplateService } from '../services/template.service';
+import { InvitationService } from '../services/invitation.service';
 import { Invitation } from '../../shared/models/invitation';
 
 @Component({
@@ -10,10 +11,12 @@ import { Invitation } from '../../shared/models/invitation';
   templateUrl: './public-base.component.html',
   styleUrls: ['./public-base.component.less']
 })
-export class PublicBaseComponent implements OnInit {
+export class PublicBaseComponent implements OnInit, OnDestroy {
 
   public editMode: boolean;
   public invitation: Invitation;
+
+  subscription: Subscription;
 
   constructor(
     private router: Router,
@@ -23,9 +26,9 @@ export class PublicBaseComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+    this.subscription = this.route.params.subscribe(params => {
       if (params.invitationGuid) {
-        this.invitationService.getInvitation(params.invitationGuid, false).subscribe(res => {
+        this.invitationService.getInvitationByGuid(params.invitationGuid).subscribe(res => {
           this.invitation = res;
           this.editMode = true;
         });
@@ -35,6 +38,10 @@ export class PublicBaseComponent implements OnInit {
       }
     });
     this.templateService.init();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

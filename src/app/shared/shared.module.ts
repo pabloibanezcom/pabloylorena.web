@@ -23,6 +23,7 @@ import { ComponentInputsPipe } from './pipes/component-inputs.pipe';
 import { TypeLabelComponent } from './components/type-label/type-label.component';
 import { SentLabelComponent } from './components/sent-label/sent-label.component';
 import { RepliedLabelComponent } from './components/replied-label/replied-label.component';
+import { AdjustHeightDirective } from './directives/adjust-height.directive';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { RepliedLabelComponent } from './components/replied-label/replied-label.
     TableLabelComponent,
     TypeLabelComponent,
     SentLabelComponent,
-    RepliedLabelComponent
+    RepliedLabelComponent,
+    AdjustHeightDirective
   ],
   providers: [
     DynamicComponentsService,
@@ -60,7 +62,8 @@ import { RepliedLabelComponent } from './components/replied-label/replied-label.
     ResponsiveTableComponent,
     ComplexPropertyPipe,
     FilterResponsivePipe,
-    AttendingLabelComponent
+    AttendingLabelComponent,
+    AdjustHeightDirective
   ],
   entryComponents: [
     AttendingLabelComponent,

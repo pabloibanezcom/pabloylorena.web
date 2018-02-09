@@ -18,16 +18,15 @@ import { DataService } from '../shared/services/data.service';
 import { AdminService } from './services/admin.service';
 import { NotificationService } from './services/notification.service';
 import { GuestsComponent } from './sections/guests/guests.component';
-import { GuestModalComponent } from './shared/guest-modal/guest-modal.component';
+import { GuestModalComponent } from './modals/guest-modal/guest-modal.component';
 import { InvitationsComponent } from './sections/invitations/invitations.component';
 import { TablePlannerComponent } from './sections/table-planner/table-planner.component';
-import { InvitationModalComponent } from './shared/invitation-modal/invitation-modal.component';
-import { PersonIconComponent } from './shared/person-icon/person-icon.component';
+import { InvitationModalComponent } from './modals/invitation-modal/invitation-modal.component';
 import { InvitationComponent } from './invitation/invitation.component';
 import { NotificationsComponent } from './sections/notifications/notifications.component';
 import { LoginComponent } from './sections/login/login.component';
 import { GroupsComponent } from './sections/groups/groups.component';
-import { GroupModalComponent } from './shared/group-modal/group-modal.component';
+import { GroupModalComponent } from './modals/group-modal/group-modal.component';
 
 @NgModule({
   imports: [
@@ -47,7 +46,6 @@ import { GroupModalComponent } from './shared/group-modal/group-modal.component'
     InvitationsComponent,
     TablePlannerComponent,
     InvitationModalComponent,
-    PersonIconComponent,
     InvitationComponent,
     NotificationsComponent,
     LoginComponent,

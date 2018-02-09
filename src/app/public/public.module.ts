@@ -8,8 +8,9 @@ import { Ng2SmartFormsModule } from 'ng2-smart-forms';
 
 import { PublicRouting } from './public.routing';
 
-import { TemplateService } from './shared/services/template.service';
-import { MapService } from './shared/services/map.service';
+import { TemplateService } from './services/template.service';
+import { MapService } from './services/map.service';
+import { InvitationService } from './services/invitation.service';
 
 import { PublicBaseComponent } from './public-base/public-base.component';
 import { WeddingComponent } from './sections/wedding/wedding.component';
@@ -21,7 +22,7 @@ import { WeddingMapComponent } from './sections/wedding/wedding-map/wedding-map.
 import { DirectionModalComponent } from './sections/wedding/direction-modal/direction-modal.component';
 import { AccommodationComponent } from './sections/accommodation/accommodation.component';
 import { HotelBoxComponent } from './sections/accommodation/hotel-box/hotel-box.component';
-import { RsvpModalComponent } from './sections/rsvp-modal/rsvp-modal.component';
+import { RsvpModalComponent } from './modals/rsvp-modal/rsvp-modal.component';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { RsvpModalComponent } from './sections/rsvp-modal/rsvp-modal.component';
   ],
   providers: [
     TemplateService,
-    MapService
+    MapService,
+    InvitationService
   ],
 })
 export class PublicModule { }

@@ -1,0 +1,81 @@
+<div id="rsvp-modal" class="modal modal-rsvp" tabindex="-1" role="dialog" aria-labelledby="rsvpModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h2 id="rsvpModalLabel" class="modal-title text-center">
+          <span class="title script display-block">
+            <span class="title-deco-left"></span>
+            <span class="title-text">Te esperamos</span>
+            <span class="title-deco-right"></span>
+          </span>
+          <span class="subtitle display-block">En este dia tan especial para nosotros nos hace mucha ilusion tu compania
+            <br> Por favor confirmar asistencia antes del 1 de Junio de 2018</span>
+        </h2>
+
+      </div>
+      <div class="modal-body">
+        <div class="guest-menu btn-group btn-group-justified" role="group" aria-label="...">
+          <div class="btn-group" role="group" *ngFor="let guest of invitation.guests">
+            <button type="button" class="btn btn-default" [ngClass]="{'active': selectedGuest && selectedGuest._id === guest._id}" (click)="selectedGuest = guest">
+              <i class="fa" [ngClass]="{'fa-male': guest.type === 1, 'fa-female': guest.type === 2, 'fa-child': guest.type === 3}"></i>
+              {{guest.name}}</button>
+          </div>
+          <div class="btn-group add-group" role="group">
+            <button type="button" class="btn btn-default" (click)="addGuest()">
+              <i class="fa fa-plus"></i> Añadir</button>
+          </div>
+        </div>
+        <form id="rsvp-form" class="rsvp-form form" *ngIf="selectedGuest && !deleteMode" (ngSubmit)="onSubmit()">
+          <div id="form-messages" class="text-center"></div>
+
+          <div class="row text-left">
+            <!-- NAME -->
+            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Nombre'" [(model)]="selectedGuest.name"></smart-form-text>
+            <!-- TYPE -->
+            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Genero'" [emptyOption]="true" [options]="types" [(model)]="selectedGuest.type"></smart-form-select>
+          </div>
+
+          <div class="row text-left">
+            <!-- EMAIL -->
+            <smart-form-text [type]="email" [class]="'col-xs-12 col-sm-6'" [label]="'Email'" [(model)]="selectedGuest.email"></smart-form-text>
+            <!-- PHONE -->
+            <smart-form-text [type]="tel" [class]="'col-xs-12 col-sm-6'" [label]="'Movil'" [(model)]="selectedGuest.phone"></smart-form-text>
+          </div>
+
+          <div class="row text-left">
+            <!-- IS ATTENDING -->
+            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Asistencia'" [type]="'YesNo'" [emptyOption]="true" [(model)]="selectedGuest.isAttending"></smart-form-select>
+            <!-- STAYING PLACE -->
+            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Alojamiento sabado'" [emptyOption]="true" [options]="stayingPlaces"
+              [(model)]="selectedGuest.stayingPlace"></smart-form-select>
+          </div>
+
+          <div class="row text-left">
+            <!-- ALLERGIES -->
+            <smart-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Alergias'" [(model)]="selectedGuest.allergies"></smart-form-text>
+          </div>
+
+          <div class="row form-buttons">
+            <div class="col-xs-12 col-sm-12">
+              <button type="submit" class="btn btn-block btn-primary">Confirmar</button>
+            </div>
+          </div>
+        </form>
+        <div class="row">
+          <div class="additional-info text-center col-xs-12">
+            Si tienes cualquier duda puedes contactarnos en
+          </div>
+          <div class="contact-info text-center col-xs-12">
+            <i class="fa fa-whatsapp"></i>
+            <span class="contact-name">Pablo</span>
+            <span class="contact-number">669654032</span> |
+            <i class="fa fa-whatsapp"></i>
+            <span class="contact-name">Lorena</span>
+            <span class="contact-number">690980372</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MapService } from '../../../shared/services/map.service';
-import { MapOptions } from '../../../shared/models/map-options';
+import { MapService } from '../../../services/map.service';
+import { MapOptions } from '../../../models/map-options';
 
 @Component({
   selector: 'app-wedding-map',

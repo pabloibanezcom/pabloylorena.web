@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { InvitationService } from '../../shared/services/invitation.service';
 import { Invitation } from '../../shared/models/invitation';
 
 @Component({
@@ -16,18 +15,17 @@ export class InvitationComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
-    private invitationService: InvitationService
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (params.invitationGuid) {
-        this.invitationService.getInvitationByGuid(params.invitationGuid).subscribe(res => {
-          this.invitation = res[0];
-          this.url = 'wwww.pabloylorena.com/' + this.invitation.guid;
-          console.log(this.invitation);
-        });
+        // this.invitationService.getInvitationByGuid(params.invitationGuid).subscribe(res => {
+        //   this.invitation = res[0];
+        //   this.url = 'wwww.pabloylorena.com/' + this.invitation.guid;
+        //   console.log(this.invitation);
+        // });
       }
     });
   }
