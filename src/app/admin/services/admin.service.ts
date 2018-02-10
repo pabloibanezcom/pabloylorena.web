@@ -108,6 +108,12 @@ export class AdminService {
   }
 
   private groupsResultMap(groups: Group[]): GroupsResult {
+    groups.forEach(g => {
+      g.guestsAmount = 0;
+      g.invitations.forEach(inv => {
+        g.guestsAmount += inv.guests.length;
+      });
+    });
     return {
       groups: groups
     };

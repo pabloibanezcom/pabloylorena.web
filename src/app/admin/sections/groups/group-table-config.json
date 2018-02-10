@@ -42,6 +42,13 @@
             "responsive": "xs"
         },
         {
+            "header": "Invitados",
+            "sortBy": "guestsAmount",
+            "property": "guestsAmount",
+            "icon": "fa-users",
+            "responsive": "xs"
+        },
+        {
             "header": "Anfitrion",
             "sortBy": "host",
             "property": "host",

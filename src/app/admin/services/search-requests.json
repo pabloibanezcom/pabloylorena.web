@@ -53,7 +53,13 @@
                         "sort": {
                             "alias": 1
                         }
-                    }
+                    },
+                    "populate": [
+                        {
+                            "path": "guests",
+                            "select": "fullName"
+                        }
+                    ]
                 }
             ]
         }
