@@ -47,12 +47,13 @@
             },
             "populate": [
                 {
-                    "path": "group",
-                    "select": "name"
-                },
-                {
-                    "path": "guests",
-                    "select": "fullName"
+                    "path": "invitations",
+                    "select": "alias",
+                    "options": {
+                        "sort": {
+                            "alias": 1
+                        }
+                    }
                 }
             ]
         }

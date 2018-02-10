@@ -54,6 +54,12 @@
             "property": "order",
             "icon": "fa-sort",
             "responsive": "xs"
+        },
+        {
+            "header": "Invitations",
+            "icon": "fa-envelope",
+            "property": "invitations",
+            "multiProperty": "alias"
         }
     ]
 }
