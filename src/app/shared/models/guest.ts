@@ -17,6 +17,8 @@ export class Guest {
     isAttending: Boolean;
     isAttendingExpectation: Boolean;
     isAttendingFriday: Boolean;
+    stayingPlace: String;
+    stayingPlaceExpectation: String;
     giftAmount: number;
     lastModified: Date;
 }

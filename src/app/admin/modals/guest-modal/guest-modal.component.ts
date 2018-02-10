@@ -31,6 +31,7 @@ export class GuestModalComponent implements OnInit, OnChanges, OnDestroy {
   invitations: Invitation[];
   types: any[];
   busTimes: any[];
+  stayingPlaces: any[];
 
   constructor(
     private adminService: AdminService,
@@ -52,6 +53,11 @@ export class GuestModalComponent implements OnInit, OnChanges, OnDestroy {
     this.subscriptions.push(
       this.dataService.get('bus-times').subscribe(data => {
         this.busTimes = data.options;
+      })
+    );
+    this.subscriptions.push(
+      this.dataService.get('staying-places').subscribe(data => {
+        this.stayingPlaces = data.options;
       })
     );
   }

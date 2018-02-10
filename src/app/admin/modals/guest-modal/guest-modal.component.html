@@ -22,12 +22,19 @@
             <smart-form-select [class]="'col-xs-12 col-sm-3'" [label]="'Genero'" [emptyOption]="true" [options]="types" [(model)]="modalGuest.type"></smart-form-select>
 
             <!-- GROUP -->
-            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Grupo'" [options]="groups" [optionValue]="'_id'" [optionLabel]="'name'"
+            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Grupo'" [options]="groups" [optionValue]="'_id'" [optionLabel]="'name'"
               [emptyOption]="true" [model]="group" (modelChange)="setGroup($event)"></smart-form-select>
 
             <!-- INVITATION -->
-            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Invitacion'" [options]="invitations" [optionValue]="'_id'" [optionLabel]="'alias'"
+            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Invitacion'" [options]="invitations" [optionValue]="'_id'" [optionLabel]="'alias'"
               [emptyOption]="true" [(model)]="modalGuest.invitation"></smart-form-select>
+
+            <!-- TABLE -->
+            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Mesa'" [emptyOption]="true" [options]="tables" [optionLabel]="'fullName'"
+            [optionValue]="'_id'" [(model)]="modalGuest.table"></smart-form-select>
+
+             <!-- IS ATTENDING FRIDAY -->
+             <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Asistencia viernes'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalGuest.isAttendingFriday"></smart-form-select>
 
             <!-- IS ATTENDING -->
             <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Asistencia confirmada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalGuest.isAttending"></smart-form-select>
@@ -35,15 +42,16 @@
             <!-- IS ATTENDING EXPECTATION -->
             <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Asistencia esperada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalGuest.isAttendingExpectation"></smart-form-select>
 
-            <!-- IS ATTENDING FRIDAY -->
-            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Asistencia viernes'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalGuest.isAttendingFriday"></smart-form-select>
+            <!-- STAYING PLACE -->
+            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Alojamiento sabado'" [emptyOption]="true" [options]="stayingPlaces"
+              [(model)]="modalGuest.stayingPlace"></smart-form-select>
 
-            <!-- TABLE -->
-            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Mesa'" [emptyOption]="true" [options]="tables" [optionLabel]="'fullName'"
-              [optionValue]="'_id'" [(model)]="modalGuest.table"></smart-form-select>
+              <!-- STAYING PLACE EXPECTATION -->
+            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Alojamiento sabado esperado'" [emptyOption]="true" [options]="stayingPlaces"
+            [(model)]="modalGuest.stayingPlaceExpectation"></smart-form-select>
 
             <!-- BUS TIME -->
-            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Horario de autobus de vuelta?'" [emptyOption]="true" [options]="busTimes"
+            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Horario de autobus de vuelta'" [emptyOption]="true" [options]="busTimes"
               [(model)]="modalGuest.busTime"></smart-form-select>
 
             <!-- GIFT -->
@@ -51,6 +59,9 @@
 
             <!-- ALLERGIES -->
             <smart-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Alergias'" [(model)]="modalGuest.allergies"></smart-form-text>
+
+            <!-- ADDITIONAL COMMENTS -->
+            <smart-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Otros comentarios'" [(model)]="modalGuest.additionalComments"></smart-form-text>
 
             <div class="col-xs-12 col-sm-6">
               <button type="submit" class="btn btn-block btn-primary">{{(guest | json) != '{}' ? 'Editar invitado' : 'Añadir invitado' }}</button>
