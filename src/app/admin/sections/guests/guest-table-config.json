@@ -83,7 +83,7 @@
             "responsive": "sm"
         },
         {
-            "header": "Prevision",
+            "header": "Confirmacion",
             "sortBy": "isAttending",
             "property": "isAttending",
             "component": {
@@ -99,7 +99,7 @@
             "responsive": "xs"
         },
         {
-            "header": "Confirmacion",
+            "header": "Prevision",
             "sortBy": "isAttendingExpectation",
             "property": "isAttendingExpectation",
             "component": {
@@ -150,6 +150,18 @@
                     }
                 ]
             }
+        },
+        {
+            "header": "Alojamiento sabado",
+            "sortBy": "stayingPlace",
+            "icon": "fa-bed",
+            "property": "stayingPlace"
+        },
+        {
+            "header": "Alojamiento sabado esperado",
+            "sortBy": "stayingPlaceExpectation",
+            "icon": "fa-bed",
+            "property": "stayingPlaceExpectation"
         },
         {
             "header": "Phone",
