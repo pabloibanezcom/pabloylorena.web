@@ -37,7 +37,7 @@
           </div>
           <div class="row form-buttons">
             <div class="col-xs-12 col-sm-6">
-              <button type="submit" class="btn btn-block btn-primary">{{invitation && invitation.guid ? 'Editar invitacion' : 'Añadir invitacion' }}</button>
+              <button type="submit" class="btn btn-block btn-primary">{{(invitation | json) != '{}' ? 'Editar invitacion' : 'Añadir invitacion' }}</button>
             </div>
             <div class="col-xs-12 col-sm-6">
               <a (click)="cancel()" class="btn btn-block btn-primary">Cancelar</a>

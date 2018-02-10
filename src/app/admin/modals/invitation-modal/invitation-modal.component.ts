@@ -37,7 +37,7 @@ export class InvitationModalComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.invitation) {
-      this.setModalInvitation(this.invitation);
+      this.setModalInvitation(changes.invitation.currentValue);
     }
     this.refreshGroups();
   }
@@ -92,7 +92,6 @@ export class InvitationModalComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   private setModalInvitation(invitation: Invitation): void {
-    this.invitation = new Invitation();
     if (invitation) {
       this.modalInvitation = Object.assign({}, invitation);
     } else {
