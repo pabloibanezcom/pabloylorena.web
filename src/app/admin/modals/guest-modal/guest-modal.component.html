@@ -30,10 +30,13 @@
               [emptyOption]="true" [(model)]="modalGuest.invitation"></smart-form-select>
 
             <!-- IS ATTENDING -->
-            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Asistencia'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalGuest.isAttending"></smart-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Asistencia confirmada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalGuest.isAttending"></smart-form-select>
+
+            <!-- IS ATTENDING EXPECTATION -->
+            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Asistencia esperada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalGuest.isAttendingExpectation"></smart-form-select>
 
             <!-- IS ATTENDING FRIDAY -->
-            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Asistencia viernes'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalGuest.isAttendingFriday"></smart-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Asistencia viernes'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalGuest.isAttendingFriday"></smart-form-select>
 
             <!-- TABLE -->
             <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Mesa'" [emptyOption]="true" [options]="tables" [optionLabel]="'fullName'"
@@ -49,13 +52,11 @@
             <!-- ALLERGIES -->
             <smart-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Alergias'" [(model)]="modalGuest.allergies"></smart-form-text>
 
-            <div class="row form-buttons">
-              <div class="col-xs-12 col-sm-6">
-                <button type="submit" class="btn btn-block btn-primary">{{(guest | json) != '{}' ? 'Editar invitado' : 'Añadir invitado' }}</button>
-              </div>
-              <div class="col-xs-12 col-sm-6">
-                <a (click)="cancel()" class="btn btn-block btn-primary">Cancelar</a>
-              </div>
+            <div class="col-xs-12 col-sm-6">
+              <button type="submit" class="btn btn-block btn-primary">{{(guest | json) != '{}' ? 'Editar invitado' : 'Añadir invitado' }}</button>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <a (click)="cancel()" class="btn btn-block btn-primary">Cancelar</a>
             </div>
           </div>
         </form>

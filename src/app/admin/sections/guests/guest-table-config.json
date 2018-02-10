@@ -83,7 +83,7 @@
             "responsive": "sm"
         },
         {
-            "header": "Boda",
+            "header": "Prevision",
             "sortBy": "isAttending",
             "property": "isAttending",
             "component": {
@@ -97,6 +97,22 @@
             },
             "icon": "fa-check",
             "responsive": "xs"
+        },
+        {
+            "header": "Confirmacion",
+            "sortBy": "isAttendingExpectation",
+            "property": "isAttendingExpectation",
+            "component": {
+                "name": "AttendingLabel",
+                "inputs": [
+                    {
+                        "name": "isAttending",
+                        "property": "isAttendingExpectation"
+                    }
+                ]
+            },
+            "icon": "fa-glass",
+            "responsive": "md"
         },
         {
             "header": "Viernes",
