@@ -5,8 +5,20 @@
       <span class="title-text">Invitados</span>
       <span class="title-deco-right"></span>
     </h3>
-    <div *ngIf="result">
+    <div class="counters" *ngIf="result">
       <div class="countdown-box" id="countdown-box">
+        <span class="item expected">
+          <span class="number">{{result.expected}}</span>
+          <span class="unit script">Esperados</span>
+        </span>
+        <span class="item doubtful">
+          <span class="number">{{result.doubtful}}</span>
+          <span class="unit script">Dudosos</span>
+        </span>
+        <span class="item nonExpected">
+          <span class="number">{{result.nonExpected}}</span>
+          <span class="unit script">No esperados</span>
+        </span>
         <span class="item awaiting">
           <span class="number">{{result.awaiting}}</span>
           <span class="unit script">A la espera</span>
@@ -15,6 +27,9 @@
           <span class="number">{{result.attending}}</span>
           <span class="unit script">Confirmados</span>
         </span>
+      </div>
+      <div class="countdown-box forecast">
+
       </div>
       <div class="row">
         <div class="col-lg-12">

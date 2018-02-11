@@ -131,7 +131,10 @@ export class AdminService {
     return {
       guests: guests,
       attending: guests.filter(g => g.isAttending).length,
-      awaiting: guests.filter(g => !g.isAttending).length
+      awaiting: guests.filter(g => !g.isAttending).length,
+      expected: guests.filter(g => g.isAttendingExpectation).length,
+      nonExpected: guests.filter(g => g.isAttendingExpectation === false).length,
+      doubtful: guests.filter(g => g.isAttendingExpectation == null).length
     };
   }
 
