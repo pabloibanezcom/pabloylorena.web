@@ -7,5 +7,6 @@ export const environment = {
   production: false,
   // api_url: 'http://localhost:3000/api/',
   api_url: 'https://pabloylorena-api-dev.herokuapp.com/api/',
+  // api_url: 'https://pabloylorena-api.herokuapp.com/api/',
   fb_app_id: '149864768942887'
 };
