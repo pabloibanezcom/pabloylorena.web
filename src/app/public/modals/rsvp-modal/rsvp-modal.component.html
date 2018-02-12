@@ -18,7 +18,7 @@
         <div class="guest-menu btn-group btn-group-justified" role="group" aria-label="...">
           <div class="btn-group" role="group" *ngFor="let guest of invitation.guests">
             <button type="button" class="btn btn-default" [ngClass]="{'active': selectedGuest && selectedGuest._id === guest._id}" (click)="selectedGuest = guest">
-              <i class="fa" [ngClass]="{'fa-male': guest.type === 1, 'fa-female': guest.type === 2, 'fa-child': guest.type === 3}"></i>
+              <i class="fa" [ngClass]="{'fa-male': guest.type === 1, 'fa-female': guest.type === 2, 'fa-child': guest.type === 3,'fa-child': guest.type === 4}"></i>
               {{guest.name}}</button>
           </div>
           <div class="btn-group add-group" role="group">

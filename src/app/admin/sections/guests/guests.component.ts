@@ -2,11 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { UtilService } from '../../../shared/services/util.service';
+import { DataService } from '../../../shared/services/data.service';
 import { AdminService } from '../../services/admin.service';
 import { GuestsResult } from '../../models/guestsResult';
 
 import * as tableConfig from './guest-table-config.json';
-import * as types from './types.json';
 import { Guest } from '../../../shared/models/guest';
 
 @Component({
@@ -25,7 +25,8 @@ export class GuestsComponent implements OnInit, OnDestroy {
 
   constructor(
     private util: UtilService,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private dataService: DataService
   ) {
     this.subscriptions = [];
   }
@@ -35,7 +36,11 @@ export class GuestsComponent implements OnInit, OnDestroy {
     this.tableConfig.new_element.click = this.addGuest.bind(this);
     this.tableConfig.other_actions[0].click = this.editGuest.bind(this);
     this.tableConfig.other_actions[1].click = this.removeGuest.bind(this);
-    this.tableConfig.selects.find(s => s.label === 'Genero').options = types;
+    this.subscriptions.push(
+      this.dataService.get('types').subscribe(data => {
+        this.tableConfig.selects.find(s => s.label === 'Genero').options = data.options;
+      })
+    );
     this.tableConfig.selects.find(s => s.label === 'Asistencia').options =
       [{ label: 'Asiste', value: true }, { label: 'No asiste', value: false }];
     this.subscriptions['getGroupNames'] = this.adminService.getGroupNames().subscribe(res => {
