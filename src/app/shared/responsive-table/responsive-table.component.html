@@ -42,7 +42,7 @@
             </li>
           </ul>
           <form class="navbar-form navbar-right">
-            <div *ngIf="config.new_element" class="form-group">
+            <div *ngIf="config.new_element && config.new_element.authLevels && config.new_element.authLevels.includes(authLevel)" class="form-group">
               <a class="btn btn-sm btn-primary" [ngClass]="{'btn-block': sizeCode === 'xs'}" (click)="config.new_element.click()">
                 <i class="fa {{config.new_element.icon}}"></i>{{config.new_element.label}}</a>
             </div>
@@ -96,17 +96,21 @@
               </div>
             </div>
             <div class="footable-row-actions" *ngIf="sizeCode === 'xs' && config.other_actions">
-              <div *ngFor="let action of config.other_actions">
-                <a class="btn btn-block btn-sm btn-primary" (click)="action.click(element)">
-                  <i class="fa {{action.icon}}"></i>{{action.label}}</a>
-              </div>
+              <ng-container *ngFor="let action of config.other_actions">
+                <div *ngIf="!action.authLevels || (action.authLevels && action.authLevels.includes(authLevel))">
+                  <a class="btn btn-block btn-sm btn-primary" (click)="action.click(element)">
+                    <i class="fa {{action.icon}}"></i>{{action.label}}</a>
+                </div>
+              </ng-container>
             </div>
           </td>
           <td *ngIf="sizeCode !== 'xs' && config.other_actions" [colSpan]="1" class="action-buttons-row">
-            <div *ngFor="let action of config.other_actions">
-              <a class="btn btn-block btn-sm btn-primary" (click)="action.click(element)">
-                <i class="fa {{action.icon}}"></i>{{action.label}}</a>
-            </div>
+            <ng-container *ngFor="let action of config.other_actions">
+              <div *ngIf="!action.authLevels || (action.authLevels && action.authLevels.includes(authLevel))">
+                <a class="btn btn-block btn-sm btn-primary" (click)="action.click(element)">
+                  <i class="fa {{action.icon}}"></i>{{action.label}}</a>
+              </div>
+            </ng-container>
           </td>
         </tr>
       </ng-container>

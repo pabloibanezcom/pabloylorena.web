@@ -27,6 +27,8 @@ import { NotificationsComponent } from './sections/notifications/notifications.c
 import { LoginComponent } from './sections/login/login.component';
 import { GroupsComponent } from './sections/groups/groups.component';
 import { GroupModalComponent } from './modals/group-modal/group-modal.component';
+import { OverviewComponent } from './sections/overview/overview.component';
+import { LoginContainerComponent } from './login-container/login-container.component';
 
 @NgModule({
   imports: [
@@ -50,7 +52,9 @@ import { GroupModalComponent } from './modals/group-modal/group-modal.component'
     NotificationsComponent,
     LoginComponent,
     GroupsComponent,
-    GroupModalComponent
+    GroupModalComponent,
+    OverviewComponent,
+    LoginContainerComponent
   ],
   providers: [
     NotificationsService,

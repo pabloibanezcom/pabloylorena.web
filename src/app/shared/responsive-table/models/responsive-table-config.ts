@@ -25,9 +25,11 @@ interface ConfigAction {
     icon: string;
     class: string;
     click: string;
+    authLevels: string[];
 }
 
 export interface ResponsiveTableConfig {
+    authLevelProperty: string;
     search: ConfigSearch;
     selects: ConfigSelect[];
     new_element: ConfigAction;

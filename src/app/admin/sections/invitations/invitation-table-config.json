@@ -1,4 +1,5 @@
 {
+    "authLevelProperty": "auth.authLevel",
     "search": {
         "placeholder": "Buscar por alias",
         "property": "alias",
@@ -14,7 +15,8 @@
     ],
     "new_element": {
         "label": "Añadir invitacion",
-        "icon": "fa-plus"
+        "icon": "fa-plus",
+        "authLevels": ["admin"]
     },
     "other_actions": [
         {
@@ -23,11 +25,13 @@
         },
         {
             "label": "Editar",
-            "icon": "fa-pencil"
+            "icon": "fa-pencil",
+            "authLevels": ["admin"]
         },
         {
             "label": "Eliminar",
-            "icon": "fa-trash"
+            "icon": "fa-trash",
+            "authLevels": ["admin"]
         }
     ],
     "page_size": 10,

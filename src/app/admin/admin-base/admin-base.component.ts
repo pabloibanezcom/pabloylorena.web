@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Component, Input, OnInit, ViewChild  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Options } from 'angular2-notifications';
@@ -14,7 +14,8 @@ export class AdminBaseComponent implements OnInit {
 
   @ViewChild('navbarButton') navbarButton: any;
 
-  public section: String;
+  @Input() section: string;
+
   public notificationOptions: Options;
 
   constructor(
@@ -27,9 +28,15 @@ export class AdminBaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.section = params.section || 'login';
-    });
+    if (!this.section) {
+      this.route.params.subscribe(params => {
+        if (params.section) {
+          this.section = params.section;
+        } else {
+          this.router.navigate(['/admin/overview']);
+        }
+      });
+    }
   }
 
   closeMenu() {

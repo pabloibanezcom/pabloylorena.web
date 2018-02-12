@@ -1,4 +1,5 @@
 {
+    "authLevelProperty": "auth.authLevel",
     "search": {
         "placeholder": "Buscar por nombre",
         "property": "fullName",
@@ -32,16 +33,19 @@
     ],
     "new_element": {
         "label": "Añadir invitado",
-        "icon": "fa-user-plus"
+        "icon": "fa-user-plus",
+        "authLevels": ["admin"]
     },
     "other_actions": [
         {
             "label": "Editar",
-            "icon": "fa-pencil"
+            "icon": "fa-pencil",
+            "authLevels": ["admin"]
         },
         {
             "label": "Eliminar",
-            "icon": "fa-trash"
+            "icon": "fa-trash",
+            "authLevels": ["admin"]
         }
     ],
     "page_size": 10,

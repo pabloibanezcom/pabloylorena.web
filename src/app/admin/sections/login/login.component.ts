@@ -21,17 +21,13 @@ export class LoginComponent {
   login() {
     this.authenticationService.login(environment.api_url + 'login', this.loginObj)
       .then(res => {
-        this.router.navigate(['/admin/invitations']);
+        this.router.navigate(['/admin/overview']);
       })
       .catch(err => {
         if (err.status === 404) {
           this.error = 'Usuario y contraseña no encontrados';
         }
       });
-  }
-
-  someMethod(event: any) {
-    console.log('Pulsa enter');
   }
 
 }

@@ -18,7 +18,7 @@ export class ResponsiveTableComponent implements OnInit, OnChanges {
   sizeCode: string;
   filterParams: ResponsiveTableFilter;
   searchStr: string;
-
+  authLevel: string;
   activeElements: any[];
 
   @Input() config: ResponsiveTableConfig;
@@ -36,6 +36,7 @@ export class ResponsiveTableComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    this.authLevel = this.responsiveTableService.getAuthLevel(this.config.authLevelProperty);
     this.responsiveTableService.setConfig(this.config);
     this.responsiveTableService.setElements(this.elements, this.filterParams);
     this.responsiveTableService.activeElements().subscribe(activeElements => {

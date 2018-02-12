@@ -27,6 +27,11 @@ export class ResponsiveTableService {
     this.pagination$ = new BehaviorSubject(new Pagination);
   }
 
+  getAuthLevel(authLevelProperty: string): string {
+    const treePathArray = authLevelProperty.split('.');
+    return JSON.parse(localStorage.getItem(treePathArray[0]))[treePathArray[1]];
+  }
+
   setConfig(config: ResponsiveTableConfig): void {
     this.tableConfig = config;
   }
