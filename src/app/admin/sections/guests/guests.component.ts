@@ -43,7 +43,6 @@ export class GuestsComponent implements OnInit, OnDestroy {
     );
     this.subscriptions.push(
       this.dataService.get('attending-options').subscribe(data => {
-        this.tableConfig.selects.find(s => s.label === 'Viernes').options = data.options;
         this.tableConfig.selects.find(s => s.label === 'Prevision').options = data.options;
       })
     );
