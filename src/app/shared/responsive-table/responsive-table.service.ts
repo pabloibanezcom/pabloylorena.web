@@ -5,13 +5,9 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { UtilService } from '../services/util.service';
 
 import { Pagination } from './models/pagination';
+import { ActiveElementsResult } from './models/activeElementsResult';
 import { ResponsiveTableConfig } from './models/responsive-table-config';
 import { ResponsiveTableFilter } from './models/responsive-table-filter';
-
-class ActiveElementsResult {
-  filteredElementsLength: number;
-  activeElements: any[];
-}
 
 @Injectable()
 export class ResponsiveTableService {
@@ -28,7 +24,7 @@ export class ResponsiveTableService {
   constructor(
     private util: UtilService
   ) {
-    this.activeElements$ = new BehaviorSubject(new ActiveElementsResult);
+    this.activeElements$ = new BehaviorSubject({ filteredElementsLength: null, activeElements: null});
     this.pagination$ = new BehaviorSubject(new Pagination);
   }
 

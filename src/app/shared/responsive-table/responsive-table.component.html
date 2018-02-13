@@ -40,7 +40,7 @@
                 </li>
               </ul>
             </li>
-            <li class="results-counter"><span>{{filteredElementsLength}}</span></li>
+            <li class="results-counter"><span>{{activeElementsResult.filteredElementsLength}}</span></li>
           </ul>     
           <form class="navbar-form navbar-right">
             <div *ngIf="config.new_element && config.new_element.authLevels && config.new_element.authLevels.includes(authLevel)" class="form-group">
@@ -61,7 +61,7 @@
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let element of activeElements; index as i">
+      <ng-container *ngFor="let element of activeElementsResult.activeElements; index as i">
         <tr [ngClass]="{'footable-even': i % 2 === 0, 'footable-odd': i % 2 ===1, 'selected': selectedElement === element }" (click)="selectedElement = selectedElement === element ? null : element ">
           <td *ngFor="let column of config.columns | filterResponsive: [sizeCode, false]; index as j">
             <ng-container *ngIf="j === 0">

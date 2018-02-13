@@ -1,12 +1,13 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges, HostListener } from '@angular/core';
+
 import { ResponsiveTableConfig } from './models/responsive-table-config';
-import { UtilService } from '../services/util.service';
 import { ResponsiveService } from '../services/responsive.service';
 import { ResponsiveTableService } from './responsive-table.service';
 import { ResponsiveTableFilter } from './models/responsive-table-filter';
-import { DynamicComponentsService } from '../services/dynamic-components.service';
+import { ActiveElementsResult } from './models/activeElementsResult';
 import { AttendingLabelComponent } from '../components/attending-label/attending-label.component';
 import { InjectComponentDirective } from '../directives/inject-component.directive';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-responsive-table',
@@ -19,16 +20,12 @@ export class ResponsiveTableComponent implements OnInit, OnChanges {
   filterParams: ResponsiveTableFilter;
   searchStr: string;
   authLevel: string;
-  filteredElementsLength: number;
-  activeElements: any[];
-
+  activeElementsResult: ActiveElementsResult;
   @Input() config: ResponsiveTableConfig;
   @Input() elements: any[];
   @Input() components: any;
 
   constructor(
-    private dynamicComponentsService: DynamicComponentsService,
-    private util: UtilService,
     private responsiveService: ResponsiveService,
     private responsiveTableService: ResponsiveTableService
   ) {
@@ -41,8 +38,7 @@ export class ResponsiveTableComponent implements OnInit, OnChanges {
     this.responsiveTableService.setConfig(this.config);
     this.responsiveTableService.setElements(this.elements, this.filterParams);
     this.responsiveTableService.activeElements().subscribe(activeElementsResult => {
-      this.filteredElementsLength = activeElementsResult.filteredElementsLength;
-      this.activeElements = activeElementsResult.activeElements;
+      this.activeElementsResult = activeElementsResult;
     });
   }
 
@@ -87,8 +83,6 @@ export class ResponsiveTableComponent implements OnInit, OnChanges {
   }
 
   sortBy(property: string): void {
-    // this.filterParams.sort.direction = this.filterParams.sort.property === property ? false : true;
-    // this.filterParams.sort.property = property;
-    // this.responsiveTableService.filterAndSort(this.filterParams);
+    // TO-DO
   }
 }
