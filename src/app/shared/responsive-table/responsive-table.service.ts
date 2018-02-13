@@ -8,6 +8,11 @@ import { Pagination } from './models/pagination';
 import { ResponsiveTableConfig } from './models/responsive-table-config';
 import { ResponsiveTableFilter } from './models/responsive-table-filter';
 
+class ActiveElementsResult {
+  filteredElementsLength: number;
+  activeElements: any[];
+}
+
 @Injectable()
 export class ResponsiveTableService {
 
@@ -15,15 +20,15 @@ export class ResponsiveTableService {
   private elements: any[];
   private filterParams: ResponsiveTableFilter;
   private filteredElements: any[];
-  private activeElements$: BehaviorSubject<any[]>;
-  private activeElementsObservable$: Observable<any[]>;
+  private activeElements$: BehaviorSubject<ActiveElementsResult>;
+  private activeElementsObservable$: Observable<ActiveElementsResult>;
   private pagination$: BehaviorSubject<Pagination>;
   private paginationObservable$: Observable<Pagination>;
 
   constructor(
     private util: UtilService
   ) {
-    this.activeElements$ = new BehaviorSubject([]);
+    this.activeElements$ = new BehaviorSubject(new ActiveElementsResult);
     this.pagination$ = new BehaviorSubject(new Pagination);
   }
 
@@ -41,7 +46,7 @@ export class ResponsiveTableService {
     this.filterAndSort(filterParams, true);
   }
 
-  activeElements(): Observable<any[]> {
+  activeElements(): Observable<ActiveElementsResult> {
     if (!this.activeElementsObservable$) {
       this.activeElementsObservable$ = this.activeElements$.asObservable();
     }
@@ -95,9 +100,12 @@ export class ResponsiveTableService {
     return this.elements;
   }
 
-  private getActiveElementsForPage(page_size, current): any[] {
+  private getActiveElementsForPage(page_size, current): ActiveElementsResult {
     --current;
-    return this.filteredElements.slice(current * page_size, (current + 1) * page_size);
+    return {
+      filteredElementsLength: this.filteredElements.length,
+      activeElements: this.filteredElements.slice(current * page_size, (current + 1) * page_size)
+    };
   }
 
   private generatePagination(filteredElements: any[]): Pagination {

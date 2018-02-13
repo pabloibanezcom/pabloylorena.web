@@ -19,6 +19,7 @@ export class ResponsiveTableComponent implements OnInit, OnChanges {
   filterParams: ResponsiveTableFilter;
   searchStr: string;
   authLevel: string;
+  filteredElementsLength: number;
   activeElements: any[];
 
   @Input() config: ResponsiveTableConfig;
@@ -39,8 +40,9 @@ export class ResponsiveTableComponent implements OnInit, OnChanges {
     this.authLevel = this.responsiveTableService.getAuthLevel(this.config.authLevelProperty);
     this.responsiveTableService.setConfig(this.config);
     this.responsiveTableService.setElements(this.elements, this.filterParams);
-    this.responsiveTableService.activeElements().subscribe(activeElements => {
-      this.activeElements = activeElements;
+    this.responsiveTableService.activeElements().subscribe(activeElementsResult => {
+      this.filteredElementsLength = activeElementsResult.filteredElementsLength;
+      this.activeElements = activeElementsResult.activeElements;
     });
   }
 

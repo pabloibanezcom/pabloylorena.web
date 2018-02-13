@@ -41,13 +41,19 @@ export class GuestsComponent implements OnInit, OnDestroy {
         this.tableConfig.selects.find(s => s.label === 'Genero').options = data.options;
       })
     );
-    this.tableConfig.selects.find(s => s.label === 'Asistencia').options =
-      [{ label: 'Asiste', value: true }, { label: 'No asiste', value: false }];
+    this.subscriptions.push(
+      this.dataService.get('attending-options').subscribe(data => {
+        this.tableConfig.selects.find(s => s.label === 'Viernes').options = data.options;
+        this.tableConfig.selects.find(s => s.label === 'Prevision').options = data.options;
+      })
+    );
+    this.subscriptions.push(
+      this.dataService.get('staying-places').subscribe(data => {
+        this.tableConfig.selects.find(s => s.label === 'Alojamiento').options = data.options;
+      })
+    );
     this.subscriptions['getGroupNames'] = this.adminService.getGroupNames().subscribe(res => {
       this.tableConfig.selects.find(s => s.label === 'Grupo').options = res;
-    });
-    this.subscriptions['getTableNames'] = this.adminService.getTableNames().subscribe(res => {
-      this.tableConfig.selects.find(s => s.label === 'Mesa').options = res;
     });
     this.refreshGuestResult();
   }

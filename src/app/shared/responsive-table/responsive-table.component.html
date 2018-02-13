@@ -40,7 +40,8 @@
                 </li>
               </ul>
             </li>
-          </ul>
+            <li class="results-counter"><span>{{filteredElementsLength}}</span></li>
+          </ul>     
           <form class="navbar-form navbar-right">
             <div *ngIf="config.new_element && config.new_element.authLevels && config.new_element.authLevels.includes(authLevel)" class="form-group">
               <a class="btn btn-sm btn-primary" [ngClass]="{'btn-block': sizeCode === 'xs'}" (click)="config.new_element.click()">

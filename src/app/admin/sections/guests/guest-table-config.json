@@ -19,16 +19,16 @@
             "property_match": "invitation.group._id"
         },
         {
-            "label": "Mesa",
-            "name_property": "number",
-            "value_property": "_id",
-            "property_match": "table._id"
-        },
-        {
-            "label": "Asistencia",
+            "label": "Alojamiento",
             "name_property": "label",
             "value_property": "value",
-            "property_match": "isAttending"
+            "property_match": "stayingPlaceExpectation"
+        },
+        {
+            "label": "Prevision",
+            "name_property": "label",
+            "value_property": "value",
+            "property_match": "isAttendingExpectation"
         }
     ],
     "new_element": {
