@@ -51,7 +51,7 @@
     "page_size": 10,
     "columns": [
         {
-            "header": "Full Name",
+            "header": "Nombre completo",
             "sortBy": "fullName",
             "property": "fullName",
             "responsive": "xs"
@@ -73,14 +73,14 @@
             "responsive": "md"
         },
         {
-            "header": "Invitation",
+            "header": "Invitacion",
             "sortBy": "invitation.alias",
             "property": "invitation.alias",
             "icon": "fa-envelope",
             "responsive": "md"
         },
         {
-            "header": "Group",
+            "header": "Grupo",
             "sortBy": "invitation.group.name",
             "property": "invitation.group.name",
             "icon": "fa-users",
@@ -135,13 +135,13 @@
             "responsive": "md"
         },
         {
-            "header": "Name",
+            "header": "Nombre",
             "sortBy": "name",
             "icon": "fa-user",
             "property": "name"
         },
         {
-            "header": "Table",
+            "header": "Mesa",
             "sortBy": "table.number",
             "property": "table.number",
             "icon": "fa-cutlery",
@@ -168,7 +168,7 @@
             "property": "stayingPlaceExpectation"
         },
         {
-            "header": "Phone",
+            "header": "Movil",
             "sortBy": "phone",
             "icon": "fa-phone",
             "property": "phone"
