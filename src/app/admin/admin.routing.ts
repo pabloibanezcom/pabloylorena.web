@@ -27,7 +27,7 @@ const adminRoutes: Routes = [
         }
     },
     {
-        path: 'invitation/:invitationGuid',
+        path: 'invitation/:invitationId',
         component: InvitationComponent,
         canActivate: [AuthGuard],
         data: {

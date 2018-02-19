@@ -1,17 +1,37 @@
-<div class="invitation">
-  <div class="container text-center">
-    <h3 class="title script">
-      <span class="title-deco-left"></span>
-      <span class="title-text">Pablo y Lorena</span>
-      <span class="title-deco-right"></span>
-    </h3>
-    <div class="body">
-      
+<div class="invitation admin">
+  <div class="container text-center" id="print-section">
+    <div class="right-side">
+      <div class="body">
+        <p align="center">
+          Queridos papa y mama
+        </p>
+        <p align="center">
+          Después de seis años juntos en los que no hemos podido ser más felices, finalmente ¡nos casamos!
+        </p>
+        <p align="center">
+          Porque formas parte de nuestras vidas y nuestra historia, nos gustaría tenerte cerca en nuestro gran día, el sábado <b>21 de
+          Julio a las 18.00h</b> en la Iglesia San Andrés Apóstol de Navalmoral de la Mata.
+        </p>
+        <p align="center">
+          A continuación, lo celebraremos en el Hotel Rural Ruta Imperial de Jarandilla de la Vera.
+        </p>
+        <p>
+          ¡Os esperamos!
+        </p>
+      </div>
+      <h3 class="title script">
+          <!-- <span class="title-deco-left"></span> -->
+          <span class="title-text">Pablo y Lorena</span>
+          <!-- <span class="title-deco-right"></span> -->
+        </h3>
     </div>
-    <div class="link" *ngIf="invitation">
-      <qr-code [value]="url" [size]="100" [foreground]="'#f4af9c'"></qr-code>
-      <div class="link-url">wwww.pabloylorena.com/{{invitation.guid}}</div>
+    <div class="left-side">
+        <div class="link" *ngIf="invitation">
+            <qr-code [value]="url" [size]="60" [foreground]="'#f4af9c'"></qr-code>
+            <div class="link-url">wwww.pabloylorena.com/{{invitation.guid}}</div>
+          </div>
     </div>
   </div>
-
+  <button (click)="print()" class="btn btn-sm btn-primary print-button doNotPrint">
+    <i class="fa fa-print"></i>Imprimir</button>
 </div>

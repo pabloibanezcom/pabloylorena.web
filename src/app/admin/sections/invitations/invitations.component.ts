@@ -52,7 +52,7 @@ export class InvitationsComponent implements OnInit, OnDestroy {
   }
 
   viewInvitation(invitation: Invitation) {
-    window.open('admin/invitation/' + invitation.guid);
+    window.open('admin/invitation/' + invitation._id);
   }
 
   addInvitation() {

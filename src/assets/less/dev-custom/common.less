@@ -6,6 +6,23 @@
     padding-right: 0 !important;
 }
 
-.btn, a.btn {
+.btn,
+a.btn {
     .border-radius(4px);
+}
+
+@media print {
+    .doNotPrint {
+        display: none !important; 
+    }
+    .admin {
+      margin-top: 0!important;
+    }
+}
+
+@page {
+    /* dimensions for the whole page */
+    // size: A5;
+    
+    margin: 0;
 }

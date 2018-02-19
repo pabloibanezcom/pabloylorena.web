@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -23,11 +23,13 @@ import { DirectionModalComponent } from './sections/wedding/direction-modal/dire
 import { AccommodationComponent } from './sections/accommodation/accommodation.component';
 import { HotelBoxComponent } from './sections/accommodation/hotel-box/hotel-box.component';
 import { RsvpModalComponent } from './modals/rsvp-modal/rsvp-modal.component';
+import { GalleryComponent } from './sections/gallery/gallery.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     PublicRouting,
     SharedModule,
     Ng2SmartFormsModule
@@ -43,7 +45,8 @@ import { RsvpModalComponent } from './modals/rsvp-modal/rsvp-modal.component';
     DirectionModalComponent,
     AccommodationComponent,
     HotelBoxComponent,
-    RsvpModalComponent
+    RsvpModalComponent,
+    GalleryComponent
   ],
   providers: [
     TemplateService,

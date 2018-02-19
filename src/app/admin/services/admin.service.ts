@@ -63,6 +63,10 @@ export class AdminService {
 
   // -------- INVITATION ----------
 
+  getInvitation(invitationId: string) {
+    return this.http.get('invitation/' + invitationId);
+  }
+
   createInvitation(newInvitation: Invitation) {
     return this.http.postWithResponse('invitation/add', newInvitation);
   }

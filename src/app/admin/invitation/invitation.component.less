@@ -1,9 +1,16 @@
+@page {
+    /* dimensions for the whole page */
+    size: A5;
+    
+    margin: 0;
+    background-color: purple!important;
+}
 .invitation {
     .container {
-        width: 730px;
-        height: 660px;
-        margin-top: 50px;
-        padding: 20px 30px;
+        width: 210mm;
+        height: 148mm;
+        margin-top: 0!important;
+        padding: 80px 30px 70px 30px;
         border: 3px solid #f4af9c;
 
         .body {
@@ -11,11 +18,35 @@
         }
 
         .link {
+            position: relative;
+            margin-top: 300px;
+            margin-left: 20px;
             .link-url {
                 font-style: italic;
                 margin-top: 10px;
                 color: grey;
             }
         }
+
+        .right-side {
+            // background-color: #eceaea;
+            float: right;
+            width: 105mm;
+            .title {
+                margin-top: 50px;
+                .title-text {
+                    font-size: 38px;
+                }
+            }
+        }
+        .left-side {
+            float: left;
+        }
+    }
+    .print-button {
+        position: absolute;
+        width: 160px;
+        top: 100px;
+        right: 160px;
     }
 }
