@@ -5,6 +5,16 @@
       <span class="title-text">Resumen</span>
       <span class="title-deco-right"></span>
     </h3>
+    <div class="row" *ngIf="result">
+      <div class="col-xs-12 col-sm-6">
+        <app-overview-panel [title]="'Cena viernes'" [data]="result.isAttendingFriday"></app-overview-panel>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <app-overview-panel [title]="'Prevision boda'" [data]="result.isAttendingExpectation"></app-overview-panel>
+      </div>
+      <div class="col-xs-12 col-sm-12">
+        <app-overview-panel [title]="'Boda'" [data]="result.isAttending"></app-overview-panel>
+      </div>
+    </div>
   </div>
 </div>
-

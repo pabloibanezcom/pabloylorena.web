@@ -6,6 +6,7 @@ import { Group } from '../../shared/models/group';
 import { Table } from '../../shared/models/table';
 import { Invitation } from '../../shared/models/invitation';
 import { Guest } from '../../shared/models/guest';
+import { OverviewResult } from '../models/overviewResult';
 import { CollectionsResult } from '../models/collectionsResult';
 import { InvitationsResult } from '../models/invitationsResult';
 import { GroupsResult } from '../models/groupsResult';
@@ -30,6 +31,10 @@ export class AdminService {
 
   getTableNames(): Observable<Table[]> {
     return this.search('tableNames');
+  }
+
+  getOverviewResult(): Observable<OverviewResult> {
+    return this.http.get('overview/report');
   }
 
   getInvitationsResult(): Observable<InvitationsResult> {

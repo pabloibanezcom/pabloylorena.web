@@ -1,0 +1,33 @@
+<div class="overview-panel">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{title}}</h3>
+    </div>
+    <div class="panel-body">
+      <div style="display: block">
+        <div class="status-options">
+            <span class="label label-default" (click)="changeState('yes')" [ngClass]="{'label-success': selectedState.name === 'yes'}">Si</span>
+            <span class="label label-default" (click)="changeState('doubtful')" [ngClass]="{'label-warning': selectedState.name === 'doubtful'}">Dudoso</span>
+            <span class="label label-default" (click)="changeState('no')" [ngClass]="{'label-danger': selectedState.name === 'no'}">No</span>
+        </div>
+        <select *ngIf="compareByOptions" class="form-control" [ngModel]="selectedCompareByOption" (ngModelChange)="onChange($event)">
+          <option *ngFor="let option of compareByOptions" [ngValue]="option">{{option.select_label}}</option>
+        </select>
+        <canvas baseChart #baseChart="base-chart" [data]="chartData.data" [labels]="chartData.labels" [chartType]="chartData.type"
+          [colors]="chartData.colors" [options]="chartData.options"></canvas>
+        <div class="legend">
+          <div class="legent-total">
+            <span>Total</span>
+            <span class="value">{{total}}</span>
+          </div>
+          <ng-container *ngFor="let element of chartData.data; let i = index">
+            <div *ngIf="element > 0">
+              <span>{{chartData.labels[i]}}</span>
+              <span class="value" [style.color]="chartData.colors[0].backgroundColor[i]">{{element}}</span>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

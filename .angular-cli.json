@@ -27,6 +27,7 @@
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/chart.js/dist/chart.min.js",
         "../src/assets/plugins/bootstrap/js/bootstrap.min.js",
         "../src/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js",
         "../src/assets/plugins/back-to-top.js",

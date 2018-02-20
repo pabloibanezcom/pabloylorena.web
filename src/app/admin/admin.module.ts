@@ -6,6 +6,7 @@ import { AdminBaseComponent } from './admin-base/admin-base.component';
 
 import { SimpleNotificationsModule, NotificationsService } from 'angular2-notifications';
 import { QRCodeModule } from 'angular2-qrcode';
+import { ChartsModule } from 'ng2-charts';
 import { AuthenticationService, AuthGuard } from 'ng2-smart-auth';
 import { Ng2SmartFormsModule } from 'ng2-smart-forms';
 import { DynamicComponentsService } from 'ng2-smart-common';
@@ -29,6 +30,7 @@ import { GroupsComponent } from './sections/groups/groups.component';
 import { GroupModalComponent } from './modals/group-modal/group-modal.component';
 import { OverviewComponent } from './sections/overview/overview.component';
 import { LoginContainerComponent } from './login-container/login-container.component';
+import { OverviewPanelComponent } from './sections/overview/overview-panel/overview-panel.component';
 
 @NgModule({
   imports: [
@@ -39,6 +41,7 @@ import { LoginContainerComponent } from './login-container/login-container.compo
     SharedModule,
     SimpleNotificationsModule,
     QRCodeModule,
+    ChartsModule,
     Ng2SmartFormsModule
   ],
   declarations: [
@@ -54,7 +57,8 @@ import { LoginContainerComponent } from './login-container/login-container.compo
     GroupsComponent,
     GroupModalComponent,
     OverviewComponent,
-    LoginContainerComponent
+    LoginContainerComponent,
+    OverviewPanelComponent
   ],
   providers: [
     NotificationsService,
