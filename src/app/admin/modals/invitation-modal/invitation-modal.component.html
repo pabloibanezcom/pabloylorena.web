@@ -35,6 +35,20 @@
             <!-- ADDRESS -->
             <smart-form-text [class]="'col-xs-12 col-sm-8'" [label]="'Direccion'" [(model)]="modalInvitation.address"></smart-form-text>
           </div>
+          <div class="row">
+            <!-- INVITATION DEDICATION -->
+            <div class="form-text form-group col-xs-12 col-sm-12">
+              <div class="form-group-inner">
+                <label for="dedication">Dedicatoria</label>
+                <div class="btn-group btn-group-xs dedication-group" role="group">
+                  <a class="btn btn-default" [ngClass]="{'active': dedicationMode === 'default'}" (click)="setDedication('default')">Generica</a>
+                  <a class="btn btn-default" [ngClass]="{'active': dedicationMode === 'group'}" (click)="setDedication('group')">Grupo</a>
+                  <a class="btn btn-default" [ngClass]="{'active': dedicationMode === 'customized'}" (click)="setDedication('customized')">Propia</a>
+                </div>
+                <div class="text-editor" [froalaEditor]="editorOptions" [(froalaModel)]="dedication"></div>
+              </div>
+            </div>
+          </div>
           <div class="row form-buttons">
             <div class="col-xs-12 col-sm-6">
               <button type="submit" class="btn btn-block btn-primary">{{invitation && invitation.alias != null ? 'Editar invitacion' : 'Añadir invitacion' }}</button>

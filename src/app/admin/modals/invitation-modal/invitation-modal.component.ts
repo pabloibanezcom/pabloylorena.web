@@ -7,6 +7,7 @@ import { NotificationService } from '../../services/notification.service';
 import { Group } from '../../../shared/models/group';
 import { Invitation } from '../../../shared/models/invitation';
 import { Guest } from '../../../shared/models/guest';
+import { DataService } from '../../../shared/services/data.service';
 
 @Component({
   selector: 'app-invitation-modal',
@@ -22,17 +23,34 @@ export class InvitationModalComponent implements OnInit, OnChanges, OnDestroy {
   groups: Group[];
   modalInvitation: Invitation;
   subscriptions: Subscription[];
+  editorOptions: any;
+  dedicationMode: string;
+  dedication: string;
+  defaultDedication: string;
 
   constructor(
     private adminService: AdminService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private dataService: DataService
   ) {
     this.subscriptions = [];
   }
 
   ngOnInit() {
+    this.editorOptions = {
+      placeholderText: 'Escribe la dedicatoria aquí',
+      toolbarButtons: ['bold', 'italic', 'underline'],
+      toolbarButtonsXS: ['bold', 'italic', 'underline'],
+      toolbarButtonsSM: ['bold', 'italic', 'underline'],
+      toolbarButtonsMD: ['bold', 'italic', 'underline']
+    };
     this.setModalInvitation(this.invitation);
     this.refreshGroups();
+    this.subscriptions.push(
+      this.dataService.get('default-dedication').subscribe(data => {
+        this.defaultDedication = data.htmlText;
+      })
+    );
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -55,11 +73,13 @@ export class InvitationModalComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   addInvitation() {
+    this.applyCustomizedDedication();
     this.subscriptions['addInvitation'] = this.adminService.createInvitation(this.modalInvitation)
       .subscribe(res => this.afterSubscribe(res));
   }
 
   updateInvitation() {
+    this.applyCustomizedDedication();
     this.subscriptions['editInvitation'] = this.adminService.updateInvitation(this.modalInvitation)
       .subscribe(res => this.afterSubscribe(res));
   }
@@ -72,6 +92,22 @@ export class InvitationModalComponent implements OnInit, OnChanges, OnDestroy {
   cancel() {
     this.setModalInvitation(this.invitation);
     this.ending.emit({ refreshData: false });
+  }
+
+  setDedication(dedicationMode: string) {
+    this.dedicationMode = dedicationMode;
+    if (this.dedicationMode === 'default') {
+      this.modalInvitation.useGroupDedication = false;
+      this.dedication = this.defaultDedication;
+    }
+    if (this.dedicationMode === 'group') {
+      this.modalInvitation.useGroupDedication = true;
+      this.dedication = this.modalInvitation.group.invitationDedication;
+    }
+    if (this.dedicationMode === 'customized') {
+      this.modalInvitation.useGroupDedication = false;
+      this.dedication = this.modalInvitation.dedication;
+    }
   }
 
   private afterSubscribe(res: Response) {
@@ -97,12 +133,27 @@ export class InvitationModalComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       this.modalInvitation = new Invitation();
     }
+    if ((!this.modalInvitation.dedication || this.modalInvitation.dedication !== '') && !this.modalInvitation.useGroupDedication) {
+      this.setDedication('default');
+    }
+    if (this.modalInvitation.useGroupDedication) {
+      this.setDedication('group');
+    }
+    if (this.modalInvitation.dedication) {
+      this.setDedication('customized');
+    }
   }
 
   private refreshGroups(): void {
     this.subscriptions['groups'] = this.adminService.getGroupNames().subscribe(res => {
       this.groups = res;
     });
+  }
+
+  private applyCustomizedDedication() {
+    if (this.dedicationMode === 'customized') {
+      this.modalInvitation.dedication = this.dedication;
+    }
   }
 
 }

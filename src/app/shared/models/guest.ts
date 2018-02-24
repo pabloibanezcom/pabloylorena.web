@@ -2,23 +2,23 @@ import { Invitation } from './invitation';
 import { Table } from './table';
 
 export class Guest {
-    _id: String;
+    _id: string;
     invitation: Invitation;
     table: Table;
-    name: String;
-    fullName: String;
+    name: string;
+    fullName: string;
     type: number;
-    email: String;
-    phone: String;
+    email: string;
+    phone: string;
     sendSms: Boolean;
-    allergies: String;
+    allergies: string;
     additionalComments: string;
-    busTime: String;
+    busTime: string;
     isAttending: Boolean;
     isAttendingExpectation: Boolean;
     isAttendingFriday: Boolean;
-    stayingPlace: String;
-    stayingPlaceExpectation: String;
+    stayingPlace: string;
+    stayingPlaceExpectation: string;
     giftAmount: number;
     lastModified: Date;
 }

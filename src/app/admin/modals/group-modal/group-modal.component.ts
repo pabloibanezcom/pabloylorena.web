@@ -21,6 +21,7 @@ export class GroupModalComponent implements OnInit, OnChanges, OnDestroy {
   modalGroup: Group;
   subscriptions: Subscription[];
   hosts: any[];
+  editorOptions: any;
 
   constructor(
     private adminService: AdminService,
@@ -28,6 +29,13 @@ export class GroupModalComponent implements OnInit, OnChanges, OnDestroy {
     private dataService: DataService
   ) {
     this.subscriptions = [];
+    this.editorOptions = {
+      placeholderText: 'Escribe la dedicatoria aquí',
+      toolbarButtons: ['bold', 'italic', 'underline'],
+      toolbarButtonsXS: ['bold', 'italic', 'underline'],
+      toolbarButtonsSM: ['bold', 'italic', 'underline'],
+      toolbarButtonsMD: ['bold', 'italic', 'underline']
+    };
   }
 
   ngOnInit() {

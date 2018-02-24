@@ -6,6 +6,7 @@ import { AdminBaseComponent } from './admin-base/admin-base.component';
 
 import { SimpleNotificationsModule, NotificationsService } from 'angular2-notifications';
 import { QRCodeModule } from 'angular2-qrcode';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 // import { ChartsModule } from 'ng2-charts';
 import { AuthenticationService, AuthGuard } from 'ng2-smart-auth';
 import { Ng2SmartFormsModule } from 'ng2-smart-forms';
@@ -41,6 +42,8 @@ import { OverviewComponent } from './sections/overview/overview.component';
     SharedModule,
     SimpleNotificationsModule,
     QRCodeModule,
+    FroalaEditorModule.forRoot(), 
+    FroalaViewModule.forRoot(),
     // ChartsModule,
     Ng2SmartFormsModule
   ],

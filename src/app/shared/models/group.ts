@@ -1,11 +1,12 @@
 import { Invitation } from './invitation';
 
 export class Group {
-    _id: String;
-    name: String;
-    host: String;
+    _id: string;
+    name: string;
+    host: string;
     order: number;
     lastModified: Date;
+    invitationDedication: string;
     invitations: Invitation[];
     guestsAmount: number;
 }

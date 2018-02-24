@@ -15,6 +15,14 @@
             <!-- ORDER -->
             <smart-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Order'" [(model)]="modalGroup.order"></smart-form-text>
 
+            <!-- INVITATION DEDICATION -->
+            <div class="form-text form-group col-xs-12 col-sm-12">
+              <div class="form-group-inner">
+                <label for="dedication">Dedicatoria</label>
+                <div class="text-editor" [froalaEditor]="editorOptions" [(froalaModel)]="modalGroup.invitationDedication"></div>
+              </div>
+            </div>
+            
           </div>
           <div class="row form-buttons">
             <div class="col-xs-12 col-sm-6">

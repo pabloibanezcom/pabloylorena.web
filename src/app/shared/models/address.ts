@@ -1,8 +1,8 @@
 export interface Address {
-    line1: String;
-    line2: String;
-    line3: String;
-    postalCode: String;
-    town: String;
-    country: String;
+    line1: string;
+    line2: string;
+    line3: string;
+    postalCode: string;
+    town: string;
+    country: string;
 }

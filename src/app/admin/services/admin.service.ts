@@ -88,6 +88,10 @@ export class AdminService {
 
   // -------- GROUP ----------
 
+  getGroup(groupId: string) {
+    return this.http.get('group/' + groupId);
+  }
+
   createGroup(newGroup: Group) {
     return this.http.postWithResponse('group/add', newGroup);
   }

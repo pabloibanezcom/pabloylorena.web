@@ -21,6 +21,8 @@
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/animate.css/animate.min.css",
+        "../node_modules/froala-editor/css/froala_editor.pkgd.min.css",
+        "../node_modules/froala-editor/css/froala_style.min.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "../src/assets/plugins/love-icons/style.css",
         "styles.less"
@@ -34,7 +36,8 @@
         "../src/assets/plugins/jquery-inview/jquery.inview.min.js",
         "../src/assets/plugins/jquery-validation/dist/jquery.validate.min.js",
         "../src/assets/plugins/isMobile/isMobile.min.js",
-        "../src/assets/js/form-mobile-fix.js"
+        "../src/assets/js/form-mobile-fix.js",
+        "../node_modules/froala-editor/js/froala_editor.pkgd.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
