@@ -8,10 +8,13 @@
           <div class="row text-left">
 
             <!-- ALIAS -->
-            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Alias'" [(model)]="modalInvitation.alias"></smart-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-5'" [label]="'Alias'" [(model)]="modalInvitation.alias"></smart-form-text>
 
-            <!-- GUID -->
-            <smart-form-span [class]="'col-xs-12 col-sm-6'" [label]="'GUID'" [model]="modalInvitation.guid"></smart-form-span>
+            <!-- DEAR -->
+            <smart-form-text [class]="'col-xs-12 col-sm-5'" [label]="'Querido...'" [(model)]="modalInvitation.dear"></smart-form-text>
+
+            <!-- IS PLURAL -->
+            <smart-form-select [class]="'col-xs-12 col-sm-2'" [label]="'Plural'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalInvitation.isPlural"></smart-form-select>
 
           </div>
           <div class="row text-left">

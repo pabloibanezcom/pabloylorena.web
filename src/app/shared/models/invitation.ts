@@ -10,6 +10,8 @@ export class Invitation {
     address: Address;
     isSent: boolean;
     isReplied: boolean;
+    dear: string;
+    isPlural: boolean;
     dedication: string;
     useGroupDedication: boolean;
     guests: Guest[];

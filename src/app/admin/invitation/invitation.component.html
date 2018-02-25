@@ -3,14 +3,14 @@
     <div class="right-side">
       <div class="body">
         <p>
-          Queridos papa y mama
+          {{invitation.dear}}
         </p>
         <div [innerHTML]="dedication"></div>
         <p>
           A continuación, lo celebraremos en el Hotel Rural Ruta Imperial de Jarandilla de la Vera.
         </p>
         <p>
-          ¡Os esperamos!
+          {{invitation.isPlural ? '¡Os esperamos!' : '¡Te esperamos!'}}
         </p>
       </div>
       <h3 class="title script">
