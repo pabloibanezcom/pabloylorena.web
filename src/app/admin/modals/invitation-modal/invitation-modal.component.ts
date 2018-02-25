@@ -95,17 +95,15 @@ export class InvitationModalComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   setDedication(dedicationMode: string) {
-    this.dedicationMode = dedicationMode;
+    this.dedicationMode = dedicationMode ? dedicationMode : 'default';
+    this.modalInvitation.dedicationMode = this.dedicationMode;
     if (this.dedicationMode === 'default') {
-      this.modalInvitation.useGroupDedication = false;
       this.dedication = this.defaultDedication;
     }
     if (this.dedicationMode === 'group') {
-      this.modalInvitation.useGroupDedication = true;
       this.dedication = this.modalInvitation.group.invitationDedication;
     }
     if (this.dedicationMode === 'customized') {
-      this.modalInvitation.useGroupDedication = false;
       this.dedication = this.modalInvitation.dedication;
     }
   }
@@ -133,15 +131,7 @@ export class InvitationModalComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       this.modalInvitation = new Invitation();
     }
-    if ((!this.modalInvitation.dedication || this.modalInvitation.dedication !== '') && !this.modalInvitation.useGroupDedication) {
-      this.setDedication('default');
-    }
-    if (this.modalInvitation.useGroupDedication) {
-      this.setDedication('group');
-    }
-    if (this.modalInvitation.dedication) {
-      this.setDedication('customized');
-    }
+    this.setDedication(this.modalInvitation.dedicationMode);
   }
 
   private refreshGroups(): void {

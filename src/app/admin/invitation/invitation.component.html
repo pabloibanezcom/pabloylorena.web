@@ -22,6 +22,7 @@
     <div class="left-side">
         <div class="link" *ngIf="invitation">
             <qr-code [value]="url" [size]="60" [foreground]="'#f4af9c'"></qr-code>
+            <div class="rsvp-text">Por favor, confirmar asistencia en</div>
             <div class="link-url">wwww.pabloylorena.com/{{invitation.guid}}</div>
           </div>
     </div>

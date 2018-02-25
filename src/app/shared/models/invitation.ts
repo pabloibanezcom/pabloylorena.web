@@ -13,7 +13,7 @@ export class Invitation {
     dear: string;
     isPlural: boolean;
     dedication: string;
-    useGroupDedication: boolean;
+    dedicationMode: string;
     guests: Guest[];
     group: Group;
     lastModified: Date;

@@ -54,15 +54,15 @@ export class InvitationComponent implements OnInit, OnDestroy {
   }
 
   private setDedication() {
-    if ((!this.invitation.dedication || this.invitation.dedication !== '') && !this.invitation.useGroupDedication) {
+    if (this.invitation.dedicationMode === 'default') {
       this.dedication = this.defaultDedication;
     }
-    if (this.invitation.useGroupDedication) {
+    if (this.invitation.dedicationMode === 'group') {
       this.subscriptions.push(this.adminService.getGroup(String(this.invitation.group)).subscribe(res => {
         this.dedication = res.invitationDedication;
       }));
     }
-    if (this.invitation.dedication) {
+    if (this.invitation.dedicationMode === 'customized') {
       this.dedication = this.invitation.dedication;
     }
   }
