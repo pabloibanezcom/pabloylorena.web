@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as hotels from './hotels.json';
 
 @Component({
   selector: 'app-accommodation',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccommodationComponent implements OnInit {
 
+  public hotels: any;
+
   constructor() { }
 
   ngOnInit() {
+    this.hotels = hotels;
   }
 
 }

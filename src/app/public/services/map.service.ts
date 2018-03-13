@@ -11,6 +11,7 @@ export class MapService {
     return new google.maps.Map(document.getElementById(selector), {
       center: options.center,
       zoom: options.zoom,
+      fullscreenControl: false,
       streetViewControl: false,
       zoomControl: true,
       mapTypeControl: false,

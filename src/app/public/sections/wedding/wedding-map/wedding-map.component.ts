@@ -17,8 +17,8 @@ export class WeddingMapComponent implements OnInit {
 
   ngOnInit() {
     this.mapOptions = {
-      zoom: 10,
-      center: new google.maps.LatLng(39.9923744, -5.6430674),
+      zoom: 9,
+      center: new google.maps.LatLng(40.15, -5),
       minZoom: 9,
       maxZoom: 17
     };

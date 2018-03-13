@@ -1,14 +1,20 @@
-<div class="ceremony-col col-xs-12 col-sm-4 animated bounceIn">
+<div class="hotel-box animated bounceIn">
   <div class="col-inner">
-    <h4 class="subtitle">Ceremonia</h4>
-    <p class="intro">Tendra lugar en la iglesia de San Andrés en Navalmoral de la Mata. </p>
-    <ul class="meta-list list-unstyled text-left center-block">
-      <li><span class="icon-calendar love-icon"></span>Sábado - 21 Julio 2018</li>
-      <li><span class="icon-clock love-icon"></span>18:30 - 20:00</li>
-      <li><span class="icon-map love-icon"></span>Parroquia de San Andrés Apóstol
-        <br>
-        <span class="direction-info display-block list-link"><a href="#" data-toggle="modal" data-target="#direction-modal">Cómo llegar</a></span>
-      </li>
-    </ul>
+    <h4 class="subtitle hotel-name">{{hotel.name}}</h4>
+    <div class="image-container">
+      <img src="{{hotel.image}}" />
+    </div>
+    <div class="info-container">
+      <ul class="meta-list list-unstyled text-left center-block">
+        <li class="bold">
+          <i class="fa fa-star"></i>{{hotel.stars}}</li>
+        <li class="bold">
+          <i class="fa fa-thumbs-up"></i>{{hotel.rate}}</li>
+        <li>
+          <a class="btn btn-sm btn-primary" type="button" href="{{hotel.url}}" target="blank">
+            <i class="fa fa-desktop"></i> Ver disponibilidad</a></li>
+      </ul>
+    </div>
+    <div class="clearfix"></div>
   </div>
 </div>

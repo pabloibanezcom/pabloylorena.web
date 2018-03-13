@@ -5,4 +5,5 @@ export interface MapOptions {
     center: google.maps.LatLng;
     minZoom: number;
     maxZoom: number;
+
 }

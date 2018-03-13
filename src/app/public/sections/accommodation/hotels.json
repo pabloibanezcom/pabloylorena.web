@@ -1,0 +1,48 @@
+{
+  "navalmoral": [
+    {
+      "name": "Hotel los Granados",
+      "stars": 3,
+      "url": "https://www.booking.com/hotel/es/los-granados-restaurante.es.html",
+      "rate": 7.8,
+      "image": "https://s-ec.bstatic.com/xdata/images/hotel/square600/5926244.jpg"
+    },
+    {
+      "name": "Hostal La Bamba",
+      "stars": "*",
+      "url": "http://hostallabamba.com/",
+      "rate": "*",
+      "image": "http://www.tauroweb.es/img-agenda/hoteles/hostalbamba_navalmoraldelamata.jpg"
+    }
+  ],
+  "jarandilla": [
+    {
+      "name": "Parador Jarandilla de la Vera",
+      "stars": 4,
+      "url": "https://www.booking.com/hotel/es/parador-de-turismo-de-jarandilla-de-la-vera.es.html",
+      "rate": 8.5,
+      "image": "https://s-ec.bstatic.com/xdata/images/hotel/square600/41890591.jpg"
+    },
+    {
+      "name": "Mirador de La Portilla",
+      "stars": 4,
+      "url": "https://www.booking.com/hotel/es/mirador-de-la-portilla.es.html",
+      "rate": 8.9,
+      "image": "https://t-ec.bstatic.com/xdata/images/hotel/square600/48543223.jpg"
+    },
+    {
+      "name": "La Posada de los Sentidos",
+      "stars": "*",
+      "url": "https://www.booking.com/hotel/es/la-posada-de-los-sentidos-jarandilla-de-la-vera.es.html",
+      "rate": 8.9,
+      "image": "https://s-ec.bstatic.com/xdata/images/hotel/square600/115560292.jpg"
+    },
+    {
+      "name": "Hotel El Descanso del Emperador",
+      "stars": 2,
+      "url": "https://www.booking.com/hotel/es/el-descanso-del-emperador.es.html",
+      "rate": 8.8,
+      "image": "https://t-ec.bstatic.com/xdata/images/hotel/square600/20357116.jpg"
+    }
+  ]
+}
