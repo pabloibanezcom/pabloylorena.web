@@ -9,7 +9,7 @@
             <span class="title-text">Te esperamos</span>
             <span class="title-deco-right"></span>
           </span>
-          <span class="subtitle display-block">En este dia tan especial para nosotros nos hace mucha ilusion tu compania
+          <span class="subtitle display-block">En este día tan especial para nosotros nos hace mucha ilusion tu compañía
             <br> Por favor confirmar asistencia antes del 1 de Junio de 2018</span>
         </h2>
 
@@ -31,7 +31,7 @@
 
           <div class="row text-left">
             <!-- NAME -->
-            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Nombre'" ></smart-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Nombre'" [(model)]="selectedGuest.name"></smart-form-text>
             <!-- TYPE -->
             <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Genero'" [emptyOption]="true" [options]="types" [(model)]="selectedGuest.type"></smart-form-select>
           </div>
@@ -54,6 +54,11 @@
           <div class="row text-left">
             <!-- ALLERGIES -->
             <smart-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Alergias'" [(model)]="selectedGuest.allergies"></smart-form-text>
+          </div>
+
+          <div class="row text-left">
+            <!-- ADDITIONAL COMMENTS -->
+            <smart-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Comentarios'" [(model)]="selectedGuest.additionalComments"></smart-form-text>
           </div>
 
           <div class="row form-buttons">

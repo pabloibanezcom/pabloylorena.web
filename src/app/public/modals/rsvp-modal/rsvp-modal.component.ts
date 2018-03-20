@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 
 import { Invitation } from '../../../shared/models/invitation';
@@ -16,7 +15,6 @@ export class RsvpModalComponent implements OnInit, OnDestroy {
   @Input() editMode: boolean;
   @Input() invitation: Invitation;
 
-  rsvpForm: FormGroup;
   subscriptions: Subscription[];
   selectedGuest: Guest;
   types: any[];
@@ -29,16 +27,6 @@ export class RsvpModalComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.rsvpForm = new FormGroup({
-      'name': new FormControl(null),
-      'type': new FormControl(null),
-      'email': new FormControl(null),
-      'phone': new FormControl(null),
-      'isAttending': new FormControl(null),
-      'stayingPlace': new FormControl(null),
-      'allergies': new FormControl(null)
-    });
-
     this.subscriptions.push(
       this.dataService.get('types').subscribe(data => {
         this.types = data.options;
@@ -58,7 +46,7 @@ export class RsvpModalComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     if (this.editMode) {
-      console.log('Edit');
+      console.log('Edit', this.invitation);
     } else {
       console.log('New');
     }

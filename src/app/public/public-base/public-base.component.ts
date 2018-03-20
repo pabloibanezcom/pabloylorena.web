@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { TemplateService } from '../services/template.service';
 import { InvitationService } from '../services/invitation.service';
 import { Invitation } from '../../shared/models/invitation';
+import { AnalyticsService } from '../services/analytics.service';
 
 @Component({
   selector: 'app-public-base',
@@ -22,7 +23,8 @@ export class PublicBaseComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private templateService: TemplateService,
-    private invitationService: InvitationService
+    private invitationService: InvitationService,
+    private analyticsService: AnalyticsService
   ) { }
 
   ngOnInit() {
@@ -31,6 +33,7 @@ export class PublicBaseComponent implements OnInit, OnDestroy {
         this.invitationService.getInvitationByGuid(params.invitationGuid).subscribe(res => {
           this.invitation = res;
           this.editMode = true;
+          this.analyticsService.trackStart(this.invitation);
         });
       } else {
         this.invitation = new Invitation();
@@ -42,6 +45,10 @@ export class PublicBaseComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  rsvpOpened() {
+    this.analyticsService.trackAttendanceOpened(this.invitation);
   }
 
 }

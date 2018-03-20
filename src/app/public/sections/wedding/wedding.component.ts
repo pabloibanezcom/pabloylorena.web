@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Invitation } from '../../../shared/models/invitation';
+import { AnalyticsService } from '../../services/analytics.service';
 
 @Component({
   selector: 'app-wedding',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeddingComponent implements OnInit {
 
-  constructor() { }
+  @Input() invitation: Invitation;
+
+  constructor(private analyticsService: AnalyticsService) { }
 
   ngOnInit() {
+  }
+
+  rsvpOpened() {
+    this.analyticsService.trackAttendanceOpened(this.invitation);
   }
 
 }

@@ -11,6 +11,7 @@ import { PublicRouting } from './public.routing';
 import { TemplateService } from './services/template.service';
 import { MapService } from './services/map.service';
 import { InvitationService } from './services/invitation.service';
+import { AnalyticsService } from './services/analytics.service';
 
 import { PublicBaseComponent } from './public-base/public-base.component';
 import { WeddingComponent } from './sections/wedding/wedding.component';
@@ -51,7 +52,8 @@ import { GalleryComponent } from './sections/gallery/gallery.component';
   providers: [
     TemplateService,
     MapService,
-    InvitationService
+    InvitationService,
+    AnalyticsService
   ],
 })
 export class PublicModule { }
