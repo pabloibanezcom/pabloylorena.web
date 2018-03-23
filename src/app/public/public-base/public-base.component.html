@@ -71,18 +71,11 @@
 
   <app-gallery></app-gallery>
 
-  <section id="comments" class="comments-section section">
-    <div class="container text-center">
-
-      <div class="comments-container center-block">
-        <h3 class="title">Feel free to leave a comment!</h3>
-      </div>
-    </div>
-  </section>
+  <!-- <app-gift></app-gift> -->
 
   <app-footer></app-footer>
 
-  <app-rsvp-modal *ngIf="invitation" [editMode]="editMode" [invitation]="invitation"></app-rsvp-modal>
+  <app-rsvp-modal *ngIf="invitation" [invitation]="invitation"></app-rsvp-modal>
 
   <app-direction-modal></app-direction-modal>
 

@@ -27,8 +27,12 @@ export class AnalyticsService {
     this.trackEvent(this.getDescriptionFromInvitation(invitation), 'Attendance opened');
   }
 
+  trackAttendanceCompleted(invitation: Invitation) {
+    this.trackEvent(this.getDescriptionFromInvitation(invitation), 'Attendance completed');
+  }
+
   private getDescriptionFromInvitation(invitation: Invitation) {
-    return invitation.alias + ' (' + invitation.guid + ')';
+    return invitation && invitation.alias ? invitation.alias + ' (' + invitation.guid + ')' : 'Unknown user';
   }
 
 }

@@ -15,5 +15,9 @@ export class InvitationService {
     return this.http.get('invitation/guid/' + guid);
   }
 
+  confirmAttendance(invitation: Invitation): Observable<any> {
+    return this.http.postWithResponse('invitation/confirmattendance', invitation);
+  }
+
 }
 

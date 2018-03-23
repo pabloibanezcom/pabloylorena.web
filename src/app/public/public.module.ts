@@ -25,6 +25,7 @@ import { AccommodationComponent } from './sections/accommodation/accommodation.c
 import { HotelBoxComponent } from './sections/accommodation/hotel-box/hotel-box.component';
 import { RsvpModalComponent } from './modals/rsvp-modal/rsvp-modal.component';
 import { GalleryComponent } from './sections/gallery/gallery.component';
+import { GiftComponent } from './sections/gift/gift.component';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { GalleryComponent } from './sections/gallery/gallery.component';
     AccommodationComponent,
     HotelBoxComponent,
     RsvpModalComponent,
-    GalleryComponent
+    GalleryComponent,
+    GiftComponent
   ],
   providers: [
     TemplateService,

@@ -14,7 +14,6 @@ import { AnalyticsService } from '../services/analytics.service';
 })
 export class PublicBaseComponent implements OnInit, OnDestroy {
 
-  public editMode: boolean;
   public invitation: Invitation;
 
   subscription: Subscription;
@@ -32,12 +31,10 @@ export class PublicBaseComponent implements OnInit, OnDestroy {
       if (params.invitationGuid) {
         this.invitationService.getInvitationByGuid(params.invitationGuid).subscribe(res => {
           this.invitation = res;
-          this.editMode = true;
           this.analyticsService.trackStart(this.invitation);
         });
       } else {
         this.invitation = new Invitation();
-        this.invitation.guests = [];
       }
     });
     this.templateService.init();
