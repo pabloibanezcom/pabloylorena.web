@@ -3,11 +3,11 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { UtilService } from '../../../shared/services/util.service';
 import { AdminService } from '../../services/admin.service';
+import { DataService } from '../../../shared/services/data.service';
 import { InvitationsResult } from '../../models/invitationsResult';
 
 import * as tableConfig from './invitation-table-config.json';
 import { Invitation } from '../../../shared/models/invitation';
-
 
 @Component({
   selector: 'app-invitations',
@@ -24,7 +24,8 @@ export class InvitationsComponent implements OnInit, OnDestroy {
 
   constructor(
     private util: UtilService,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private dataService: DataService
   ) {
     this.subscriptions = [];
   }
@@ -38,6 +39,11 @@ export class InvitationsComponent implements OnInit, OnDestroy {
     this.subscriptions['getGroupNames'] = this.adminService.getGroupNames().subscribe(res => {
       this.tableConfig.selects.find(s => s.label === 'Grupo').options = res;
     });
+    this.subscriptions.push(
+      this.dataService.get('notInPaper-options').subscribe(data => {
+        this.tableConfig.selects.find(s => s.label === 'No papel').options = data.options;
+      })
+    );
     this.refreshInvitationResult();
   }
 

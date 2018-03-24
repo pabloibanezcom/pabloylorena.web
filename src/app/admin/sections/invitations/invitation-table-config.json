@@ -11,6 +11,12 @@
             "name_property": "name",
             "value_property": "_id",
             "property_match": "group._id"
+        },
+        {
+            "label": "No papel",
+            "name_property": "label",
+            "value_property": "value",
+            "property_match": "notInPaper"
         }
     ],
     "new_element": {
