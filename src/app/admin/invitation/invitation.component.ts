@@ -16,7 +16,7 @@ export class InvitationComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[];
   invitation: Invitation;
   url: string;
-  defaultDedication: string;
+  defaultDedication: any;
   dedication: string;
 
   constructor(
@@ -40,7 +40,10 @@ export class InvitationComponent implements OnInit, OnDestroy {
     }));
     this.subscriptions.push(
       this.dataService.get('default-dedication').subscribe(data => {
-        this.defaultDedication = data.htmlText;
+        this.defaultDedication = {
+          single: data.htmlTextSingle,
+          plural: data.htmlTextPlural
+        };
       })
     );
   }
@@ -55,7 +58,7 @@ export class InvitationComponent implements OnInit, OnDestroy {
 
   private setDedication() {
     if (this.invitation.dedicationMode === 'default') {
-      this.dedication = this.defaultDedication;
+      this.dedication = !this.invitation.isPlural ? this.defaultDedication.single : this.defaultDedication.plural;
     }
     if (this.invitation.dedicationMode === 'group') {
       this.subscriptions.push(this.adminService.getGroup(String(this.invitation.group)).subscribe(res => {
