@@ -68,7 +68,8 @@
         "url": "invitation",
         "body": {
             "sort": {
-                "group": 1
+                "group": 1,
+                "alias": 1
             },
             "populate": [
                 {
