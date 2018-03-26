@@ -9,20 +9,20 @@
             <span class="title-text">Te esperamos</span>
             <span class="title-deco-right"></span>
           </span>
-          <div *ngIf="!invitation.guid">
+          <div class="post-title" *ngIf="!invitation.guid">
             <span class="subtitle display-block">Por favor introduce el código que viene en la url de tu invitación.</span>
             <br>
             <span class="tip display-block">Ej. wwww.pabloylorena.com/
               <b>xxxx-xxxx</b>
             </span>
           </div>
-          <div *ngIf="invitation.guid && !updated">
+          <div class="post-title" *ngIf="invitation.guid && !updated">
             <span class="subtitle display-block">En este día tan especial para nosotros nos hace mucha ilusion tu compañía
               <br> Por favor confirmar asistencia antes del 1 de Junio de 2018</span>
           </div>
           <div class="margin-top-60" *ngIf="updated">
-              <span class="subtitle display-block">Gracias por confirmar asistencia!</span>
-            </div>
+            <span class="subtitle display-block">Gracias por confirmar asistencia!</span>
+          </div>
         </h2>
       </div>
       <div class="modal-body">
@@ -42,7 +42,7 @@
           </form>
         </div>
         <div *ngIf="invitation.guid && !updated">
-          <div class="guest-menu btn-group btn-group-justified" role="group" aria-label="...">
+          <div class="guest-menu guest-menu-default btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group" *ngFor="let guest of invitation.guests">
               <button type="button" class="btn btn-default" [ngClass]="{'active': selectedGuest && selectedGuest._id === guest._id}" (click)="selectGuest(guest)">
                 <i class="fa" [ngClass]="{'fa-male': guest.type === 1, 'fa-female': guest.type === 2, 'fa-child': guest.type === 3,'fa-child': guest.type === 4}"></i>
@@ -52,6 +52,12 @@
               <button type="button" class="btn btn-default" (click)="addGuest()">
                 <i class="fa fa-plus"></i> Añadir</button>
             </div>
+          </div>
+          <div class="guest-menu guest-menu-mobile" role="group" aria-label="...">
+            <button *ngFor="let guest of invitation.guests" type="button" class="btn btn-default btn-block" [ngClass]="{'active': selectedGuest && selectedGuest._id === guest._id}"
+              (click)="selectGuest(guest)">
+              <i class="fa" [ngClass]="{'fa-male': guest.type === 1, 'fa-female': guest.type === 2, 'fa-child': guest.type === 3,'fa-child': guest.type === 4}"></i>
+              {{guest.name}}</button>
           </div>
           <form id="rsvp-form" class="rsvp-form form" *ngIf="selectedGuest" (ngSubmit)="onSubmit()">
             <div id="form-messages" class="text-center"></div>
@@ -103,7 +109,9 @@
           <div class="contact-info text-center col-xs-12">
             <i class="fa fa-whatsapp"></i>
             <span class="contact-name">Pablo</span>
-            <span class="contact-number">+34 669654032</span> |
+            <span class="contact-number">+34 669654032</span>
+            <span class="separator"> | </span>
+            <br class="br-on-mobile">
             <i class="fa fa-whatsapp"></i>
             <span class="contact-name">Lorena</span>
             <span class="contact-number">+34 690980372</span>

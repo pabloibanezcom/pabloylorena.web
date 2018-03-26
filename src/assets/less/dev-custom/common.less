@@ -1,3 +1,7 @@
+.form-group {
+    margin-bottom: 15px;
+}
+
 .no-padding-left {
     padding-left: 0 !important;
 }
@@ -13,17 +17,16 @@ a.btn {
 
 @media print {
     .doNotPrint {
-        display: none !important; 
+        display: none !important;
     }
     .admin {
-      margin-top: 0!important;
+        margin-top: 0!important;
     }
 }
 
 @page {
     /* dimensions for the whole page */
     // size: A5;
-    
     margin: 0;
 }
 
@@ -33,7 +36,7 @@ a.btn {
 
 .headline {
     .names {
-        font-family: Great Vibes,cursive;
+        font-family: Great Vibes, cursive;
         font-weight: 500!important;
         font-size: 76px;
     }
@@ -48,4 +51,37 @@ a.btn {
     background: #f4af9cad !important;
 }
 
+.ceremony-col,
+.reception-col {
+    .meta-list {
+        li:not(:last-child) {
+            margin-bottom: 30px;
+        }
+        li:last-child {
+            margin-bottom: 0;
+        }
+        li {
+            span {
+                float: left;
+            }
+            .direction-info {
+                float: none;
+                margin-top: 15px;
+            }
+        }
+    }
+}
 
+.hotel-box {
+    padding: 10px 15px !important;
+}
+
+.br-on-mobile {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .br-on-mobile {
+        display: block;
+    }
+}

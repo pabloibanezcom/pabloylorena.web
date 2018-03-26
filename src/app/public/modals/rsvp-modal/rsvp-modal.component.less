@@ -61,4 +61,19 @@
         font-weight: normal;
         font-style: italic;
     }
+    @media (max-width: 767px) {
+        .guest-menu-default {
+            display: none;
+        }
+        .guest-menu {
+          button:not(:last-child) {
+            margin-bottom: 15px;
+        }
+        }
+    }
+    @media (min-width: 768px) {
+        .guest-menu-mobile {
+            display: none;
+        }
+    }
 }

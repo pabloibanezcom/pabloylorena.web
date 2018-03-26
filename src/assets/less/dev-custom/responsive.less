@@ -5,10 +5,81 @@
     .curve-holder {
         height: 40px;
     }
+    .modal-rsvp {
+        .modal-title {
+            .title-text {
+                font-size: 38px;
+            }
+            .title-deco-left,
+            .title-deco-right {
+                width: 40px;
+            }
+        }
+        .contact-info {
+            .separator {
+                display: none;
+            }
+        }
+    }
+    .hotel-box {
+        .image-container {
+            float: none !important;
+            padding-right: 0!important;
+        }
+        .info-container {
+            float: none !important;   
+            ul {
+                text-align: center;
+                li {
+                    display:inline;
+                    &.bold {
+                        padding-right: 20px;
+                        margin-bottom: 10px;
+                    }
+                    a {
+                        margin-top: 15px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
     .headline .names {
         font-size: 70px;
+    }
+    .hero-section {
+        background-position: 66% 50%;
+        height: auto;
+    }
+    .hotel-box {
+        .image-container {
+            float: none !important;
+            padding-right: 0!important;
+        }
+        .info-container {
+            float: none !important;   
+            ul {
+                text-align: center;
+                li {
+                    display:inline;
+                    &.bold {
+                        padding-right: 20px;
+                        margin-bottom: 10px;
+                    }
+                    a {
+                        margin-top: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .hero-section {
+        background-position: 66% 50%;
+        height: auto;
     }
 }
