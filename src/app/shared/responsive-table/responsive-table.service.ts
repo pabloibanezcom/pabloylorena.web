@@ -59,7 +59,6 @@ export class ResponsiveTableService {
   filterAndSort(filterParams: ResponsiveTableFilter, filter?: boolean): void {
     this.filterParams = filterParams;
     this.filteredElements = filter ? this.applyFilter() : this.filteredElements;
-    // this.filteredElements = this.applySort();
     const pagination = this.generatePagination(this.filteredElements);
     this.pagination$.next(pagination);
     this.activeElements$.next(this.getActiveElementsForPage(pagination.page_size, pagination.current));
@@ -74,8 +73,11 @@ export class ResponsiveTableService {
 
   private applyFilter(): any[] {
     let result = [];
+    const propertiesMatch = this.tableConfig.search.property.split(' ');
     // Apply search filter
-    result = this.elements.filter(e => e[this.tableConfig.search.property].toLowerCase().match(this.filterParams.searchStr.toLowerCase()));
+    propertiesMatch.forEach(p => {
+      result = this.elements.filter(e => e[p].toLowerCase().match(this.filterParams.searchStr.toLowerCase()));
+    }); 
     // Apply selects filter
     for (const select of this.filterParams.selects) {
       if (select.value !== null && select.value !== undefined) {

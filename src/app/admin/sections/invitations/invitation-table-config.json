@@ -1,8 +1,8 @@
 {
     "authLevelProperty": "auth.authLevel",
     "search": {
-        "placeholder": "Buscar por alias",
-        "property": "alias",
+        "placeholder": "Buscar por alias o GUID",
+        "property": "alias guid",
         "min_chars": 3
     },
     "selects": [
