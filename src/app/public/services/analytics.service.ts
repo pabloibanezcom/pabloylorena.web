@@ -24,11 +24,23 @@ export class AnalyticsService {
   }
 
   trackAttendanceOpened(invitation: Invitation) {
-    this.trackEvent(this.getDescriptionFromInvitation(invitation), 'Attendance opened');
+    this.trackEvent(this.getDescriptionFromInvitation(invitation), 'Attendance - Opened');
+  }
+
+  trackAttendanceGUIDSubmitted(invitation: Invitation) {
+    this.trackEvent(this.getDescriptionFromInvitation(invitation), 'Attendance - GUID submitted');
+  }
+
+  trackAttendanceGUIDNotFound(invitation: Invitation, guid: string) {
+    this.trackEvent(this.getDescriptionFromInvitation(invitation), `Attendance - GUID not found (${guid})`);
   }
 
   trackAttendanceCompleted(invitation: Invitation) {
-    this.trackEvent(this.getDescriptionFromInvitation(invitation), 'Attendance completed');
+    this.trackEvent(this.getDescriptionFromInvitation(invitation), 'Attendance - Completed');
+  }
+
+  trackPabloSiteVisited(invitation: Invitation) {
+    this.trackEvent(this.getDescriptionFromInvitation(invitation), 'pabloibanez.com visited');
   }
 
   private getDescriptionFromInvitation(invitation: Invitation) {

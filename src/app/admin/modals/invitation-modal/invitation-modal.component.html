@@ -55,6 +55,24 @@
               </div>
             </div>
           </div>
+
+          <div class="row">
+            <!-- GUESTS ORDER -->
+            <div class="form-text form-group col-xs-12 col-sm-12">
+                <div class="form-group-inner">
+                  <label>Invitados</label>
+                  <ul class="list-group guests">
+                      <li class="list-group-item" *ngFor="let guest of modalInvitation.guests">
+                        <!-- <span class="badge">14</span> -->
+                        {{guest.name}}
+                        <input class="form-control" type="text" name="order" >
+                        <div class="clearfix"></div>
+                      </li>
+                    </ul>
+                </div>
+              </div>
+          </div>
+
           <div class="row form-buttons">
             <div class="col-xs-12 col-sm-6">
               <button type="submit" class="btn btn-block btn-primary">{{invitation && invitation.alias != null ? 'Editar invitacion' : 'Añadir invitacion' }}</button>

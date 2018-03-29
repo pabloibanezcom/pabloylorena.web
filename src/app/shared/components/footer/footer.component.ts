@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.less']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
+
+  @Output() linkClick: any = new EventEmitter(); 
 
   constructor() { }
 
-  ngOnInit() {
+  onLinkClick() {
+    this.linkClick.emit();
   }
 
 }

@@ -48,4 +48,8 @@ export class PublicBaseComponent implements OnInit, OnDestroy {
     this.analyticsService.trackAttendanceOpened(this.invitation);
   }
 
+  trackPabloSiteVisited() {
+    this.analyticsService.trackPabloSiteVisited(this.invitation);
+  }
+
 }

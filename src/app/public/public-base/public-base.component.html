@@ -73,7 +73,7 @@
 
   <!-- <app-gift></app-gift> -->
 
-  <app-footer></app-footer>
+  <app-footer (linkClick)="trackPabloSiteVisited()"></app-footer>
 
   <app-rsvp-modal *ngIf="invitation" [invitation]="invitation"></app-rsvp-modal>
 

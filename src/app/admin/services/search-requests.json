@@ -78,10 +78,10 @@
                 },
                 {
                     "path": "guests",
-                    "select": "fullName",
+                    "select": "name order",
                     "options": {
                         "sort": {
-                            "fullName": 1
+                            "order": 1
                         }
                     }
                 }

@@ -67,9 +67,11 @@ export class RsvpModalComponent implements OnInit, OnDestroy {
         res => {
           this.invitation = res;
           this.selectedGuest = this.invitation.guests[0];
+          this.analyticsService.trackAttendanceGUIDSubmitted(this.invitation);
         },
         err => {
           this.errors['invitationGuid'] = { message: 'Invitacion no encontrada', ts: Date.now() };
+          this.analyticsService.trackAttendanceGUIDNotFound(this.invitation, this.invitationGuid);
         }
       ));
     } else {
