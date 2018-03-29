@@ -20,5 +20,6 @@ export class Guest {
     stayingPlace: string;
     stayingPlaceExpectation: string;
     giftAmount: number;
+    order: number;
     lastModified: Date;
 }

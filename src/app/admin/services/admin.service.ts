@@ -63,6 +63,10 @@ export class AdminService {
     return this.http.deleteWithResponse('guest/' + guest._id);
   }
 
+  updateGuestOrder(guest: Guest) {
+    return this.http.putWithResponse('guest/order/' + guest._id, { order: guest.order });
+  }
+
   // -------------------------
 
 

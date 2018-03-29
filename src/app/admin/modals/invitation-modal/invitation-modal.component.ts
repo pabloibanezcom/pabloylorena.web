@@ -27,6 +27,7 @@ export class InvitationModalComponent implements OnInit, OnChanges, OnDestroy {
   dedicationMode: string;
   dedication: string;
   defaultDedication: string;
+  guestOrderChanged: boolean;
 
   constructor(
     private adminService: AdminService,
@@ -82,6 +83,12 @@ export class InvitationModalComponent implements OnInit, OnChanges, OnDestroy {
     this.applyCustomizedDedication();
     this.subscriptions['editInvitation'] = this.adminService.updateInvitation(this.modalInvitation)
       .subscribe(res => this.afterSubscribe(res));
+    if (this.guestOrderChanged) {
+      this.modalInvitation.guests.forEach(guest => {
+        this.subscriptions['editGuest_' + guest._id] = this.adminService.updateGuestOrder(guest)
+        .subscribe(res => {});
+      });
+    }
   }
 
   confirmDelete() {
@@ -106,6 +113,14 @@ export class InvitationModalComponent implements OnInit, OnChanges, OnDestroy {
     if (this.dedicationMode === 'customized') {
       this.dedication = this.modalInvitation.dedication;
     }
+  }
+
+  moveGuestUp(guest: Guest) {
+    this.move(this.modalInvitation.guests, guest, -1);
+  }
+
+  moveGuestDown(guest: Guest) {
+    this.move(this.modalInvitation.guests, guest, 1);
   }
 
   private afterSubscribe(res: Response) {
@@ -144,6 +159,22 @@ export class InvitationModalComponent implements OnInit, OnChanges, OnDestroy {
     if (this.dedicationMode === 'customized') {
       this.modalInvitation.dedication = this.dedication;
     }
+  }
+
+  private move(array, element, delta) {
+    this.guestOrderChanged = true;
+    const index = array.indexOf(element);
+    const newIndex = index + delta;
+    if (newIndex < 0  || newIndex == array.length) return; 
+    const indexes = [index, newIndex].sort(); 
+    array.splice(indexes[0], 2, array[indexes[1]], array[indexes[0]]);
+    this.updateGuestsOrders();
+  }
+
+  private updateGuestsOrders() {
+    this.modalInvitation.guests.forEach((guest, i) => {
+      guest.order = i;
+    });
   }
 
 }

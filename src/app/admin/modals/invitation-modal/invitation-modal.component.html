@@ -62,10 +62,15 @@
                 <div class="form-group-inner">
                   <label>Invitados</label>
                   <ul class="list-group guests">
-                      <li class="list-group-item" *ngFor="let guest of modalInvitation.guests">
+                      <li class="list-group-item" *ngFor="let guest of modalInvitation.guests, let i = index">
                         <!-- <span class="badge">14</span> -->
                         {{guest.name}}
-                        <input class="form-control" type="text" name="order" >
+                        <div class="controls">
+                          <div class="control-container"><a *ngIf="i !== 0" (click)="moveGuestUp(guest)"><i class="fa fa-chevron-up"></i></a></div>
+                          <div class="control-container"><a *ngIf="i !== modalInvitation.guests.length - 1" (click)="moveGuestDown(guest)"><i class="fa fa-chevron-down"></i></a></div>          
+                        </div>
+                        
+                        <!-- <input class="form-control" type="text" name="order" > -->
                         <div class="clearfix"></div>
                       </li>
                     </ul>
