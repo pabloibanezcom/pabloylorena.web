@@ -76,7 +76,7 @@ export class ResponsiveTableService {
     const propertiesMatch = this.tableConfig.search.property.split(' ');
     // Apply search filter
     propertiesMatch.forEach(p => {
-      result = this.elements.filter(e => e[p].toLowerCase().match(this.filterParams.searchStr.toLowerCase()));
+      result = result.concat(this.elements.filter(e => e[p].toLowerCase().match(this.filterParams.searchStr.toLowerCase())));
     }); 
     // Apply selects filter
     for (const select of this.filterParams.selects) {
