@@ -7,33 +7,48 @@
     </h3>
     <div class="counters" *ngIf="result">
       <div class="countdown-box" id="countdown-box">
-        <span class="item expected">
-          <span class="number">{{result.expected}}</span>
-          <span class="unit script">Esperados</span>
+          <span class="item all" [ngClass]="{'selected': !filter || filter.alias === 'all'}">
+              <a (click)="filter = {alias: 'all', property: null, value: null, group: 'attendance'}">
+                <span class="number">{{result.guests.length}}</span>
+                <span class="unit script">Total</span>
+              </a>
+            </span>
+        <span class="item expected" [ngClass]="{'selected': filter && filter.alias === 'expected'}">
+          <a (click)="filter = {alias: 'expected', property: 'isAttendingExpectation', value: true, group: 'attendance'}">
+            <span class="number">{{result.expected}}</span>
+            <span class="unit script">Esperados</span>
+          </a>
         </span>
-        <span class="item doubtful">
-          <span class="number">{{result.doubtful}}</span>
-          <span class="unit script">Dudosos</span>
+        <span class="item doubtful" [ngClass]="{'selected': filter && filter.alias === 'doubtful'}">
+          <a (click)="filter = {alias: 'doubtful', property: 'isAttendingExpectation', value: 'null', group: 'attendance'}">
+            <span class="number">{{result.doubtful}}</span>
+            <span class="unit script">Dudosos</span>
+          </a>
         </span>
-        <span class="item nonExpected">
-          <span class="number">{{result.nonExpected}}</span>
-          <span class="unit script">No esperados</span>
+        <span class="item nonExpected" [ngClass]="{'selected': filter && filter.alias === 'nonExpected'}">
+          <a (click)="filter = {alias: 'nonExpected', property: 'isAttendingExpectation', value: false, group: 'attendance'}">
+            <span class="number">{{result.nonExpected}}</span>
+            <span class="unit script">No esperados</span>
+          </a>
         </span>
-        <span class="item awaiting">
-          <span class="number">{{result.awaiting}}</span>
-          <span class="unit script">A la espera</span>
+        <span class="item awaiting" [ngClass]="{'selected': filter && filter.alias === 'awaiting'}">
+          <a (click)="filter = {alias: 'awaiting', property: 'isAttending', value: 'null', group: 'attendance'}">
+            <span class="number">{{result.awaiting}}</span>
+            <span class="unit script">A la espera</span>
+          </a>
         </span>
-        <span class="item confirmed">
-          <span class="number">{{result.attending}}</span>
-          <span class="unit script">Confirmados</span>
+        <span class="item confirmed" [ngClass]="{'selected': filter && filter.alias === 'confirmed'}">
+          <a (click)="filter = {alias: 'confirmed', property: 'isAttending', value: true, group: 'attendance'}">
+            <span class="number">{{result.attending}}</span>
+            <span class="unit script">Confirmados</span>
+          </a>
         </span>
       </div>
       <div class="countdown-box forecast">
-
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <app-responsive-table [config]="tableConfig" [elements]="result.guests" [components]="components"></app-responsive-table>
+          <app-responsive-table [config]="tableConfig" [elements]="result.guests" [components]="components" [externalFilter]="filter"></app-responsive-table>
         </div>
       </div>
     </div>

@@ -4,8 +4,10 @@ interface Sort {
 }
 
 interface Select {
+    alias?: string;
     property: string;
     value: string;
+    group?: string;
 }
 
 export class ResponsiveTableFilter {

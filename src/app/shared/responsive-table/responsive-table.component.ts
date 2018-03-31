@@ -24,6 +24,7 @@ export class ResponsiveTableComponent implements OnInit, OnChanges {
   @Input() config: ResponsiveTableConfig;
   @Input() elements: any[];
   @Input() components: any;
+  @Input() externalFilter: any;
 
   constructor(
     private responsiveService: ResponsiveService,
@@ -43,8 +44,13 @@ export class ResponsiveTableComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(simpleChanges: SimpleChanges) {
-    if (!simpleChanges.elements.firstChange) {
+    if (simpleChanges.elements && !simpleChanges.elements.firstChange) {
       this.responsiveTableService.setElements(simpleChanges.elements.currentValue, this.filterParams);
+    }
+    if (simpleChanges.externalFilter && simpleChanges.externalFilter.currentValue) {
+      this.filterParams.selects = this.filterParams.selects.filter(s => s.group !== simpleChanges.externalFilter.currentValue.group);
+      this.filterParams.selects.push(simpleChanges.externalFilter.currentValue);
+      this.responsiveTableService.filterAndSort(this.filterParams, true);
     }
   }
 

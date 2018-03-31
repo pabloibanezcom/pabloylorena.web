@@ -84,7 +84,10 @@ export class ResponsiveTableService {
     // Apply selects filter
     for (const select of this.filterParams.selects) {
       if (select.value !== null && select.value !== undefined) {
-        result = result.filter(e => this.util.resolveComplexProperty(e, select.property) === select.value);
+        result = result.filter(e => 
+          (select.value !== 'null' && this.util.resolveComplexProperty(e, select.property) === select.value)
+          || (select.value === 'null' && ( this.util.resolveComplexProperty(e, select.property) === null || this.util.resolveComplexProperty(e, select.property) === undefined ))
+        );
       }
     }
     return result;

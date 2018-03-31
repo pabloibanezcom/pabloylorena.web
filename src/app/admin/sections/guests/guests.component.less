@@ -2,6 +2,25 @@
     .countdown-box {
         margin-bottom: 40px;
         .item {
+            &.selected {
+                a {
+                    .number {
+                        font-size: 36px;
+                    }
+                    .script {
+                        font-size: 22px;
+                    }
+                }
+            }
+            a {
+                cursor: pointer;
+                text-decoration: none;
+                &:hover {
+                    .script {
+                        color: #f19c85;
+                    }
+                }
+            }
             .number {
                 font-size: 24px;
             }
