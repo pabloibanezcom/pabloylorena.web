@@ -20,6 +20,7 @@ export class RsvpModalComponent implements OnInit, OnDestroy {
   errors: any;
   selectedGuest: Guest;
   types: any[];
+  yesNoOptions: any[];
   stayingPlaces: any[];
   invitationGuid: string;
   updated: boolean;
@@ -45,6 +46,10 @@ export class RsvpModalComponent implements OnInit, OnDestroy {
       })
     );
     this.selectedGuest = this.invitation.guests[0];
+    this.yesNoOptions = [
+      { label: 'Si', value: true },
+      { label: 'No', value: false }
+    ];
   }
 
   ngOnDestroy() {
