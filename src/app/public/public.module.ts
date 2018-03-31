@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Ng2SmartFormsModule } from 'ng2-smart-forms';
 
 import { PublicRouting } from './public.routing';
@@ -34,7 +36,8 @@ import { GiftComponent } from './sections/gift/gift.component';
     ReactiveFormsModule,
     PublicRouting,
     SharedModule,
-    Ng2SmartFormsModule
+    Ng2SmartFormsModule,
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics])
   ],
   declarations: [
     PublicBaseComponent,

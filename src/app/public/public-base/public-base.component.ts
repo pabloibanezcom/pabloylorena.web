@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+
 import { TemplateService } from '../services/template.service';
 import { InvitationService } from '../services/invitation.service';
 import { Invitation } from '../../shared/models/invitation';
@@ -19,6 +21,7 @@ export class PublicBaseComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(
+    angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
     private router: Router,
     private route: ActivatedRoute,
     private templateService: TemplateService,
