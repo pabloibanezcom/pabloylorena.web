@@ -34,7 +34,7 @@ export class InvitationComponent implements OnInit, OnDestroy {
         this.subscriptions.push(this.adminService.getInvitation(params.invitationId).subscribe(res => {
           this.invitation = res;
           this.setDedication();
-          this.url = 'wwww.pabloylorena.com/' + this.invitation.guid;
+          this.url = 'www.pabloylorena.com/' + this.invitation.guid;
         }));
       }
     }));
