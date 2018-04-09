@@ -116,7 +116,7 @@
             "header": "Guests",
             "icon": "fa-users",
             "property": "guests",
-            "multiProperty": "fullName"
+            "multiProperty": "name"
         }
     ]
 }

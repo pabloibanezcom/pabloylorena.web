@@ -178,6 +178,18 @@
             "sortBy": "email",
             "icon": "fa-at",
             "property": "email"
+        },
+        {
+            "header": "Alergias",
+            "sortBy": "allergies",
+            "icon": "fa-pagelines",
+            "property": "allergies"
+        },
+        {
+            "header": "Comentarios",
+            "sortBy": "additionalComments",
+            "icon": "fa-comment",
+            "property": "additionalComments"
         }
     ]
 }
