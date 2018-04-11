@@ -12,7 +12,10 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-responsive-table',
   templateUrl: './responsive-table.component.html',
-  styleUrls: ['./responsive-table.component.less']
+  styleUrls: ['./responsive-table.component.less'],
+  providers: [
+    ResponsiveTableService
+  ]
 })
 export class ResponsiveTableComponent implements OnInit, OnChanges {
 
@@ -25,7 +28,7 @@ export class ResponsiveTableComponent implements OnInit, OnChanges {
   @Input() elements: any[];
   @Input() components: any;
   @Input() externalFilter: any;
-
+  
   constructor(
     private responsiveService: ResponsiveService,
     private responsiveTableService: ResponsiveTableService

@@ -107,5 +107,44 @@
                 }
             ]
         }
+    },
+    "guestsTablesResult": {
+        "url": "guest",
+        "body": {
+            "sort": { "group": 1 },
+            "populate": [
+                {
+                    "path": "invitation",
+                    "select": "alias",
+                    "populate": {
+                        "path": "group",
+                        "select": "name"
+                    }
+                },
+                {
+                    "path": "table",
+                    "select": "number"
+                }
+            ]
+        }
+    },
+    "tablesResult": {
+        "url": "table",
+        "body": {
+            "sort": {
+                "number": 1
+            },
+            "populate": [
+                {
+                    "path": "guests",
+                    "select": "name orderInTable",
+                    "options": {
+                        "sort": {
+                            "orderInTable": 1
+                        }
+                    }
+                }
+            ]
+        }
     }
 }

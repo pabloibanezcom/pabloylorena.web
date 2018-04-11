@@ -30,6 +30,7 @@ interface ConfigAction {
 
 export interface ResponsiveTableConfig {
     authLevelProperty: string;
+    hideCounter?: Boolean;
     search: ConfigSearch;
     selects: ConfigSelect[];
     new_element: ConfigAction;

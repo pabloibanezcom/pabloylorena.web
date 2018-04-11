@@ -4,9 +4,8 @@ export class Table {
     _id: string;
     number: number;
     name: string;
-    shape: string;
-    maxSize: number;
-    minSize: number;
+    alias: string;
+    size: number;
     guests: Guest[];
     lastModified: Date;
 

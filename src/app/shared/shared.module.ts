@@ -8,7 +8,6 @@ import { UtilService } from './services/util.service';
 import { ResponsiveService } from './services/responsive.service';
 import { DataService } from './services/data.service';
 import { GuestService } from './services/guest.service';
-import { ResponsiveTableService } from './responsive-table/responsive-table.service';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { ResponsiveTableComponent } from './responsive-table/responsive-table.component';
@@ -24,6 +23,7 @@ import { TypeLabelComponent } from './components/type-label/type-label.component
 import { SentLabelComponent } from './components/sent-label/sent-label.component';
 import { RepliedLabelComponent } from './components/replied-label/replied-label.component';
 import { AdjustHeightDirective } from './directives/adjust-height.directive';
+import { TableGuestsLabelComponent } from './components/table-guests-label/table-guests-label.component';
 
 @NgModule({
   imports: [
@@ -46,15 +46,15 @@ import { AdjustHeightDirective } from './directives/adjust-height.directive';
     TypeLabelComponent,
     SentLabelComponent,
     RepliedLabelComponent,
-    AdjustHeightDirective
+    AdjustHeightDirective,
+    TableGuestsLabelComponent
   ],
   providers: [
     DynamicComponentsService,
     UtilService,
     ResponsiveService,
     DataService,
-    GuestService,
-    ResponsiveTableService
+    GuestService
   ],
   exports: [
     LoadingSpinnerComponent,
@@ -70,7 +70,8 @@ import { AdjustHeightDirective } from './directives/adjust-height.directive';
     SentLabelComponent,
     RepliedLabelComponent,
     TableLabelComponent,
-    TypeLabelComponent
+    TypeLabelComponent,
+    TableGuestsLabelComponent
   ],
 })
 export class SharedModule { }

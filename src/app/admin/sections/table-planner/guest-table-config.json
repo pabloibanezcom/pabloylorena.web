@@ -1,0 +1,40 @@
+{
+    "authLevelProperty": "auth.authLevel",
+    "hideCounter": false,
+    "search": {
+        "placeholder": "Nombre",
+        "property": "fullName",
+        "min_chars": 3
+    },
+    "selects": [
+        {
+            "label": "Grupo",
+            "name_property": "name",
+            "value_property": "_id",
+            "property_match": "invitation.group._id"
+        }
+    ],
+    "other_actions": [
+        {
+            "label": "Asignar mesa",
+            "icon": "fa-cutlery",
+            "authLevels": ["admin"]
+        }
+    ],
+    "page_size": 10,
+    "columns": [
+        {
+            "header": "Nombre completo",
+            "sortBy": "fullName",
+            "property": "fullName",
+            "responsive": "xs"
+        },
+        {
+            "header": "Grupo",
+            "sortBy": "invitation.group.name",
+            "property": "invitation.group.name",
+            "icon": "fa-users",
+            "responsive": "sm"
+        }
+    ]
+}

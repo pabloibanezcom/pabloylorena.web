@@ -31,6 +31,8 @@ import { GroupsComponent } from './sections/groups/groups.component';
 import { GroupModalComponent } from './modals/group-modal/group-modal.component';
 import { LoginContainerComponent } from './login-container/login-container.component';
 import { OverviewComponent } from './sections/overview/overview.component';
+import { TableModalComponent } from './modals/table-modal/table-modal.component';
+import { GuestTableModalComponent } from './modals/guest-table-modal/guest-table-modal.component';
 // import { OverviewPanelComponent } from './sections/overview/overview-panel/overview-panel.component';
 
 @NgModule({
@@ -60,7 +62,9 @@ import { OverviewComponent } from './sections/overview/overview.component';
     GroupsComponent,
     GroupModalComponent,
     LoginContainerComponent,
-    OverviewComponent
+    OverviewComponent,
+    TableModalComponent,
+    GuestTableModalComponent
     // OverviewPanelComponent
   ],
   providers: [

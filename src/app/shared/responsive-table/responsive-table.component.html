@@ -40,7 +40,7 @@
                 </li>
               </ul>
             </li>
-            <li class="results-counter"><span>{{activeElementsResult.filteredElementsLength}}</span></li>
+            <li *ngIf="!config.hideCounter" class="results-counter"><span>{{activeElementsResult.filteredElementsLength}}</span></li>
           </ul>     
           <form class="navbar-form navbar-right">
             <div *ngIf="config.new_element && config.new_element.authLevels && config.new_element.authLevels.includes(authLevel)" class="form-group">

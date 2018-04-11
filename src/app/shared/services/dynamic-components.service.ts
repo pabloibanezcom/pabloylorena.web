@@ -7,6 +7,7 @@ import { SentLabelComponent } from '../components/sent-label/sent-label.componen
 import { RepliedLabelComponent } from '../components/replied-label/replied-label.component';
 import { TableLabelComponent } from '../components/table-label/table-label.component';
 import { TypeLabelComponent } from '../components/type-label/type-label.component';
+import { TableGuestsLabelComponent } from '../components/table-guests-label/table-guests-label.component';
 
 @Injectable()
 export class DynamicComponentsService {
@@ -19,7 +20,8 @@ export class DynamicComponentsService {
       SentLabel: SentLabelComponent,
       RepliedLabel: RepliedLabelComponent,
       TableLabel: TableLabelComponent,
-      TypeLabel: TypeLabelComponent
+      TypeLabel: TypeLabelComponent,
+      TableGuestsLabel: TableGuestsLabelComponent
     };
   }
 

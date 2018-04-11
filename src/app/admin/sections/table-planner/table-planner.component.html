@@ -5,5 +5,37 @@
       <span class="title-text">Mesas</span>
       <span class="title-deco-right"></span>
     </h3>
+    <div *ngIf="tables">
+      <div class="countdown-box" id="countdown-box" *ngIf="tablesSummary">
+        <span class="item all" [ngClass]="{'selected': !tableFilter || tableFilter.alias === 'all'}">
+          <a (click)="tableFilter = {alias: 'all', property: null, value: null, group: 'table'}">
+            <span class="number">{{tablesSummary.total}}</span>
+            <span class="unit script">Total</span>
+          </a>
+        </span>
+        <span class="item complete" [ngClass]="{'selected': tableFilter && tableFilter.alias === 'complete'}">
+          <a (click)="tableFilter = {alias: 'complete', property: 'guests.length', propertyValue: 'size', propertyValueMatch: true, group: 'table'}">
+            <span class="number">{{tablesSummary.complete}}</span>
+            <span class="unit script">Completas</span>
+          </a>
+        </span>
+        <span class="item incomplete" [ngClass]="{'selected': tableFilter && tableFilter.alias === 'incomplete'}">
+          <a (click)="tableFilter = {alias: 'incomplete', property: 'guests.length', propertyValue: 'size', propertyValueMatch: false, group: 'table'}">
+            <span class="number">{{tablesSummary.incomplete}}</span>
+            <span class="unit script">Incompletas</span>
+          </a>
+        </span>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 guestsTableContainer" *ngIf="guests">
+          <app-responsive-table [config]="guestsTableConfig" [elements]="guests" [components]="components" [externalFilter]="guestFilter"></app-responsive-table>
+        </div>
+        <div class="col-lg-7 col-lg-offset-1" *ngIf="tables">
+          <app-responsive-table [config]="tablesTableConfig" [elements]="tables" [components]="components" [externalFilter]="tableFilter"></app-responsive-table>
+        </div>
+      </div>
+    </div>
   </div>
+  <app-guest-table-modal [guest]="selectedGuest" (ending)="afterGuestTableModal($event)"></app-guest-table-modal>
+  <app-table-modal [deleteMode]="deleteMode" [table]="selectedTable" (ending)="afterTableModal($event)"></app-table-modal>
 </div>

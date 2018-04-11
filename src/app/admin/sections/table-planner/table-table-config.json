@@ -1,0 +1,69 @@
+{
+    "authLevelProperty": "auth.authLevel",
+    "hideCounter": true,
+    "selects": [],
+    "new_element": {
+        "label": "Añadir mesa",
+        "icon": "fa-plus",
+        "authLevels": ["admin"]
+    },
+    "other_actions": [
+        {
+            "label": "Editar",
+            "icon": "fa-pencil",
+            "authLevels": ["admin"]
+        },
+        {
+            "label": "Eliminar",
+            "icon": "fa-trash",
+            "authLevels": ["admin"]
+        }
+    ],
+    "page_size": 10,
+    "columns": [
+        {
+            "header": "Numero",
+            "sortBy": "number",
+            "property": "number",
+            "responsive": "xs"
+        },
+        {
+            "header": "Nombre",
+            "sortBy": "name",
+            "property": "name",
+            "responsive": "xs"
+        },
+        {
+            "header": "Alias",
+            "sortBy": "alias",
+            "property": "alias",
+            "responsive": "xs"
+        },
+        {
+            "header": "Ocupacion",
+            "sortBy": "guests.length",
+            "property": "guests.length",
+            "icon": "fa-users",
+            "component": {
+                "name": "TableGuestsLabel",
+                "inputs": [
+                    {
+                        "name": "guests",
+                        "property": "guests"
+                    },
+                    {
+                        "name": "size",
+                        "property": "size"
+                    }
+                ]
+            },
+            "responsive": "sm"
+        },
+        {
+            "header": "Invitados",
+            "icon": "fa-users",
+            "property": "guests",
+            "multiProperty": "name"
+        }
+    ]
+}

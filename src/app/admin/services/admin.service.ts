@@ -12,6 +12,7 @@ import { InvitationsResult } from '../models/invitationsResult';
 import { GroupsResult } from '../models/groupsResult';
 import { GuestsResult } from '../models/guestsResult';
 import * as searchRequests from './search-requests.json';
+import { TablesResult } from '../models/tablesResult';
 
 @Injectable()
 export class AdminService {
@@ -45,8 +46,16 @@ export class AdminService {
     return this.search('guestsResult');
   }
 
+  getGuestsTablesResult(): Observable<Guest[]> {
+    return this.search('guestsTablesResult');
+  }
+
   getGroupsResult(): Observable<GroupsResult> {
     return this.search('groupsResult');
+  }
+
+  getTablesResult(): Observable<Table[]> {
+    return this.search('tablesResult');
   }
 
   // -------- GUEST ----------
@@ -65,6 +74,10 @@ export class AdminService {
 
   updateGuestOrder(guest: Guest) {
     return this.http.putWithResponse('guest/order/' + guest._id, { order: guest.order });
+  }
+
+  updateGuestOrderInTable(guest: Guest) {
+    return this.http.putWithResponse('guest/order-table/' + guest._id, { orderInTable: guest.orderInTable });
   }
 
   // -------------------------
@@ -106,6 +119,26 @@ export class AdminService {
 
   removeGroup(group: Group) {
     return this.http.deleteWithResponse('group/' + group._id);
+  }
+
+  // -------------------------
+
+  // -------- TABLE ----------
+
+  getTable(tableId: string) {
+    return this.http.get('group/' + tableId);
+  }
+
+  createTable(newTable: Table) {
+    return this.http.postWithResponse('table/add', newTable);
+  }
+
+  updateTable(table: Table) {
+    return this.http.putWithResponse('table/' + table._id, table);
+  }
+
+  removeTable(table: Table) {
+    return this.http.deleteWithResponse('table/' + table._id);
   }
 
   // -------------------------

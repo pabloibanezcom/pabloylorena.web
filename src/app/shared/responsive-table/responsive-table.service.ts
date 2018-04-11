@@ -73,8 +73,11 @@ export class ResponsiveTableService {
 
   private applyFilter(): any[] {
     let result = [];
-    const propertiesMatch = this.tableConfig.search.property.split(' ');
+    const propertiesMatch = this.tableConfig.search ? this.tableConfig.search.property.split(' ') : [];
     // Apply search filter
+    if (propertiesMatch.length === 0) {
+      result = this.elements;
+    }
     propertiesMatch.forEach(p => {
       result = result.concat(this.elements
         .filter(e => e[p].toLowerCase().match(this.filterParams.searchStr.toLowerCase()))
@@ -86,6 +89,13 @@ export class ResponsiveTableService {
       if (select.value !== null && select.value !== undefined) {
         result = result.filter(e => 
           (select.value !== 'null' && this.util.resolveComplexProperty(e, select.property) === select.value)
+          || (select.value === 'null' && ( this.util.resolveComplexProperty(e, select.property) === null || this.util.resolveComplexProperty(e, select.property) === undefined ))
+        );
+      }
+      if (select.propertyValue !== null && select.propertyValue !== undefined) {
+        result = result.filter(e => 
+          (select.value !== 'null' && select.propertyValueMatch && this.util.resolveComplexProperty(e, select.property) === this.util.resolveComplexProperty(e, select.propertyValue))
+          || (select.value !== 'null' && !select.propertyValueMatch && this.util.resolveComplexProperty(e, select.property) !== this.util.resolveComplexProperty(e, select.propertyValue))
           || (select.value === 'null' && ( this.util.resolveComplexProperty(e, select.property) === null || this.util.resolveComplexProperty(e, select.property) === undefined ))
         );
       }

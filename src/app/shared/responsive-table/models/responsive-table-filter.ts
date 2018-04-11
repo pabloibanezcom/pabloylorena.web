@@ -6,8 +6,10 @@ interface Sort {
 interface Select {
     alias?: string;
     property: string;
-    value: string;
+    value?: string;
     group?: string;
+    propertyValue?: string;
+    propertyValueMatch?: boolean;
 }
 
 export class ResponsiveTableFilter {
