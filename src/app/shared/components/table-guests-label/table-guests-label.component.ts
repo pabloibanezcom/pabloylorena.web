@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Guest } from '../../models/guest';
 
 @Component({
   selector: 'app-table-guests-label',
@@ -7,7 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class TableGuestsLabelComponent {
 
-  @Input() guests: number;
+  @Input() guests: Guest[];
   @Input() size: number;
 
   constructor() { }
