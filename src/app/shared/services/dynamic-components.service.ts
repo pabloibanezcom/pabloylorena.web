@@ -8,6 +8,7 @@ import { RepliedLabelComponent } from '../components/replied-label/replied-label
 import { TableLabelComponent } from '../components/table-label/table-label.component';
 import { TypeLabelComponent } from '../components/type-label/type-label.component';
 import { TableGuestsLabelComponent } from '../components/table-guests-label/table-guests-label.component';
+import { MoneyLabelComponent } from '../components/money-label/money-label.component';
 
 @Injectable()
 export class DynamicComponentsService {
@@ -21,7 +22,8 @@ export class DynamicComponentsService {
       RepliedLabel: RepliedLabelComponent,
       TableLabel: TableLabelComponent,
       TypeLabel: TypeLabelComponent,
-      TableGuestsLabel: TableGuestsLabelComponent
+      TableGuestsLabel: TableGuestsLabelComponent,
+      MoneyLabel: MoneyLabelComponent
     };
   }
 

@@ -24,6 +24,7 @@ import { SentLabelComponent } from './components/sent-label/sent-label.component
 import { RepliedLabelComponent } from './components/replied-label/replied-label.component';
 import { AdjustHeightDirective } from './directives/adjust-height.directive';
 import { TableGuestsLabelComponent } from './components/table-guests-label/table-guests-label.component';
+import { MoneyLabelComponent } from './components/money-label/money-label.component';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { TableGuestsLabelComponent } from './components/table-guests-label/table
     SentLabelComponent,
     RepliedLabelComponent,
     AdjustHeightDirective,
-    TableGuestsLabelComponent
+    TableGuestsLabelComponent,
+    MoneyLabelComponent
   ],
   providers: [
     DynamicComponentsService,
@@ -71,7 +73,8 @@ import { TableGuestsLabelComponent } from './components/table-guests-label/table
     RepliedLabelComponent,
     TableLabelComponent,
     TypeLabelComponent,
-    TableGuestsLabelComponent
+    TableGuestsLabelComponent,
+    MoneyLabelComponent
   ],
 })
 export class SharedModule { }

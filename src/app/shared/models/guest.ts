@@ -19,7 +19,6 @@ export class Guest {
     isAttendingFriday: Boolean;
     stayingPlace: string;
     stayingPlaceExpectation: string;
-    giftAmount: number;
     order: number;
     orderInTable: number;
     lastModified: Date;

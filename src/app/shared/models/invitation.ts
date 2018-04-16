@@ -14,6 +14,7 @@ export class Invitation {
     isPlural: boolean;
     dedication: string;
     dedicationMode: string;
+    giftAmount: number;
     guests: Guest[];
     group: Group;
     lastModified: Date;

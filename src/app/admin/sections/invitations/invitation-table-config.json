@@ -113,6 +113,21 @@
             "property": "address"
         },
         {
+            "header": "Regalo",
+            "sortBy": "giftAmount",
+            "icon": "fa-gift",
+            "property": "giftAmount",
+            "component": {
+                "name": "MoneyLabel",
+                "inputs": [
+                    {
+                        "name": "amount",
+                        "property": "giftAmount"
+                    }
+                ]
+            }
+        },
+        {
             "header": "Guests",
             "icon": "fa-users",
             "property": "guests",

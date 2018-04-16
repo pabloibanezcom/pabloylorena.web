@@ -35,8 +35,8 @@
             <!-- RECEIVER -->
             <smart-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Remitente'" [(model)]="modalInvitation.receiver"></smart-form-text>
 
-            <!-- ADDRESS -->
-            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Direccion'" [(model)]="modalInvitation.address"></smart-form-text>
+            <!-- GIFT -->
+            <smart-form-text [type]="'number'" [class]="'col-xs-12 col-sm-6'" [label]="'Manzana'" [(model)]="modalInvitation.giftAmount"></smart-form-text>
 
             <!-- NOT IN PAPER -->
             <smart-form-select [class]="'col-xs-12 col-sm-2'" [label]="'No papel'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalInvitation.notInPaper"></smart-form-select>
