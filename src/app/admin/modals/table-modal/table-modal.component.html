@@ -1,103 +1,103 @@
-<div id="rsvp-table-modal" class="modal table-modal modal-rsvp" tabindex="-1" role="dialog" aria-labelledby="rsvpModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <form id="rsvp-form" class="rsvp-form form" *ngIf="modalTable && !deleteMode" (ngSubmit)="onSubmit()">
-            <div id="form-messages" class="text-center"></div>
-            <div class="row text-left">
-  
-              <!-- NUMBER -->
-              <smart-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Numero'" [(model)]="modalTable.number"></smart-form-text>
+<div id="rsvp-table-modal" class="modal table-modal modal-rsvp" tabindex="-1" role="dialog" aria-labelledby="rsvpModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="rsvp-form" class="rsvp-form form" *ngIf="modalElement && !deleteMode" (ngSubmit)="onSubmit()">
+          <div id="form-messages" class="text-center"></div>
+          <div class="row text-left">
 
-              <!-- NAME -->
-              <smart-form-text [class]="'col-xs-12 col-sm-8'" [label]="'Nombre'" [(model)]="modalTable.name"></smart-form-text>
+            <!-- NUMBER -->
+            <smart-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Numero'" [(model)]="modalElement.number"></smart-form-text>
 
-              <!-- ALIAS -->
-              <smart-form-text [class]="'col-xs-12 col-sm-8'" [label]="'Alias'" [(model)]="modalTable.alias"></smart-form-text>
+            <!-- NAME -->
+            <smart-form-text [class]="'col-xs-12 col-sm-8'" [label]="'Nombre'" [(model)]="modalElement.name"></smart-form-text>
 
-              <!-- SIZE -->
-              <smart-form-text [class]="'col-xs-12 col-sm-4'" [type]="'number'" [label]="'Tamaño'" [(model)]="modalTable.size"></smart-form-text>
-              
-            </div>
+            <!-- ALIAS -->
+            <smart-form-text [class]="'col-xs-12 col-sm-8'" [label]="'Alias'" [(model)]="modalElement.alias"></smart-form-text>
 
-            <div class="row">
-              <!-- GUESTS ORDER -->
-              <div class="form-text form-group col-xs-12 col-sm-12">
-                  <div class="form-group-inner">
-                    <label>Invitados</label>
-                    <ul class="list-group guests">
-                        <li class="list-group-item" *ngFor="let guest of modalTable.guests, let i = index">
-                          {{guest.name}}
-                          <div class="controls">
-                            <div class="control-container"><a *ngIf="i !== 0" (click)="moveGuestUp(guest)"><i class="fa fa-chevron-up"></i></a></div>
-                            <div class="control-container"><a *ngIf="i !== modalTable.guests.length - 1" (click)="moveGuestDown(guest)"><i class="fa fa-chevron-down"></i></a></div>
-                            <div class="control-container" *ngIf="showRemoveConfirm !== guest._id"><a (click)="showRemoveConfirm = guest._id"><i class="fa fa-times"></i></a></div>
-                            <div class="control-container" *ngIf="showRemoveConfirm === guest._id"><a class="btn btn-xs btn-danger" (click)="removeFromTable(guest)">Quitar invitado <i class="fa fa-times"></i></a></div>
-                            <div class="control-container" *ngIf="showRemoveConfirm === guest._id"><a class="btn btn-xs btn-success" (click)="showRemoveConfirm = null">Dejar invitado <i class="fa fa-check"></i></a></div>
-                          </div>
-                          <div class="clearfix"></div>
-                        </li>
-                      </ul>
-                  </div>
-                </div>
-            </div>
+            <!-- SIZE -->
+            <smart-form-text [class]="'col-xs-12 col-sm-4'" [type]="'number'" [label]="'Tamaño'" [(model)]="modalElement.size"></smart-form-text>
 
-            <div class="row form-buttons">
-              <div class="col-xs-12 col-sm-6">
-                <button type="submit" class="btn btn-block btn-primary">{{table && table.number != null ? 'Editar mesa' : 'Añadir mesa' }}</button>
-              </div>
-              <div class="col-xs-12 col-sm-6">
-                <a (click)="cancel()" class="btn btn-block btn-primary">Cancelar</a>
-              </div>
-            </div>
-          </form>
-          <div class="delete-section row" *ngIf="deleteMode && modalTable.guests.length < 1">
-            <div class="col-xs-12 col-sm-12">
-              <h3>Estas seguro de que quieres eliminar esta mesa?</h3>
-            </div>
-            <div class="col-xs-12 col-sm-12 table-info">
-              <div>
-                <span class="delete-section-property">Name: </span>
-                <span class="delete-section-value"> {{modalTable.name}}</span>
-              </div>
-              <div>
-                <span class="delete-section-property">Alias: </span>
-                <span class="delete-section-value"> {{modalTable.alias}}</span>
-              </div>
-            </div>
-            <div class="form-buttons">
-              <div class="col-xs-12 col-sm-4">
-                <button class="btn btn-block btn-danger" (click)="confirmDelete()">
-                  <i class="fa fa-thumbs-up"></i> SI</button>
-              </div>
-              <div class="col-xs-12 col-sm-8">
-                <button class="btn btn-block btn-primary" (click)="cancel()">
-                  <i class="fa fa-thumbs-down"></i>NO</button>
+          </div>
+
+          <div class="row">
+            <!-- GUESTS ORDER -->
+            <div class="form-text form-group col-xs-12 col-sm-12">
+              <div class="form-group-inner">
+                <label>Invitados</label>
+                <ul class="list-group guests">
+                  <li class="list-group-item" *ngFor="let guest of modalElement.guests, let i = index">
+                    {{guest.name}}
+                    <div class="controls">
+                      <div class="control-container">
+                        <a *ngIf="i !== 0" (click)="moveGuestUp(guest)">
+                          <i class="fa fa-chevron-up"></i>
+                        </a>
+                      </div>
+                      <div class="control-container">
+                        <a *ngIf="i !== modalElement.guests.length - 1" (click)="moveGuestDown(guest)">
+                          <i class="fa fa-chevron-down"></i>
+                        </a>
+                      </div>
+                      <div class="control-container" *ngIf="showRemoveConfirm !== guest._id">
+                        <a (click)="showRemoveConfirm = guest._id">
+                          <i class="fa fa-times"></i>
+                        </a>
+                      </div>
+                      <div class="control-container" *ngIf="showRemoveConfirm === guest._id">
+                        <a class="btn btn-xs btn-danger" (click)="removeFromTable(guest)">Quitar invitado
+                          <i class="fa fa-times"></i>
+                        </a>
+                      </div>
+                      <div class="control-container" *ngIf="showRemoveConfirm === guest._id">
+                        <a class="btn btn-xs btn-success" (click)="showRemoveConfirm = null">Dejar invitado
+                          <i class="fa fa-check"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
-          <div class="delete-section row" *ngIf="deleteMode && modalTable.guests.length > 0">
-              <div class="col-xs-12 col-sm-12">
-                <h3>Esta mesa no puede ser eliminada ya que tiene invitados asignados.</h3>
-              </div>
-              <div class="col-xs-12 col-sm-12 table-info">
-                <div>
-                  <span class="delete-section-property">Name: </span>
-                  <span class="delete-section-value"> {{modalTable.name}}</span>
-                </div>
-                <div>
-                  <span class="delete-section-property">Alias: </span>
-                  <span class="delete-section-value"> {{modalTable.alias}}</span>
-                </div>
-              </div>
-              <div class="form-buttons">
-                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                  <button class="btn btn-block btn-primary" (click)="cancel()">
-                    <i class="fa fa-thumbs-down"></i>Cerrar</button>
-                </div>
-              </div>
+
+          <div class="row form-buttons">
+            <div class="col-xs-12 col-sm-6">
+              <button type="submit" class="btn btn-block btn-primary">{{editMode ? 'Editar mesa' : 'Añadir mesa' }}</button>
             </div>
+            <div class="col-xs-12 col-sm-6">
+              <a (click)="cancel()" class="btn btn-block btn-primary">Cancelar</a>
+            </div>
+          </div>
+        </form>
+        <app-delete-mode *ngIf="deleteMode && modalElement.guests.length < 1" [question]="'Estas seguro de que quieres eliminar esta mesa?'"
+          [element]="modalElement" [properties]="[{name: 'name', label: 'Name'}, {name: 'invitation.alias', label: 'Alias'}]"
+          (confirmDelete)="confirmDelete()" (cancel)="cancel()">
+        </app-delete-mode>
+        <div class="delete-section row" *ngIf="deleteMode && modalElement.guests.length > 0">
+          <div class="col-xs-12 col-sm-12">
+            <h3>Esta mesa no puede ser eliminada ya que tiene invitados asignados.</h3>
+          </div>
+          <div class="col-xs-12 col-sm-12 table-info">
+            <div>
+              <span class="delete-section-property">Name: </span>
+              <span class="delete-section-value"> {{modalElement.name}}</span>
+            </div>
+            <div>
+              <span class="delete-section-property">Alias: </span>
+              <span class="delete-section-value"> {{modalElement.alias}}</span>
+            </div>
+          </div>
+          <div class="form-buttons">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+              <button class="btn btn-block btn-primary" (click)="cancel()">
+                <i class="fa fa-thumbs-down"></i>Cerrar</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>

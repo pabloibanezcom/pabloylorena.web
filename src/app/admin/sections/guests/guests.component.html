@@ -7,12 +7,12 @@
     </h3>
     <div class="counters" *ngIf="result">
       <div class="countdown-box" id="countdown-box">
-          <span class="item all" [ngClass]="{'selected': !filter || filter.alias === 'all'}">
-              <a (click)="filter = {alias: 'all', property: null, value: null, group: 'attendance'}">
-                <span class="number">{{result.guests.length}}</span>
-                <span class="unit script">Total</span>
-              </a>
-            </span>
+        <span class="item all" [ngClass]="{'selected': !filter || filter.alias === 'all'}">
+          <a (click)="filter = {alias: 'all', property: null, value: null, group: 'attendance'}">
+            <span class="number">{{result.guests.length}}</span>
+            <span class="unit script">Total</span>
+          </a>
+        </span>
         <span class="item expected" [ngClass]="{'selected': filter && filter.alias === 'expected'}">
           <a (click)="filter = {alias: 'expected', property: 'isAttendingExpectation', value: true, group: 'attendance'}">
             <span class="number">{{result.expected}}</span>
@@ -53,5 +53,5 @@
       </div>
     </div>
   </div>
-  <app-guest-modal [deleteMode]="deleteMode" [guest]="selectedGuest" (ending)="afterGuestModal($event)"></app-guest-modal>
+  <app-guest-modal [deleteMode]="deleteMode" [element]="selectedGuest" (ending)="afterModal($event)"></app-guest-modal>
 </div>

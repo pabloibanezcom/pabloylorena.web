@@ -1,15 +1,14 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-
-import { UtilService } from '../../../shared/services/util.service';
-import { DataService } from '../../../shared/services/data.service';
-import { AdminService } from '../../services/admin.service';
-import { GuestsResult } from '../../models/guestsResult';
-
-import * as guestsTableConfig from './guest-table-config.json';
-import * as tablesTableConfig from './table-table-config.json';
 import { Guest } from '../../../shared/models/guest';
 import { Table } from '../../../shared/models/table';
+import { DataService } from '../../../shared/services/data.service';
+import { UtilService } from '../../../shared/services/util.service';
+import { AdminService } from '../../services/admin.service';
+import * as guestsTableConfig from './guest-table-config.json';
+import * as tablesTableConfig from './table-table-config.json';
+
+
 
 @Component({
   selector: 'app-table-planner',
@@ -60,7 +59,7 @@ export class TablePlannerComponent implements OnInit, OnDestroy {
 
   refreshGuestResult() {
     this.subscriptions['getGuestsResult'] = this.adminService.getGuestsTablesResult().subscribe(res => {
-      this.guests = res.filter(g => g.isAttendingExpectation && ( g.table === null || g.table === undefined) && g.type < 4);
+      this.guests = res.filter(g => g.isAttendingExpectation && (g.table === null || g.table === undefined) && g.type < 4);
     });
   }
 
@@ -114,7 +113,7 @@ export class TablePlannerComponent implements OnInit, OnDestroy {
     this.util.hideModal('rsvp-guest-table-modal');
   }
 
-  afterTableModal(event: any) {
+  afterModal(event: any) {
     this.deleteMode = false;
     if (event.refreshData) {
       this.refreshGuestResult();

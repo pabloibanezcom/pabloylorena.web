@@ -2,62 +2,41 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <form id="rsvp-form" class="rsvp-form form" *ngIf="modalGroup && !deleteMode" (ngSubmit)="onSubmit()">
+        <form id="rsvp-form" class="rsvp-form form" *ngIf="modalElement && !deleteMode" (ngSubmit)="onSubmit()">
           <div id="form-messages" class="text-center"></div>
           <div class="row text-left">
 
             <!-- NAME -->
-            <smart-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Nombre'" [(model)]="modalGroup.name"></smart-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Nombre'" [(model)]="modalElement.name"></smart-form-text>
 
             <!-- HOST -->
-            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Anfitrion'" [emptyOption]="true" [options]="hosts" [(model)]="modalGroup.host"></smart-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Anfitrion'" [emptyOption]="true" [options]="hosts" [(model)]="modalElement.host"></smart-form-select>
 
             <!-- ORDER -->
-            <smart-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Order'" [(model)]="modalGroup.order"></smart-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Order'" [(model)]="modalElement.order"></smart-form-text>
 
             <!-- INVITATION DEDICATION -->
             <div class="form-text form-group col-xs-12 col-sm-12">
               <div class="form-group-inner">
                 <label for="dedication">Dedicatoria</label>
-                <div class="text-editor" [froalaEditor]="editorOptions" [(froalaModel)]="modalGroup.invitationDedication"></div>
+                <div class="text-editor" [froalaEditor]="editorOptions" [(froalaModel)]="modalElement.invitationDedication"></div>
               </div>
             </div>
-            
+
           </div>
           <div class="row form-buttons">
             <div class="col-xs-12 col-sm-6">
-              <button type="submit" class="btn btn-block btn-primary">{{(group | json) != '{}' ? 'Editar grupo' : 'Añadir grupo' }}</button>
+              <button type="submit" class="btn btn-block btn-primary">{{editMode ? 'Editar grupo' : 'Añadir grupo' }}</button>
             </div>
             <div class="col-xs-12 col-sm-6">
               <a (click)="cancel()" class="btn btn-block btn-primary">Cancelar</a>
             </div>
           </div>
         </form>
-        <div class="delete-section row" *ngIf="deleteMode">
-          <div class="col-xs-12 col-sm-12">
-            <h3>Estas seguro de que quieres eliminar este grupo?</h3>
-          </div>
-          <div class="col-xs-12 col-sm-12 group-info">
-            <div>
-              <span class="delete-section-property">Name: </span>
-              <span class="delete-section-value"> {{modalGroup.name}}</span>
-            </div>
-            <div>
-              <span class="delete-section-property">Anfitrion: </span>
-              <span class="delete-section-value"> {{modalGroup.host}}</span>
-            </div>
-          </div>
-          <div class="form-buttons">
-            <div class="col-xs-12 col-sm-4">
-              <button class="btn btn-block btn-danger" (click)="confirmDelete()">
-                <i class="fa fa-thumbs-up"></i> SI</button>
-            </div>
-            <div class="col-xs-12 col-sm-8">
-              <button class="btn btn-block btn-primary" (click)="cancel()">
-                <i class="fa fa-thumbs-down"></i>NO</button>
-            </div>
-          </div>
-        </div>
+        <app-delete-mode *ngIf="deleteMode" [question]="'Estas seguro de que quieres eliminar este grupo?'" [element]="modalElement"
+          [properties]="[{name: 'name', label: 'Name'}, {name: 'host', label: 'Anfitrion'}]" (confirmDelete)="confirmDelete()"
+          (cancel)="cancel()">
+        </app-delete-mode>
       </div>
     </div>
   </div>

@@ -1,17 +1,14 @@
-import { Component, OnInit, OnChanges, OnDestroy, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Response } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
-
+import { Guest, Table } from '../../../shared/models';
+import { DataService } from '../../../shared/services/data.service';
 import { AdminService } from '../../services/admin.service';
 import { NotificationService } from '../../services/notification.service';
-import { DataService } from '../../../shared/services/data.service';
-import { Guest } from '../../../shared/models/guest';
-import { Table } from '../../../shared/models/table';
 
 @Component({
   selector: 'app-guest-table-modal',
-  templateUrl: './guest-table-modal.component.html',
-  styleUrls: ['./guest-table-modal.component.less']
+  templateUrl: './guest-table-modal.component.html'
 })
 export class GuestTableModalComponent implements OnInit, OnChanges, OnDestroy {
 

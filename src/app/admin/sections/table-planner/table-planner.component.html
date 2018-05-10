@@ -37,8 +37,10 @@
     </div>
     <div *ngIf="tables && protocolMode" class="protocol">
       <div class="row doNotPrint">
-        <a class="btn btn-sm btn-primary" (click)="protocolMode = false"><i class="fa fa-arrow-left"></i>Volver a organizador</a>
-        <a class="btn btn-sm btn-primary" (click)="print()"><i class="fa fa-print"></i>Imprimir</a>
+        <a class="btn btn-sm btn-primary" (click)="protocolMode = false">
+          <i class="fa fa-arrow-left"></i>Volver a organizador</a>
+        <a class="btn btn-sm btn-primary" (click)="print()">
+          <i class="fa fa-print"></i>Imprimir</a>
       </div>
       <div class="row tables">
         <div *ngFor="let table of tables" class="col-sm-6">
@@ -55,5 +57,5 @@
     </div>
   </div>
   <app-guest-table-modal [guest]="selectedGuest" (ending)="afterGuestTableModal($event)"></app-guest-table-modal>
-  <app-table-modal [deleteMode]="deleteMode" [table]="selectedTable" (ending)="afterTableModal($event)"></app-table-modal>
+  <app-table-modal [deleteMode]="deleteMode" [element]="selectedTable" (ending)="afterModal($event)"></app-table-modal>
 </div>

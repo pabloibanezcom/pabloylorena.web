@@ -1,13 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-
-import { UtilService } from '../../../shared/services/util.service';
-import { DataService } from '../../../shared/services/data.service';
-import { AdminService } from '../../services/admin.service';
-import { GuestsResult } from '../../models/guestsResult';
-
-import * as tableConfig from './guest-table-config.json';
 import { Guest } from '../../../shared/models/guest';
+import { DataService } from '../../../shared/services/data.service';
+import { UtilService } from '../../../shared/services/util.service';
+import { GuestsResult } from '../../models/guestsResult';
+import { AdminService } from '../../services/admin.service';
+import * as tableConfig from './guest-table-config.json';
+
+
 
 @Component({
   selector: 'app-guests',
@@ -85,7 +85,7 @@ export class GuestsComponent implements OnInit, OnDestroy {
     this.util.showModal('rsvp-guest-modal');
   }
 
-  afterGuestModal(event: any) {
+  afterModal(event: any) {
     this.deleteMode = false;
     if (event.refreshData) {
       this.refreshGuestResult();

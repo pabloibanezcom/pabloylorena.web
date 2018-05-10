@@ -2,24 +2,24 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <form id="rsvp-form" class="rsvp-form form" *ngIf="modalGuest && !deleteMode" (ngSubmit)="onSubmit()">
+        <form id="rsvp-form" class="rsvp-form form" *ngIf="modalElement && !deleteMode" (ngSubmit)="onSubmit()">
           <div id="form-messages" class="text-center"></div>
           <div class="row text-left">
 
             <!-- NAME -->
-            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Nombre'" [(model)]="modalGuest.name"></smart-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Nombre'" [(model)]="modalElement.name"></smart-form-text>
 
             <!-- FULL NAME -->
-            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Nombre completo'" [(model)]="modalGuest.fullName"></smart-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Nombre completo'" [(model)]="modalElement.fullName"></smart-form-text>
 
             <!-- EMAIL -->
-            <smart-form-text [type]="email" [class]="'col-xs-12 col-sm-6'" [label]="'Email'" [(model)]="modalGuest.email"></smart-form-text>
+            <smart-form-text [type]="email" [class]="'col-xs-12 col-sm-6'" [label]="'Email'" [(model)]="modalElement.email"></smart-form-text>
 
             <!-- PHONE -->
-            <smart-form-text [type]="tel" [class]="'col-xs-12 col-sm-3'" [label]="'Movil'" [(model)]="modalGuest.phone"></smart-form-text>
+            <smart-form-text [type]="tel" [class]="'col-xs-12 col-sm-3'" [label]="'Movil'" [(model)]="modalElement.phone"></smart-form-text>
 
             <!-- TYPE -->
-            <smart-form-select [class]="'col-xs-12 col-sm-3'" [label]="'Genero'" [emptyOption]="true" [options]="types" [(model)]="modalGuest.type"></smart-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-3'" [label]="'Genero'" [emptyOption]="true" [options]="types" [(model)]="modalElement.type"></smart-form-select>
 
             <!-- GROUP -->
             <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Grupo'" [options]="groups" [optionValue]="'_id'" [optionLabel]="'name'"
@@ -27,72 +27,48 @@
 
             <!-- INVITATION -->
             <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Invitacion'" [options]="invitations" [optionValue]="'_id'" [optionLabel]="'alias'"
-              [emptyOption]="true" [(model)]="modalGuest.invitation"></smart-form-select>
+              [emptyOption]="true" [(model)]="modalElement.invitation"></smart-form-select>
 
             <!-- TABLE -->
             <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Mesa'" [emptyOption]="true" [options]="tables" [optionLabel]="'fullName'"
-            [optionValue]="'_id'" [(model)]="modalGuest.table"></smart-form-select>
+              [optionValue]="'_id'" [(model)]="modalElement.table"></smart-form-select>
 
-             <!-- IS ATTENDING FRIDAY -->
-             <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Asistencia viernes'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalGuest.isAttendingFriday"></smart-form-select>
+            <!-- IS ATTENDING FRIDAY -->
+            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Asistencia viernes'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalElement.isAttendingFriday"></smart-form-select>
 
             <!-- IS ATTENDING -->
-            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Asistencia confirmada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalGuest.isAttending"></smart-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Asistencia confirmada'" [type]="'YesNo'" [emptyOption]="true"
+              [(model)]="modalElement.isAttending"></smart-form-select>
 
             <!-- IS ATTENDING EXPECTATION -->
-            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Asistencia esperada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalGuest.isAttendingExpectation"></smart-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Asistencia esperada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalElement.isAttendingExpectation"></smart-form-select>
 
             <!-- STAYING PLACE -->
             <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Alojamiento sabado'" [emptyOption]="true" [options]="stayingPlaces"
-              [(model)]="modalGuest.stayingPlace"></smart-form-select>
+              [(model)]="modalElement.stayingPlace"></smart-form-select>
 
-              <!-- STAYING PLACE EXPECTATION -->
+            <!-- STAYING PLACE EXPECTATION -->
             <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Alojamiento sabado esperado'" [emptyOption]="true" [options]="stayingPlaces"
-            [(model)]="modalGuest.stayingPlaceExpectation"></smart-form-select>
+              [(model)]="modalElement.stayingPlaceExpectation"></smart-form-select>
 
             <!-- ALLERGIES -->
-            <smart-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Alergias'" [(model)]="modalGuest.allergies"></smart-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Alergias'" [(model)]="modalElement.allergies"></smart-form-text>
 
             <!-- ADDITIONAL COMMENTS -->
-            <smart-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Otros comentarios'" [(model)]="modalGuest.additionalComments"></smart-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Otros comentarios'" [(model)]="modalElement.additionalComments"></smart-form-text>
 
             <div class="col-xs-12 col-sm-6">
-              <button type="submit" class="btn btn-block btn-primary">{{(guest | json) != '{}' ? 'Editar invitado' : 'Añadir invitado' }}</button>
+              <button type="submit" class="btn btn-block btn-primary">{{editMode ? 'Editar invitado' : 'Añadir invitado' }}</button>
             </div>
             <div class="col-xs-12 col-sm-6">
               <a (click)="cancel()" class="btn btn-block btn-primary">Cancelar</a>
             </div>
           </div>
         </form>
-        <div class="delete-section row" *ngIf="deleteMode">
-          <div class="col-xs-12 col-sm-12">
-            <h3>Estas seguro de que quieres eliminar este invitado?</h3>
-          </div>
-          <div class="col-xs-12 col-sm-12 guest-info">
-            <div>
-              <span class="delete-section-property">Full Name: </span>
-              <span class="delete-section-value"> {{modalGuest.fullName}}</span>
-            </div>
-            <div>
-              <span class="delete-section-property">Invitation: </span>
-              <span class="delete-section-value"> {{modalGuest.invitation.alias}}</span>
-            </div>
-            <div>
-              <span class="delete-section-property">Table: </span>
-              <span class="delete-section-value"> {{modalGuest.table.number}}</span>
-            </div>
-          </div>
-          <div class="form-buttons">
-            <div class="col-xs-12 col-sm-4">
-              <button class="btn btn-block btn-danger" (click)="confirmDelete()">
-                <i class="fa fa-thumbs-up"></i> SI</button>
-            </div>
-            <div class="col-xs-12 col-sm-8">
-              <button class="btn btn-block btn-primary" (click)="cancel()">
-                <i class="fa fa-thumbs-down"></i>NO</button>
-            </div>
-          </div>
-        </div>
+        <app-delete-mode *ngIf="deleteMode" [question]="'Estas seguro de que quieres eliminar este invitado?'" [element]="modalElement"
+          [properties]="[{name: 'fullName', label: 'Full Name'}, {name: 'invitation.alias', label: 'Invitation'}, {name: 'table.number', label: 'Table'}]"
+          (confirmDelete)="confirmDelete()" (cancel)="cancel()">
+        </app-delete-mode>
       </div>
     </div>
   </div>

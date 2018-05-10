@@ -3,43 +3,43 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <form id="rsvp-form" class="rsvp-form form" *ngIf="modalInvitation && !deleteMode" (ngSubmit)="onSubmit()">
+        <form id="rsvp-form" class="rsvp-form form" *ngIf="modalElement && !deleteMode" (ngSubmit)="onSubmit()">
           <div id="form-messages" class="text-center"></div>
           <div class="row text-left">
 
             <!-- ALIAS -->
-            <smart-form-text [class]="'col-xs-12 col-sm-5'" [label]="'Alias'" [(model)]="modalInvitation.alias"></smart-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-5'" [label]="'Alias'" [(model)]="modalElement.alias"></smart-form-text>
 
             <!-- DEAR -->
-            <smart-form-text [class]="'col-xs-12 col-sm-5'" [label]="'Querido...'" [(model)]="modalInvitation.dear"></smart-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-5'" [label]="'Querido...'" [(model)]="modalElement.dear"></smart-form-text>
 
             <!-- IS PLURAL -->
-            <smart-form-select [class]="'col-xs-12 col-sm-2'" [label]="'Plural'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalInvitation.isPlural"></smart-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-2'" [label]="'Plural'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalElement.isPlural"></smart-form-select>
 
           </div>
           <div class="row text-left">
 
             <!-- ISSENT -->
-            <smart-form-select [class]="'col-xs-12 col-sm-3'" [label]="'Enviada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalInvitation.isSent"></smart-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-3'" [label]="'Enviada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalElement.isSent"></smart-form-select>
 
             <!-- ISREPLIED -->
-            <smart-form-select [class]="'col-xs-12 col-sm-3'" [label]="'Contestada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalInvitation.isReplied"></smart-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-3'" [label]="'Contestada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalElement.isReplied"></smart-form-select>
 
             <!-- GROUPS -->
             <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Grupo'" [options]="groups" [optionValue]="'_id'" [optionLabel]="'name'"
-              [emptyOption]="true" [(model)]="modalInvitation.group"></smart-form-select>
+              [emptyOption]="true" [(model)]="modalElement.group"></smart-form-select>
 
           </div>
           <div class="row">
 
             <!-- RECEIVER -->
-            <smart-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Remitente'" [(model)]="modalInvitation.receiver"></smart-form-text>
+            <smart-form-text [class]="'col-xs-12 col-sm-4'" [label]="'Remitente'" [(model)]="modalElement.receiver"></smart-form-text>
 
             <!-- GIFT -->
-            <smart-form-text [type]="'number'" [class]="'col-xs-12 col-sm-6'" [label]="'Manzana'" [(model)]="modalInvitation.giftAmount"></smart-form-text>
+            <smart-form-text [type]="'number'" [class]="'col-xs-12 col-sm-6'" [label]="'Manzana'" [(model)]="modalElement.giftAmount"></smart-form-text>
 
             <!-- NOT IN PAPER -->
-            <smart-form-select [class]="'col-xs-12 col-sm-2'" [label]="'No papel'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalInvitation.notInPaper"></smart-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-2'" [label]="'No papel'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalElement.notInPaper"></smart-form-select>
           </div>
           <div class="row">
             <!-- INVITATION DEDICATION -->
@@ -59,62 +59,45 @@
           <div class="row">
             <!-- GUESTS ORDER -->
             <div class="form-text form-group col-xs-12 col-sm-12">
-                <div class="form-group-inner">
-                  <label>Invitados</label>
-                  <ul class="list-group guests">
-                      <li class="list-group-item" *ngFor="let guest of modalInvitation.guests, let i = index">
-                        {{guest.name}}
-                        <div class="controls">
-                          <div class="control-container"><a *ngIf="i !== 0" (click)="moveGuestUp(guest)"><i class="fa fa-chevron-up"></i></a></div>
-                          <div class="control-container"><a *ngIf="i !== modalInvitation.guests.length - 1" (click)="moveGuestDown(guest)"><i class="fa fa-chevron-down"></i></a></div>          
-                        </div>
-                        
-                        <!-- <input class="form-control" type="text" name="order" > -->
-                        <div class="clearfix"></div>
-                      </li>
-                    </ul>
-                </div>
+              <div class="form-group-inner">
+                <label>Invitados</label>
+                <ul class="list-group guests">
+                  <li class="list-group-item" *ngFor="let guest of modalElement.guests, let i = index">
+                    {{guest.name}}
+                    <div class="controls">
+                      <div class="control-container">
+                        <a *ngIf="i !== 0" (click)="moveGuestUp(guest)">
+                          <i class="fa fa-chevron-up"></i>
+                        </a>
+                      </div>
+                      <div class="control-container">
+                        <a *ngIf="i !== modalElement.guests.length - 1" (click)="moveGuestDown(guest)">
+                          <i class="fa fa-chevron-down"></i>
+                        </a>
+                      </div>
+                    </div>
+
+                    <!-- <input class="form-control" type="text" name="order" > -->
+                    <div class="clearfix"></div>
+                  </li>
+                </ul>
               </div>
+            </div>
           </div>
 
           <div class="row form-buttons">
             <div class="col-xs-12 col-sm-6">
-              <button type="submit" class="btn btn-block btn-primary">{{invitation && invitation.alias != null ? 'Editar invitacion' : 'Añadir invitacion' }}</button>
+              <button type="submit" class="btn btn-block btn-primary">{{editMode ? 'Editar invitacion' : 'Añadir invitacion' }}</button>
             </div>
             <div class="col-xs-12 col-sm-6">
               <a (click)="cancel()" class="btn btn-block btn-primary">Cancelar</a>
             </div>
           </div>
         </form>
-        <div class="delete-section row" *ngIf="deleteMode">
-          <div class="col-xs-12 col-sm-12">
-            <h3>Estas seguro de que quieres eliminar esta invitacion?</h3>
-          </div>
-          <div class="col-xs-12 col-sm-12 invitation-info">
-            <div>
-              <span class="delete-section-property">Alias: </span>
-              <span class="delete-section-value"> {{modalInvitation.alias}}</span>
-            </div>
-            <div>
-              <span class="delete-section-property">GUID: </span>
-              <span class="delete-section-value"> {{modalInvitation.guid}}</span>
-            </div>
-            <div>
-              <span class="delete-section-property">Grupo: </span>
-              <span class="delete-section-value"> {{modalInvitation.group.name}}</span>
-            </div>
-          </div>
-          <div class="form-buttons">
-            <div class="col-xs-12 col-sm-4">
-              <button class="btn btn-block btn-danger" (click)="confirmDelete()">
-                <i class="fa fa-thumbs-up"></i> SI</button>
-            </div>
-            <div class="col-xs-12 col-sm-8">
-              <button class="btn btn-block btn-primary" (click)="cancel()">
-                <i class="fa fa-thumbs-down"></i>NO</button>
-            </div>
-          </div>
-        </div>
+        <app-delete-mode *ngIf="deleteMode" [question]="'Estas seguro de que quieres eliminar esta invitacion?'" [element]="modalElement"
+          [properties]="[{name: 'alias', label: 'Alias'}, {name: 'invitation.guid', label: 'GUID'}, {name: 'group.name', label: 'Grupo'}]"
+          (confirmDelete)="confirmDelete()" (cancel)="cancel()">
+        </app-delete-mode>
       </div>
     </div>
   </div>

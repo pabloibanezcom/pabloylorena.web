@@ -73,7 +73,7 @@ export class GroupsComponent implements OnInit, OnDestroy {
     this.util.showModal('rsvp-group-modal');
   }
 
-  afterGroupModal(event: any) {
+  afterModal(event: any) {
     this.deleteMode = false;
     if (event.refreshData) {
       this.refreshGroupsResult();

@@ -2,7 +2,6 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        {{modelElement | json}}
         <form id="rsvp-form" class="rsvp-form form" *ngIf="modalElement && !deleteMode" (ngSubmit)="onSubmit()">
           <div id="form-messages" class="text-center"></div>
           <div class="row text-left">

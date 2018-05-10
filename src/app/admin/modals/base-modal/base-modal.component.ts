@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Injector, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Response } from '@angular/http';
 import { BaseComponent } from '../../../shared';
 import { AdminService } from '../../services/admin.service';
@@ -19,13 +19,15 @@ export class BaseModalComponent extends BaseComponent implements OnInit, OnChang
   }
 
   modelName: string;
-  modalElement: Element;
+  modalElement: any;
 
-  constructor(
-    private adminService: AdminService,
-    private notificationService: NotificationService
-  ) {
+  protected adminService: AdminService;
+  protected notificationService: NotificationService;
+
+  constructor(injector: Injector) {
     super();
+    this.adminService = injector.get(AdminService);
+    this.notificationService = injector.get(NotificationService);
   }
 
   ngOnInit() {
@@ -83,7 +85,7 @@ export class BaseModalComponent extends BaseComponent implements OnInit, OnChang
     this.element = null;
   }
 
-  private setModalElement(element: any): void {
+  protected setModalElement(element: any): void {
     if (element) {
       this.modalElement = Object.assign({}, element);
     } else {

@@ -1,13 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-
-import { UtilService } from '../../../shared/services/util.service';
-import { AdminService } from '../../services/admin.service';
-import { DataService } from '../../../shared/services/data.service';
-import { InvitationsResult } from '../../models/invitationsResult';
-
-import * as tableConfig from './invitation-table-config.json';
 import { Invitation } from '../../../shared/models/invitation';
+import { DataService } from '../../../shared/services/data.service';
+import { UtilService } from '../../../shared/services/util.service';
+import { InvitationsResult } from '../../models/invitationsResult';
+import { AdminService } from '../../services/admin.service';
+import * as tableConfig from './invitation-table-config.json';
+
+
 
 @Component({
   selector: 'app-invitations',
@@ -79,7 +79,7 @@ export class InvitationsComponent implements OnInit, OnDestroy {
     this.util.showModal('rsvp-invitation-modal');
   }
 
-  afterInvitationModal(event: any) {
+  afterModal(event: any) {
     this.deleteMode = false;
     if (event.refreshData) {
       this.refreshInvitationResult();

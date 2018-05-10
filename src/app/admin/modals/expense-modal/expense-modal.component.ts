@@ -3,8 +3,7 @@ import { BaseModalComponent } from '../base-modal/base-modal.component';
 
 @Component({
   selector: 'app-expense-modal',
-  templateUrl: './expense-modal.component.html',
-  styleUrls: ['./expense-modal.component.less']
+  templateUrl: './expense-modal.component.html'
 })
 export class ExpenseModalComponent extends BaseModalComponent {
 
