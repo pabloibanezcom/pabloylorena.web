@@ -1,23 +1,23 @@
 <div class="groups" [appAdjustHeight]="300">
-    <div class="container text-center">
-      <h3 class="title script">
-        <span class="title-deco-left"></span>
-        <span class="title-text">Grupos</span>
-        <span class="title-deco-right"></span>
-      </h3>
-      <div *ngIf="result">
-        <div class="countdown-box" id="countdown-box">
-          <span class="item awaiting">
-            <span class="number">{{result.groups.length}}</span>
-            <span class="unit script">Grupos</span>
-          </span>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <app-responsive-table [config]="tableConfig" [elements]="result.groups"></app-responsive-table>
-          </div>
+  <div class="container text-center">
+    <h3 class="title script">
+      <span class="title-deco-left"></span>
+      <span class="title-text">Grupos</span>
+      <span class="title-deco-right"></span>
+    </h3>
+    <div *ngIf="result">
+      <div class="countdown-box" id="countdown-box">
+        <span class="item awaiting">
+          <span class="number">{{result.groups.length}}</span>
+          <span class="unit script">Grupos</span>
+        </span>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <app-responsive-table [config]="tableConfig" [elements]="result.groups"></app-responsive-table>
         </div>
       </div>
     </div>
-    <app-group-modal [deleteMode]="deleteMode" [group]="selectedGroup" (ending)="afterGroupModal($event)" ></app-group-modal>
   </div>
+  <app-group-modal [deleteMode]="deleteMode" [group]="selectedGroup" (ending)="afterGroupModal($event)"></app-group-modal>
+</div>

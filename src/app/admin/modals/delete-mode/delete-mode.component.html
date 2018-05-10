@@ -1,0 +1,21 @@
+<div class="delete-section row">
+  <div class="col-xs-12 col-sm-12">
+    <h3>{{question}}</h3>
+  </div>
+  <div class="col-xs-12 col-sm-12 group-info">
+    <div *ngFor="let prop of properties">
+      <span class="delete-section-property">{{prop.label}}: </span>
+      <span class="delete-section-value"> {{element[prop.name]}}</span>
+    </div>
+  </div>
+  <div class="form-buttons">
+    <div class="col-xs-12 col-sm-4">
+      <button class="btn btn-block btn-danger" (click)="onConfirmDelete()">
+        <i class="fa fa-thumbs-up"></i> SI</button>
+    </div>
+    <div class="col-xs-12 col-sm-8">
+      <button class="btn btn-block btn-primary" (click)="onCancel()">
+        <i class="fa fa-thumbs-down"></i>NO</button>
+    </div>
+  </div>
+</div>

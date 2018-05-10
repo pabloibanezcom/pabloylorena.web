@@ -40,14 +40,26 @@
                 </li>
               </ul>
             </li>
-            <li *ngIf="!config.hideCounter" class="results-counter"><span>{{activeElementsResult.filteredElementsLength}}</span></li>
-          </ul>     
+            <li *ngIf="!config.hideCounter" class="results-counter">
+              <span>{{activeElementsResult.filteredElementsLength}}</span>
+            </li>
+          </ul>
           <form class="navbar-form navbar-right">
-            <div *ngIf="config.new_element && config.new_element.authLevels && config.new_element.authLevels.includes(authLevel)" class="form-group">
-              <a class="btn btn-sm btn-primary" [ngClass]="{'btn-block': sizeCode === 'xs'}" (click)="config.new_element.click()">
-                <i class="fa {{config.new_element.icon}}"></i>{{config.new_element.label}}</a>
-            </div>
-          </form>
+              <div *ngIf="config.new_element && config.new_element.authLevels && config.new_element.authLevels.includes(authLevel)" class="form-group">
+                <a class="btn btn-sm btn-primary" [ngClass]="{'btn-block': sizeCode === 'xs'}" (click)="config.new_element.click()">
+                  <i class="fa {{config.new_element.icon}}"></i>{{config.new_element.label}}</a>
+              </div>
+            </form>
+          <div class="navbar-form navbar-right">
+            <ng-container *ngIf="config.top_actions">
+              <ng-container *ngFor="let action of config.top_actions">
+                <div *ngIf="!action.authLevels || (action.authLevels && action.authLevels.includes(authLevel))" class="form-group">
+                  <a class="btn btn-sm btn-primary" [ngClass]="{'btn-block': sizeCode === 'xs'}" (click)="action.click()">
+                    <i class="fa {{action.icon}}"></i>{{action.label}}</a>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>  
         </div>
       </div>
     </nav>
@@ -118,7 +130,8 @@
     </tbody>
     <tfoot>
       <tr>
-        <td [colSpan]="sizeCode === 'xs' ? (config.columns | filterResponsive: [sizeCode, false]).length : (config.columns | filterResponsive: [sizeCode, false]).length" class="footable-visible">
+        <td [colSpan]="sizeCode === 'xs' ? (config.columns | filterResponsive: [sizeCode, false]).length : (config.columns | filterResponsive: [sizeCode, false]).length"
+          class="footable-visible">
           <div class="text-right">
             <app-responsive-table-pagination></app-responsive-table-pagination>
           </div>

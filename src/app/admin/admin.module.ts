@@ -33,6 +33,12 @@ import { LoginContainerComponent } from './login-container/login-container.compo
 import { OverviewComponent } from './sections/overview/overview.component';
 import { TableModalComponent } from './modals/table-modal/table-modal.component';
 import { GuestTableModalComponent } from './modals/guest-table-modal/guest-table-modal.component';
+import { ExpensesComponent } from './sections/expenses/expenses.component';
+import { ExpenseModalComponent } from './modals/expense-modal/expense-modal.component';
+import { BaseModalComponent } from './modals/base-modal/base-modal.component';
+import { BaseSectionComponent } from './sections/base-section/base-section.component';
+import { SectionHeaderComponent } from './sections/section-header/section-header.component';
+import { DeleteModeComponent } from './modals/delete-mode/delete-mode.component';
 // import { OverviewPanelComponent } from './sections/overview/overview-panel/overview-panel.component';
 
 @NgModule({
@@ -64,7 +70,13 @@ import { GuestTableModalComponent } from './modals/guest-table-modal/guest-table
     LoginContainerComponent,
     OverviewComponent,
     TableModalComponent,
-    GuestTableModalComponent
+    GuestTableModalComponent,
+    ExpensesComponent,
+    ExpenseModalComponent,
+    BaseModalComponent,
+    BaseSectionComponent,
+    SectionHeaderComponent,
+    DeleteModeComponent
     // OverviewPanelComponent
   ],
   providers: [

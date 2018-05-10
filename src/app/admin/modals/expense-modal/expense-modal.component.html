@@ -1,0 +1,45 @@
+<div id="rsvp-expense-modal" class="modal modal-rsvp" tabindex="-1" role="dialog" aria-labelledby="rsvpModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        {{modelElement | json}}
+        <form id="rsvp-form" class="rsvp-form form" *ngIf="modalElement && !deleteMode" (ngSubmit)="onSubmit()">
+          <div id="form-messages" class="text-center"></div>
+          <div class="row text-left">
+
+            <!-- DESCRIPTION -->
+            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Concepto'" [(model)]="modalElement.description"></smart-form-text>
+
+            <!-- PAYEER -->
+            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Pagador'" [(model)]="modalElement.payeer"></smart-form-text>
+
+            <!-- PROVIDER -->
+            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Proveedor'" [(model)]="modalElement.provider"></smart-form-text>
+
+            <!-- AMOUNT -->
+            <smart-form-text [type]="'number'" [class]="'col-xs-12 col-sm-3'" [label]="'Cantidad'" [(model)]="modalElement.amount"></smart-form-text>
+
+            <!-- AMOUNT PAID-->
+            <smart-form-text [type]="'number'" [class]="'col-xs-12 col-sm-3'" [label]="'Cantidad pagada'" [(model)]="modalElement.amountPaid"></smart-form-text>
+
+            <!-- COST PER GUEST -->
+            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Coste unitario'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalElement.costPerGuest"></smart-form-select>
+
+          </div>
+          <div class="row form-buttons">
+            <div class="col-xs-12 col-sm-6">
+              <button type="submit" class="btn btn-block btn-primary">{{editMode ? 'Editar gasto' : 'Añadir gasto' }}</button>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <a (click)="cancel()" class="btn btn-block btn-primary">Cancelar</a>
+            </div>
+          </div>
+        </form>
+        <app-delete-mode *ngIf="deleteMode" [question]="'Estas seguro de que quieres eliminar este gasto?'" [element]="modalElement"
+          [properties]="[{name: 'description', label: 'Concepto'}, {name: 'provider', label: 'Proveedor'}]" (confirmDelete)="confirmDelete()"
+          (cancel)="cancel()">
+        </app-delete-mode>
+      </div>
+    </div>
+  </div>
+</div>

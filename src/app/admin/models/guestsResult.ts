@@ -1,6 +1,8 @@
-import { Guest } from '../../shared/models/guest';
+import { Guest } from '../../shared/models';
+import { Result } from './result';
 
-export class GuestsResult {
+export class GuestsResult implements Result {
+    elements: Guest[];
     guests: Guest[];
     attending: Number;
     awaiting: Number;

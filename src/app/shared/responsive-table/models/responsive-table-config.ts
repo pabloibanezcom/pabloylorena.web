@@ -34,6 +34,7 @@ export interface ResponsiveTableConfig {
     search: ConfigSearch;
     selects: ConfigSelect[];
     new_element: ConfigAction;
+    top_actions?: ConfigAction[];
     other_actions: ConfigAction[];
     page_size: number;
     columns: ConfigColumn[];

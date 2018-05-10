@@ -91,7 +91,9 @@
     "guestsResult": {
         "url": "guest",
         "body": {
-            "sort": { "group": 1 },
+            "sort": {
+                "group": 1
+            },
             "populate": [
                 {
                     "path": "invitation",
@@ -111,7 +113,9 @@
     "guestsTablesResult": {
         "url": "guest",
         "body": {
-            "sort": { "group": 1 },
+            "sort": {
+                "group": 1
+            },
             "populate": [
                 {
                     "path": "invitation",
@@ -143,6 +147,20 @@
                             "orderInTable": 1
                         }
                     }
+                }
+            ]
+        }
+    },
+    "expensesResult": {
+        "url": "expense",
+        "body": {
+            "sort": {
+                "group": 1
+            },
+            "populate": [
+                {
+                    "path": "group",
+                    "select": "name"
                 }
             ]
         }

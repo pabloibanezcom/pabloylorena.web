@@ -7,6 +7,13 @@
         "icon": "fa-plus",
         "authLevels": ["admin"]
     },
+    "top_actions": [
+        {
+            "label": "Ver protocolo",
+            "icon": "fa-file",
+            "authLevels": ["admin"]
+        }
+    ],
     "other_actions": [
         {
             "label": "Editar",

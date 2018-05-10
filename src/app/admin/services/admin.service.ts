@@ -1,18 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-
+import { Expense, Group, Guest, Invitation, Table } from '../../shared/models';
 import { HttpService } from '../../shared/services/http.service';
-import { Group } from '../../shared/models/group';
-import { Table } from '../../shared/models/table';
-import { Invitation } from '../../shared/models/invitation';
-import { Guest } from '../../shared/models/guest';
-import { OverviewResult } from '../models/overviewResult';
-import { CollectionsResult } from '../models/collectionsResult';
-import { InvitationsResult } from '../models/invitationsResult';
+import { ExpensesResult, Result } from '../models';
 import { GroupsResult } from '../models/groupsResult';
 import { GuestsResult } from '../models/guestsResult';
+import { InvitationsResult } from '../models/invitationsResult';
+import { OverviewResult } from '../models/overviewResult';
 import * as searchRequests from './search-requests.json';
-import { TablesResult } from '../models/tablesResult';
 
 @Injectable()
 export class AdminService {
@@ -20,7 +16,10 @@ export class AdminService {
   private groups: Group[];
   private invitations: Invitation[];
 
-  constructor(private http: HttpService) { }
+  constructor(
+    private http: HttpService,
+    private httpClient: HttpClient
+  ) { }
 
   getGroupNames(): Observable<Group[]> {
     return this.search('groupNames');
@@ -32,6 +31,30 @@ export class AdminService {
 
   getTableNames(): Observable<Table[]> {
     return this.search('tableNames');
+  }
+
+  generateNewModel(model: string): any {
+    if (model === 'guest') {
+      return new Guest();
+    }
+    if (model === 'expense') {
+      return new Expense();
+    }
+    return null;
+  }
+
+  getTableConfig(model: string): Observable<any> {
+    return this.httpClient.get(`app/admin/table-configs/${model}-table-config.json`);
+  }
+
+  getResult(model: string): Observable<Result> {
+    if (model === 'guest') {
+      return this.getGuestsResult();
+    }
+    if (model === 'expense') {
+      return this.getExpensesResult();
+    }
+    return null;
   }
 
   getOverviewResult(): Observable<OverviewResult> {
@@ -56,6 +79,22 @@ export class AdminService {
 
   getTablesResult(): Observable<Table[]> {
     return this.search('tablesResult');
+  }
+
+  getExpensesResult(): Observable<ExpensesResult> {
+    return this.search('expensesResult');
+  }
+
+  createElement(element: any, model: string) {
+    return this.http.postWithResponse(`${model}/add`, element);
+  }
+
+  updateElement(element: any, model: string) {
+    return this.http.putWithResponse(`${model}/${element._id}`, element);
+  }
+
+  removeElement(element: any, model: string) {
+    return this.http.deleteWithResponse(`${model}/${element._id}`);
   }
 
   // -------- GUEST ----------
@@ -169,6 +208,12 @@ export class AdminService {
     };
   }
 
+  private expensesResultMap(expenses: Expense[]): ExpensesResult {
+    return {
+      elements: expenses
+    };
+  }
+
   private checkSentInvitations(invitations: Invitation[]): InvitationsResult {
     return {
       invitations: invitations,
@@ -179,6 +224,7 @@ export class AdminService {
 
   private checkAttendingGuests(guests: Guest[]): GuestsResult {
     return {
+      elements: guests,
       guests: guests,
       attending: guests.filter(g => g.isAttending).length,
       awaiting: guests.filter(g => !g.isAttending).length,

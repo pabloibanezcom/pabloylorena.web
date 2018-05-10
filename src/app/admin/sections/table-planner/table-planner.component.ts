@@ -26,6 +26,7 @@ export class TablePlannerComponent implements OnInit, OnDestroy {
   public selectedGuest: Guest;
   public selectedTable: Table;
   public deleteMode: boolean;
+  public protocolMode: boolean;
   public tablesSummary: { total: number, complete: number, incomplete: number };
   subscriptions: Subscription[];
   types: any;
@@ -42,6 +43,7 @@ export class TablePlannerComponent implements OnInit, OnDestroy {
     this.guestsTableConfig = guestsTableConfig;
     this.tablesTableConfig = tablesTableConfig;
     this.tablesTableConfig.new_element.click = this.addTable.bind(this);
+    this.tablesTableConfig.top_actions[0].click = this.showProtocol.bind(this);
     this.tablesTableConfig.other_actions[0].click = this.editTable.bind(this);
     this.tablesTableConfig.other_actions[1].click = this.removeTable.bind(this);
     this.guestsTableConfig.other_actions[0].click = this.assignTable.bind(this);
@@ -71,6 +73,14 @@ export class TablePlannerComponent implements OnInit, OnDestroy {
         incomplete: this.tables.filter(t => t.guests.length !== t.size).length
       }
     });
+  }
+
+  showProtocol() {
+    this.protocolMode = true;
+  }
+
+  print(): void {
+    window.print();
   }
 
   assignTable(guest: Guest) {

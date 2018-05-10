@@ -1,13 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-
-import { UtilService } from '../../../shared/services/util.service';
-import { AdminService } from '../../services/admin.service';
-import { GroupsResult } from '../../models/groupsResult';
-
-import * as tableConfig from './group-table-config.json';
 import { Group } from '../../../shared/models/group';
-
+import { UtilService } from '../../../shared/services/util.service';
+import { GroupsResult } from '../../models/groupsResult';
+import { AdminService } from '../../services/admin.service';
+import * as tableConfig from './group-table-config.json';
 
 @Component({
   selector: 'app-groups',

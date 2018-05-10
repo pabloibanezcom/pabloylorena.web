@@ -5,7 +5,7 @@
       <span class="title-text">Mesas</span>
       <span class="title-deco-right"></span>
     </h3>
-    <div *ngIf="tables">
+    <div *ngIf="tables && !protocolMode">
       <div class="countdown-box" id="countdown-box" *ngIf="tablesSummary">
         <span class="item all" [ngClass]="{'selected': !tableFilter || tableFilter.alias === 'all'}">
           <a (click)="tableFilter = {alias: 'all', property: null, value: null, group: 'table'}">
@@ -32,6 +32,24 @@
         </div>
         <div class="col-lg-4 col-lg-pull-8 guestsTableContainer" *ngIf="guests">
           <app-responsive-table [config]="guestsTableConfig" [elements]="guests" [components]="components" [externalFilter]="guestFilter"></app-responsive-table>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="tables && protocolMode" class="protocol">
+      <div class="row doNotPrint">
+        <a class="btn btn-sm btn-primary" (click)="protocolMode = false"><i class="fa fa-arrow-left"></i>Volver a organizador</a>
+        <a class="btn btn-sm btn-primary" (click)="print()"><i class="fa fa-print"></i>Imprimir</a>
+      </div>
+      <div class="row tables">
+        <div *ngFor="let table of tables" class="col-sm-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">{{table.number}} - {{table.name}}</h3>
+            </div>
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let guest of table.guests">{{guest.name}}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

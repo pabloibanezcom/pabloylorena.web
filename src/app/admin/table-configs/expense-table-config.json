@@ -1,0 +1,78 @@
+{
+    "authLevelProperty": "auth.authLevel",
+    "search": {
+        "placeholder": "Buscar por descripcion",
+        "property": "description",
+        "min_chars": 3
+    },
+    "selects": [
+        {
+            "label": "Grupo",
+            "name_property": "group",
+            "value_property": "group",
+            "property_match": "group"
+        }
+    ],
+    "new_element": {
+        "label": "Añadir gasto",
+        "icon": "fa-plus",
+        "authLevels": [
+            "admin"
+        ]
+    },
+    "other_actions": [
+        {
+            "label": "Editar",
+            "icon": "fa-pencil",
+            "authLevels": [
+                "admin"
+            ]
+        },
+        {
+            "label": "Eliminar",
+            "icon": "fa-trash",
+            "authLevels": [
+                "admin"
+            ]
+        }
+    ],
+    "page_size": 10,
+    "columns": [
+        {
+            "header": "Concepto",
+            "sortBy": "description",
+            "property": "description",
+            "responsive": "xs"
+        },
+        {
+            "header": "Proveedor",
+            "sortBy": "provider",
+            "property": "provider",
+            "responsive": "xs"
+        },
+        {
+            "header": "Pagador",
+            "sortBy": "payeer",
+            "property": "payeer",
+            "responsive": "xs"
+        },
+        {
+            "header": "Categoria",
+            "sortBy": "group.name",
+            "property": "group.name",
+            "responsive": "xs"
+        },
+        {
+            "header": "Cantidad total",
+            "sortBy": "amount",
+            "property": "amount",
+            "responsive": "xs"
+        },
+        {
+            "header": "Cantidad pagada",
+            "sortBy": "amountPaid",
+            "property": "amountPaid",
+            "responsive": "xs"
+        }
+    ]
+}
