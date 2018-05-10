@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Expense, Group, Guest, Invitation, Table } from '../../shared/models';
-import { HttpService } from '../../shared/services/http.service';
+import { Expense, Group, Guest, Invitation, Table } from '../../../shared/models';
+import { HttpService } from '../../../shared/services/http.service';
 import { ExpensesResult, Result } from '../models';
 import { GroupsResult } from '../models/groupsResult';
 import { GuestsResult } from '../models/guestsResult';

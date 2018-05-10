@@ -1,4 +1,4 @@
-import { Invitation } from '../../shared/models/invitation';
+import { Invitation } from '../../../shared/models';
 
 export class InvitationsResult {
     invitations: Invitation[];

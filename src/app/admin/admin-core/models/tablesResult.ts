@@ -1,4 +1,4 @@
-import { Table } from '../../shared/models/table';
+import { Table } from '../../../shared/models';
 
 export class TablesResult {
     tables: Table[];

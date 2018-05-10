@@ -1,4 +1,4 @@
-import { Guest } from '../../shared/models';
+import { Guest } from '../../../shared/models';
 import { Result } from './result';
 
 export class GuestsResult implements Result {

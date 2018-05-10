@@ -3,8 +3,7 @@ import { Response } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
 import { Guest, Table } from '../../../shared/models';
 import { DataService } from '../../../shared/services/data.service';
-import { AdminService } from '../../services/admin.service';
-import { NotificationService } from '../../services/notification.service';
+import { AdminService, NotificationService } from '../../admin-core';
 
 @Component({
   selector: 'app-guest-table-modal',

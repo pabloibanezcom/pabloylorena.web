@@ -1,10 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-
-import { AdminService } from '../services/admin.service';
-import { DataService } from '../../shared/services/data.service';
 import { Invitation } from '../../shared/models/invitation';
+import { DataService } from '../../shared/services/data.service';
+import { AdminService } from '../admin-core';
 
 @Component({
   selector: 'app-invitation',

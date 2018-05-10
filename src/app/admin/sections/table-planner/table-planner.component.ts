@@ -4,11 +4,9 @@ import { Guest } from '../../../shared/models/guest';
 import { Table } from '../../../shared/models/table';
 import { DataService } from '../../../shared/services/data.service';
 import { UtilService } from '../../../shared/services/util.service';
-import { AdminService } from '../../services/admin.service';
+import { AdminService } from '../../admin-core';
 import * as guestsTableConfig from './guest-table-config.json';
 import * as tablesTableConfig from './table-table-config.json';
-
-
 
 @Component({
   selector: 'app-table-planner',

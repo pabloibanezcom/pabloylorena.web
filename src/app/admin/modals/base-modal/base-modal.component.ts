@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Injector, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Response } from '@angular/http';
 import { BaseComponent } from '../../../shared';
-import { AdminService } from '../../services/admin.service';
-import { NotificationService } from '../../services/notification.service';
+import { AdminService, NotificationService } from '../../admin-core';
 
 @Component({
   selector: 'app-base-modal',

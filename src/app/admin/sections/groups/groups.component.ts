@@ -2,8 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { Group } from '../../../shared/models/group';
 import { UtilService } from '../../../shared/services/util.service';
-import { GroupsResult } from '../../models/groupsResult';
-import { AdminService } from '../../services/admin.service';
+import { AdminService, GroupsResult } from '../../admin-core';
 import * as tableConfig from './group-table-config.json';
 
 @Component({

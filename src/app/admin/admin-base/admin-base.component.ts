@@ -1,9 +1,8 @@
-import { Component, Input, OnInit, ViewChild  } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Options } from 'angular2-notifications';
-import { AdminService } from '../services/admin.service';
-import { NotificationService } from '../services/notification.service';
+import { AdminService, NotificationService } from '../admin-core';
+
 
 @Component({
   selector: 'app-admin-base',

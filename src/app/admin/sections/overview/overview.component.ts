@@ -1,8 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-
-import { AdminService } from '../../services/admin.service';
-import { OverviewResult } from '../../models/overviewResult';
+import { AdminService, OverviewResult } from '../../admin-core';
 
 @Component({
   selector: 'app-overview',

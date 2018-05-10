@@ -1,20 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
-import { FacebookService } from 'ngx-facebook';
-import { NotificationsService } from 'angular2-notifications';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptor } from 'ng2-smart-auth';
-
-import { LoaderInterceptor } from './shared/loading-spinner/loader.interceptor';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
-import { HttpService } from './shared/services/http.service';
-import { NotificationService } from './admin/services/notification.service';
+import { LoaderInterceptor } from './shared/loading-spinner/loader.interceptor';
 import { LoadingSpinnerService } from './shared/loading-spinner/loading-spinner.service';
+import { HttpService } from './shared/services/http.service';
 
 @NgModule({
   declarations: [
@@ -31,9 +26,6 @@ import { LoadingSpinnerService } from './shared/loading-spinner/loading-spinner.
   ],
   providers: [
     HttpService,
-    FacebookService,
-    NotificationService,
-    NotificationsService,
     LoadingSpinnerService,
     {
       provide: HTTP_INTERCEPTORS,

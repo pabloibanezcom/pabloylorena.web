@@ -3,8 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Guest } from '../../../shared/models/guest';
 import { DataService } from '../../../shared/services/data.service';
 import { UtilService } from '../../../shared/services/util.service';
-import { GuestsResult } from '../../models/guestsResult';
-import { AdminService } from '../../services/admin.service';
+import { AdminService, GuestsResult } from '../../admin-core';
 import * as tableConfig from './guest-table-config.json';
 
 

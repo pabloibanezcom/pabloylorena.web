@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '../../../shared';
 import { UtilService } from '../../../shared/services/util.service';
-import { Result } from '../../models';
-import { AdminService } from '../../services/admin.service';
+import { AdminService, Result } from '../../admin-core';
 
 @Component({
   selector: 'app-base-section',

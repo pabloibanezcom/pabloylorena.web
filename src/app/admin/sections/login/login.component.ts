@@ -16,7 +16,8 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
-  ) { }
+  ) {
+  }
 
   login() {
     this.authenticationService.login(environment.api_url + 'login', this.loginObj)

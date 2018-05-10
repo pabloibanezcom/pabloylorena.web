@@ -1,4 +1,4 @@
-import { Group } from '../../shared/models/group';
+import { Group } from '../../../shared/models';
 
 export class GroupsResult {
     groups: Group[];
