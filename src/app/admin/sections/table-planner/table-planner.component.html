@@ -1,41 +1,38 @@
 <div class="table-planner" [appAdjustHeight]="300">
   <div class="container text-center">
-    <h3 class="title script">
-      <span class="title-deco-left"></span>
-      <span class="title-text">Mesas</span>
-      <span class="title-deco-right"></span>
-    </h3>
-    <div *ngIf="tables && !protocolMode">
-      <div class="countdown-box" id="countdown-box" *ngIf="tablesSummary">
+    <app-section-header [sectionName]="'Mesas'"></app-section-header>
+    <div *ngIf="!protocolMode">
+      <div class="countdown-box" id="countdown-box" *ngIf="tablesResult">
         <span class="item all" [ngClass]="{'selected': !tableFilter || tableFilter.alias === 'all'}">
           <a (click)="tableFilter = {alias: 'all', property: null, value: null, group: 'table'}">
-            <span class="number">{{tablesSummary.total}}</span>
+            <span class="number">{{tablesResult.elements.length}}</span>
             <span class="unit script">Total</span>
           </a>
         </span>
         <span class="item complete" [ngClass]="{'selected': tableFilter && tableFilter.alias === 'complete'}">
           <a (click)="tableFilter = {alias: 'complete', property: 'guests.length', propertyValue: 'size', propertyValueMatch: true, group: 'table'}">
-            <span class="number">{{tablesSummary.complete}}</span>
+            <span class="number">{{tablesResult.complete}}</span>
             <span class="unit script">Completas</span>
           </a>
         </span>
         <span class="item incomplete" [ngClass]="{'selected': tableFilter && tableFilter.alias === 'incomplete'}">
           <a (click)="tableFilter = {alias: 'incomplete', property: 'guests.length', propertyValue: 'size', propertyValueMatch: false, group: 'table'}">
-            <span class="number">{{tablesSummary.incomplete}}</span>
+            <span class="number">{{tablesResult.incomplete}}</span>
             <span class="unit script">Incompletas</span>
           </a>
         </span>
       </div>
       <div class="row">
-        <div class="col-lg-8 col-lg-push-4" *ngIf="tables">
-          <app-responsive-table [config]="tablesTableConfig" [elements]="tables" [components]="components" [externalFilter]="tableFilter"></app-responsive-table>
+        <div class="col-lg-8 col-lg-push-4">
+          <app-tables [tableFilter]="tableFilter" [refresh]="refreshTables" (refreshed)="tablesResfreshed($event)" (tablesResultChanges)="onTablesResultChanges($event)"
+            (showProtocol)="protocolMode = $event"></app-tables>
         </div>
-        <div class="col-lg-4 col-lg-pull-8 guestsTableContainer" *ngIf="guests">
-          <app-responsive-table [config]="guestsTableConfig" [elements]="guests" [components]="components" [externalFilter]="guestFilter"></app-responsive-table>
+        <div class="col-lg-4 col-lg-pull-8 guestsTableContainer">
+          <app-table-guests [refresh]="refreshGuests" (refreshed)="guestsRefreshed($event)"></app-table-guests>
         </div>
       </div>
     </div>
-    <div *ngIf="tables && protocolMode" class="protocol">
+    <div *ngIf="protocolMode" class="protocol">
       <div class="row doNotPrint">
         <a class="btn btn-sm btn-primary" (click)="protocolMode = false">
           <i class="fa fa-arrow-left"></i>Volver a organizador</a>
@@ -43,7 +40,7 @@
           <i class="fa fa-print"></i>Imprimir</a>
       </div>
       <div class="row tables">
-        <div *ngFor="let table of tables" class="col-sm-6">
+        <div *ngFor="let table of tablesResult.elements" class="col-sm-6">
           <div class="panel panel-primary">
             <div class="panel-heading">
               <h3 class="panel-title">{{table.number}} - {{table.name}}</h3>
@@ -56,6 +53,4 @@
       </div>
     </div>
   </div>
-  <app-guest-table-modal [guest]="selectedGuest" (ending)="afterGuestTableModal($event)"></app-guest-table-modal>
-  <app-table-modal [deleteMode]="deleteMode" [element]="selectedTable" (ending)="afterModal($event)"></app-table-modal>
 </div>

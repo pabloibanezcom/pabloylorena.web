@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { BaseComponent } from '../../../shared';
 import { UtilService } from '../../../shared/services/util.service';
 import { AdminService, Result } from '../../admin-core';
@@ -15,17 +15,28 @@ export class BaseSectionComponent extends BaseComponent implements OnInit {
   public selectedElement: any;
   public deleteMode: boolean;
 
-  constructor(private util: UtilService,
-    private adminService: AdminService) {
+  protected util: UtilService;
+  protected adminService: AdminService;
+
+  constructor(injector: Injector) {
     super();
+    this.util = injector.get(UtilService);
+    this.adminService = injector.get(AdminService);
   }
 
   ngOnInit() {
     this.storeSubscription(this.adminService.getTableConfig(this.modelName).subscribe(res => {
       this.tableConfig = res;
-      this.tableConfig.new_element.click = this.addElement.bind(this);
-      this.tableConfig.other_actions[0].click = this.editElement.bind(this);
-      this.tableConfig.other_actions[1].click = this.removeElement.bind(this);
+      if (this.tableConfig.new_element) {
+        this.tableConfig.new_element.click = this.addElement.bind(this);
+      }
+      if (this.tableConfig.other_actions[0]) {
+        this.tableConfig.other_actions[0].click = this.editElement.bind(this);
+      }
+      if (this.tableConfig.other_actions[1]) {
+        this.tableConfig.other_actions[1].click = this.removeElement.bind(this);
+      }
+      this.afterTableConfig();
       this.refreshResult();
     }));
   }
@@ -33,6 +44,7 @@ export class BaseSectionComponent extends BaseComponent implements OnInit {
   refreshResult() {
     this.storeSubscription(this.adminService.getResult(this.modelName).subscribe(res => {
       this.result = res;
+      this.afterRefreshResult();
     }));
   }
 
@@ -60,6 +72,19 @@ export class BaseSectionComponent extends BaseComponent implements OnInit {
       this.refreshResult();
     }
     this.util.hideModal(`rsvp-${this.modelName}-modal`);
+    this.afterModalFinish();
+  }
+
+  afterTableConfig() {
+    // TO OVERRIDE BY DERIVED CLASS
+  }
+
+  afterRefreshResult() {
+    // TO OVERRIDE BY DERIVED CLASS
+  }
+
+  afterModalFinish() {
+    // TO OVERRIDE BY DERIVED CLASS
   }
 
 }

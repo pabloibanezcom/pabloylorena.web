@@ -15,16 +15,9 @@ import { AdminRouting } from './admin.routing';
 import { InvitationComponent } from './invitation/invitation.component';
 import { LoginContainerComponent } from './login-container/login-container.component';
 import { ModalsModule } from './modals/modals.module';
-import { BaseSectionComponent } from './sections/base-section/base-section.component';
-import { ExpensesComponent } from './sections/expenses/expenses.component';
-import { GroupsComponent } from './sections/groups/groups.component';
-import { GuestsComponent } from './sections/guests/guests.component';
-import { InvitationsComponent } from './sections/invitations/invitations.component';
-import { LoginComponent } from './sections/login/login.component';
-import { NotificationsComponent } from './sections/notifications/notifications.component';
-import { OverviewComponent } from './sections/overview/overview.component';
-import { SectionHeaderComponent } from './sections/section-header/section-header.component';
-import { TablePlannerComponent } from './sections/table-planner/table-planner.component';
+import { BaseSectionComponent, ExpensesComponent, GroupsComponent, GuestsComponent, InvitationsComponent, LoginComponent, NotificationsComponent, OverviewComponent, SectionHeaderComponent, TablePlannerComponent } from './sections';
+import { TableGuestsComponent } from './sections/table-planner/table-guests/table-guests.component';
+import { TablesComponent } from './sections/table-planner/tables/tables.component';
 
 @NgModule({
   imports: [
@@ -52,6 +45,8 @@ import { TablePlannerComponent } from './sections/table-planner/table-planner.co
     ExpensesComponent,
     BaseSectionComponent,
     SectionHeaderComponent,
+    TablesComponent,
+    TableGuestsComponent,
   ],
   providers: [
     NotificationsService,

@@ -1,0 +1,4 @@
+<div *ngIf="result">
+  <app-responsive-table [config]="tableConfig" [elements]="result.elements" [components]="components" [externalFilter]="tableFilter"></app-responsive-table>
+  <app-table-modal [deleteMode]="deleteMode" [element]="selectedElement" (ending)="afterModal($event)"></app-table-modal>
+</div>

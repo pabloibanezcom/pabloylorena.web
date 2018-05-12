@@ -30,7 +30,7 @@ export class InvitationComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptions.push(this.route.params.subscribe(params => {
       if (params.invitationId) {
-        this.subscriptions.push(this.adminService.getInvitation(params.invitationId).subscribe(res => {
+        this.subscriptions.push(this.adminService.getElement(params.invitationId, 'invitation').subscribe(res => {
           this.invitation = res;
           this.setDedication();
           this.url = 'www.pabloylorena.com/' + this.invitation.guid;
@@ -60,7 +60,7 @@ export class InvitationComponent implements OnInit, OnDestroy {
       this.dedication = !this.invitation.isPlural ? this.defaultDedication.single : this.defaultDedication.plural;
     }
     if (this.invitation.dedicationMode === 'group') {
-      this.subscriptions.push(this.adminService.getGroup(String(this.invitation.group)).subscribe(res => {
+      this.subscriptions.push(this.adminService.getElement(String(this.invitation.group), 'group').subscribe(res => {
         this.dedication = res.invitationDedication;
       }));
     }

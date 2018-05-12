@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GuestTableModalComponent } from './guest-table-modal.component';
+import { TablesComponent } from './tables.component';
 
-describe('GuestTableModalComponent', () => {
-  let component: GuestTableModalComponent;
-  let fixture: ComponentFixture<GuestTableModalComponent>;
+describe('TablesComponent', () => {
+  let component: TablesComponent;
+  let fixture: ComponentFixture<TablesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GuestTableModalComponent ]
+      declarations: [ TablesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GuestTableModalComponent);
+    fixture = TestBed.createComponent(TablesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

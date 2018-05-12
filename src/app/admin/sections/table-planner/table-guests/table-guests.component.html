@@ -1,0 +1,4 @@
+<div *ngIf="result">
+  <app-responsive-table [config]="tableConfig" [elements]="result.elements"></app-responsive-table>
+  <app-table-guest-modal [guest]="selectedElement" (ending)="afterModal($event)"></app-table-guest-modal>
+</div>

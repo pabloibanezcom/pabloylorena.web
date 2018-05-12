@@ -1,87 +1,38 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-import { Invitation } from '../../../shared/models/invitation';
+import { Component, Injector } from '@angular/core';
+import { Invitation } from '../../../shared/models';
 import { DataService } from '../../../shared/services/data.service';
-import { UtilService } from '../../../shared/services/util.service';
-import { AdminService, InvitationsResult } from '../../admin-core';
-import * as tableConfig from './invitation-table-config.json';
+import { BaseSectionComponent } from '../base-section/base-section.component';
 
 @Component({
   selector: 'app-invitations',
   templateUrl: './invitations.component.html',
   styleUrls: ['./invitations.component.less']
 })
-export class InvitationsComponent implements OnInit, OnDestroy {
+export class InvitationsComponent extends BaseSectionComponent {
 
-  public tableConfig: any;
-  public result: InvitationsResult;
-  public selectedInvitation: Invitation;
-  public deleteMode: boolean;
-  subscriptions: Subscription[];
+  public modelName: string = 'invitation';
 
   constructor(
-    private util: UtilService,
-    private adminService: AdminService,
-    private dataService: DataService
+    private dataService: DataService,
+    injector: Injector
   ) {
-    this.subscriptions = [];
+    super(injector);
   }
 
-  ngOnInit() {
-    this.tableConfig = tableConfig;
-    this.tableConfig.new_element.click = this.addInvitation.bind(this);
+  afterTableConfig() {
     this.tableConfig.other_actions[0].click = this.viewInvitation.bind(this);
-    this.tableConfig.other_actions[1].click = this.editInvitation.bind(this);
-    this.tableConfig.other_actions[2].click = this.removeInvitation.bind(this);
-    this.subscriptions['getGroupNames'] = this.adminService.getGroupNames().subscribe(res => {
+    this.tableConfig.other_actions[1].click = this.editElement.bind(this);
+    this.tableConfig.other_actions[2].click = this.removeElement.bind(this);
+    this.storeSubscription(this.adminService.getGroupNames().subscribe(res => {
       this.tableConfig.selects.find(s => s.label === 'Grupo').options = res;
-    });
-    this.subscriptions.push(
-      this.dataService.get('notInPaper-options').subscribe(data => {
-        this.tableConfig.selects.find(s => s.label === 'No papel').options = data.options;
-      })
-    );
-    this.refreshInvitationResult();
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.map(s => s.unsubscribe());
-  }
-
-  refreshInvitationResult() {
-    this.subscriptions['getInvitationsResult'] = this.adminService.getInvitationsResult().subscribe(res => {
-      this.result = res;
-    });
+    }));
+    this.storeSubscription(this.dataService.get('notInPaper-options').subscribe(data => {
+      this.tableConfig.selects.find(s => s.label === 'No papel').options = data.options;
+    }));
   }
 
   viewInvitation(invitation: Invitation) {
     window.open('admin/invitation/' + invitation._id);
-  }
-
-  addInvitation() {
-    this.deleteMode = false;
-    this.selectedInvitation = new Invitation();
-    this.util.showModal('rsvp-invitation-modal');
-  }
-
-  editInvitation(invitation: Invitation) {
-    this.deleteMode = false;
-    this.selectedInvitation = invitation;
-    this.util.showModal('rsvp-invitation-modal');
-  }
-
-  removeInvitation(invitation: Invitation) {
-    this.deleteMode = true;
-    this.selectedInvitation = invitation;
-    this.util.showModal('rsvp-invitation-modal');
-  }
-
-  afterModal(event: any) {
-    this.deleteMode = false;
-    if (event.refreshData) {
-      this.refreshInvitationResult();
-    }
-    this.util.hideModal('rsvp-invitation-modal');
   }
 
 }

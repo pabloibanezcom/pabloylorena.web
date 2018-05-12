@@ -6,10 +6,10 @@ import { DataService } from '../../../shared/services/data.service';
 import { AdminService, NotificationService } from '../../admin-core';
 
 @Component({
-  selector: 'app-guest-table-modal',
-  templateUrl: './guest-table-modal.component.html'
+  selector: 'app-table-guest-modal',
+  templateUrl: './table-guest-modal.component.html'
 })
-export class GuestTableModalComponent implements OnInit, OnChanges, OnDestroy {
+export class TableGuestModalComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() guest: Guest;
   @Output() ending: any = new EventEmitter();
@@ -48,7 +48,7 @@ export class GuestTableModalComponent implements OnInit, OnChanges, OnDestroy {
 
   assignTable() {
     this.modalGuest.orderInTable = 99;
-    this.subscriptions['editGuest'] = this.adminService.updateGuest(this.modalGuest)
+    this.subscriptions['editGuest'] = this.adminService.updateElement(this.modalGuest, 'guest')
       .subscribe(res => this.afterSubscribe(res));
   }
 

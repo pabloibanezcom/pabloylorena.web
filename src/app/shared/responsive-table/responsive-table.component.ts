@@ -1,13 +1,10 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, HostListener } from '@angular/core';
-
-import { ResponsiveTableConfig } from './models/responsive-table-config';
+import { Component, HostListener, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ResponsiveService } from '../services/responsive.service';
-import { ResponsiveTableService } from './responsive-table.service';
-import { ResponsiveTableFilter } from './models/responsive-table-filter';
 import { ActiveElementsResult } from './models/activeElementsResult';
-import { AttendingLabelComponent } from '../components/attending-label/attending-label.component';
-import { InjectComponentDirective } from '../directives/inject-component.directive';
-import { Observable } from 'rxjs/Observable';
+import { ResponsiveTableConfig } from './models/responsive-table-config';
+import { ResponsiveTableFilter } from './models/responsive-table-filter';
+import { ResponsiveTableService } from './responsive-table.service';
+
 
 @Component({
   selector: 'app-responsive-table',
@@ -28,7 +25,7 @@ export class ResponsiveTableComponent implements OnInit, OnChanges {
   @Input() elements: any[];
   @Input() components: any;
   @Input() externalFilter: any;
-  
+
   constructor(
     private responsiveService: ResponsiveService,
     private responsiveTableService: ResponsiveTableService

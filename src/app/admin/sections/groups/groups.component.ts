@@ -1,35 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-import { Group } from '../../../shared/models/group';
-import { UtilService } from '../../../shared/services/util.service';
-import { AdminService, GroupsResult } from '../../admin-core';
-import * as tableConfig from './group-table-config.json';
+import { Component } from '@angular/core';
+import { BaseSectionComponent } from '../base-section/base-section.component';
 
 @Component({
   selector: 'app-groups',
-  templateUrl: './groups.component.html',
-  styleUrls: ['./groups.component.less']
+  templateUrl: './groups.component.html'
 })
-export class GroupsComponent implements OnInit, OnDestroy {
+export class GroupsComponent extends BaseSectionComponent {
 
-  public tableConfig: any;
-  public result: GroupsResult;
-  public selectedGroup: Group;
-  public deleteMode: boolean;
-  subscriptions: Subscription[];
+  public modelName: string = 'group';
 
-  constructor(
-    private util: UtilService,
-    private adminService: AdminService
-  ) {
-    this.subscriptions = [];
-  }
-
-  ngOnInit() {
-    this.tableConfig = tableConfig;
-    this.tableConfig.new_element.click = this.addGroup.bind(this);
-    this.tableConfig.other_actions[0].click = this.editGroup.bind(this);
-    this.tableConfig.other_actions[1].click = this.removeGroup.bind(this);
+  afterTableConfig() {
     this.tableConfig.selects.find(s => s.label === 'Anfitrion').options = [
       {
         'host': 'Pablo'
@@ -41,43 +21,5 @@ export class GroupsComponent implements OnInit, OnDestroy {
         'host': 'Ambos'
       }
     ];
-    this.refreshGroupsResult();
   }
-
-  ngOnDestroy() {
-    this.subscriptions.map(s => s.unsubscribe());
-  }
-
-  refreshGroupsResult() {
-    this.subscriptions['getGroupsResult'] = this.adminService.getGroupsResult().subscribe(res => {
-      this.result = res;
-    });
-  }
-
-  addGroup() {
-    this.deleteMode = false;
-    this.selectedGroup = new Group();
-    this.util.showModal('rsvp-group-modal');
-  }
-
-  editGroup(group: Group) {
-    this.deleteMode = false;
-    this.selectedGroup = group;
-    this.util.showModal('rsvp-group-modal');
-  }
-
-  removeGroup(group: Group) {
-    this.deleteMode = true;
-    this.selectedGroup = group;
-    this.util.showModal('rsvp-group-modal');
-  }
-
-  afterModal(event: any) {
-    this.deleteMode = false;
-    if (event.refreshData) {
-      this.refreshGroupsResult();
-    }
-    this.util.hideModal('rsvp-group-modal');
-  }
-
 }

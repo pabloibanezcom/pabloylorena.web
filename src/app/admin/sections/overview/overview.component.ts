@@ -23,9 +23,9 @@ export class OverviewComponent implements OnInit, OnDestroy {
   }
 
   refreshOverviewResult() {
-    this.subscription = this.adminService.getOverviewResult().subscribe(res => {
-      this.result = res;
-    });
+    // this.subscription = this.adminService.getOverviewResult().subscribe(res => {
+    //   this.result = res;
+    // });
   }
 
 }

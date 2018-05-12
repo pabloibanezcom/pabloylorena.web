@@ -3,11 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Expense, Group, Guest, Invitation, Table } from '../../../shared/models';
 import { HttpService } from '../../../shared/services/http.service';
-import { ExpensesResult, Result } from '../models';
-import { GroupsResult } from '../models/groupsResult';
-import { GuestsResult } from '../models/guestsResult';
+import { ExpensesResult, GroupsResult, GuestTablesResult, GuestsResult, Result, TablesResult } from '../models';
 import { InvitationsResult } from '../models/invitationsResult';
-import { OverviewResult } from '../models/overviewResult';
 import * as searchRequests from './search-requests.json';
 
 @Injectable()
@@ -34,12 +31,22 @@ export class AdminService {
   }
 
   generateNewModel(model: string): any {
-    if (model === 'guest') {
-      return new Guest();
-    }
-    if (model === 'expense') {
-      return new Expense();
-    }
+    if (model === 'guest') { return new Guest(); }
+    if (model === 'invitation') { return new Invitation(); }
+    if (model === 'group') { return new Group(); }
+    if (model === 'table') { return new Table(); }
+    if (model === 'table-guest') { return new Guest(); }
+    if (model === 'expense') { return new Expense(); }
+    return null;
+  }
+
+  getResult(model: string): Observable<Result> {
+    if (model === 'guest') { return this.getResultObject('guestsResult'); }
+    if (model === 'invitation') { return this.getResultObject('invitationsResult'); }
+    if (model === 'group') { return this.getResultObject('groupsResult'); }
+    if (model === 'table') { return this.getResultObject('tablesResult'); }
+    if (model === 'table-guest') { return this.getResultObject('guestsTablesResult'); }
+    if (model === 'expense') { return this.getResultObject('expensesResult'); }
     return null;
   }
 
@@ -47,42 +54,12 @@ export class AdminService {
     return this.httpClient.get(`app/admin/table-configs/${model}-table-config.json`);
   }
 
-  getResult(model: string): Observable<Result> {
-    if (model === 'guest') {
-      return this.getGuestsResult();
-    }
-    if (model === 'expense') {
-      return this.getExpensesResult();
-    }
-    return null;
+  getResultObject(name: string): Observable<Result> {
+    return this.search(name);
   }
 
-  getOverviewResult(): Observable<OverviewResult> {
-    return this.http.get('overview/report');
-  }
-
-  getInvitationsResult(): Observable<InvitationsResult> {
-    return this.search('invitationsResult');
-  }
-
-  getGuestsResult(): Observable<GuestsResult> {
-    return this.search('guestsResult');
-  }
-
-  getGuestsTablesResult(): Observable<Guest[]> {
-    return this.search('guestsTablesResult');
-  }
-
-  getGroupsResult(): Observable<GroupsResult> {
-    return this.search('groupsResult');
-  }
-
-  getTablesResult(): Observable<Table[]> {
-    return this.search('tablesResult');
-  }
-
-  getExpensesResult(): Observable<ExpensesResult> {
-    return this.search('expensesResult');
+  getElement(elementId: string, model: string) {
+    return this.http.get(`${model}/${elementId}`);
   }
 
   createElement(element: any, model: string) {
@@ -99,18 +76,6 @@ export class AdminService {
 
   // -------- GUEST ----------
 
-  createGuest(newGuest: Guest) {
-    return this.http.postWithResponse('guest/add', newGuest);
-  }
-
-  updateGuest(guest: Guest) {
-    return this.http.putWithResponse('guest/' + guest._id, guest);
-  }
-
-  removeGuest(guest: Guest) {
-    return this.http.deleteWithResponse('guest/' + guest._id);
-  }
-
   updateGuestOrder(guest: Guest) {
     return this.http.putWithResponse('guest/order/' + guest._id, { order: guest.order });
   }
@@ -118,69 +83,6 @@ export class AdminService {
   updateGuestOrderInTable(guest: Guest) {
     return this.http.putWithResponse('guest/order-table/' + guest._id, { orderInTable: guest.orderInTable });
   }
-
-  // -------------------------
-
-
-  // -------- INVITATION ----------
-
-  getInvitation(invitationId: string) {
-    return this.http.get('invitation/' + invitationId);
-  }
-
-  createInvitation(newInvitation: Invitation) {
-    return this.http.postWithResponse('invitation/add', newInvitation);
-  }
-
-  updateInvitation(invitation: Invitation) {
-    return this.http.putWithResponse('invitation/' + invitation._id, invitation);
-  }
-
-  removeInvitation(invitation: Invitation) {
-    return this.http.deleteWithResponse('invitation/' + invitation._id);
-  }
-
-  // -------------------------
-
-  // -------- GROUP ----------
-
-  getGroup(groupId: string) {
-    return this.http.get('group/' + groupId);
-  }
-
-  createGroup(newGroup: Group) {
-    return this.http.postWithResponse('group/add', newGroup);
-  }
-
-  updateGroup(group: Group) {
-    return this.http.putWithResponse('group/' + group._id, group);
-  }
-
-  removeGroup(group: Group) {
-    return this.http.deleteWithResponse('group/' + group._id);
-  }
-
-  // -------------------------
-
-  // -------- TABLE ----------
-
-  getTable(tableId: string) {
-    return this.http.get('group/' + tableId);
-  }
-
-  createTable(newTable: Table) {
-    return this.http.postWithResponse('table/add', newTable);
-  }
-
-  updateTable(table: Table) {
-    return this.http.putWithResponse('table/' + table._id, table);
-  }
-
-  removeTable(table: Table) {
-    return this.http.deleteWithResponse('table/' + table._id);
-  }
-
-  // -------------------------
 
   private search(searchName: string): Observable<any> {
     const searchReqOptions = searchRequests[searchName];
@@ -204,7 +106,21 @@ export class AdminService {
       });
     });
     return {
-      groups: groups
+      elements: groups
+    };
+  }
+
+  private tablesResultMap(tables: Table[]): TablesResult {
+    return {
+      elements: tables,
+      complete: tables.filter(t => t.guests.length === t.size).length,
+      incomplete: tables.filter(t => t.guests.length !== t.size).length
+    };
+  }
+
+  private guestsTablesResultMap(guest: Guest[]): GuestTablesResult {
+    return {
+      elements: guest.filter(g => g.isAttendingExpectation && (g.table === null || g.table === undefined) && g.type < 4)
     };
   }
 
@@ -216,7 +132,7 @@ export class AdminService {
 
   private checkSentInvitations(invitations: Invitation[]): InvitationsResult {
     return {
-      invitations: invitations,
+      elements: invitations,
       invitationsSent: invitations.filter(i => i.isSent).length,
       invitationsAwaiting: invitations.filter(i => !i.isSent).length
     };

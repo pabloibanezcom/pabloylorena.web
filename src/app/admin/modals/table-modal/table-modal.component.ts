@@ -35,7 +35,7 @@ export class TableModalComponent extends BaseModalComponent {
   removeFromTable(guest: Guest) {
     guest.table = null;
     guest.orderInTable = null;
-    this.storeSubscription(this.adminService.updateGuest(guest)
+    this.storeSubscription(this.adminService.updateElement(guest, 'guest')
       .subscribe(res => {
         this.modalElement.guests = this.modalElement.guests.filter(g => g._id !== guest._id);
         this.showRemoveConfirm = null;
