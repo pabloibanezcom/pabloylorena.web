@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Expense, Group, Guest, Invitation, Table } from '../../../shared/models';
+import { Expense, ExpenseCategory, Group, Guest, Invitation, Table } from '../../../shared/models';
 import { HttpService } from '../../../shared/services/http.service';
-import { ExpensesResult, GroupsResult, GuestTablesResult, GuestsResult, Result, TablesResult } from '../models';
-import { InvitationsResult } from '../models/invitationsResult';
+import { ExpensesResult, GroupsResult, GuestTablesResult, GuestsResult, InvitationsResult, Result, TablesResult } from '../models';
 import * as searchRequests from './search-requests.json';
 
 @Injectable()
@@ -12,6 +11,7 @@ export class AdminService {
 
   private groups: Group[];
   private invitations: Invitation[];
+  private expectedGuests: number;
 
   constructor(
     private http: HttpService,
@@ -28,6 +28,20 @@ export class AdminService {
 
   getTableNames(): Observable<Table[]> {
     return this.search('tableNames');
+  }
+
+  getExpenseCategories(): Observable<ExpenseCategory[]> {
+    return this.search('expenseCategories');
+  }
+
+  getExpectedGuests(): number {
+    return this.expectedGuests;
+  }
+
+  refreshExpectedGuests(): Observable<number> {
+    return this.search('expectedGuests')
+      .do(res => this.expectedGuests = res.length)
+      .map(res => res.length);
   }
 
   generateNewModel(model: string): any {
@@ -126,7 +140,9 @@ export class AdminService {
 
   private expensesResultMap(expenses: Expense[]): ExpensesResult {
     return {
-      elements: expenses
+      elements: expenses,
+      amount: expenses.map(e => this.getTotalAmountFromExpense(e)).reduce((a, b) => a + b),
+      amountPaid: expenses.map(e => e.amountPaid).reduce((a, b) => a + b),
     };
   }
 
@@ -148,6 +164,10 @@ export class AdminService {
       nonExpected: guests.filter(g => g.isAttendingExpectation === false).length,
       doubtful: guests.filter(g => g.isAttendingExpectation == null).length
     };
+  }
+
+  private getTotalAmountFromExpense(expense: Expense): number {
+    return !expense.costPerGuest ? expense.amount : this.getExpectedGuests() * expense.amount;
   }
 
 }

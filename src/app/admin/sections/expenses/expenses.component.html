@@ -2,6 +2,16 @@
   <div class="container text-center">
     <app-section-header [sectionName]="'Gastos'"></app-section-header>
     <div *ngIf="result">
+      <div class="countdown-box" id="countdown-box">
+        <span class="item awaiting">
+          <span class="number">{{result.amount |currency:'EUR':'symbol'}}</span>
+          <span class="unit script">Total</span>
+        </span>
+        <span class="item confirmed">
+          <span class="number">{{result.amountPaid |currency:'EUR':'symbol'}}</span>
+          <span class="unit script">Pagado</span>
+        </span>
+      </div>
       <div class="row">
         <div class="col-lg-12">
           <app-responsive-table [config]="tableConfig" [elements]="result.elements"></app-responsive-table>

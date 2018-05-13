@@ -1,0 +1,13 @@
+<ng-container>
+  <span *ngIf="costPerGuest && (expectedGuests * amount) === amountPaid || !costPerGuest && amount === amountPaid; else notPaid"
+    class="label label-default paid">
+    <i class="fa fa-check "></i>
+  </span>
+  <ng-template #notPaid>
+    <span class="label label-default not-paid">
+      <i class="fa fa-hourglass"></i>
+    </span>
+  </ng-template>
+  <span *ngIf="!costPerGuest">{{amount |currency:'EUR':'symbol'}}</span>
+  <span *ngIf="costPerGuest">{{(expectedGuests * amount) |currency:'EUR':'symbol'}} ({{amount |currency:'EUR':'symbol'}})</span>
+</ng-container>

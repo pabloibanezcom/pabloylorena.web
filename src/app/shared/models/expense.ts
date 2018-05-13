@@ -1,4 +1,4 @@
-import { ExpenseGroup } from ".";
+import { ExpenseCategory } from ".";
 
 export class Expense {
     _id: string;
@@ -9,5 +9,5 @@ export class Expense {
     amountPaid: number;
     costPerGuest: boolean;
     lastModified: Date;
-    group: ExpenseGroup[];
+    category: ExpenseCategory;
 }

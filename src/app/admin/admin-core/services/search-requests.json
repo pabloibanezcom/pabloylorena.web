@@ -29,6 +29,15 @@
             ]
         }
     },
+    "expenseCategories": {
+        "url": "expense-category",
+        "body": {
+            "sort": {
+                "name": 1
+            },
+            "populate": ""
+        }
+    },
     "tableNames": {
         "url": "table",
         "body": {
@@ -159,10 +168,20 @@
             },
             "populate": [
                 {
-                    "path": "group",
-                    "select": "name"
+                    "path": "category",
+                    "select": "name icon class"
                 }
             ]
+        }
+    },
+    "expectedGuests": {
+        "url": "guest",
+        "body": {
+            "filter": {
+                "isAttendingExpectation": true
+            },
+            "select": "name",
+            "populate": ""
         }
     }
 }

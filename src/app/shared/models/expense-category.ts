@@ -1,9 +1,10 @@
 import { Expense } from './';
 
-export class ExpenseGroup {
+export class ExpenseCategory {
     _id: string;
     name: string;
     icon: string;
+    class: string;
     lastModified: Date;
     expenses: Expense[];
 }

@@ -9,6 +9,10 @@
             <!-- DESCRIPTION -->
             <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Concepto'" [(model)]="modalElement.description"></smart-form-text>
 
+            <!-- CATEGORY -->
+            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Categoria'" [options]="categories" [optionValue]="'_id'" [optionLabel]="'name'"
+              [emptyOption]="true" [(model)]="modalElement.category"></smart-form-select>
+
             <!-- PAYEER -->
             <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Pagador'" [(model)]="modalElement.payeer"></smart-form-text>
 
@@ -16,10 +20,10 @@
             <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Proveedor'" [(model)]="modalElement.provider"></smart-form-text>
 
             <!-- AMOUNT -->
-            <smart-form-text [type]="'number'" [class]="'col-xs-12 col-sm-3'" [label]="'Cantidad'" [(model)]="modalElement.amount"></smart-form-text>
+            <smart-form-text [type]="'number'" [class]="'col-xs-12 col-sm-4'" [label]="'Cantidad'" [(model)]="modalElement.amount"></smart-form-text>
 
             <!-- AMOUNT PAID-->
-            <smart-form-text [type]="'number'" [class]="'col-xs-12 col-sm-3'" [label]="'Cantidad pagada'" [(model)]="modalElement.amountPaid"></smart-form-text>
+            <smart-form-text [type]="'number'" [class]="'col-xs-12 col-sm-4'" [label]="'Cantidad pagada'" [(model)]="modalElement.amountPaid"></smart-form-text>
 
             <!-- COST PER GUEST -->
             <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Coste unitario'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalElement.costPerGuest"></smart-form-select>

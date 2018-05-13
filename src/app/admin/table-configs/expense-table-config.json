@@ -7,10 +7,10 @@
     },
     "selects": [
         {
-            "label": "Grupo",
-            "name_property": "group",
-            "value_property": "group",
-            "property_match": "group"
+            "label": "Categoria",
+            "name_property": "name",
+            "value_property": "_id",
+            "property_match": "category._id"
         }
     ],
     "new_element": {
@@ -45,34 +45,73 @@
             "responsive": "xs"
         },
         {
+            "header": "Categoria",
+            "sortBy": "category.name",
+            "property": "category.name",
+            "icon": "fa-folder-open",
+            "responsive": "sm",
+            "component": {
+                "name": "CategoryLabel",
+                "inputs": [
+                    {
+                        "name": "category",
+                        "property": "category"
+                    }
+                ]
+            }
+        },
+        {
             "header": "Proveedor",
             "sortBy": "provider",
             "property": "provider",
-            "responsive": "xs"
+            "icon": "fa-handshake-o",
+            "responsive": "lg"
         },
         {
             "header": "Pagador",
             "sortBy": "payeer",
             "property": "payeer",
-            "responsive": "xs"
-        },
-        {
-            "header": "Categoria",
-            "sortBy": "group.name",
-            "property": "group.name",
-            "responsive": "xs"
+            "icon": "fa-credit-card",
+            "responsive": "lg"
         },
         {
             "header": "Cantidad total",
             "sortBy": "amount",
             "property": "amount",
-            "responsive": "xs"
+            "responsive": "xs",
+            "component": {
+                "name": "TotalAmount",
+                "inputs": [
+                    {
+                        "name": "amount",
+                        "property": "amount"
+                    },
+                    {
+                        "name": "amountPaid",
+                        "property": "amountPaid"
+                    },
+                    {
+                        "name": "costPerGuest",
+                        "property": "costPerGuest"
+                    }
+                ]
+            }
         },
         {
             "header": "Cantidad pagada",
             "sortBy": "amountPaid",
             "property": "amountPaid",
-            "responsive": "xs"
+            "icon": "fa-money",
+            "responsive": "sm",
+            "component": {
+                "name": "MoneyLabel",
+                "inputs": [
+                    {
+                        "name": "amount",
+                        "property": "amountPaid"
+                    }
+                ]
+            }
         }
     ]
 }

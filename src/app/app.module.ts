@@ -1,5 +1,7 @@
+import { registerLocaleData } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import localeEs from '@angular/common/locales/es';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,6 +12,8 @@ import { routing } from './app.routing';
 import { LoaderInterceptor } from './shared/loading-spinner/loader.interceptor';
 import { LoadingSpinnerService } from './shared/loading-spinner/loading-spinner.service';
 import { HttpService } from './shared/services/http.service';
+
+registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [
@@ -36,6 +40,10 @@ import { HttpService } from './shared/services/http.service';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'es'
     }
   ],
   bootstrap: [AppComponent]
