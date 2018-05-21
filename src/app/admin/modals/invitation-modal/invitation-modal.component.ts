@@ -85,6 +85,10 @@ export class InvitationModalComponent extends BaseModalComponent implements OnIn
     }
   }
 
+  protected beforeAddOrUpdate() {
+    this.modalElement.giftAmount = parseInt(this.modalElement.giftAmount);
+  }
+
   private refreshGroups(): void {
     this.storeSubscription(this.adminService.getGroupNames().subscribe(res => {
       this.groups = res;

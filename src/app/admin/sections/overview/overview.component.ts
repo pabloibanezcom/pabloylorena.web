@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Component, OnInit } from '@angular/core';
+import { BaseComponent } from '../../../shared';
 import { AdminService, OverviewResult } from '../../admin-core';
 
 @Component({
@@ -7,25 +7,22 @@ import { AdminService, OverviewResult } from '../../admin-core';
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.less']
 })
-export class OverviewComponent implements OnInit, OnDestroy {
+export class OverviewComponent extends BaseComponent implements OnInit {
 
   public result: OverviewResult;
-  subscription: Subscription;
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService) {
+    super();
+  }
 
   ngOnInit() {
     this.refreshOverviewResult();
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
   refreshOverviewResult() {
-    // this.subscription = this.adminService.getOverviewResult().subscribe(res => {
-    //   this.result = res;
-    // });
+    this.storeSubscription(this.adminService.getOverviewResult().subscribe(res => {
+      this.result = res;
+    }));
   }
 
 }

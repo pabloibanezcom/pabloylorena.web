@@ -70,7 +70,9 @@ import { UtilService } from './services/util.service';
     FilterResponsivePipe,
     AttendingLabelComponent,
     AdjustHeightDirective,
-    BaseComponent
+    BaseComponent,
+    TypeLabelComponent,
+    CategoryLabelComponent
   ],
   entryComponents: [
     AttendingLabelComponent,

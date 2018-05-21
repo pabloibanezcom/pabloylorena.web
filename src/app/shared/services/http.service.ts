@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/publishReplay';
-
+import 'rxjs/add/operator/share';
 import { environment } from '../../../environments/environment';
+
 
 @Injectable()
 export class HttpService {
@@ -17,10 +16,6 @@ export class HttpService {
     private http: HttpClient
   ) {
     this.api_url = environment.api_url;
-  }
-
-  setApiUrl(api_url: string): void {
-    this.api_url = api_url;
   }
 
   get(url: string): Observable<any> {

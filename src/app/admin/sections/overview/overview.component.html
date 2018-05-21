@@ -1,20 +1,97 @@
 <div class="overview" [appAdjustHeight]="300">
   <div class="container text-center">
-    <h3 class="title script">
-      <span class="title-deco-left"></span>
-      <span class="title-text">Resumen</span>
-      <span class="title-deco-right"></span>
-    </h3>
-    <!-- <div class="row" *ngIf="result">
-      <div class="col-xs-12 col-sm-6">
-        <app-overview-panel [title]="'Cena viernes'" [data]="result.isAttendingFriday"></app-overview-panel>
+    <app-section-header [sectionName]="'Resumen'"></app-section-header>
+    <div *ngIf="result">
+      <div class="row">
+        <div class="data-panel guests-panel col-lg-4 col-lg-offset-1">
+          <div class="panel-header">
+            <span>Invitados</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Esperados</span>
+            <span class="data-value">{{result.guests.expected}}
+              <i class="fa fa-users"></i>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Cena viernes</span>
+            <span class="data-value">{{result.guests.attendingFriday}}
+              <i class="fa fa-users"></i>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Género</span>
+            <div class="clearfix"></div>
+          </div>
+          <div class="data-row row-type" *ngFor="let t of result.guests.types">
+            <span class="data-sublabel type-label">
+              <app-type-label [type]="t.type"></app-type-label>
+            </span>
+            <span class="data-subvalue type-{{t.type}}">{{t.amount}}
+              <i class="fa fa-users"></i>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+          <div class="data-row margin-top-30">
+            <span class="data-label">Alojamiento</span>
+            <div class="clearfix"></div>
+          </div>
+          <div class="data-row row-type" *ngFor="let s of result.guests.staying">
+            <span class="data-sublabel staying-label">
+              {{s.place}}
+            </span>
+            <span class="data-subvalue">{{s.amount}}
+              <i class="fa fa-users"></i>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+          <div class="panel-header margin-top-20">
+            <span>Ingresos</span>
+          </div>
+          <div class="data-row margin-bottom-30">
+            <span class="data-label">Regalos</span>
+            <span class="data-value total-label">{{result.guests.gift |currency:'EUR':'symbol'}}</span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="data-panel expenses-panel col-lg-4 col-lg-offset-2">
+          <div class="panel-header">
+            <span>Gastos</span>
+          </div>
+          <div class="data-row">
+            <div class="data-label">
+              <div>Total</div>
+              <div class="hint">(Sin viaje de novios)</div>
+            </div>
+            <span class="data-value total-label">{{result.expenses.total |currency:'EUR':'symbol'}}</span>
+            <div class="clearfix"></div>
+          </div>
+          <div class="data-row">
+            <div class="data-label">
+              <div>Pagado</div>
+              <div class="hint">(Sin viaje de novios)</div>
+            </div>
+            <span class="data-value paid-label">{{result.expenses.totalPaid |currency:'EUR':'symbol'}}</span>
+            <div class="clearfix"></div>
+          </div>
+          <div class="data-row margin-top-20">
+            <span class="data-label">Categorías</span>
+            <div class="clearfix"></div>
+          </div>
+          <div class="data-row row-type margin-bottom-20" *ngFor="let category of result.expenses.categories">
+            <span class="data-sublabel type-label">
+              <app-category-label [category]="category.categoryData"></app-category-label>
+            </span>
+            <div class="category-totals">
+              <div class="category-total">{{category.total |currency:'EUR':'symbol'}}</div>
+              <div class="category-total-paid">{{category.totalPaid |currency:'EUR':'symbol'}}</div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
       </div>
-      <div class="col-xs-12 col-sm-6">
-        <app-overview-panel [title]="'Prevision boda'" [data]="result.isAttendingExpectation"></app-overview-panel>
-      </div>
-      <div class="col-xs-12 col-sm-12">
-        <app-overview-panel [title]="'Boda'" [data]="result.isAttending"></app-overview-panel>
-      </div>
-    </div> -->
+    </div>
   </div>
 </div>

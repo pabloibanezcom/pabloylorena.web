@@ -1,11 +1,27 @@
+import { ExpenseCategory } from "../../../shared/models";
+
 export interface OverviewResult {
-    isAttendingFriday: YesNoDoubtful;
-    isAttending: YesNoDoubtful;
-    isAttendingExpectation: YesNoDoubtful;
+  guests: {
+    expected: number;
+    attendingFriday: number;
+    types: {
+      type: number;
+      amount: number;
+    }[],
+    staying: {
+      place: string;
+      amount: number;
+    }[],
+    gift: number;
+  };
+  expenses: {
+    total: Number;
+    totalPaid: Number;
+    categories: {
+      categoryData: ExpenseCategory;
+      total: number;
+      totalPaid: number;
+    }[]
+  }
 }
 
-export interface YesNoDoubtful {
-    yes: any;
-    no: any;
-    doutbful: any;
-}

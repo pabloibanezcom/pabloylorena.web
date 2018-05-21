@@ -5,6 +5,7 @@ export class ExpenseCategory {
     name: string;
     icon: string;
     class: string;
+    excludeFromTotal: boolean;
     lastModified: Date;
     expenses: Expense[];
 }

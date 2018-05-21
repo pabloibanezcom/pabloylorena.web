@@ -13,6 +13,7 @@ export class BaseSectionComponent extends BaseComponent implements OnInit {
   public tableConfig: any;
   public result: Result;
   public selectedElement: any;
+  public editMode: boolean;
   public deleteMode: boolean;
 
   protected util: UtilService;
@@ -49,24 +50,28 @@ export class BaseSectionComponent extends BaseComponent implements OnInit {
   }
 
   addElement() {
+    this.editMode = false;
     this.deleteMode = false;
     this.selectedElement = this.adminService.generateNewModel(this.modelName);
     this.util.showModal(`rsvp-${this.modelName}-modal`);
   }
 
   editElement(element: any) {
+    this.editMode = true;
     this.deleteMode = false;
     this.selectedElement = element;
     this.util.showModal(`rsvp-${this.modelName}-modal`);
   }
 
   removeElement(element: any) {
+    this.editMode = false;
     this.deleteMode = true;
     this.selectedElement = element;
     this.util.showModal(`rsvp-${this.modelName}-modal`);
   }
 
   afterModal(event: any) {
+    this.editMode = false;
     this.deleteMode = false;
     if (event.refreshData) {
       this.refreshResult();

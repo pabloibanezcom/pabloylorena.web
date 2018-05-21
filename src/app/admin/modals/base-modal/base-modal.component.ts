@@ -9,13 +9,10 @@ import { AdminService, NotificationService } from '../../admin-core';
 })
 export class BaseModalComponent extends BaseComponent implements OnInit, OnChanges {
 
+  @Input() editMode: boolean;
   @Input() deleteMode: boolean;
   @Input() element: any;
   @Output() ending: any = new EventEmitter();
-
-  get editMode() {
-    return this.element && Object.keys(this.element).length === 0 ? false : true;
-  }
 
   modelName: string;
   modalElement: any;
@@ -48,11 +45,13 @@ export class BaseModalComponent extends BaseComponent implements OnInit, OnChang
   }
 
   addElement() {
+    this.beforeAddOrUpdate();
     this.storeSubscription(this.adminService.createElement(this.modalElement, this.modelName)
       .subscribe(res => this.afterSubscribe(res)));
   }
 
   updateElement() {
+    this.beforeAddOrUpdate();
     this.storeSubscription(this.adminService.updateElement(this.modalElement, this.modelName)
       .subscribe(res => this.afterSubscribe(res)));
   }
@@ -90,6 +89,10 @@ export class BaseModalComponent extends BaseComponent implements OnInit, OnChang
     } else {
       this.modalElement = this.adminService.generateNewModel(this.modelName);
     }
+  }
+
+  protected beforeAddOrUpdate() {
+    // TO OVERRIDE BY DERIVED CLASS
   }
 
 }

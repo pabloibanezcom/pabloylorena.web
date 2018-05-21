@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Expense, ExpenseCategory, Group, Guest, Invitation, Table } from '../../../shared/models';
 import { HttpService } from '../../../shared/services/http.service';
-import { ExpensesResult, GroupsResult, GuestTablesResult, GuestsResult, InvitationsResult, Result, TablesResult } from '../models';
+import { ExpensesResult, GroupsResult, GuestTablesResult, GuestsResult, InvitationsResult, OverviewResult, Result, TablesResult } from '../models';
 import * as searchRequests from './search-requests.json';
 
 @Injectable()
@@ -98,6 +98,12 @@ export class AdminService {
     return this.http.putWithResponse('guest/order-table/' + guest._id, { orderInTable: guest.orderInTable });
   }
 
+  // -------- OVERVIEW ----------
+
+  getOverviewResult(): Observable<OverviewResult> {
+    return this.http.get('overview');
+  }
+
   private search(searchName: string): Observable<any> {
     const searchReqOptions = searchRequests[searchName];
     return this.http.post(searchReqOptions.url, searchReqOptions.body)
@@ -139,6 +145,13 @@ export class AdminService {
   }
 
   private expensesResultMap(expenses: Expense[]): ExpensesResult {
+    if (expenses.length === 0) {
+      return {
+        elements: [],
+        amount: 0,
+        amountPaid: 0,
+      };
+    }
     return {
       elements: expenses,
       amount: expenses.map(e => this.getTotalAmountFromExpense(e)).reduce((a, b) => a + b),

@@ -1,5 +1,5 @@
 <div class="category-label">
-  <ng-container>
+  <ng-container *ngIf="category && category.name">
     <span class="label label-default {{category.class}}">
       <i class="fa {{category.icon}} "></i>
     </span> {{category.name}}

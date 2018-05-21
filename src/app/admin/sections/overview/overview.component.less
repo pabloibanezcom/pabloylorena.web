@@ -1,0 +1,68 @@
+.overview {
+    .panel-header {
+        margin-bottom: 30px;
+        span {
+            font-family: 'Satisfy', cursive;
+            font-weight: bold;
+            font-size: 32px;
+        }
+    }
+    .data-panel {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .data-row {
+        font-size: 22px;
+        margin-bottom: 15px;
+        .data-label {
+            float: left;
+            text-align: left;
+            font-family: 'Satisfy', cursive;
+            .hint {
+                font-size: 16px;
+                color: #828282;
+            }
+        }
+        .data-sublabel {
+            float: left;
+            margin-left: 10px;
+            font-size: 15px;
+            &.type-label {
+                margin-top: 5px;
+            }
+        }
+        .data-value {
+            float: right;
+            font-weight: bold;
+            color: green;
+            .fa {
+                font-size: 14px;
+            }
+        }
+        .data-subvalue {
+            float: right;
+            font-weight: bold;
+            font-size: 18px;
+            .fa {
+                font-size: 12px;
+            }
+        }
+        &.row-type {
+            margin-bottom: 5px;
+        }
+    }
+    .total-label,
+    .category-total {
+        color: #e5c105 !important;
+    }
+    .paid-label,
+    .category-total-paid {
+        color: green !important;
+    }
+    .category-totals {
+        float: right;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: right;
+    }
+}
