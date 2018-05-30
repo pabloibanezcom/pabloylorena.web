@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NotificationsService, SimpleNotificationsModule } from 'angular2-notifications';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 import { QRCodeModule } from 'angular2-qrcode';
 import { AuthGuard, AuthenticationService } from 'ng2-smart-auth';
 import { DynamicComponentsService } from 'ng2-smart-common';
@@ -26,7 +26,7 @@ import { TablesComponent } from './sections/table-planner/tables/tables.componen
     FormsModule,
     AdminRouting,
     SharedModule,
-    SimpleNotificationsModule,
+    SimpleNotificationsModule.forRoot(),
     QRCodeModule,
     Ng2SmartFormsModule,
     AdminCoreModule.forRoot(),
@@ -50,7 +50,6 @@ import { TablesComponent } from './sections/table-planner/tables/tables.componen
     TableGuestsComponent,
   ],
   providers: [
-    NotificationsService,
     AuthenticationService,
     SmsService,
     AuthGuard,

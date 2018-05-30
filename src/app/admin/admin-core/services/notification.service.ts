@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
-
 import { NotificationsService, Options } from 'angular2-notifications';
+
 
 @Injectable()
 export class NotificationService {
@@ -25,7 +25,7 @@ export class NotificationService {
     successContent: string,
     errorTitle?: string,
     errorContent?: string
-    ): void {
+  ): void {
     if (response.status >= 200 && response.status < 300) {
       this.notificationsService.success(successTitle, successContent);
     } else {
