@@ -12,6 +12,8 @@ import { routing } from './app.routing';
 import { LoaderInterceptor } from './shared/loading-spinner/loader.interceptor';
 import { LoadingSpinnerService } from './shared/loading-spinner/loading-spinner.service';
 import { HttpService } from './shared/services/http.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 registerLocaleData(localeEs, 'es');
 
@@ -26,7 +28,8 @@ registerLocaleData(localeEs, 'es');
     ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
-    routing
+    routing,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     HttpService,
