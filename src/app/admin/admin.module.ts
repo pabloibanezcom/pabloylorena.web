@@ -11,6 +11,7 @@ import { UtilService } from '../shared/services/util.service';
 import { SharedModule } from '../shared/shared.module';
 import { AdminBaseComponent } from './admin-base/admin-base.component';
 import { AdminCoreModule } from './admin-core/admin-core.module';
+import { SmsService } from './admin-core/services/sms.service';
 import { AdminRouting } from './admin.routing';
 import { InvitationComponent } from './invitation/invitation.component';
 import { LoginContainerComponent } from './login-container/login-container.component';
@@ -51,6 +52,7 @@ import { TablesComponent } from './sections/table-planner/tables/tables.componen
   providers: [
     NotificationsService,
     AuthenticationService,
+    SmsService,
     AuthGuard,
     UtilService,
     DataService,

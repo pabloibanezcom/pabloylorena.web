@@ -5,10 +5,13 @@ import { RouterModule } from '@angular/router';
 import { AttendingLabelComponent } from './components/attending-label/attending-label.component';
 import { BaseComponent } from './components/base-component/base.component';
 import { CategoryLabelComponent } from './components/category-label/category-label.component';
+import { DatetimeLabelComponent } from './components/datetime-label/datetime-label.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MoneyLabelComponent } from './components/money-label/money-label.component';
+import { NotificationTypeLabelComponent } from './components/notification-type-label/notification-type-label.component';
 import { RepliedLabelComponent } from './components/replied-label/replied-label.component';
 import { SentLabelComponent } from './components/sent-label/sent-label.component';
+import { SentTimeLabelComponent } from './components/sent-time-label/sent-time-label.component';
 import { TableGuestsLabelComponent } from './components/table-guests-label/table-guests-label.component';
 import { TableLabelComponent } from './components/table-label/table-label.component';
 import { TotalAmountComponent } from './components/total-amount/total-amount.component';
@@ -53,7 +56,10 @@ import { UtilService } from './services/util.service';
     MoneyLabelComponent,
     BaseComponent,
     CategoryLabelComponent,
-    TotalAmountComponent
+    TotalAmountComponent,
+    DatetimeLabelComponent,
+    SentTimeLabelComponent,
+    NotificationTypeLabelComponent
   ],
   providers: [
     DynamicComponentsService,
@@ -72,7 +78,10 @@ import { UtilService } from './services/util.service';
     AdjustHeightDirective,
     BaseComponent,
     TypeLabelComponent,
-    CategoryLabelComponent
+    CategoryLabelComponent,
+    DatetimeLabelComponent,
+    SentTimeLabelComponent,
+    NotificationTypeLabelComponent
   ],
   entryComponents: [
     AttendingLabelComponent,
@@ -83,7 +92,10 @@ import { UtilService } from './services/util.service';
     TableGuestsLabelComponent,
     MoneyLabelComponent,
     CategoryLabelComponent,
-    TotalAmountComponent
+    TotalAmountComponent,
+    DatetimeLabelComponent,
+    SentTimeLabelComponent,
+    NotificationTypeLabelComponent
   ],
 })
 export class SharedModule { }

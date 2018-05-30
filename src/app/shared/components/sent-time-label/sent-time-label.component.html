@@ -1,0 +1,6 @@
+<div class="sent-time-label">
+  <span *ngIf="!dateTime" class="label label-warning">Esperando envío</span>
+  <span *ngIf="dateTime" class="label label-success">
+    <app-datetime-label [dateTime]="dateTime"></app-datetime-label>
+  </span>
+</div>

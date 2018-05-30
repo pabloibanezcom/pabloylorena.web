@@ -5,7 +5,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { Ng2SmartFormsModule } from 'ng2-smart-forms';
 import { SharedModule } from '../../shared/shared.module';
 import { AdminCoreModule } from '../admin-core/admin-core.module';
-import { BaseModalComponent, DeleteModeComponent, ExpenseModalComponent, GroupModalComponent, GuestModalComponent, InvitationModalComponent, TableGuestModalComponent, TableModalComponent } from './';
+import { BaseModalComponent, DeleteModeComponent, ExpenseModalComponent, GroupModalComponent, GuestModalComponent, InvitationModalComponent, NotificationModalComponent, TableGuestModalComponent, TableModalComponent } from './';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 
 @NgModule({
     imports: [
@@ -20,20 +21,24 @@ import { BaseModalComponent, DeleteModeComponent, ExpenseModalComponent, GroupMo
     declarations: [
         BaseModalComponent,
         DeleteModeComponent,
+        ConfirmModalComponent,
         ExpenseModalComponent,
         GroupModalComponent,
         GuestModalComponent,
         TableGuestModalComponent,
         InvitationModalComponent,
-        TableModalComponent
+        TableModalComponent,
+        NotificationModalComponent
     ],
     exports: [
+        ConfirmModalComponent,
         ExpenseModalComponent,
         GroupModalComponent,
         GuestModalComponent,
         TableGuestModalComponent,
         InvitationModalComponent,
-        TableModalComponent
+        TableModalComponent,
+        NotificationModalComponent
     ]
 })
 export class ModalsModule {

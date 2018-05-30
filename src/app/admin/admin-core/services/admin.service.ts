@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Expense, ExpenseCategory, Group, Guest, Invitation, Table } from '../../../shared/models';
+import { Expense, ExpenseCategory, Group, Guest, Invitation, Notification, NotificationType, Table } from '../../../shared/models';
 import { HttpService } from '../../../shared/services/http.service';
-import { ExpensesResult, GroupsResult, GuestTablesResult, GuestsResult, InvitationsResult, OverviewResult, Result, TablesResult } from '../models';
+import { ExpensesResult, GroupsResult, GuestTablesResult, GuestsResult, InvitationsResult, NotificationsResult, OverviewResult, Result, TablesResult } from '../models';
 import * as searchRequests from './search-requests.json';
 
 @Injectable()
@@ -38,6 +38,21 @@ export class AdminService {
     return this.expectedGuests;
   }
 
+  getNotificationTypes(): NotificationType[] {
+    return [
+      {
+        label: 'Movil',
+        value: 'Movil',
+        icon: 'mobile'
+      },
+      {
+        label: 'Email',
+        value: 'Email',
+        icon: 'at'
+      }
+    ]
+  }
+
   refreshExpectedGuests(): Observable<number> {
     return this.search('expectedGuests')
       .do(res => this.expectedGuests = res.length)
@@ -51,6 +66,7 @@ export class AdminService {
     if (model === 'table') { return new Table(); }
     if (model === 'table-guest') { return new Guest(); }
     if (model === 'expense') { return new Expense(); }
+    if (model === 'notification') { return new Notification(); }
     return null;
   }
 
@@ -61,6 +77,7 @@ export class AdminService {
     if (model === 'table') { return this.getResultObject('tablesResult'); }
     if (model === 'table-guest') { return this.getResultObject('guestsTablesResult'); }
     if (model === 'expense') { return this.getResultObject('expensesResult'); }
+    if (model === 'notification') { return this.getResultObject('notificationsResult'); }
     return null;
   }
 
@@ -156,6 +173,12 @@ export class AdminService {
       elements: expenses,
       amount: expenses.map(e => this.getTotalAmountFromExpense(e)).reduce((a, b) => a + b),
       amountPaid: expenses.map(e => e.amountPaid).reduce((a, b) => a + b),
+    };
+  }
+
+  private notificationsResultMap(notifications: Notification[]): NotificationsResult {
+    return {
+      elements: notifications
     };
   }
 

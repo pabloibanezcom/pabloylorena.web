@@ -1,0 +1,85 @@
+{
+    "authLevelProperty": "auth.authLevel",
+    "search": {
+        "placeholder": "Buscar por alias",
+        "property": "alias",
+        "min_chars": 3
+    },
+    "selects": [],
+    "new_element": {
+        "label": "Añadir notificación",
+        "icon": "fa-plus",
+        "authLevels": [
+            "admin"
+        ]
+    },
+    "other_actions": [
+        {
+            "label": "Enviar",
+            "icon": "fa-bullhorn",
+            "authLevels": [
+                "admin"
+            ]
+        },
+        {
+            "label": "Editar",
+            "icon": "fa-pencil",
+            "authLevels": [
+                "admin"
+            ]
+        },
+        {
+            "label": "Eliminar",
+            "icon": "fa-trash",
+            "authLevels": [
+                "admin"
+            ]
+        }
+    ],
+    "page_size": 10,
+    "columns": [
+        {
+            "header": "Alias",
+            "sortBy": "alias",
+            "property": "alias",
+            "responsive": "xs"
+        },
+        {
+            "header": "Tipo",
+            "sortBy": "type",
+            "property": "type",
+            "icon": "fa-paper-plane",
+            "responsive": "sm",
+            "component": {
+                "name": "NotificationTypeLabel",
+                "inputs": [
+                    {
+                        "name": "type",
+                        "property": "type"
+                    }
+                ]
+            }
+        },
+        {
+            "header": "Texto",
+            "sortBy": "text",
+            "property": "text",
+            "icon": "fa-commenting"
+        },
+        {
+            "header": "Fecha envio",
+            "sortBy": "sentTime",
+            "property": "sentTime",
+            "responsive": "xs",
+            "component": {
+                "name": "SentTimeLabel",
+                "inputs": [
+                    {
+                        "name": "dateTime",
+                        "property": "sentTime"
+                    }
+                ]
+            }
+        }
+    ]
+}

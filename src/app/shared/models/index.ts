@@ -4,4 +4,6 @@ export { ExpenseCategory } from './expense-category';
 export { Group } from './group';
 export { Guest } from './guest';
 export { Invitation } from './invitation';
+export { Notification } from './notification';
+export { NotificationType } from './notification-type';
 export { Table } from './table';

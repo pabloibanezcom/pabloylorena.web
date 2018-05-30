@@ -13,10 +13,13 @@
             <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Nombre completo'" [(model)]="modalElement.fullName"></smart-form-text>
 
             <!-- EMAIL -->
-            <smart-form-text [type]="email" [class]="'col-xs-12 col-sm-6'" [label]="'Email'" [(model)]="modalElement.email"></smart-form-text>
+            <smart-form-text [type]="email" [class]="'col-xs-12 col-sm-4'" [label]="'Email'" [(model)]="modalElement.email"></smart-form-text>
 
             <!-- PHONE -->
             <smart-form-text [type]="tel" [class]="'col-xs-12 col-sm-3'" [label]="'Movil'" [(model)]="modalElement.phone"></smart-form-text>
+
+            <!-- SEND SMS -->
+            <smart-form-select [class]="'col-xs-12 col-sm-2'" [label]="'SMS'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalElement.sendSms"></smart-form-select>
 
             <!-- TYPE -->
             <smart-form-select [class]="'col-xs-12 col-sm-3'" [label]="'Genero'" [emptyOption]="true" [options]="types" [(model)]="modalElement.type"></smart-form-select>

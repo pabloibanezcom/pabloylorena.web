@@ -1,9 +1,16 @@
 <div class="table-planner" [appAdjustHeight]="300">
   <div class="container text-center">
-    <h3 class="title script">
-      <span class="title-deco-left"></span>
-      <span class="title-text">Notificaciones</span>
-      <span class="title-deco-right"></span>
-    </h3>
+    <app-section-header [sectionName]="'Notificaciones'"></app-section-header>
+    <div *ngIf="result">
+      <div class="row">
+        <div class="col-lg-12">
+          <app-responsive-table [config]="tableConfig" [elements]="result.elements"></app-responsive-table>
+        </div>
+      </div>
+    </div>
   </div>
+  <app-notification-modal [editMode]="editMode" [deleteMode]="deleteMode" [element]="selectedElement" (ending)="afterModal($event)"></app-notification-modal>
+  <app-confirm-modal [question]="'Estas seguro de que quieres enviar esta mensaje?'" [element]="selectedElement" [properties]="[{name: 'alias', label: 'Alias'}, {name: 'text', label: 'Texto'}]"
+    (confirm)="onConfirmSent()" (cancel)="onCancelConfirm()">
+  </app-confirm-modal>
 </div>

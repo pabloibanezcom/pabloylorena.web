@@ -2,9 +2,12 @@ import { ComponentFactoryResolver, Injectable } from '@angular/core';
 import { ViewContainerRef } from '@angular/core/src/linker/view_container_ref';
 import { AttendingLabelComponent } from '../components/attending-label/attending-label.component';
 import { CategoryLabelComponent } from '../components/category-label/category-label.component';
+import { DatetimeLabelComponent } from '../components/datetime-label/datetime-label.component';
 import { MoneyLabelComponent } from '../components/money-label/money-label.component';
+import { NotificationTypeLabelComponent } from '../components/notification-type-label/notification-type-label.component';
 import { RepliedLabelComponent } from '../components/replied-label/replied-label.component';
 import { SentLabelComponent } from '../components/sent-label/sent-label.component';
+import { SentTimeLabelComponent } from '../components/sent-time-label/sent-time-label.component';
 import { TableGuestsLabelComponent } from '../components/table-guests-label/table-guests-label.component';
 import { TableLabelComponent } from '../components/table-label/table-label.component';
 import { TotalAmountComponent } from '../components/total-amount/total-amount.component';
@@ -25,7 +28,10 @@ export class DynamicComponentsService {
       TableGuestsLabel: TableGuestsLabelComponent,
       MoneyLabel: MoneyLabelComponent,
       CategoryLabel: CategoryLabelComponent,
-      TotalAmount: TotalAmountComponent
+      TotalAmount: TotalAmountComponent,
+      DatetimeLabel: DatetimeLabelComponent,
+      SentTimeLabel: SentTimeLabelComponent,
+      NotificationTypeLabel: NotificationTypeLabelComponent
     };
   }
 

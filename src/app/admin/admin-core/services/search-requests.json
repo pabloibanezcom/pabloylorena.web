@@ -163,9 +163,7 @@
     "expensesResult": {
         "url": "expense",
         "body": {
-            "sort": {
-                "group": 1
-            },
+            "sort": "category.name",
             "populate": [
                 {
                     "path": "category",
@@ -181,6 +179,13 @@
                 "isAttendingExpectation": true
             },
             "select": "name",
+            "populate": ""
+        }
+    },
+    "notificationsResult": {
+        "url": "notification",
+        "body": {
+            "sort": "order",
             "populate": ""
         }
     }

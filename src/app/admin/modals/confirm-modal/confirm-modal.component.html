@@ -1,0 +1,29 @@
+<div id="rsvp-confirm-modal" class="modal modal-rsvp" tabindex="-1" role="dialog" aria-labelledby="rsvpModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="confirm-section row">
+          <div class="col-xs-12 col-sm-12">
+            <h3>{{question}}</h3>
+          </div>
+          <div *ngIf="element && properties" class="col-xs-12 col-sm-12 group-info">
+            <div *ngFor="let prop of properties">
+              <span class="confirm-section-property">{{prop.label}}: </span>
+              <span class="confirm-section-value"> {{element[prop.name]}}</span>
+            </div>
+          </div>
+          <div class="form-buttons">
+            <div class="col-xs-12 col-sm-4">
+              <button class="btn btn-block btn-success" (click)="onConfirm()">
+                <i class="fa fa-thumbs-up"></i> SI</button>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <button class="btn btn-block btn-primary" (click)="onCancel()">
+                <i class="fa fa-thumbs-down"></i>NO</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

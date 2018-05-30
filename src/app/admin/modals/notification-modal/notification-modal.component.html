@@ -1,0 +1,41 @@
+<div id="rsvp-notification-modal" class="modal modal-rsvp" tabindex="-1" role="dialog" aria-labelledby="rsvpModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="rsvp-form" class="rsvp-form form" *ngIf="modalElement && !deleteMode" (ngSubmit)="onSubmit()">
+          <div id="form-messages" class="text-center"></div>
+          <div class="row text-left">
+
+            <!-- ALIAS -->
+            <smart-form-text [class]="'col-xs-12 col-sm-6'" [label]="'Alias'" [(model)]="modalElement.alias"></smart-form-text>
+
+            <!-- ORDER -->
+            <smart-form-text [class]="'col-xs-12 col-sm-2'" [label]="'Orden'" [(model)]="modalElement.order"></smart-form-text>
+
+            <!-- TYPE -->
+            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Tipo'" [options]="types" [(model)]="modalElement.type"></smart-form-select>
+
+            <!-- FROM -->
+            <!-- <smart-form-datetime [class]="'col-xs-12 col-sm-4'" [label]="'Desde'" [(model)]="modalElement.from"></smart-form-datetime> -->
+
+            <!-- TEXT -->
+            <smart-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Texto'" [multiLine]="true" [(model)]="modalElement.text"></smart-form-text>
+
+          </div>
+          <div class="row form-buttons">
+            <div class="col-xs-12 col-sm-6">
+              <button type="submit" class="btn btn-block btn-primary">{{editMode ? 'Editar notificación' : 'Añadir notificación' }}</button>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <a (click)="cancel()" class="btn btn-block btn-primary">Cancelar</a>
+            </div>
+          </div>
+        </form>
+        <app-delete-mode *ngIf="deleteMode" [question]="'Estas seguro de que quieres eliminar esta notificación?'" [element]="modalElement"
+          [properties]="[{name: 'alias', label: 'Alias'}, {name: 'text', label: 'Texto'}]" (confirmDelete)="confirmDelete()"
+          (cancel)="cancel()">
+        </app-delete-mode>
+      </div>
+    </div>
+  </div>
+</div>
