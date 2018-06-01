@@ -14,33 +14,41 @@
         </div>
         <div id="navbar-collapse" class="navbar-collapse collapse  text-center">
           <ul class="nav navbar-nav center-block">
-            <li class="nav-item" *ngIf="!authData">
-              <a (click)="signOff()" routerLink="/admin/notifications">Iniciar sesión</a>
-            </li>
-            <li class="nav-item" *ngIf="authData && authData.authLevel === 'admin' && authData.data.role === 'admin'">
-              <a (click)="closeMenu()" routerLink="/admin/overview">Resumen</a>
-            </li>
-            <li class="nav-item" *ngIf="authData && authData.authLevel === 'admin' && authData.data.role === 'admin'">
-              <a (click)="closeMenu()" routerLink="/admin/guests">Invitados</a>
-            </li>
-            <li class="nav-item" *ngIf="authData && authData.authLevel === 'admin' && authData.data.role === 'admin'">
-              <a (click)="closeMenu()" routerLink="/admin/invitations">Invitaciones</a>
-            </li>
-            <li class="nav-item" *ngIf="authData && authData.authLevel === 'admin' && authData.data.role === 'admin'">
-              <a (click)="closeMenu()" routerLink="/admin/groups">Grupos</a>
-            </li>
-            <li class="nav-item" *ngIf="authData && authData.authLevel === 'admin' && authData.data.role === 'admin'">
-              <a (click)="closeMenu()" routerLink="/admin/tables">Mesas</a>
-            </li>
-            <li class="nav-item" *ngIf="authData && authData.authLevel === 'admin' && authData.data.role === 'admin'">
-              <a (click)="closeMenu()" routerLink="/admin/expenses">Gastos</a>
-            </li>
-            <li class="nav-item" *ngIf="authData && authData.authLevel === 'admin'">
-              <a (click)="closeMenu()" routerLink="/admin/notifications">Notificaciones</a>
-            </li>
-            <li class="nav-item" *ngIf="authData">
-              <a (click)="closeMenu()" routerLink="/admin/login">Cerrar sesión</a>
-            </li>
+            <ng-container *ngIf="!authData">
+              <li class="nav-item">
+                <a (click)="signOff()" routerLink="/admin/notifications">Iniciar sesión</a>
+              </li>
+            </ng-container>
+            <ng-container *ngIf="authData?.authLevel === 'admin' && authData.data?.role === 'admin'">
+              <li class="nav-item">
+                <a (click)="closeMenu()" routerLink="/admin/overview">Resumen</a>
+              </li>
+              <li class="nav-item">
+                <a (click)="closeMenu()" routerLink="/admin/guests">Invitados</a>
+              </li>
+              <li class="nav-item">
+                <a (click)="closeMenu()" routerLink="/admin/invitations">Invitaciones</a>
+              </li>
+              <li class="nav-item">
+                <a (click)="closeMenu()" routerLink="/admin/groups">Grupos</a>
+              </li>
+              <li class="nav-item">
+                <a (click)="closeMenu()" routerLink="/admin/tables">Mesas</a>
+              </li>
+              <li class="nav-item">
+                <a (click)="closeMenu()" routerLink="/admin/expenses">Gastos</a>
+              </li>
+            </ng-container>
+            <ng-container *ngIf="authData?.authLevel === 'admin'">
+              <li class="nav-item">
+                <a (click)="closeMenu()" routerLink="/admin/notifications">Notificaciones</a>
+              </li>
+            </ng-container>
+            <ng-container *ngIf="authData">
+              <li class="nav-item">
+                <a (click)="closeMenu()" routerLink="/admin/login">Cerrar sesión</a>
+              </li>
+            </ng-container>
           </ul>
         </div>
       </nav>
