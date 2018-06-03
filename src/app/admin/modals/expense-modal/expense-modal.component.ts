@@ -10,6 +10,20 @@ export class ExpenseModalComponent extends BaseModalComponent implements OnInit 
 
   public modelName: string = 'expense';
   categories: ExpenseCategory[];
+  costPerGuestOptions: { label: string, value: number }[] = [
+    {
+      label: 'No',
+      value: 0
+    },
+    {
+      label: 'Adultos',
+      value: 1
+    },
+    {
+      label: 'Niños',
+      value: 3
+    }
+  ];
 
   ngOnInit() {
     super.ngOnInit();

@@ -178,7 +178,7 @@
             "filter": {
                 "isAttendingExpectation": true
             },
-            "select": "name",
+            "select": "name type",
             "populate": ""
         }
     },

@@ -7,7 +7,7 @@ export class Expense {
     provider: string;
     amount: number;
     amountPaid: number;
-    costPerGuest: boolean;
+    costPerGuest: number;
     lastModified: Date;
     category: ExpenseCategory;
 }

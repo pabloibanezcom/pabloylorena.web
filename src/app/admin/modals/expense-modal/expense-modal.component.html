@@ -26,7 +26,7 @@
             <smart-form-text [type]="'number'" [class]="'col-xs-12 col-sm-4'" [label]="'Cantidad pagada'" [(model)]="modalElement.amountPaid"></smart-form-text>
 
             <!-- COST PER GUEST -->
-            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Coste unitario'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalElement.costPerGuest"></smart-form-select>
+            <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Coste unitario'" [options]="costPerGuestOptions" [(model)]="modalElement.costPerGuest"></smart-form-select>
 
           </div>
           <div class="row form-buttons">

@@ -1,6 +1,5 @@
 <ng-container>
-  <span *ngIf="costPerGuest && (expectedGuests * amount) <= amountPaid || !costPerGuest && amount <= amountPaid; else notPaid"
-    class="label label-default paid">
+  <span *ngIf="totalAmount <= amountPaid; else notPaid" class="label label-default paid">
     <i class="fa fa-check "></i>
   </span>
   <ng-template #notPaid>
@@ -8,6 +7,6 @@
       <i class="fa fa-hourglass"></i>
     </span>
   </ng-template>
-  <span *ngIf="!costPerGuest">{{amount |currency:'EUR':'symbol'}}</span>
-  <span *ngIf="costPerGuest">{{(expectedGuests * amount) |currency:'EUR':'symbol'}} ({{amount |currency:'EUR':'symbol'}})</span>
+  <span *ngIf="costPerGuest < 1">{{totalAmount |currency:'EUR':'symbol'}}</span>
+  <span *ngIf="costPerGuest > 0">{{totalAmount |currency:'EUR':'symbol'}} ({{amount |currency:'EUR':'symbol'}})</span>
 </ng-container>

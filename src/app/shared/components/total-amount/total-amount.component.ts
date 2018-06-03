@@ -10,13 +10,21 @@ export class TotalAmountComponent implements OnInit {
 
   @Input() amount: number;
   @Input() amountPaid: number;
-  @Input() costPerGuest: boolean;
-  expectedGuests: number;
+  @Input() costPerGuest: number;
+  expectedGuests: { adults: number, children: number };
+  totalAmount: number;
 
   constructor(private adminService: AdminService) { }
 
   ngOnInit() {
     this.expectedGuests = this.adminService.getExpectedGuests();
+    if (!this.costPerGuest || this.costPerGuest === 0) {
+      this.totalAmount = this.amount;
+    } else if (this.costPerGuest === 1) {
+      this.totalAmount = this.amount * this.expectedGuests.adults;
+    } else if (this.costPerGuest === 3) {
+      this.totalAmount = this.amount * this.expectedGuests.children;
+    }
   }
 
 }

@@ -11,7 +11,7 @@ export class AdminService {
 
   private groups: Group[];
   private invitations: Invitation[];
-  private expectedGuests: number;
+  private expectedGuests: { adults: number, children: number };
 
   constructor(
     private http: HttpService,
@@ -34,7 +34,7 @@ export class AdminService {
     return this.search('expenseCategories');
   }
 
-  getExpectedGuests(): number {
+  getExpectedGuests(): { adults: number, children: number } {
     return this.expectedGuests;
   }
 
@@ -53,10 +53,10 @@ export class AdminService {
     ]
   }
 
-  refreshExpectedGuests(): Observable<number> {
+  refreshExpectedGuests(): Observable<{ adults: number, children: number }> {
     return this.search('expectedGuests')
-      .do(res => this.expectedGuests = res.length)
-      .map(res => res.length);
+      .do(res => this.expectedGuests = this.processExpectedGuests(res))
+      .map(res => this.processExpectedGuests(res));
   }
 
   generateNewModel(model: string): any {
@@ -203,7 +203,20 @@ export class AdminService {
   }
 
   private getTotalAmountFromExpense(expense: Expense): number {
-    return !expense.costPerGuest ? expense.amount : this.getExpectedGuests() * expense.amount;
+    if (expense.costPerGuest === 1) {
+      return this.getExpectedGuests().adults * expense.amount
+    }
+    if (expense.costPerGuest === 3) {
+      return this.getExpectedGuests().children * expense.amount
+    }
+    return expense.amount;
+  }
+
+  private processExpectedGuests(guests: Guest[]): { adults: number, children: number } {
+    return {
+      adults: guests.filter(g => g.type === 1 || g.type === 2).length,
+      children: guests.filter(g => g.type === 3).length
+    }
   }
 
 }
