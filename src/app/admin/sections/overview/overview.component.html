@@ -8,24 +8,13 @@
             <span>Invitados</span>
           </div>
           <div class="data-row">
-            <span class="data-label">Esperados</span>
-            <span class="data-value">{{result.guests.expected}}
+            <span class="data-label">Boda</span>
+            <span class="data-value">{{result.guests.wedding.total}}
               <i class="fa fa-users"></i>
             </span>
             <div class="clearfix"></div>
           </div>
-          <div class="data-row">
-            <span class="data-label">Cena viernes</span>
-            <span class="data-value">{{result.guests.attendingFriday}}
-              <i class="fa fa-users"></i>
-            </span>
-            <div class="clearfix"></div>
-          </div>
-          <div class="data-row">
-            <span class="data-label">Género</span>
-            <div class="clearfix"></div>
-          </div>
-          <div class="data-row row-type" *ngFor="let t of result.guests.types">
+          <div class="data-row row-type" *ngFor="let t of result.guests.wedding.types">
             <span class="data-sublabel type-label">
               <app-type-label [type]="t.type"></app-type-label>
             </span>
@@ -34,11 +23,8 @@
             </span>
             <div class="clearfix"></div>
           </div>
-          <div class="data-row margin-top-30">
-            <span class="data-label">Alojamiento</span>
-            <div class="clearfix"></div>
-          </div>
-          <div class="data-row row-type" *ngFor="let s of result.guests.staying">
+          <div class="data-row margin-top-20"></div>
+          <div class="data-row row-type" *ngFor="let s of result.guests.wedding.staying">
             <span class="data-sublabel staying-label">
               {{s.place}}
             </span>
@@ -47,6 +33,24 @@
             </span>
             <div class="clearfix"></div>
           </div>
+
+          <div class="data-row margin-top-30">
+            <span class="data-label">Cena viernes</span>
+            <span class="data-value">{{result.guests.friday.total}}
+              <i class="fa fa-users"></i>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+          <div class="data-row row-type" *ngFor="let t of result.guests.friday.types">
+            <span class="data-sublabel type-label">
+              <app-type-label [type]="t.type"></app-type-label>
+            </span>
+            <span class="data-subvalue type-{{t.type}}">{{t.amount}}
+              <i class="fa fa-users"></i>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+
           <div class="panel-header margin-top-20">
             <span>Ingresos</span>
           </div>

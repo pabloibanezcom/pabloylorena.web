@@ -2,16 +2,24 @@ import { ExpenseCategory } from "../../../shared/models";
 
 export interface OverviewResult {
   guests: {
-    expected: number;
-    attendingFriday: number;
-    types: {
-      type: number;
-      amount: number;
-    }[],
-    staying: {
-      place: string;
-      amount: number;
-    }[],
+    wedding: {
+      total: number;
+      types: {
+        type: number;
+        amount: number;
+      }[],
+      staying: {
+        place: string;
+        amount: number;
+      }[],
+    },
+    friday: {
+      total: number;
+      types: {
+        type: number;
+        amount: number;
+      }[]
+    },
     gift: number;
   };
   expenses: {
