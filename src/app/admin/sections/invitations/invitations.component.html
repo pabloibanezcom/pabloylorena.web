@@ -1,20 +1,30 @@
 <div class="invitations" [appAdjustHeight]="300">
   <div class="container text-center">
     <app-section-header [sectionName]="'Invitaciones'"></app-section-header>
-    <div *ngIf="result">
+    <div class="counters" *ngIf="result">
       <div class="countdown-box" id="countdown-box">
-        <span class="item awaiting">
-          <span class="number">{{result.invitationsAwaiting}}</span>
-          <span class="unit script">A la espera de envio</span>
+        <span class="item all" [ngClass]="{'selected': !filter || filter.alias === 'all'}">
+          <a (click)="filter = {alias: 'all', property: null, value: null, group: 'reply'}">
+            <span class="number">{{result.elements.length}}</span>
+            <span class="unit script">Total</span>
+          </a>
         </span>
-        <span class="item confirmed">
-          <span class="number">{{result.invitationsSent}}</span>
-          <span class="unit script">Enviadas</span>
+        <span class="item awaiting" [ngClass]="{'selected': filter && filter.alias === 'awaiting'}">
+          <a (click)="filter = {alias: 'awaiting', property: 'isReplied', value: false, group: 'reply'}">
+            <span class="number">{{result.invitationsAwaiting}}</span>
+            <span class="unit script">A la espera de respuesta</span>
+          </a>
+        </span>
+        <span class="item confirmed" [ngClass]="{'selected': filter && filter.alias === 'replied'}">
+          <a (click)="filter = {alias: 'replied', property: 'isReplied', value: true, group: 'reply'}">
+            <span class="number">{{result.invitationsReplied}}</span>
+            <span class="unit script">Respondida</span>
+          </a>
         </span>
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <app-responsive-table [config]="tableConfig" [elements]="result.elements"></app-responsive-table>
+          <app-responsive-table [config]="tableConfig" [elements]="result.elements" [externalFilter]="filter"></app-responsive-table>
         </div>
       </div>
     </div>

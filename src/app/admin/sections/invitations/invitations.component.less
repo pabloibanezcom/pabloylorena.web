@@ -17,7 +17,7 @@
             .group-invitations {
                 padding: 10px 0;
             }
-        }  
+        }
     }
     .invitation-box:nth-child(odd) {
         background-color: #f9f9f9;
@@ -79,11 +79,43 @@
                     .full-name {
                         width: 170px;
                     }
-                }         
+                }
             }
             .invitation-code {
                 .code {
                     font-style: italic;
+                }
+            }
+        }
+    }
+    .counters {
+        .countdown-box {
+            margin-bottom: 40px;
+            .item {
+                &.selected {
+                    a {
+                        .number {
+                            font-size: 36px;
+                        }
+                        .script {
+                            font-size: 22px;
+                        }
+                    }
+                }
+                a {
+                    cursor: pointer;
+                    text-decoration: none;
+                    &:hover {
+                        .script {
+                            color: #f19c85;
+                        }
+                    }
+                }
+                .number {
+                    font-size: 24px;
+                }
+                .script {
+                    font-size: 18px;
                 }
             }
         }

@@ -6,7 +6,7 @@
     "start": "node server.js",
     "serve": "ng serve",
     "serve:local": "ng serve -c local",
-    "serve:prod": "ng serve -c dev-prod",
+    "serve:prod": "ng serve -c prod",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",

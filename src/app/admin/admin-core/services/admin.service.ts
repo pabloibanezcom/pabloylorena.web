@@ -185,8 +185,8 @@ export class AdminService {
   private checkSentInvitations(invitations: Invitation[]): InvitationsResult {
     return {
       elements: invitations,
-      invitationsSent: invitations.filter(i => i.isSent).length,
-      invitationsAwaiting: invitations.filter(i => !i.isSent).length
+      invitationsReplied: invitations.filter(i => i.isReplied).length,
+      invitationsAwaiting: invitations.filter(i => !i.isReplied).length
     };
   }
 

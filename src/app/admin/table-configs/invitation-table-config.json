@@ -22,7 +22,9 @@
     "new_element": {
         "label": "Añadir invitacion",
         "icon": "fa-plus",
-        "authLevels": ["admin"]
+        "authLevels": [
+            "admin"
+        ]
     },
     "other_actions": [
         {
@@ -32,12 +34,16 @@
         {
             "label": "Editar",
             "icon": "fa-pencil",
-            "authLevels": ["admin"]
+            "authLevels": [
+                "admin"
+            ]
         },
         {
             "label": "Eliminar",
             "icon": "fa-trash",
-            "authLevels": ["admin"]
+            "authLevels": [
+                "admin"
+            ]
         }
     ],
     "page_size": 10,
@@ -82,8 +88,7 @@
                         "property": "isSent"
                     }
                 ]
-            },
-            "responsive": "xs"
+            }
         },
         {
             "header": "GUID",
@@ -104,7 +109,8 @@
                         "property": "isReplied"
                     }
                 ]
-            }
+            },
+            "responsive": "xs"
         },
         {
             "header": "Address",
