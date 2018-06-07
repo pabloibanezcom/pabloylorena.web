@@ -1,8 +1,9 @@
-import { Routes, RouterModule } from '@angular/router';
-import { AdminBaseComponent } from './admin-base/admin-base.component';
-import { LoginContainerComponent } from './login-container/login-container.component';
-import { InvitationComponent } from './invitation/invitation.component';
+import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'ng2-smart-auth';
+import { AdminBaseComponent } from './admin-base/admin-base.component';
+import { InvitationComponent } from './invitation/invitation.component';
+import { LoginContainerComponent } from './login-container/login-container.component';
+import { StreetTableComponent } from './street-table/street-table.component';
 
 const adminRoutes: Routes = [
     {
@@ -29,6 +30,14 @@ const adminRoutes: Routes = [
     {
         path: 'invitation/:invitationId',
         component: InvitationComponent,
+        canActivate: [AuthGuard],
+        data: {
+            redirectUrl: '/admin/login'
+        }
+    },
+    {
+        path: 'table/street/:tableId',
+        component: StreetTableComponent,
         canActivate: [AuthGuard],
         data: {
             redirectUrl: '/admin/login'

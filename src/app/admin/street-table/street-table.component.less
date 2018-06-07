@@ -1,0 +1,59 @@
+@font-face {
+    font-family: 'londonstreetsign';
+    src: url('../../../assets/fonts/londonstreetsign.eot');
+    src: url('../../../assets/fonts/londonstreetsign.eot?#iefix') format('embedded-opentype'), url('../../../assets/fonts/londonstreetsign.woff') format('woff'), url('../../../assets/fonts/londonstreetsign.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ffbasic() {
+    font-family: "londonstreetsign";
+}
+
+@page {
+    /* dimensions for the whole page */
+    size: A5;
+    margin: 0;
+    background-color: purple !important;
+}
+
+.invitation {
+    .container {
+        .ffbasic();
+        width: 816px;
+        height: 326px;
+        margin-top: 0 !important;
+        padding: 0;
+        border: 3px solid #e3e3e3;
+        text-align: left;
+        font-weight: bold;
+        .body {
+            height: 260px;
+        }
+        .top {
+            padding: 0px 50px;
+            line-height: 100%;
+            font-size: 100px;
+            .street-name {
+                text-align: left;
+                color: rgb(0, 0, 0);
+            }
+            .postal-code {
+                float: right;
+                color: rgb(221, 16, 16);
+            }
+        }
+        .bottom {
+            border-top: solid 3px black;
+            margin-top: 10px;
+            padding-top: 10px;
+            padding-left: 50px;
+        }
+    }
+    .print-button {
+        position: absolute;
+        width: 160px;
+        top: 100px;
+        right: 20px;
+    }
+}

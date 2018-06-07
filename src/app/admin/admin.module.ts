@@ -19,6 +19,7 @@ import { ModalsModule } from './modals/modals.module';
 import { BaseSectionComponent, ExpensesComponent, GroupsComponent, GuestsComponent, InvitationsComponent, LoginComponent, NotificationsComponent, OverviewComponent, SectionHeaderComponent, TablePlannerComponent } from './sections';
 import { TableGuestsComponent } from './sections/table-planner/table-guests/table-guests.component';
 import { TablesComponent } from './sections/table-planner/tables/tables.component';
+import { StreetTableComponent } from './street-table/street-table.component';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { TablesComponent } from './sections/table-planner/tables/tables.componen
     SectionHeaderComponent,
     TablesComponent,
     TableGuestsComponent,
+    StreetTableComponent,
   ],
   providers: [
     AuthenticationService,

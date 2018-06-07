@@ -5,25 +5,37 @@
     "new_element": {
         "label": "Añadir mesa",
         "icon": "fa-plus",
-        "authLevels": ["admin"]
+        "authLevels": [
+            "admin"
+        ]
     },
     "top_actions": [
         {
-            "label": "Ver protocolo",
+            "label": "Ver chapa calle",
             "icon": "fa-file",
-            "authLevels": ["admin"]
+            "authLevels": [
+                "admin"
+            ]
         }
     ],
     "other_actions": [
         {
+            "label": "Ver etiqueta",
+            "icon": "fa-address-card-o"
+        },
+        {
             "label": "Editar",
             "icon": "fa-pencil",
-            "authLevels": ["admin"]
+            "authLevels": [
+                "admin"
+            ]
         },
         {
             "label": "Eliminar",
             "icon": "fa-trash",
-            "authLevels": ["admin"]
+            "authLevels": [
+                "admin"
+            ]
         }
     ],
     "page_size": 10,

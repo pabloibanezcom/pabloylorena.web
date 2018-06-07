@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { Table } from '../../../../shared/models';
 import { Result } from '../../../admin-core';
 import { BaseSectionComponent } from '../../base-section/base-section.component';
 
@@ -25,6 +26,9 @@ export class TablesComponent extends BaseSectionComponent implements OnInit {
 
   afterTableConfig() {
     this.tableConfig.top_actions[0].click = this.onShowProtocol.bind(this);
+    this.tableConfig.other_actions[0].click = this.viewStreetSign.bind(this);
+    this.tableConfig.other_actions[1].click = this.editElement.bind(this);
+    this.tableConfig.other_actions[2].click = this.removeElement.bind(this);
   }
 
   afterRefreshResult() {
@@ -37,6 +41,10 @@ export class TablesComponent extends BaseSectionComponent implements OnInit {
 
   onShowProtocol() {
     this.showProtocol.emit(true);
+  }
+
+  viewStreetSign(table: Table) {
+    window.open('admin/table/street/' + table._id);
   }
 
 }
