@@ -11,7 +11,7 @@ import { BaseSectionComponent } from '../../base-section/base-section.component'
 })
 export class TablesComponent extends BaseSectionComponent implements OnInit {
 
-  public modelName: string = 'table';
+  public modelName = 'table';
 
   @Input() tableFilter: any;
   @Input() refresh: Subject<boolean>;

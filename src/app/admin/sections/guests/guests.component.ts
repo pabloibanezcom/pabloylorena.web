@@ -9,7 +9,7 @@ import { BaseSectionComponent } from '../base-section/base-section.component';
 })
 export class GuestsComponent extends BaseSectionComponent implements OnInit {
 
-  public modelName: string = 'guest';
+  public modelName = 'guest';
 
   constructor(
     private dataService: DataService,

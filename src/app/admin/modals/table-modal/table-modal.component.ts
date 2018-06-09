@@ -10,7 +10,7 @@ import { BaseModalComponent } from '../base-modal/base-modal.component';
 })
 export class TableModalComponent extends BaseModalComponent {
 
-  public modelName: string = 'table';
+  public modelName = 'table';
   public showRemoveConfirm: string;
   guestOrderChanged: boolean;
   refreshData: boolean;
@@ -57,7 +57,7 @@ export class TableModalComponent extends BaseModalComponent {
     this.guestOrderChanged = true;
     const index = array.indexOf(element);
     const newIndex = index + delta;
-    if (newIndex < 0 || newIndex == array.length) return;
+    if (newIndex < 0 || newIndex === array.length) { return; }
     const indexes = [index, newIndex].sort();
     array.splice(indexes[0], 2, array[indexes[1]], array[indexes[0]]);
     this.updateGuestsOrders();

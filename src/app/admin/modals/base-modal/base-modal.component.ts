@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Injector, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { Response } from '@angular/http';
 import { BaseComponent } from '../../../shared';
 import { AdminService, NotificationService } from '../../admin-core';
 
@@ -66,7 +65,7 @@ export class BaseModalComponent extends BaseComponent implements OnInit, OnChang
     this.ending.emit({ refreshData: false });
   }
 
-  private afterSubscribe(res: Response) {
+  private afterSubscribe(res: any) {
     this.ending.emit({ refreshData: true });
     if (!this.editMode && !this.deleteMode) {
       this.notificationService.processHttpResult(res, 'Elemento creado con exito',

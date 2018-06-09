@@ -7,7 +7,7 @@ import { BaseSectionComponent } from '../base-section/base-section.component';
 })
 export class ExpensesComponent extends BaseSectionComponent implements OnInit {
 
-  public modelName: string = 'expense';
+  public modelName = 'expense';
 
   ngOnInit() {
     this.storeSubscription(this.adminService.refreshExpectedGuests().subscribe(res => {

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -7,7 +7,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class FooterComponent {
 
-  @Output() linkClick: any = new EventEmitter(); 
+  @Output() linkClick: any = new EventEmitter();
 
   constructor() { }
 

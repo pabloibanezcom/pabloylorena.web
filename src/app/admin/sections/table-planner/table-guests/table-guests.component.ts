@@ -14,7 +14,7 @@ export class TableGuestsComponent extends BaseSectionComponent implements OnInit
   @Input() refresh: Subject<boolean>;
   @Output() refreshed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  public modelName: string = 'table-guest';
+  public modelName = 'table-guest';
 
   constructor(
     private dataService: DataService,

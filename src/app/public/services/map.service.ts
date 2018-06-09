@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-
 import { MapOptions } from '../models/map-options';
+
 
 @Injectable()
 export class MapService {
@@ -25,7 +25,7 @@ export class MapService {
       map: map,
       title: title,
       icon: icon
-    })
+    });
 
     const infoWindow = new google.maps.InfoWindow({
       content: contentWindow

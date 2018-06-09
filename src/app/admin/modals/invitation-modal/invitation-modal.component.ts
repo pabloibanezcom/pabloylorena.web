@@ -10,7 +10,7 @@ import { BaseModalComponent } from '../base-modal/base-modal.component';
 })
 export class InvitationModalComponent extends BaseModalComponent implements OnInit, OnChanges {
 
-  public modelName: string = 'invitation';
+  public modelName = 'invitation';
   groups: Group[];
   editorOptions: any;
   dedicationMode: string;
@@ -86,7 +86,7 @@ export class InvitationModalComponent extends BaseModalComponent implements OnIn
   }
 
   protected beforeAddOrUpdate() {
-    this.modalElement.giftAmount = parseInt(this.modalElement.giftAmount);
+    this.modalElement.giftAmount = parseInt(this.modalElement.giftAmount, 10);
   }
 
   private refreshGroups(): void {
@@ -105,7 +105,7 @@ export class InvitationModalComponent extends BaseModalComponent implements OnIn
     this.guestOrderChanged = true;
     const index = array.indexOf(element);
     const newIndex = index + delta;
-    if (newIndex < 0 || newIndex == array.length) return;
+    if (newIndex < 0 || newIndex === array.length) { return; }
     const indexes = [index, newIndex].sort();
     array.splice(indexes[0], 2, array[indexes[1]], array[indexes[0]]);
     this.updateGuestsOrders();

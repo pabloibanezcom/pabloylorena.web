@@ -1,4 +1,4 @@
-import { Result } from ".";
+import { Result } from '.';
 import { Invitation } from '../../../shared/models';
 
 export class InvitationsResult implements Result {

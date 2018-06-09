@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Expense, ExpenseCategory, Group, Guest, Invitation, Notification, NotificationType, Table } from '../../../shared/models';
 import { HttpService } from '../../../shared/services/http.service';
-import { ExpensesResult, GroupsResult, GuestTablesResult, GuestsResult, InvitationsResult, NotificationsResult, OverviewResult, Result, TablesResult } from '../models';
+import { ExpensesResult, GroupsResult, GuestsResult, GuestTablesResult, InvitationsResult, NotificationsResult, OverviewResult, Result, TablesResult } from '../models';
 import * as searchRequests from './search-requests.json';
 
 @Injectable()
@@ -50,7 +50,7 @@ export class AdminService {
         value: 'Email',
         icon: 'at'
       }
-    ]
+    ];
   }
 
   refreshExpectedGuests(): Observable<{ adults: number, children: number }> {
@@ -204,10 +204,10 @@ export class AdminService {
 
   private getTotalAmountFromExpense(expense: Expense): number {
     if (expense.costPerGuest === 1) {
-      return this.getExpectedGuests().adults * expense.amount
+      return this.getExpectedGuests().adults * expense.amount;
     }
     if (expense.costPerGuest === 3) {
-      return this.getExpectedGuests().children * expense.amount
+      return this.getExpectedGuests().children * expense.amount;
     }
     return expense.amount;
   }
@@ -216,7 +216,7 @@ export class AdminService {
     return {
       adults: guests.filter(g => g.type === 1 || g.type === 2).length,
       children: guests.filter(g => g.type === 3).length
-    }
+    };
   }
 
 }

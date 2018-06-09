@@ -8,7 +8,7 @@ import { BaseModalComponent } from '../base-modal/base-modal.component';
 })
 export class NotificationModalComponent extends BaseModalComponent implements OnInit {
 
-  public modelName: string = 'notification';
+  public modelName = 'notification';
   types: NotificationType[];
 
   ngOnInit() {

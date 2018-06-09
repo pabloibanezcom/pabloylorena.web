@@ -10,7 +10,7 @@ import { BaseSectionComponent } from '../base-section/base-section.component';
 })
 export class InvitationsComponent extends BaseSectionComponent {
 
-  public modelName: string = 'invitation';
+  public modelName = 'invitation';
 
   constructor(
     private dataService: DataService,

@@ -9,7 +9,7 @@ import { BaseModalComponent } from '../base-modal/base-modal.component';
 })
 export class GuestModalComponent extends BaseModalComponent implements OnInit, OnChanges {
 
-  public modelName: string = 'guest';
+  public modelName = 'guest';
   groups: Group[];
   tables: Table[];
   group: Group;
@@ -22,7 +22,7 @@ export class GuestModalComponent extends BaseModalComponent implements OnInit, O
     private dataService: DataService,
     injector: Injector
   ) {
-    super(injector)
+    super(injector);
   }
 
   ngOnInit() {

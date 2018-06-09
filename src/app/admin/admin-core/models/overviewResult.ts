@@ -1,4 +1,4 @@
-import { ExpenseCategory } from "../../../shared/models";
+import { ExpenseCategory } from '../../../shared/models';
 
 export interface OverviewResult {
   guests: {
@@ -30,6 +30,6 @@ export interface OverviewResult {
       total: number;
       totalPaid: number;
     }[]
-  }
+  };
 }
 

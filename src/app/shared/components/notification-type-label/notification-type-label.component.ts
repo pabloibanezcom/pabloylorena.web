@@ -28,7 +28,7 @@ export class NotificationTypeLabelComponent implements OnInit, OnChanges {
   }
 
   private refreshType() {
-    this.typeObj = this.types.find(t => t.value === this.type)
+    this.typeObj = this.types.find(t => t.value === this.type);
   }
 
 }

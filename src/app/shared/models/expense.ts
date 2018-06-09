@@ -1,4 +1,4 @@
-import { ExpenseCategory } from ".";
+import { ExpenseCategory } from '.';
 
 export class Expense {
     _id: string;
@@ -11,3 +11,4 @@ export class Expense {
     lastModified: Date;
     category: ExpenseCategory;
 }
+

@@ -1,4 +1,4 @@
-import { Result } from ".";
+import { Result } from '.';
 import { Table } from '../../../shared/models';
 
 export class TablesResult implements Result {

@@ -8,7 +8,7 @@ import { BaseModalComponent } from '../base-modal/base-modal.component';
 })
 export class ExpenseModalComponent extends BaseModalComponent implements OnInit {
 
-  public modelName: string = 'expense';
+  public modelName = 'expense';
   categories: ExpenseCategory[];
   costPerGuestOptions: { label: string, value: number }[] = [
     {

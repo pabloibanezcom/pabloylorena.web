@@ -8,10 +8,11 @@
     "serve:local": "ng serve -c local",
     "serve:prod": "ng serve -c prod",
     "build": "ng build --prod",
+    "build-aot": "ng build --aot --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot --prod"
+    "postinstall": "npm run build-aot"
   },
   "private": true,
   "dependencies": {

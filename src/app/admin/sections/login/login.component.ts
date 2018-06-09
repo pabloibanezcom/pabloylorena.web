@@ -10,7 +10,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class LoginComponent implements OnInit {
 
-  @Output() onInit: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() init: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   error: string;
   loginObj: any = {};
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.onInit.emit(true);
+    this.init.emit(true);
   }
 
   login() {

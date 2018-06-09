@@ -7,7 +7,7 @@ import { BaseSectionComponent } from '../base-section/base-section.component';
 })
 export class GroupsComponent extends BaseSectionComponent {
 
-  public modelName: string = 'group';
+  public modelName = 'group';
 
   afterTableConfig() {
     this.tableConfig.selects.find(s => s.label === 'Anfitrion').options = [

@@ -8,7 +8,7 @@ import { BaseModalComponent } from '../base-modal/base-modal.component';
 })
 export class GroupModalComponent extends BaseModalComponent implements OnInit {
 
-  public modelName: string = 'group';
+  public modelName = 'group';
   hosts: any[];
   editorOptions: any;
 

@@ -29,5 +29,7 @@ export class StreetTableComponent extends BaseComponent implements OnInit {
     }));
   }
 
+  print() {
+  }
 
 }

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
-import { Response } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
 import { Guest, Table } from '../../../shared/models';
 import { DataService } from '../../../shared/services/data.service';
@@ -57,7 +56,7 @@ export class TableGuestModalComponent implements OnInit, OnChanges, OnDestroy {
     this.ending.emit({ refreshData: false });
   }
 
-  private afterSubscribe(res: Response) {
+  private afterSubscribe(res: any) {
     this.ending.emit({ refreshData: true });
     this.notificationService.processHttpResult(res, 'Invitado asignado a mesa con exito',
       this.modalGuest.name + ' ha sido asignado.');

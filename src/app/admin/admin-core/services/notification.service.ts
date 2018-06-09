@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
 import { NotificationsService, Options } from 'angular2-notifications';
-
 
 @Injectable()
 export class NotificationService {
@@ -20,7 +18,8 @@ export class NotificationService {
     return this.customOptions;
   }
 
-  processHttpResult(response: Response,
+  processHttpResult(
+    response: any,
     successTitle: string,
     successContent: string,
     errorTitle?: string,

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
+import { Observable } from 'rxjs/Observable';
 import { UtilService } from '../services/util.service';
-
-import { Pagination } from './models/pagination';
 import { ActiveElementsResult } from './models/activeElementsResult';
+import { Pagination } from './models/pagination';
 import { ResponsiveTableConfig } from './models/responsive-table-config';
 import { ResponsiveTableFilter } from './models/responsive-table-filter';
+
+
 
 @Injectable()
 export class ResponsiveTableService {
@@ -24,7 +24,7 @@ export class ResponsiveTableService {
   constructor(
     private util: UtilService
   ) {
-    this.activeElements$ = new BehaviorSubject({ filteredElementsLength: null, activeElements: null});
+    this.activeElements$ = new BehaviorSubject({ filteredElementsLength: null, activeElements: null });
     this.pagination$ = new BehaviorSubject(new Pagination);
   }
 
@@ -81,22 +81,22 @@ export class ResponsiveTableService {
     propertiesMatch.forEach(p => {
       result = result.concat(this.elements
         .filter(e => e[p].toLowerCase().match(this.filterParams.searchStr.toLowerCase()))
-        .filter(e => result.indexOf(e) < 0 )
+        .filter(e => result.indexOf(e) < 0)
       );
-    }); 
+    });
     // Apply selects filter
     for (const select of this.filterParams.selects) {
       if (select.value !== null && select.value !== undefined) {
-        result = result.filter(e => 
+        result = result.filter(e =>
           (select.value !== 'null' && this.util.resolveComplexProperty(e, select.property) === select.value)
-          || (select.value === 'null' && ( this.util.resolveComplexProperty(e, select.property) === null || this.util.resolveComplexProperty(e, select.property) === undefined ))
+          || (select.value === 'null' && (this.util.resolveComplexProperty(e, select.property) === null || this.util.resolveComplexProperty(e, select.property) === undefined))
         );
       }
       if (select.propertyValue !== null && select.propertyValue !== undefined) {
-        result = result.filter(e => 
+        result = result.filter(e =>
           (select.value !== 'null' && select.propertyValueMatch && this.util.resolveComplexProperty(e, select.property) === this.util.resolveComplexProperty(e, select.propertyValue))
           || (select.value !== 'null' && !select.propertyValueMatch && this.util.resolveComplexProperty(e, select.property) !== this.util.resolveComplexProperty(e, select.propertyValue))
-          || (select.value === 'null' && ( this.util.resolveComplexProperty(e, select.property) === null || this.util.resolveComplexProperty(e, select.property) === undefined ))
+          || (select.value === 'null' && (this.util.resolveComplexProperty(e, select.property) === null || this.util.resolveComplexProperty(e, select.property) === undefined))
         );
       }
     }

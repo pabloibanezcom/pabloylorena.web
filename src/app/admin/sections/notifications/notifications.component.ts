@@ -9,7 +9,7 @@ import { BaseSectionComponent } from '../base-section/base-section.component';
 })
 export class NotificationsComponent extends BaseSectionComponent {
 
-  public modelName: string = 'notification';
+  public modelName = 'notification';
 
   constructor(
     private smsService: SmsService,
@@ -35,7 +35,7 @@ export class NotificationsComponent extends BaseSectionComponent {
       this.util.hideModal('rsvp-confirm-modal');
       this.notificationService.success('Mensaje enviado', '');
       this.refreshResult();
-    });;
+    });
   }
 
   onCancelConfirm() {
