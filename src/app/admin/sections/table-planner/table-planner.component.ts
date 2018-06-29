@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 import { TablesResult } from '../../admin-core';
 
@@ -15,6 +16,10 @@ export class TablePlannerComponent {
   public refreshTables: Subject<boolean> = new Subject();
   public refreshGuests: Subject<boolean> = new Subject();
 
+  constructor(private router: Router) {
+
+  }
+
   onTablesResultChanges(tablesResult: TablesResult) {
     this.tablesResult = tablesResult;
   }
@@ -29,6 +34,10 @@ export class TablePlannerComponent {
 
   guestsRefreshed() {
     this.refreshTables.next(true);
+  }
+
+  onShowProtocol() {
+    this.router.navigate(['admin/guests/list']);
   }
 
 }

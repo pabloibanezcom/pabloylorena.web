@@ -25,30 +25,10 @@
       <div class="row">
         <div class="col-lg-8 col-lg-push-4">
           <app-tables [tableFilter]="tableFilter" [refresh]="refreshTables" (refreshed)="tablesResfreshed($event)" (tablesResultChanges)="onTablesResultChanges($event)"
-            (showProtocol)="protocolMode = $event"></app-tables>
+            (showProtocol)="onShowProtocol()"></app-tables>
         </div>
         <div class="col-lg-4 col-lg-pull-8 guestsTableContainer">
           <app-table-guests [refresh]="refreshGuests" (refreshed)="guestsRefreshed($event)"></app-table-guests>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="protocolMode" class="protocol">
-      <div class="row doNotPrint">
-        <a class="btn btn-sm btn-primary" (click)="protocolMode = false">
-          <i class="fa fa-arrow-left"></i>Volver a organizador</a>
-        <a class="btn btn-sm btn-primary" (click)="print()">
-          <i class="fa fa-print"></i>Imprimir</a>
-      </div>
-      <div class="row tables">
-        <div *ngFor="let table of tablesResult.elements" class="col-sm-6">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{table.number}} - {{table.name}}</h3>
-            </div>
-            <ul class="list-group">
-              <li class="list-group-item" *ngFor="let guest of table.guests">{{guest.name}}</li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>

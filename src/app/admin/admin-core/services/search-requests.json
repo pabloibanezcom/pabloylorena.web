@@ -188,5 +188,23 @@
             "sort": "order",
             "populate": ""
         }
+    },
+    "guestsList": {
+        "url": "table",
+        "body": {
+            "sort": "number",
+            "select": "number name guests",
+            "populate": [
+                {
+                    "path": "guests",
+                    "select": "name type allergies",
+                    "options": {
+                        "sort": {
+                            "orderInTable": 1
+                        }
+                    }
+                }
+            ]
+        }
     }
 }

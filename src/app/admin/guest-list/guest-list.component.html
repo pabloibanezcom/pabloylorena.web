@@ -1,0 +1,25 @@
+<div class="guests-list">
+  <div class="container text-center" id="print-section">
+    <app-section-header [sectionName]="'Protocolo'"></app-section-header>
+    <div class="row">
+      <div class="col-lg-6" *ngFor="let table of result | async">
+        <div class="table-card-container">
+          <div class="table-card">
+            <div class="table-header">{{table.number}} - {{table.name}} ({{table.guests.length}})</div>
+            <div class="table-guests">
+              <ul>
+                <li *ngFor="let guest of table.guests; index as i" [ngClass]="{'even': i % 2 === 0, 'odd': i % 2 ===1 }">
+                  <span>{{guest.name}}</span>
+                  <span *ngIf="guest.allergies" class="allergies">
+                    <i class="fa fa-pagelines"></i> {{guest.allergies}}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button (click)="print()" class="btn btn-sm btn-primary print-button doNotPrint">
+    <i class="fa fa-print"></i>Imprimir</button>
+</div>

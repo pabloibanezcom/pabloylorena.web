@@ -34,18 +34,24 @@
     "new_element": {
         "label": "Añadir invitado",
         "icon": "fa-user-plus",
-        "authLevels": ["admin"]
+        "authLevels": [
+            "admin"
+        ]
     },
     "other_actions": [
         {
             "label": "Editar",
             "icon": "fa-pencil",
-            "authLevels": ["admin"]
+            "authLevels": [
+                "admin"
+            ]
         },
         {
             "label": "Eliminar",
             "icon": "fa-trash",
-            "authLevels": ["admin"]
+            "authLevels": [
+                "admin"
+            ]
         }
     ],
     "page_size": 10,
@@ -115,8 +121,7 @@
                     }
                 ]
             },
-            "icon": "fa-glass",
-            "responsive": "md"
+            "icon": "fa-glass"
         },
         {
             "header": "Viernes",
@@ -168,10 +173,41 @@
             "property": "stayingPlaceExpectation"
         },
         {
+            "header": "Bus",
+            "sortBy": "isTakingBus",
+            "icon": "fa-bus",
+            "component": {
+                "name": "YesNoLabel",
+                "inputs": [
+                    {
+                        "name": "value",
+                        "property": "isTakingBus"
+                    }
+                ]
+            },
+            "property": "isTakingBus"
+        },
+        {
             "header": "Movil",
             "sortBy": "phone",
             "icon": "fa-phone",
             "property": "phone"
+        },
+        {
+            "header": "Sms",
+            "sortBy": "sendSms",
+            "icon": "fa-commenting",
+            "component": {
+                "name": "YesNoLabel",
+                "inputs": [
+                    {
+                        "name": "value",
+                        "property": "sendSms"
+                    }
+                ]
+            },
+            "property": "sendSms",
+            "responsive": "md"
         },
         {
             "header": "Email",

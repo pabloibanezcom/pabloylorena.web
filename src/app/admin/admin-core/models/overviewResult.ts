@@ -12,6 +12,11 @@ export interface OverviewResult {
         place: string;
         amount: number;
       }[],
+      bus: {
+        beforeWedding: number;
+        afterWedding: number;
+        afterVenue: number;
+      }
     },
     friday: {
       total: number;

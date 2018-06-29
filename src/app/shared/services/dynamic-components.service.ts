@@ -12,6 +12,7 @@ import { TableGuestsLabelComponent } from '../components/table-guests-label/tabl
 import { TableLabelComponent } from '../components/table-label/table-label.component';
 import { TotalAmountComponent } from '../components/total-amount/total-amount.component';
 import { TypeLabelComponent } from '../components/type-label/type-label.component';
+import { YesNoLabelComponent } from '../components/yes-no-label/yes-no-label.component';
 
 @Injectable()
 export class DynamicComponentsService {
@@ -31,7 +32,8 @@ export class DynamicComponentsService {
       TotalAmount: TotalAmountComponent,
       DatetimeLabel: DatetimeLabelComponent,
       SentTimeLabel: SentTimeLabelComponent,
-      NotificationTypeLabel: NotificationTypeLabelComponent
+      NotificationTypeLabel: NotificationTypeLabelComponent,
+      YesNoLabel: YesNoLabelComponent
     };
   }
 

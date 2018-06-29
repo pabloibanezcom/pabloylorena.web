@@ -20,6 +20,7 @@ import { BaseSectionComponent, ExpensesComponent, GroupsComponent, GuestsCompone
 import { TableGuestsComponent } from './sections/table-planner/table-guests/table-guests.component';
 import { TablesComponent } from './sections/table-planner/tables/tables.component';
 import { StreetTableComponent } from './street-table/street-table.component';
+import { GuestListComponent } from './guest-list/guest-list.component';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { StreetTableComponent } from './street-table/street-table.component';
     TablesComponent,
     TableGuestsComponent,
     StreetTableComponent,
+    GuestListComponent,
   ],
   providers: [
     AuthenticationService,

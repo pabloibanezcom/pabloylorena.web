@@ -13,7 +13,7 @@ export class Guest {
     sendSms: Boolean;
     allergies: string;
     additionalComments: string;
-    busTime: string;
+    isTakingBus: Boolean;
     isAttending: Boolean;
     isAttendingExpectation: Boolean;
     isAttendingFriday: Boolean;

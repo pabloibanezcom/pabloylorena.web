@@ -11,7 +11,7 @@
     },
     "top_actions": [
         {
-            "label": "Ver chapa calle",
+            "label": "Ver protocolo",
             "icon": "fa-file",
             "authLevels": [
                 "admin"

@@ -121,7 +121,7 @@ export class AdminService {
     return this.http.get('overview');
   }
 
-  private search(searchName: string): Observable<any> {
+  search(searchName: string): Observable<any> {
     const searchReqOptions = searchRequests[searchName];
     return this.http.post(searchReqOptions.url, searchReqOptions.body)
       .map(collection => this[searchName + 'Map'] ? this[searchName + 'Map'](collection) : collection);

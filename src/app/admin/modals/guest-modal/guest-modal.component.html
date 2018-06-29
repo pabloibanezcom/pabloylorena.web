@@ -47,12 +47,15 @@
             <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Asistencia esperada'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalElement.isAttendingExpectation"></smart-form-select>
 
             <!-- STAYING PLACE -->
-            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Alojamiento sabado'" [emptyOption]="true" [options]="stayingPlaces"
+            <smart-form-select [class]="'col-xs-12 col-sm-5'" [label]="'Alojamiento sabado'" [emptyOption]="true" [options]="stayingPlaces"
               [(model)]="modalElement.stayingPlace"></smart-form-select>
 
             <!-- STAYING PLACE EXPECTATION -->
-            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Alojamiento sabado esperado'" [emptyOption]="true" [options]="stayingPlaces"
+            <smart-form-select [class]="'col-xs-12 col-sm-5'" [label]="'Alojamiento sabado esperado'" [emptyOption]="true" [options]="stayingPlaces"
               [(model)]="modalElement.stayingPlaceExpectation"></smart-form-select>
+
+            <!-- IS TAKING BUS -->
+            <smart-form-select [class]="'col-xs-12 col-sm-2'" [label]="'Coge bus'" [type]="'YesNo'" [(model)]="modalElement.isTakingBus"></smart-form-select>
 
             <!-- ALLERGIES -->
             <smart-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Alergias'" [(model)]="modalElement.allergies"></smart-form-text>

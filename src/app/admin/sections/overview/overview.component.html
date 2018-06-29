@@ -24,7 +24,7 @@
             <div class="clearfix"></div>
           </div>
           <div class="data-row margin-top-20"></div>
-          <div class="data-row row-type" *ngFor="let s of result.guests.wedding.staying">
+          <!-- <div class="data-row row-type" *ngFor="let s of result.guests.wedding.staying">
             <span class="data-sublabel staying-label">
               {{s.place}}
             </span>
@@ -32,7 +32,38 @@
               <i class="fa fa-users"></i>
             </span>
             <div class="clearfix"></div>
+          </div> -->
+
+          <div class="data-row row-type">
+            <span class="data-sublabel">
+              <i class="fa fa-bus"></i> Jarandilla
+            </span>
+            <span class="data-subvalue">{{result.guests.wedding.bus.beforeWedding}}
+              <i class="fa fa-users"></i>
+            </span>
+            <div class="clearfix"></div>
           </div>
+
+          <div class="data-row row-type">
+            <span class="data-sublabel">
+              <i class="fa fa-bus"></i> Iglesia - Ruta
+            </span>
+            <span class="data-subvalue">{{result.guests.wedding.bus.afterWedding}}
+              <i class="fa fa-users"></i>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+
+          <div class="data-row row-type">
+            <span class="data-sublabel">
+              <i class="fa fa-bus"></i> Ruta - Navalmoral
+            </span>
+            <span class="data-subvalue">{{result.guests.wedding.bus.afterVenue}}
+              <i class="fa fa-users"></i>
+            </span>
+            <div class="clearfix"></div>
+          </div>
+
 
           <div class="data-row margin-top-30">
             <span class="data-label">Cena viernes</span>

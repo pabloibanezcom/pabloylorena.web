@@ -16,6 +16,7 @@ import { TableGuestsLabelComponent } from './components/table-guests-label/table
 import { TableLabelComponent } from './components/table-label/table-label.component';
 import { TotalAmountComponent } from './components/total-amount/total-amount.component';
 import { TypeLabelComponent } from './components/type-label/type-label.component';
+import { YesNoLabelComponent } from './components/yes-no-label/yes-no-label.component';
 import { AdjustHeightDirective } from './directives/adjust-height.directive';
 import { InjectComponentDirective } from './directives/inject-component.directive';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
@@ -59,7 +60,8 @@ import { UtilService } from './services/util.service';
     TotalAmountComponent,
     DatetimeLabelComponent,
     SentTimeLabelComponent,
-    NotificationTypeLabelComponent
+    NotificationTypeLabelComponent,
+    YesNoLabelComponent
   ],
   providers: [
     DynamicComponentsService,
@@ -81,7 +83,8 @@ import { UtilService } from './services/util.service';
     CategoryLabelComponent,
     DatetimeLabelComponent,
     SentTimeLabelComponent,
-    NotificationTypeLabelComponent
+    NotificationTypeLabelComponent,
+    YesNoLabelComponent
   ],
   entryComponents: [
     AttendingLabelComponent,
@@ -95,7 +98,8 @@ import { UtilService } from './services/util.service';
     TotalAmountComponent,
     DatetimeLabelComponent,
     SentTimeLabelComponent,
-    NotificationTypeLabelComponent
+    NotificationTypeLabelComponent,
+    YesNoLabelComponent
   ],
 })
 export class SharedModule { }
