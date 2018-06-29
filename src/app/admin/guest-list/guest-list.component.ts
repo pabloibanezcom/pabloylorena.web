@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/observable';
 import { Table } from '../../shared/models';
 import { AdminService } from '../admin-core';
 
@@ -10,10 +9,10 @@ import { AdminService } from '../admin-core';
 })
 export class GuestListComponent {
 
-  result: Observable<Table[]>;
+  result: Table[];
 
   constructor(private adminService: AdminService) {
-    this.result = this.adminService.search('guestsList');
+    this.adminService.search('guestsList').subscribe(res => this.result = res);
   }
 
   print(): void {

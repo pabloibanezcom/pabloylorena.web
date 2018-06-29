@@ -2,7 +2,7 @@
   <div class="container text-center" id="print-section">
     <app-section-header [sectionName]="'Protocolo'"></app-section-header>
     <div class="row">
-      <div class="col-lg-6" *ngFor="let table of result | async">
+      <div class="col-lg-6" *ngFor="let table of result">
         <div class="table-card-container">
           <div class="table-card">
             <div class="table-header">{{table.number}} - {{table.name}} ({{table.guests.length}})</div>
