@@ -62,7 +62,7 @@
             "responsive": "lg"
         },
         {
-            "header": "Group",
+            "header": "Grupo",
             "sortBy": "group.name",
             "property": "group.name",
             "icon": "fa-users",
@@ -109,8 +109,7 @@
                         "property": "isReplied"
                     }
                 ]
-            },
-            "responsive": "xs"
+            }
         },
         {
             "header": "Address",
@@ -131,7 +130,8 @@
                         "property": "giftAmount"
                     }
                 ]
-            }
+            },
+            "responsive": "xs"
         },
         {
             "header": "Guests",
