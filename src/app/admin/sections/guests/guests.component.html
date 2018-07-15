@@ -3,12 +3,12 @@
     <app-section-header [sectionName]="'Invitados'"></app-section-header>
     <div class="counters" *ngIf="result">
       <div class="countdown-box" id="countdown-box">
-        <!-- <span class="item all" [ngClass]="{'selected': !filter || filter.alias === 'all'}">
+        <span class="item all" [ngClass]="{'selected': !filter || filter.alias === 'all'}">
           <a (click)="filter = {alias: 'all', property: null, value: null, group: 'attendance'}">
             <span class="number">{{result.elements.length}}</span>
             <span class="unit script">Total</span>
           </a>
-        </span> -->
+        </span>
         <span class="item confirmed" [ngClass]="{'selected': filter && filter.alias === 'confirmed'}">
           <a (click)="filter = {alias: 'confirmed', property: 'isAttending', value: true, group: 'attendance'}">
             <span class="number">{{result.attending}}</span>

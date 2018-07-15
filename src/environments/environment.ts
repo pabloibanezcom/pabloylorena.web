@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://pabloylorena-api-dev.herokuapp.com/api/',
-  // api_url: 'https://pabloylorena-api.herokuapp.com/api/',
+  // api_url: 'https://pabloylorena-api-dev.herokuapp.com/api/',
+  api_url: 'https://pabloylorena-api.herokuapp.com/api/',
   gaID: 'UA-116064744-2'
 };
