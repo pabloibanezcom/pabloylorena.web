@@ -80,6 +80,21 @@
                     }
                 ]
             }
+        },
+        {
+            "header": "Bus",
+            "sortBy": "isBusNotification",
+            "icon": "fa-bus",
+            "component": {
+                "name": "YesNoLabel",
+                "inputs": [
+                    {
+                        "name": "value",
+                        "property": "isBusNotification"
+                    }
+                ]
+            },
+            "property": "isBusNotification"
         }
     ]
 }

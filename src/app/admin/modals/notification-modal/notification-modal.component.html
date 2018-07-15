@@ -15,8 +15,12 @@
             <!-- TYPE -->
             <smart-form-select [class]="'col-xs-12 col-sm-4'" [label]="'Tipo'" [options]="types" [(model)]="modalElement.type"></smart-form-select>
 
-            <!-- FROM -->
-            <!-- <smart-form-datetime [class]="'col-xs-12 col-sm-4'" [label]="'Desde'" [(model)]="modalElement.from"></smart-form-datetime> -->
+            <!-- IS BUS NOTIFICATION -->
+            <smart-form-select [class]="'col-xs-12 col-sm-2'" [label]="'Bus'" [type]="'YesNo'" [emptyOption]="true" [(model)]="modalElement.isBusNotification"></smart-form-select>
+
+            <!-- STAYING PLACE -->
+            <smart-form-select [class]="'col-xs-12 col-sm-6'" [label]="'Alojamiento'" [emptyOption]="true" [options]="stayingPlaces"
+              [(model)]="modalElement.stayingPlace"></smart-form-select>
 
             <!-- TEXT -->
             <smart-form-text [class]="'col-xs-12 col-sm-12'" [label]="'Texto'" [multiLine]="true" [(model)]="modalElement.text"></smart-form-text>
