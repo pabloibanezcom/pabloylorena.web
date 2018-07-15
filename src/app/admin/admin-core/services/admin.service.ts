@@ -198,7 +198,11 @@ export class AdminService {
       awaiting: guests.filter(g => !g.isAttending).length,
       expected: guests.filter(g => g.isAttendingExpectation).length,
       nonExpected: guests.filter(g => g.isAttendingExpectation === false).length,
-      doubtful: guests.filter(g => g.isAttendingExpectation == null).length
+      doubtful: guests.filter(g => g.isAttendingExpectation == null).length,
+      friday: guests.filter(g => g.isAttendingFriday).length,
+      jarandilla: guests.filter(g => g.stayingPlace === 'Jarandilla').length,
+      navalmoral: guests.filter(g => g.stayingPlace === 'Navalmoral').length,
+      sms: guests.filter(g => g.sendSms).length
     };
   }
 

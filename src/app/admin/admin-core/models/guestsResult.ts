@@ -9,4 +9,8 @@ export class GuestsResult implements Result {
     expected: Number;
     nonExpected: Number;
     doubtful: Number;
+    friday: Number;
+    jarandilla: Number;
+    navalmoral: Number;
+    sms: Number;
 }
