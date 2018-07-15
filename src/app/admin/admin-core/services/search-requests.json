@@ -183,6 +183,7 @@
         }
     },
     "notificationsResult": {
+        "method": "get",
         "url": "notification",
         "body": {
             "sort": "order",

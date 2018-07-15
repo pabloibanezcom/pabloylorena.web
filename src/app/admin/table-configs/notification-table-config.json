@@ -45,6 +45,12 @@
             "responsive": "xs"
         },
         {
+            "header": "Personas",
+            "sortBy": "guests",
+            "property": "guests",
+            "responsive": "sm"
+        },
+        {
             "header": "Tipo",
             "sortBy": "type",
             "property": "type",

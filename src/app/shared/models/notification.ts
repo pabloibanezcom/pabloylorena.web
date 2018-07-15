@@ -6,5 +6,6 @@ export class Notification {
     type: string;
     from: Date;
     to: Date;
+    guests: number;
     sentTime: Date;
 }

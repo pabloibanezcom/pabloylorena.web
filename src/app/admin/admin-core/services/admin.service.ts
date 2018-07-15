@@ -123,7 +123,10 @@ export class AdminService {
 
   search(searchName: string): Observable<any> {
     const searchReqOptions = searchRequests[searchName];
-    return this.http.post(searchReqOptions.url, searchReqOptions.body)
+    const httpRequest = searchReqOptions.method === 'get' ?
+      this.http.get(searchReqOptions.url) :
+      this.http.post(searchReqOptions.url, searchReqOptions.body);
+    return httpRequest
       .map(collection => this[searchName + 'Map'] ? this[searchName + 'Map'](collection) : collection);
   }
 
